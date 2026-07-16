@@ -260,17 +260,38 @@ app = create_app()
 
 
 def main() -> None:
+    """Serve the agent, the /api surface and the UI from one process.
+
+    Host and port come from the environment because 127.0.0.1 is right on a
+    laptop and wrong everywhere else: it binds loopback only, so on a GCP VM,
+    in Cloud Shell, or on Cloud Run the container starts, logs happily, and
+    accepts nothing. Cloud Run also injects PORT (8080) and health-checks it.
+
+      local        python -m caregap_compass.server
+      Cloud Shell  HOST=0.0.0.0 PORT=8080 python -m caregap_compass.server   (then Web Preview)
+      Cloud Run    PORT is injected; set HOST=0.0.0.0
+    """
+    import os
+
     import uvicorn
 
+    # PORT is the Cloud Run / Cloud Shell convention and wins if present.
+    port = int(os.getenv("PORT") or os.getenv("CARE_GAP_PORT") or 8000)
+    # Default to loopback: binding 0.0.0.0 by accident on a shared box exposes
+    # member data to the network. Opt in explicitly.
+    host = os.getenv("HOST", "127.0.0.1")
+
     config.DATA_ROOT.mkdir(parents=True, exist_ok=True)
+    shown = "localhost" if host in ("127.0.0.1", "0.0.0.0") else host
     print()
     print("  CareGap Compass")
-    print(f"    ui        http://localhost:8000")
+    print(f"    ui        http://{shown}:{port}")
+    print(f"    bind      {host}:{port}" + ("" if host != "127.0.0.1" else "   (loopback only — set HOST=0.0.0.0 to expose)"))
     print(f"    backend   {bq.backend()}")
     print(f"    model     {config.MODEL}")
     print(f"    today     {config.today()}  (pinned; the dataset's slots expire otherwise)")
     print()
-    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="warning")
+    uvicorn.run(app, host=host, port=port, log_level="warning")
 
 
 if __name__ == "__main__":
