@@ -37,4 +37,19 @@ __pycache__/
 *.py[cod]
 
 # Cloud Storage hackathon data and generated runtime state
+#
+# Everything below is produced by running the agent, not by writing it. It also
+# carries session content -- the audit trail, refusal flags, and member feedback
+# -- so it must never be pushed, least of all to a Humana-connected remote.
+# The synthetic CSVs under data/runtime/extracted/ ARE tracked on purpose: they
+# are the fixture the tests and the demo run against.
+caregap_compass/data/runtime/audit.jsonl
+caregap_compass/data/runtime/compliance_flags.jsonl
+caregap_compass/data/runtime/feedback.db
+caregap_compass/data/runtime/sessions.db
+caregap_compass/data/runtime/raw/
+caregap_compass/runtime/
+*.db
+*.jsonl
+!caregap_compass/data/runtime/reference/*.jsonl
 
