@@ -41,10 +41,12 @@ cp .env.example .env
 python -m caregap_compass.scripts.doctor --model
 
 # 4. run
-python -m pytest tests/ -q                        # 133 passed, no credentials needed
+python -m pytest tests/ -q                        # 151 passed, no credentials needed
 python -m caregap_compass.scripts.smoke_test      # every tool, no LLM, ~5s
 python -m caregap_compass.scripts.compute_impact  # the number for the slide
-adk web                                           # chat UI at localhost:8000
+
+python -m caregap_compass.server                  # the demo UI at localhost:8000
+adk web                                           # ADK's dev UI, as a fallback
 ```
 
 Steps 1–2, 4 need **no credentials** — the tests and smoke test run entirely on
@@ -104,6 +106,40 @@ Supporting modules: `scoring.py` (pure, LLM-free ranking), `weights.py` (CMS
 measure classes), `compliance.py` (gate + ROI + flags), `bq.py` (data door +
 cache-aside), `cache.py` (LFU+TTL), `privacy.py` (PII masking), `retrieval.py`
 (BM25), `measures.py` (measure→CPT/specialty maps), `impact.py`.
+
+## The UI
+
+`python -m caregap_compass.server` → **localhost:8000**. One FastAPI app wrapping
+ADK's own (`get_fast_api_app(web=False)`) plus a read-only `/api` surface, with
+`ui/index.html` mounted on the same origin — no build step, no CORS, no proxy.
+
+| Panel | Source |
+|---|---|
+| **The decision** — score bars, the arithmetic, `rejected_because` | `GET /api/rank/{member}` |
+| **Compliance gate** — rule → refusal → route, + live flag log | the SSE stream + `/api/compliance-flags` |
+| **Impact strip** | `/api/impact` |
+| **Backend + cache chip** | `/api/telemetry` |
+
+**The decision panel is REST-driven, not read off the model's stream.** That's
+forced *and* better: ADK's `AgentTool` swallows a sub-agent's tool output, so
+`rank_open_gaps`' payload never reaches the client — but `scoring.rank_gaps` is
+pure, so calling it directly returns the identical object, and the panel stays
+correct even if the model is slow, wrong, or mid-sentence.
+
+The panel, impact strip, telemetry, and member picker **work with no model
+credentials at all**. Only the chat needs Gemini.
+
+### Colour
+
+Humana Green `#5BA908` (PMS 369 C) is the brand mark — but it measures **2.87:1
+on white**, under the 3:1 floor for fills, so it identifies the product and a
+darker step from the same hue, `#3F7505`, carries the data.
+
+The gate is **blue, not red**. Measured: dark red vs dark green is **ΔE 0.5–1.4
+under deuteranopia** — the same colour to ~8% of men, in a healthcare product.
+`#1D4ED8` vs `#3F7505` measures **ΔE 30.4**. And red would frame the best thing we
+built as an error; the gate is the feature. Selected/rejected also carry ✔/✗ and a
+SELECTED badge, so identity is never colour-alone.
 
 ### In rubric language
 
@@ -266,6 +302,7 @@ once already.
 ## Docs
 
 - [`SETUP.md`](SETUP.md) — **handoff**: auth, BigQuery, pending work, known-good numbers
+- [`docs/testing.md`](docs/testing.md) — **run before presenting**: five layers, cheapest first
 - [`docs/proposal-v2.md`](docs/proposal-v2.md) — the proposal, reconciled to the real data
 - [`docs/demo-script.md`](docs/demo-script.md) — exact prompts for the recording
 

@@ -95,6 +95,42 @@ MEASURE_ACTION: dict[str, str] = {
 }
 
 
+# What a member calls the thing, in their own words. Used by the compliance gate
+# to work out which service a coverage question is actually about.
+#
+# Without this the gate quotes the rule for whatever gap the prioritizer happened
+# to select -- so a member whose selected gap is CBP, asking "is my colonoscopy
+# covered?", would be read the blood-pressure office-visit rule. Answering a
+# different question than the one asked is worse than declining to answer.
+MEASURE_KEYWORDS: dict[str, tuple[str, ...]] = {
+    "COL": ("colonoscopy", "colorectal", "colon cancer", "colon screening", "fit kit", "cologuard", "stool test"),
+    "CDC-H": ("a1c", "hba1c", "hemoglobin", "diabetes", "diabetic", "blood sugar", "glucose"),
+    "CBP": ("blood pressure", "hypertension", "bp check", "bp reading"),
+    "OMW": ("osteoporosis", "bone density", "bone scan", "dexa", "fracture", "bone health"),
+    "SPC": ("statin", "cholesterol", "lipid"),
+    "AWC": ("wellness visit", "annual visit", "annual exam", "annual wellness", "yearly checkup", "physical exam"),
+    "FUH": ("psychiatric", "mental health", "behavioral health", "therapy", "psychotherapy", "counseling"),
+    "COA": ("medication review", "med review", "medication list"),
+    "MRP": ("medication reconciliation", "reconcile my medication"),
+    "TRC": ("transition of care", "transitions of care", "after my hospital stay", "discharge follow"),
+}
+
+
+def detect_measure(text: str) -> str | None:
+    """Which measure is this message about, if any.
+
+    Longest keyword wins, so "medication reconciliation" beats "medication
+    review" rather than matching whichever dict happened to come first.
+    """
+    lowered = str(text or "").lower()
+    best: tuple[int, str | None] = (0, None)
+    for measure_id, keywords in MEASURE_KEYWORDS.items():
+        for keyword in keywords:
+            if keyword in lowered and len(keyword) > best[0]:
+                best = (len(keyword), measure_id)
+    return best[1]
+
+
 def cpt_codes_for(measure_id: str) -> list[str]:
     return MEASURE_CPT.get(measure_id, [])
 

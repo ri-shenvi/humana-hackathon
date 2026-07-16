@@ -324,9 +324,10 @@ def check_request(
     if denial:
         return denial
 
-    return _build_gate_response(
-        verdict, member_id, tool_context.state.get("selected_measure_id")
+    measure_id = measures.detect_measure(member_message) or tool_context.state.get(
+        "selected_measure_id"
     )
+    return _build_gate_response(verdict, member_id, measure_id)
 
 
 def _build_gate_response(
@@ -529,10 +530,14 @@ def compliance_gate_callback(callback_context: Any, llm_request: Any) -> Any:
     member_id = (
         callback_context.state.get("authenticated_member_id") or config.HERO_MEMBER_ID
     )
+    # What they asked about beats what we happened to select. A member whose
+    # selected gap is CBP asking about their colonoscopy must hear the
+    # colonoscopy rule, not the blood-pressure one.
+    measure_id = measures.detect_measure(message) or callback_context.state.get(
+        "selected_measure_id"
+    )
     try:
-        gate = _build_gate_response(
-            verdict, member_id, callback_context.state.get("selected_measure_id")
-        )
+        gate = _build_gate_response(verdict, member_id, measure_id)
     except Exception as exc:  # noqa: BLE001
         # Fail closed. If we cannot look up the rule we still refuse -- we just
         # refuse without quoting one. Never fall through to the model.

@@ -32,8 +32,16 @@ ignored; the member gets noise instead of a next step.
 
 **This is literally true for our hero member.** `MBR00030` has an open
 blood-pressure gap with **5 outreach attempts and 0 closes**. Two of those
-mailers came back undeliverable. He answers the phone 3 times out of 4. Nobody
+mailers came back undeliverable. They answer the phone 3 times out of 4. Nobody
 looked.
+
+And it gets worse. **34 open gaps in this dataset already have a paid claim on
+the measure's own service code** — the care happened, the credit didn't land. The
+plan is chasing those members for an appointment they have already had. That is
+not a care gap; it is a data gap, and the plan's own STARs report names
+"campaign de-duplication" as a top-three recommended action. Our agent checks
+`claims` before it tells anyone to book, and offers to file the reconciliation
+instead.
 
 ## 3. Name the baseline (say this out loud — in both rounds)
 
@@ -100,12 +108,13 @@ loudly if the dataset ever contradicts the table.
 - **propensity** = `max` over channels of
   `member_response_rate(channel) × measure_closure_rate(measure, channel)`.
   One formula, two answers: how likely the gap closes, **and which channel to
-  use**. For `MBR00030` + CBP that's Call Center (he responds 3/4; CBP closes 34%
+  use**. For `MBR00030` + CBP that's Call Center (they respond 3/4; CBP closes 34%
   there).
 
 ## 6. Architecture (Google ADK)
 
-**Orchestrator (root)** — routes to a sub-agent, and enforces the compliance gate.
+**Orchestrator (root)** — enforces the gates, routes to a specialist, and holds
+every action that has a consequence.
 
 ### Prioritizer Agent — the differentiator
 
@@ -118,22 +127,61 @@ loudly if the dataset ever contradicts the table.
 | `get_measure_weight` | `stars_performance` + CMS class | weight, star rating, trend |
 | `get_response_history` | `campaign_dispositions`, `historical_interventions` | channels this member responds to |
 
-### Actioner Agent
-
-*One agent, four tools — depth without four integration surfaces.*
+### Actioner Agent — read-only
 
 | Tool | Reads | Returns |
 |---|---|---|
-| `explain_gap` | `coverage_rules`, call transcripts | why it matters, what it costs |
+| `explain_gap` | `coverage_rules`, `claims`, call transcripts | why it matters, what it costs, what's already on file |
 | `find_provider` | `providers`, `members`, `appointment_slots` | nearest in-network provider |
-| `book_or_callback` | `appointment_slots` | simulated confirmation |
-| `submit_gap_dispute` | `care_gaps` | files a claim; **never closes the gap** |
 
-### Compliance gate (orchestrator level)
+### The actions live on the orchestrator
+
+| Tool | Reads | Returns |
+|---|---|---|
+| `book_or_callback` ⚠ | `appointment_slots` | simulated confirmation, idempotent |
+| `submit_gap_dispute` ⚠ | `care_gaps`, `claims` | files a claim; **never closes the gap** |
+
+⚠ = requires explicit member confirmation before it runs.
+
+**This placement is not cosmetic.** ADK's `AgentTool` runs a sub-agent in its own
+runner with a throwaway session and returns only its final text. A confirmation
+prompt raised *inside* a sub-agent is emitted into a stream nobody reads, against
+a session that is then destroyed — the member can never answer it, and the
+booking silently does nothing. So anything with a consequence sits at the root,
+at the same level as the gates. **A regression test enforces it.** If asked why:
+*the orchestrator never delegates an action it would have to confirm.*
+
+### The compliance gate — enforced in code, not by asking the model
 
 Any coverage **determination** request → state the general rule from
 `coverage_rules`, **refuse the determination**, route to a human advocate, log to
-`compliance_flags`. Fails closed: ambiguity escalates.
+`compliance_flags`.
+
+The important part is *where* it runs. It is a `before_model_callback`: it fires
+as code on every turn, **before the model is invoked at all**. A gated turn never
+reaches the LLM.
+
+> **"The agent can't be talked into a coverage determination, because on those
+> turns there is no agent to talk to."**
+
+That is the difference between a control and a suggestion. A gate implemented as
+a tool only runs if the model *chooses* to call it — one distracted turn, one
+clever reframing, and an advisory control silently doesn't exist. This one can't
+be skipped, can't be argued with, and can't be prompt-injected around. It **fails
+closed**: if the rule lookup itself breaks, it still refuses — it just refuses
+without quoting a rule. The instruction block stays as a second layer for
+phrasings the keyword list misses.
+
+### The second gate: release of information
+
+If a caller identifies as anyone other than the member — a spouse, a daughter, a
+caregiver — `check_caller_authorization` checks `roi_authorizations` **before
+anything is disclosed**. Not on file, or expired, means nothing is shared: not
+their gaps, not their appointments, not even whether the member exists.
+
+**43 of the 352 authorizations in this dataset are expired.** An expired release
+is not a release, however sympathetic the caller. Both outcomes are demonstrable
+on real rows.
 
 ## 7. Rubric-legible naming
 
@@ -141,9 +189,11 @@ Any coverage **determination** request → state the general rule from
 |---|---|
 | Scoring formula | **Risk / propensity scoring** |
 | Orchestrator selecting a sub-agent | **Agent routing** |
-| Compliance gate | **Classification + confidence-gated escalation** |
+| Compliance gate as a pre-model callback | **Classification + confidence-gated escalation** |
+| ROI check on `roi_authorizations` | **Identity / disclosure control** |
 | `reason` / `rejected_because` fields | **Structured outputs** |
-| `explain_gap` over transcripts + `coverage_rules` | **Grounded retrieval** |
+| `explain_gap` over transcripts + `coverage_rules` + `claims` | **Grounded retrieval** |
+| Confirmation-gated actions on the root | **Human-in-the-loop** |
 
 Same build. Rubric-legible. Zero additional build cost.
 
@@ -186,8 +236,14 @@ arguments — no ADK, no LLM, no care-gap assumptions — and returns a ranked
 decision. Swap the inputs and it ranks interventions for advocates, or actions
 for providers.
 
-The **compliance gate is a reusable enterprise control** for any member-facing AI
-at Humana: classify → state rule → refuse → route → log.
+And **two reusable enterprise controls**, both independent of care gaps:
+
+1. **The compliance gate** — classify → state rule → refuse → route → log, as a
+   pre-model callback. Drop it onto any member-facing agent at Humana and that
+   agent inherits a determination refusal it cannot skip. It is ~200 lines and
+   knows nothing about care gaps.
+2. **The ROI disclosure check** — any agent that might talk to a caregiver needs
+   this, and it reads a table Humana already maintains.
 
 Zero additional build cost. This is framing, and it moves Feasibility /
 Reusability / Scalability from 3 to 4–5.
@@ -250,11 +306,11 @@ no longer scored.** Rebalance accordingly.*
 |---|---|
 | 0:20 | Name the baseline — TLT did not see the four chatbots we beat |
 | 1:20 | **Lead with impact.** The number, first. Including why we claim the floor and not the ceiling |
-| 1:00 | **Governance as a design principle** — the agent knows what it must not decide. Best asset with this audience |
+| **1:00** | **Governance as a design principle.** Best asset with this audience — and it is now structural, not aspirational: *"the gate runs before the model. On a coverage question the LLM is never called. The agent can't be talked into a determination, because there's no agent to talk to."* Then the second gate: an unauthorized caller gets nothing — not the gaps, not even whether the member exists. 43 releases in this data are expired, and an expired release is not a release. |
 | 0:50 | The rejection moment, compressed — decomposition on screen |
-| 0:50 | Action flow |
-| 0:40 | AI approach in rubric language: routing, propensity scoring, grounded retrieval, confidence-gated escalation, structured outputs |
-| 1:00 | Reusability: NBA ranking service + reusable compliance control → enterprise path |
+| 0:50 | Action flow — and the de-duplication catch: *34 open gaps already have a paid claim; we stop chasing those members* |
+| 0:40 | AI approach in rubric language: routing, propensity scoring, grounded retrieval, confidence-gated escalation, structured outputs, human-in-the-loop |
+| 1:00 | Reusability: NBA ranking service + two reusable enterprise controls → enterprise path |
 
 **Presenter:** whoever tells the **impact** story best. Not whoever wrote the most
 code.
@@ -286,13 +342,35 @@ tool layer in 5 seconds without touching the model.
 | Star weight read from `stars_performance` | **No weight column exists** | Derived from **CMS measure class**, cross-checked by test |
 | `weight 3.0 × urgency 0.85 × propensity 0.72 = 1.84` | Illustrative only | **Real: 3.0 × 0.85 × 0.26 = 0.655**, 2.1× margin |
 | Hero member unspecified | `member-001` didn't exist | **`MBR00030`** — DSNP, 79, CBP 40 days out, 5 attempts / 0 closes |
-| *"you booked by SMS last October"* | He replied YES by SMS; his **strongest** channel is Call Center (3/4) | *"you answer the phone 3 of 4 times; two mailers came back undeliverable"* |
+| *"you booked by SMS last October"* | They replied YES by SMS, but their **strongest** channel is Call Center (3/4) | *"you answer the phone 3 of 4 times; two mailers came back undeliverable"* |
 | *"finds provider 3.2 mi in-network"* | Coordinates are random; nearest is 196 mi | **Relative ranking**, mileage never quoted |
 | Fallback decided at 9:45 | — | **All three tiers built and tested** |
 | Impact: *"closing k% moves X.X → Y.Y"* | Unbounded k is a vibe | **Anchored to 41.7% historical closure**; ceiling labelled as ceiling |
 | — | Slots all predate the wall clock | **`DEMO_TODAY=2026-06-10`** pinned |
 | — | `coverage_rules` has no `measure_id` | **`measures.py`** bridges measure → CPT; never guesses a copay |
 | — | `DELIVERED` is a carrier receipt, not engagement | Counted as an **attempt, not a response** |
+
+### Added after v2 — things the data turned out to support
+
+| What changed | Why | Where |
+|---|---|---|
+| Gate moved from a **tool** to a **pre-model callback** | A tool only runs if the model chooses to call it. That is a suggestion, not a control. Now a gated turn never reaches the model. | §6 |
+| **ROI caller-authorization gate** added | `roi_authorizations` (352 rows, 43 expired) supports a real disclosure control. Strongest possible asset for the Round 2 governance beat. | §6 |
+| **`claims` wired in** | 34 open gaps already have a paid claim on the measure's own CPT. Telling those members to book is the exact noise we exist to stop. | §2, §6 |
+| Confirmation-gated actions **moved to the root** | Inside an `AgentTool` a confirmation can never be answered — booking silently no-opped. Caught by a wiring test, not by the tool tests. | §6 |
+| `segment_performance` **deliberately not used** | Median segment has 3 eligible members. "Members like you: 50%" would be one person out of two. Fake precision would undermine §8, which is real. | §12 |
+
+### Numbers a judge could check
+
+| | |
+|---|---|
+| Hero ranking | `MBR00030` → **CBP @ 0.655**, 2.1× over COA |
+| Urgency at 40 days | **0.85** |
+| Impact | 27 open CBP gaps, 1★ @ 47.06% → **11 closes → 2★** at the historical 41.7% |
+| Tests | **133 passing**, no credentials required |
+
+`python -m caregap_compass.scripts.smoke_test` proves the whole tool layer in
+five seconds without touching the model. That is the answer to *"is it real?"*
 
 ---
 

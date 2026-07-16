@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CareGap Compass — My Next Best Health Action</title>
+<style>
+/* ---------------------------------------------------------------------------
+   Humana identity, measured rather than eyeballed.
+
+   Humana Green #5BA908 (PMS 369 C) is the brand and carries the shell.
+   White text on it measures 2.95:1 — a WCAG fail — so sidebar text is near-black
+   (#14180f, 6.10:1). The mark's white rule is a 3px border on a large glyph, not
+   body text.
+
+   Brand green is not a data-mark colour either: 2.87:1 on white, under the 3:1
+   floor for fills. #3F7505 — same hue, darker step, 5.59:1 — carries the bars.
+
+   The gate is blue, not red. Dark red vs dark green measures deltaE 0.5–1.4 under
+   deuteranopia: the same colour to ~8% of men, in a healthcare product.
+   #1D4ED8 vs #3F7505 measures deltaE 30.4. And the gate is the feature, not an
+   error — red would frame our best asset as a failure.
+--------------------------------------------------------------------------- */
+:root {
+  --humana:      #5BA908;
+  --humana-deep: #356303;
+  --data-green:  #3F7505;
+  --gate-blue:   #1D4ED8;
+
+  --surface:   #ffffff;
+  --surface-2: #f7f8f5;
+  --surface-3: #edefe9;
+  --border:    #dfe2db;
+  --ink:       #14180f;
+  --ink-2:     #545a4c;
+  --ink-3:     #868c7b;
+
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; font-family: var(--sans); background: var(--surface-2); color: var(--ink);
+  font-size: 15px; line-height: 1.5; display: flex; overflow: hidden;
+}
+
+/* --- sidebar -------------------------------------------------------------- */
+aside {
+  width: 210px; flex: 0 0 210px; background: var(--humana);
+  display: flex; flex-direction: column; padding: 20px 14px; gap: 18px;
+  overflow: hidden;  /* nothing in the rail may bleed over the content */
+  transition: width .22s ease, flex-basis .22s ease;
+}
+aside > * { min-width: 0; max-width: 100%; }
+
+/* Collapsed: the mark and the nav icons survive, everything else folds away.
+   Worth having for the recording — it buys ~145px for the decision panel. */
+body.rail-shut aside { width: 66px; flex-basis: 66px; padding: 20px 8px; }
+body.rail-shut .brand,
+body.rail-shut .wordmark,
+body.rail-shut .side-lbl,
+body.rail-shut aside select,
+body.rail-shut #telemetry,
+body.rail-shut nav button span { display: none; }
+body.rail-shut .hblock { width: 46px; height: 46px; flex-basis: 46px; }
+body.rail-shut .plate { align-items: center; }
+body.rail-shut nav button { justify-content: center; padding: 10px 0; }
+
+/* Sits at the foot of the rail, under the data chip — out of the way of the mark
+   and reachable without crossing the nav. */
+.railtoggle {
+  all: unset; cursor: pointer; align-self: flex-end; color: var(--ink); opacity: .6;
+  padding: 5px 7px; border-radius: 7px; line-height: 0; margin-top: 2px;
+}
+.railtoggle:hover { opacity: 1; background: rgba(255,255,255,.32); }
+.railtoggle:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+body.rail-shut .railtoggle { align-self: center; }
+body.rail-shut .railtoggle svg { transform: scaleX(-1); }
+/* The logo, reversed onto the green sidebar.
+   The primary mark is a green block with a white H beside a green wordmark. Both
+   of those disappear on Humana Green, so this is the knockout treatment: white
+   outline, white H, white wordmark — which is what the reference mockup uses on
+   its green rail.
+
+   The H block is hand-built (exact geometry, no dependency). The wordmark is
+   ui/humana-wordmark.svg — the trace ships #4e8416, corrected on the way in to
+   the verified #5BA908, then knocked out to white here by filter. Its artboard is
+   560x400 but the ink is only 437x90 (82% empty), so the viewBox is cropped to
+   the real bounds; without that, any height you set renders ~3x too small.
+
+   TO SWAP for the official asset from brand.humana.com — which you have access to
+   and this build does not — replace that one file. */
+/* Stacked, not side-by-side. The wordmark's ink is 437x90 — a 4.85:1 ratio — so a
+   horizontal lockup at any legible size needs ~165px on top of the 60px block,
+   which overflows a 210px rail. Stacked, the wordmark gets the full width and
+   ends up LARGER than it could ever be beside the block. */
+.plate { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; min-width: 0; }
+.hblock { width: 64px; height: 64px; flex: 0 0 64px; display: block; }
+/* brightness(0) crushes any source colour to black, invert(1) lifts it to white —
+   so this stays correct when the official (differently-coloured) asset drops in. */
+.wordmark {
+  width: 100%; height: auto; display: block; filter: brightness(0) invert(1);
+}
+.brand .t { font-size: 12px; font-weight: 600; color: var(--ink); opacity: .78; }
+
+nav { display: flex; flex-direction: column; gap: 3px; }
+nav button {
+  all: unset; box-sizing: border-box; width: 100%; cursor: pointer;
+  font-size: 14px; font-weight: 600; color: var(--ink); padding: 9px 12px;
+  border-radius: 8px; opacity: .8; display: flex; align-items: center; gap: 10px;
+}
+nav button:hover { background: rgba(255,255,255,.3); opacity: 1; }
+nav button.on { background: var(--humana-deep); color: #fff; opacity: 1; }
+nav button svg { flex: 0 0 18px; width: 18px; height: 18px; }
+
+aside .spacer { flex: 1; }
+.side-lbl {
+  font-size: 9px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase;
+  color: var(--ink); opacity: .58; margin-bottom: 5px;
+}
+aside select {
+  width: 100%; font: inherit; font-size: 12px; padding: 7px 8px; border: 0;
+  border-radius: 7px; background: rgba(255,255,255,.94); color: var(--ink); cursor: pointer;
+}
+/* One chip, not three. The backend is load-bearing: under DATA_BACKEND=auto a
+   credential failure degrades to local CSVs silently, and without this you would
+   demo files believing you were on BigQuery. Cache hit-rate and the demo clock
+   are engineering readouts — they live in the tooltip, not on a member's screen. */
+.chip {
+  display: block; font-family: var(--mono); font-size: 10.5px; padding: 5px 9px;
+  border-radius: 999px; background: rgba(255,255,255,.94); color: var(--ink-2);
+  text-align: center; cursor: help;
+}
+.chip.live { background: var(--humana-deep); color: #fff; }
+.chip.warn { background: #fff3d6; color: #7c4a03; }
+
+/* --- main ----------------------------------------------------------------- */
+.wrap { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+/* Plan economics above a member-facing chat. A member would never see this, so
+   it is labelled and tinted rather than left to read as part of the product. */
+.impact {
+  background: var(--surface-3); border-bottom: 1px solid var(--border);
+  padding: 8px 18px; font-size: 12.5px; color: var(--ink-2);
+  display: flex; gap: 9px; align-items: baseline; flex-wrap: wrap;
+}
+.impact b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.impact .sep { color: var(--ink-3); }
+.impact .lbl {
+  font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-3); border: 1px solid var(--border); border-radius: 4px;
+  padding: 2px 6px; background: var(--surface);
+}
+.impact .at { color: var(--ink-3); font-size: 11.5px; }
+.impact .at b { color: var(--ink-2); }
+
+main { flex: 1; display: grid; grid-template-columns: 1fr 400px; gap: 13px; padding: 13px 16px; min-height: 0; }
+main.solo { grid-template-columns: 1fr; }
+@media (max-width: 1080px) {
+  main { grid-template-columns: 1fr; }
+  aside { width: 70px; flex-basis: 70px; padding: 14px 8px; }
+  .brand, .side-lbl, aside select, #telemetry, .wordmark { display: none; }
+  .plate { padding: 6px; justify-content: center; }
+  nav button { text-align: center; padding: 9px 4px; font-size: 11px; }
+}
+
+.pane { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+.pane > h2 {
+  margin: 0; padding: 11px 15px; font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; color: var(--ink-3); border-bottom: 1px solid var(--border);
+}
+.scroll { overflow-y: auto; padding: 16px; flex: 1; min-height: 0; }
+[hidden] { display: none !important; }
+
+/* --- chat ----------------------------------------------------------------- */
+.who { font-size: 9.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 3px 15px; }
+.who.r { text-align: right; margin: 0 15px 3px 0; }
+.msg { display: flex; margin-bottom: 11px; }
+.msg.user { justify-content: flex-end; }
+.bubble {
+  max-width: 78%; border: 1.5px solid var(--border); border-radius: 18px;
+  padding: 9px 15px; background: var(--surface); white-space: pre-wrap;
+  word-wrap: break-word; font-size: 14px;
+}
+.msg.user .bubble { border-color: var(--data-green); background: #f6faf2; }
+.bubble pre {
+  font-family: var(--mono); font-size: 11px; line-height: 1.6; background: var(--surface-2);
+  border: 1px solid var(--border); border-radius: 8px; padding: 9px; overflow-x: auto;
+  white-space: pre; margin: 7px -4px;
+}
+.tool { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); padding: 2px 0 2px 15px; }
+
+.gate { border: 1.5px solid var(--gate-blue); border-radius: 14px; background: #f3f6fe; padding: 12px 15px; margin: 10px 0; }
+.gate .hdr { font-size: 10px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--gate-blue); margin-bottom: 8px; }
+.gate .step { font-size: 13.5px; margin: 6px 0; padding-left: 17px; position: relative; }
+.gate .step::before { content: attr(data-n); position: absolute; left: 0; top: 1px; color: var(--gate-blue); font-family: var(--mono); font-size: 10px; font-weight: 800; }
+.gate .flag { font-family: var(--mono); font-size: 10px; color: var(--ink-3); margin-top: 9px; padding-top: 8px; border-top: 1px solid #d8e0fa; }
+
+.prompts { padding: 0 14px 9px; display: flex; gap: 6px; flex-wrap: wrap; }
+.prompts button { font-size: 11.5px; font-weight: 500; padding: 6px 12px; background: var(--surface); color: var(--ink-2); border: 1.5px solid var(--border); border-radius: 999px; cursor: pointer; }
+.prompts button:hover:not(:disabled) { border-color: var(--data-green); color: var(--data-green); }
+.composer { border-top: 1px solid var(--border); padding: 11px 14px; display: flex; gap: 9px; }
+.composer input { flex: 1; font: inherit; padding: 10px 16px; border: 1.5px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--ink); }
+.composer input:focus { outline: none; border-color: var(--data-green); }
+button.go { font: inherit; font-weight: 700; font-size: 14px; padding: 10px 20px; border: 0; border-radius: 999px; background: var(--data-green); color: #fff; cursor: pointer; }
+button.go:hover:not(:disabled) { background: var(--humana-deep); }
+button.go:disabled { opacity: .45; cursor: not-allowed; }
+button.ghost { background: var(--surface-3); color: var(--ink); }
+
+/* --- decision panel ------------------------------------------------------- */
+.formula { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); padding: 8px 14px; background: var(--surface-2); border-bottom: 1px solid var(--border); }
+.gap { border: 1px solid var(--border); border-radius: 10px; padding: 11px; margin-bottom: 9px; }
+.gap.selected { border-color: var(--data-green); border-width: 2px; padding: 10px; background: #fbfdf9; }
+.gap.rejected { opacity: .8; }
+.gap .top { display: flex; align-items: baseline; gap: 7px; margin-bottom: 7px; }
+.tick { font-family: var(--mono); font-size: 12px; font-weight: 700; }
+.gap.selected .tick { color: var(--data-green); }
+.gap.rejected .tick { color: var(--ink-3); }
+.gap .id { font-family: var(--mono); font-size: 12px; font-weight: 700; }
+.gap .nm { font-size: 12px; color: var(--ink-2); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gap .sc { font-family: var(--mono); font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.gap.selected .sc { color: var(--data-green); }
+.badge { font-size: 9px; font-weight: 800; letter-spacing: .07em; padding: 2px 6px; border-radius: 4px; background: var(--data-green); color: #fff; }
+.track { height: 9px; background: var(--surface-3); border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+.fill { height: 100%; border-radius: 4px; transition: width .45s cubic-bezier(.2,.7,.3,1); }
+.gap.selected .fill { background: var(--data-green); }
+.gap.rejected .fill { background: var(--ink-3); }
+.terms { font-family: var(--mono); font-size: 10.5px; color: var(--ink-2); display: flex; gap: 4px; align-items: baseline; flex-wrap: wrap; margin-bottom: 7px; }
+.terms .op { color: var(--ink-3); }
+.terms .t { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+.terms .t b { color: var(--ink); }
+.terms .eq { font-weight: 700; }
+.why { font-size: 12px; color: var(--ink-2); line-height: 1.45; }
+.why.rj { color: var(--ink-3); }
+.meta { font-size: 10px; color: var(--ink-3); margin-top: 6px; font-family: var(--mono); }
+.empty { padding: 26px 14px; text-align: center; color: var(--ink-3); font-size: 13px; }
+
+.flags { border-top: 1px solid var(--border); max-height: 118px; overflow-y: auto; }
+.flags h3 { margin: 0; padding: 7px 14px; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: var(--ink-3); background: var(--surface-2); border-bottom: 1px solid var(--border); position: sticky; top: 0; }
+.frow { padding: 6px 14px; border-bottom: 1px solid var(--surface-3); font-size: 10.5px; font-family: var(--mono); }
+.frow .t { color: var(--gate-blue); font-weight: 700; }
+.frow .d { color: var(--ink-3); font-size: 9.5px; }
+
+/* --- roadmap -------------------------------------------------------------- */
+.rm-head { padding: 16px; border-bottom: 1px solid var(--border); }
+.rm-head .h { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+.rm-head .s { font-size: 13px; color: var(--ink-2); }
+.bigtrack { height: 12px; background: var(--surface-3); border-radius: 6px; overflow: hidden; margin: 11px 0 5px; }
+.bigfill { height: 100%; background: var(--data-green); border-radius: 6px; transition: width .5s cubic-bezier(.2,.7,.3,1); }
+
+.step {
+  display: flex; gap: 13px; padding: 13px 16px; border-bottom: 1px solid var(--surface-3);
+  align-items: flex-start;
+}
+.step .dot {
+  flex: 0 0 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+}
+.step.done .dot { background: var(--data-green); color: #fff; }
+.step.next .dot { background: var(--data-green); color: #fff; box-shadow: 0 0 0 4px #dcecc9; }
+.step.later .dot { background: var(--surface-3); color: var(--ink-3); }
+.step .body { flex: 1; min-width: 0; }
+.step .l1 { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.step .l1 .id { font-family: var(--mono); font-size: 12px; font-weight: 700; }
+.step .l1 .nm { font-size: 14px; font-weight: 600; }
+.step.done .l1 .nm, .step.done .l1 .id { color: var(--ink-3); }
+.step .act { font-size: 13px; color: var(--ink-2); margin-top: 3px; }
+.step.done .act { color: var(--ink-3); }
+.step .l2 { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); margin-top: 5px; }
+.pill { font-size: 9px; font-weight: 800; letter-spacing: .07em; padding: 2px 6px; border-radius: 4px; }
+.pill.next { background: var(--data-green); color: #fff; }
+.pill.done { background: var(--surface-3); color: var(--ink-2); }
+.pill.od { background: #fdecec; color: #8a1c1c; }
+
+/* --- history -------------------------------------------------------------- */
+.hrow {
+  display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: pointer;
+  border-bottom: 1px solid var(--surface-3);
+}
+.hrow:hover { background: var(--surface-2); }
+.hrow .n { flex: 1; min-width: 0; }
+.hrow .n .t { font-size: 13.5px; font-weight: 600; }
+.hrow .n .d { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); margin-top: 2px; }
+.hrow .go { font-size: 11px; color: var(--data-green); font-weight: 700; }
+
+/* --- modal ---------------------------------------------------------------- */
+.backdrop { position: fixed; inset: 0; background: rgba(20,24,15,.45); display: grid; place-items: center; padding: 20px; z-index: 50; }
+.modal { background: var(--surface); border-radius: 14px; max-width: 420px; width: 100%; box-shadow: 0 18px 50px rgba(0,0,0,.22); overflow: hidden; }
+.modal h3 { margin: 0; padding: 14px 17px; font-size: 14px; border-bottom: 1px solid var(--border); }
+.modal .content { padding: 17px; }
+.modal .hint { font-size: 13px; color: var(--ink-2); margin: 0 0 12px; }
+.kv { display: grid; grid-template-columns: 104px 1fr; gap: 5px 10px; font-size: 12.5px; margin: 0; }
+.kv dt { color: var(--ink-3); }
+.kv dd { margin: 0; font-family: var(--mono); word-break: break-word; }
+.modal .actions { display: flex; gap: 8px; justify-content: flex-end; padding: 12px 17px; background: var(--surface-2); border-top: 1px solid var(--border); }
+.sim { font-size: 11px; color: var(--ink-3); margin: 12px 0 0; font-style: italic; }
+
+.spin { display: inline-block; width: 9px; height: 9px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: sp .7s linear infinite; }
+@keyframes sp { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<aside>
+  <div class="plate">
+    <svg class="hblock" viewBox="0 0 100 100" role="img" aria-label="Humana">
+      <rect x="3" y="3" width="94" height="94" rx="15" fill="none" stroke="#fff" stroke-width="6"/>
+      <path d="M28 22h16v23h12V22h16v56H56V56H44v22H28z" fill="#fff"/>
+    </svg>
+    <img class="wordmark" src="/humana-wordmark.svg" alt="Humana">
+  </div>
+  <div class="brand">
+    <div class="t">A more human way to healthcare.</div>
+  </div>
+  <nav>
+    <button type="button" data-v="chat" class="on" title="Chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.4 8.4 0 0 1 8.4-9 8.4 8.4 0 0 1 8.6 9z"/></svg>
+      <span>Chat</span>
+    </button>
+    <button type="button" data-v="history" title="History">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <span>History</span>
+    </button>
+    <button type="button" data-v="roadmap" title="Roadmap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="6" r="2.5"/><circle cx="5.5" cy="18" r="2.5"/><path d="M10 6h10M10 18h10"/></svg>
+      <span>Roadmap</span>
+    </button>
+  </nav>
+  <div class="spacer"></div>
+  <div>
+    <div class="side-lbl">Member</div>
+    <select id="member" aria-label="Member"></select>
+  </div>
+  <div>
+    <div class="side-lbl">Data</div>
+    <div id="telemetry"></div>
+  </div>
+  <button type="button" class="railtoggle" id="railtoggle" aria-label="Collapse sidebar" aria-expanded="true">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+  </button>
+</aside>
+
+<div class="wrap">
+  <div class="impact" id="impact"><span style="color:var(--ink-3)">Loading…</span></div>
+
+  <main id="main">
+    <!-- chat -->
+    <section class="pane" id="v-chat">
+      <h2>CareGap Compass · My Next Best Health Action</h2>
+      <div class="scroll" id="chat"></div>
+      <div class="prompts" id="prompts"></div>
+      <div class="composer">
+        <input id="input" placeholder="What should I do about my health?" autocomplete="off">
+        <button type="button" class="go" id="send">Send</button>
+      </div>
+    </section>
+
+    <!-- history -->
+    <section class="pane" id="v-history" hidden>
+      <h2>Past conversations</h2>
+      <div class="scroll" id="hlist" style="padding:0"></div>
+    </section>
+
+    <!-- roadmap -->
+    <section class="pane" id="v-roadmap" hidden>
+      <h2>Care roadmap</h2>
+      <div id="rmhead"></div>
+      <div class="scroll" id="rmsteps" style="padding:0"></div>
+    </section>
+
+    <!-- decision panel: only alongside chat -->
+    <section class="pane" id="v-decision">
+      <h2>The decision</h2>
+      <div class="formula" id="formula"></div>
+      <div class="scroll" id="panel"><div class="empty">Loading…</div></div>
+      <div class="flags">
+        <h3>Compliance flags</h3>
+        <div id="flaglog"><div class="frow"><span class="d">None yet.</span></div></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="backdrop" id="backdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+    <h3 id="mt">Confirm this action</h3>
+    <div class="content">
+      <p class="hint" id="mhint"></p>
+      <dl class="kv" id="mkv"></dl>
+      <p class="sim">Scheduling is simulated for this demo. No real system is contacted.</p>
+    </div>
+    <div class="actions">
+      <button type="button" class="go ghost" id="mno">Cancel</button>
+      <button type="button" class="go" id="myes">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const APP = "caregap_compass", USER = "demo-user";
+let sessionId = null, memberId = null, pending = null, busy = false, view = "chat";
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const SUGGESTIONS = [
+  "What should I do about my health?",
+  "Why not the osteoporosis one?",
+  "Isn't the medication review easier?",
+  "Is my colonoscopy covered 100%?",
+  "Find me a provider",
+];
+
+async function api(p) {
+  const r = await fetch(p);
+  if (!r.ok) throw new Error(`${p} -> ${r.status}`);
+  return r.json();
+}
+
+/* --- views ---------------------------------------------------------------- */
+function show(v) {
+  view = v;
+  for (const b of document.querySelectorAll("nav button")) b.classList.toggle("on", b.dataset.v === v);
+  $("v-chat").hidden = v !== "chat";
+  $("v-history").hidden = v !== "history";
+  $("v-roadmap").hidden = v !== "roadmap";
+  // The decision panel only makes sense beside the conversation it explains.
+  $("v-decision").hidden = v !== "chat";
+  $("main").classList.toggle("solo", v !== "chat");
+  if (v === "history") loadHistory();
+  if (v === "roadmap") loadRoadmap();
+}
+
+/* --- session -------------------------------------------------------------- */
+async function newSession() {
+  const r = await fetch(`/apps/${APP}/users/${USER}/sessions`, {
+    method: "POST", headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({state: {authenticated_member_id: memberId}}),
+  });
+  if (!r.ok) throw new Error(`session -> ${r.status}`);
+  sessionId = (await r.json()).id;
+}
+
+/* ADK streams `data: {json}\n\n` per Event — no event: name, no [DONE] sentinel,
+   the stream just closes. Errors arrive in-band. */
+async function run(newMessage) {
+  const res = await fetch("/run_sse", {
+    method: "POST", headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({app_name: APP, user_id: USER, session_id: sessionId, new_message: newMessage, streaming: false}),
+  });
+  if (!res.ok) { addMsg("agent", `Request failed (${res.status}).`); return; }
+  const reader = res.body.getReader(), dec = new TextDecoder();
+  let buf = "";
+  while (true) {
+    const {done, value} = await reader.read();
+    if (done) break;
+    buf += dec.decode(value, {stream: true});
+    const chunks = buf.split("\n\n");
+    buf = chunks.pop();
+    for (const c of chunks) {
+      const line = c.split("\n").find(l => l.startsWith("data: "));
+      if (line) { try { handleEvent(JSON.parse(line.slice(6))); } catch (e) { console.warn(e); } }
+    }
+  }
+}
+
+function handleEvent(ev) {
+  if (ev.error) { addMsg("agent", `Error: ${ev.error}`); return; }
+  if (ev.errorMessage) { addMsg("agent", ev.errorMessage); return; }
+  for (const p of (ev.content?.parts || [])) {
+    if (p.functionCall?.name === "adk_request_confirmation") {
+      pending = {id: p.functionCall.id, args: p.functionCall.args || {}};
+      openModal(pending); continue;
+    }
+    if (p.functionCall) { addTool(`calling ${p.functionCall.name}`); continue; }
+    if (p.functionResponse) {
+      const {name, response} = p.functionResponse;
+      if (name === "check_request" && response?.allowed === false) renderGate(response);
+      else addTool(`${name} returned`);
+      continue;
+    }
+    if (p.text?.trim()) addMsg("agent", p.text);
+  }
+}
+
+function addMsg(who, text) {
+  const lbl = document.createElement("div");
+  lbl.className = who === "user" ? "who r" : "who";
+  lbl.textContent = who === "user" ? "You" : "CareGap Compass";
+  const el = document.createElement("div");
+  el.className = `msg ${who}`;
+  // Fenced blocks stay verbatim — the decomposition is an audit trail, not prose.
+  el.innerHTML = `<div class="bubble">${esc(text).replace(/```(?:\w*)\n([\s\S]*?)```/g, (_, c) => `<pre>${c.replace(/\n$/, "")}</pre>`)}</div>`;
+  $("chat").append(lbl, el);
+  $("chat").scrollTop = 1e9;
+}
+
+function addTool(t) {
+  const el = document.createElement("div");
+  el.className = "tool"; el.textContent = "· " + t;
+  $("chat").appendChild(el); $("chat").scrollTop = 1e9;
+}
+
+function renderGate(r) {
+  const rule = r.general_rule?.statement;
+  const el = document.createElement("div");
+  el.className = "gate";
+  el.innerHTML = `
+    <div class="hdr">Compliance gate · ${esc(r.category?.replace(/_/g, " ") || "gated")}</div>
+    ${rule ? `<div class="step" data-n="1">${esc(rule)}</div>` : ""}
+    <div class="step" data-n="${rule ? 2 : 1}">${esc(r.refusal || "")}</div>
+    <div class="step" data-n="${rule ? 3 : 2}">Routed to ${esc(r.route?.route_to || "a human")}.</div>
+    ${r.compliance_flag_id ? `<div class="flag">logged ${esc(r.compliance_flag_id)} · the refusal leaves evidence</div>` : ""}`;
+  $("chat").appendChild(el); $("chat").scrollTop = 1e9;
+  loadFlags();
+}
+
+/* --- decision panel ------------------------------------------------------- */
+async function loadPanel() {
+  try {
+    const d = await api(`/api/rank/${memberId}`);
+    if (d.status === "no_open_gaps") {
+      $("formula").textContent = "";
+      $("panel").innerHTML = `<div class="empty">No open care gaps for this member.</div>`;
+      return;
+    }
+    $("formula").textContent = `${d.formula}  ·  ${d.scoring_mode} mode  ·  as of ${d.as_of}`;
+    const rows = [{...d.selected, _s: true}, ...d.rejected.map(r => ({...r, _s: false}))];
+    const max = Math.max(...rows.map(r => r.score)) || 1;
+    $("panel").innerHTML = rows.map(r => {
+      const c = r.components, ctx = r.measure_context || {};
+      const third = c.propensity ?? c.gap_age ?? 0;
+      const lbl = c.propensity != null ? "propensity" : "gap age";
+      const star = ctx.current_star_rating != null
+        ? `${ctx.current_star_rating}&#9733; ${ctx.plan_rate_pct}%${ctx.trending ? " · trending " + String(ctx.trending).toLowerCase() : ""}`
+        : "not a scored Star measure";
+      return `<div class="gap ${r._s ? "selected" : "rejected"}">
+        <div class="top">
+          <span class="tick">${r._s ? "&#10004;" : "&#10007;"}</span>
+          <span class="id">${esc(r.measure_id)}</span>
+          <span class="nm">${esc(r.measure_name || "")}</span>
+          ${r._s ? `<span class="badge">SELECTED</span>` : ""}
+          <span class="sc">${r.score.toFixed(3)}</span>
+        </div>
+        <div class="track"><div class="fill" style="width:${Math.max(2, (r.score / max) * 100)}%"></div></div>
+        <div class="terms">
+          <span class="t">weight <b>${c.weight.toFixed(1)}</b></span><span class="op">&times;</span>
+          <span class="t">urgency <b>${c.urgency.toFixed(2)}</b></span><span class="op">&times;</span>
+          <span class="t">${lbl} <b>${Number(third).toFixed(2)}</b></span>
+          <span class="op">=</span><span class="eq">${r.score.toFixed(3)}</span>
+        </div>
+        <div class="why ${r._s ? "" : "rj"}">${esc(r._s ? r.reason : r.rejected_because)}</div>
+        <div class="meta">${esc(c.plain_weight)} · ${c.days_to_close}d to close · ${star}${c.recommended_channel ? " · via " + esc(c.recommended_channel) : ""}</div>
+      </div>`;
+    }).join("");
+  } catch (e) {
+    $("panel").innerHTML = `<div class="empty">Could not load the ranking.<br><small>${esc(e.message)}</small></div>`;
+  }
+}
+
+/* --- roadmap -------------------------------------------------------------- */
+async function loadRoadmap() {
+  try {
+    const d = await api(`/api/roadmap/${memberId}`);
+    $("rmhead").innerHTML = `
+      <div class="rm-head">
+        <div class="h">${esc(d.first_name || "Member")}'s care year</div>
+        <div class="s"><b>${d.done} of ${d.total}</b> complete · ${d.open} still open</div>
+        <div class="bigtrack"><div class="bigfill" style="width:${d.pct_complete}%"></div></div>
+        <div class="s" style="font-size:11.5px;color:var(--ink-3)">
+          ${d.pct_complete}% · open steps are ordered by the same ranking the agent uses, not by due date
+        </div>
+      </div>`;
+    $("rmsteps").innerHTML = d.steps.map(s => {
+      const cls = s.status === "done" ? "done" : s.is_next ? "next" : "later";
+      const dot = s.status === "done" ? "&#10004;" : s.priority_rank;
+      const pill = s.status === "done" ? `<span class="pill done">DONE</span>`
+        : s.is_next ? `<span class="pill next">NEXT</span>`
+        : s.overdue ? `<span class="pill od">OVERDUE</span>` : "";
+      const line2 = s.status === "done"
+        ? `completed ${esc(s.completed_on || "—")}`
+        : `due ${esc(s.due_date)} · ${s.days_to_close}d · ${esc(s.plain_weight)}${s.score != null ? " · score " + s.score.toFixed(3) : ""} · ${s.outreach_attempts} outreach attempts`;
+      return `<div class="step ${cls}">
+        <div class="dot">${dot}</div>
+        <div class="body">
+          <div class="l1"><span class="id">${esc(s.measure_id)}</span><span class="nm">${esc(s.measure_name || "")}</span>${pill}</div>
+          <div class="act">${esc(s.status === "done" ? "Done — nothing needed." : s.action)}</div>
+          <div class="l2">${line2}</div>
+        </div>
+      </div>`;
+    }).join("");
+  } catch (e) {
+    $("rmsteps").innerHTML = `<div class="empty">Could not load the roadmap.<br><small>${esc(e.message)}</small></div>`;
+  }
+}
+
+/* --- history -------------------------------------------------------------- */
+/* ADK persists sessions to SQLite, so these survive a restart. The list view
+   returns no events, so a replay fetches the session individually. */
+async function loadHistory() {
+  try {
+    const all = await api(`/apps/${APP}/users/${USER}/sessions`);
+    const mine = all.filter(s => (s.state || {}).authenticated_member_id === memberId);
+    if (!mine.length) {
+      $("hlist").innerHTML = `<div class="empty">No past conversations for this member yet.</div>`;
+      return;
+    }
+    mine.sort((a, b) => (b.lastUpdateTime || 0) - (a.lastUpdateTime || 0));
+    $("hlist").innerHTML = mine.map(s => {
+      const when = s.lastUpdateTime ? new Date(s.lastUpdateTime * 1000).toLocaleString() : "—";
+      const cur = s.id === sessionId;
+      return `<div class="hrow" data-s="${esc(s.id)}">
+        <div class="n">
+          <div class="t">${when}${cur ? " · current" : ""}</div>
+          <div class="d">${esc(s.id.slice(0, 8))} · ${esc((s.state || {}).authenticated_member_id || "")}</div>
+        </div>
+        <div class="go">Open &rarr;</div>
+      </div>`;
+    }).join("");
+  } catch (e) {
+    $("hlist").innerHTML = `<div class="empty">Could not load history.<br><small>${esc(e.message)}</small></div>`;
+  }
+}
+
+async function openSession(id) {
+  try {
+    const s = await api(`/apps/${APP}/users/${USER}/sessions/${id}`);
+    sessionId = s.id;
+    $("chat").innerHTML = "";
+    const events = s.events || [];
+    if (!events.length) addMsg("agent", "This conversation is empty.");
+    for (const ev of events) {
+      for (const p of (ev.content?.parts || [])) {
+        if (p.text?.trim()) addMsg(ev.author === "user" ? "user" : "agent", p.text);
+      }
+    }
+    show("chat");
+    await loadPanel();
+  } catch (e) {
+    addMsg("agent", `Could not open that conversation: ${e.message}`);
+  }
+}
+
+/* --- strips --------------------------------------------------------------- */
+async function loadImpact() {
+  try {
+    const d = await api("/api/impact?measure=CBP"), t = d.target, p = d.projection;
+    $("impact").innerHTML = `
+      <span class="lbl">Plan impact</span>
+      <span><b>${d.open_gap_count}</b> members with open ${esc(d.measure_id)} gaps</span>
+      <span class="sep">·</span>
+      <span>today <b>${d.current_star_rating}&#9733;</b> at ${d.current_rate_pct}%</span>
+      <span class="sep">&rarr;</span>
+      <span><b>${p.expected_closes} closes</b> lifts it to <b>${t.resulting_stars}&#9733;</b></span>
+      <span class="at">at the <b>${p.closure_rate_pct}%</b> rate this plan has already hit</span>`;
+  } catch { $("impact").innerHTML = `<span style="color:var(--ink-3)">Impact unavailable</span>`; }
+}
+
+/* Says where the data IS, not how we got there. "csv fallback" described the fall;
+   what an operator needs mid-demo is simply whether BigQuery is live. */
+async function loadTelemetry() {
+  try {
+    const d = await api("/api/telemetry"), c = d.cache, live = d.backend === "bigquery";
+    const label = live ? "BigQuery · live" : "Local CSV";
+    const why = live
+      ? `Querying ${d.dataset}${d.project ? " in " + d.project : ""}.`
+      : "BigQuery is not reachable, so reads are coming from the local CSVs. Same data, same numbers — but this is not a live query.";
+    $("telemetry").innerHTML = `<span class="chip ${live ? "live" : "warn"}" title="${esc(why)}
+Cache ${c.hits}/${c.hits + c.misses} · clock pinned to ${d.demo_today}">${label}</span>`;
+  } catch {}
+}
+
+async function loadFlags() {
+  try {
+    const d = await api("/api/compliance-flags?limit=8");
+    $("flaglog").innerHTML = d.flags.length ? d.flags.map(f =>
+      `<div class="frow"><span class="t">${esc(f.flag_type)}</span><div class="d">${esc(f.severity)} · ${esc(f.entity_id)} · ${esc(f.flag_date)}</div></div>`
+    ).join("") : `<div class="frow"><span class="d">None yet.</span></div>`;
+  } catch {}
+}
+
+/* --- confirmation --------------------------------------------------------- */
+function openModal(p) {
+  const orig = p.args.originalFunctionCall || {}, a = orig.args || {};
+  $("mhint").textContent = p.args.toolConfirmation?.hint || `Confirm ${orig.name || "this action"}.`;
+  $("mkv").innerHTML = Object.entries(a).filter(([k, v]) => v !== "" && v != null && k !== "tool_context")
+    .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
+  $("myes").textContent = a.action === "callback" ? "Request callback" : orig.name === "submit_gap_dispute" ? "File it" : "Book it";
+  $("backdrop").hidden = false;
+}
+
+/* Answer with a user-role FunctionResponse carrying the confirmation call's id.
+   ToolConfirmation is extra="forbid": only hint/confirmed/payload allowed. */
+async function answer(confirmed) {
+  $("backdrop").hidden = true;
+  const p = pending; pending = null;
+  if (!p) return;
+  addTool(confirmed ? "confirmed by member" : "declined by member");
+  setBusy(true);
+  await run({role: "user", parts: [{functionResponse: {id: p.id, name: "adk_request_confirmation", response: {confirmed, payload: null}}}]});
+  setBusy(false);
+  await Promise.all([loadPanel(), loadTelemetry(), loadFlags()]);
+}
+
+function setBusy(b) { busy = b; $("send").disabled = b; $("send").innerHTML = b ? '<span class="spin"></span>' : "Send"; }
+
+async function send(text) {
+  if (busy || !text.trim() || !sessionId) return;
+  if (view !== "chat") show("chat");
+  $("input").value = "";
+  addMsg("user", text);
+  setBusy(true);
+  try { await run({role: "user", parts: [{text}]}); }
+  catch (e) { addMsg("agent", `Something broke: ${e.message}`); }
+  setBusy(false);
+  // REST-driven, so it stays correct even if the model misbehaved.
+  await Promise.all([loadPanel(), loadTelemetry(), loadFlags()]);
+}
+
+async function switchMember(id) {
+  memberId = id;
+  $("chat").innerHTML = "";
+  await newSession();
+  addMsg("agent", "Ask me what you should do about your health.");
+  await loadPanel();
+  if (view === "roadmap") loadRoadmap();
+  if (view === "history") loadHistory();
+}
+
+async function boot() {
+  $("prompts").innerHTML = SUGGESTIONS.map(s => `<button type="button" data-p="${esc(s)}">${esc(s)}</button>`).join("");
+  $("prompts").addEventListener("click", e => { const b = e.target.closest("button"); if (b) send(b.dataset.p); });
+  $("send").addEventListener("click", () => send($("input").value));
+  $("input").addEventListener("keydown", e => { if (e.key === "Enter") send($("input").value); });
+  $("myes").addEventListener("click", () => answer(true));
+  $("mno").addEventListener("click", () => answer(false));
+  $("member").addEventListener("change", e => switchMember(e.target.value));
+  document.querySelector("nav").addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(b.dataset.v); });
+  $("hlist").addEventListener("click", e => { const r = e.target.closest(".hrow"); if (r) openSession(r.dataset.s); });
+
+  // Rail toggle. Remembered across reloads so a mid-demo refresh doesn't reopen it.
+  const setRail = (shut) => {
+    document.body.classList.toggle("rail-shut", shut);
+    const b = $("railtoggle");
+    b.setAttribute("aria-expanded", String(!shut));
+    b.setAttribute("aria-label", shut ? "Expand sidebar" : "Collapse sidebar");
+    try { localStorage.setItem("railShut", shut ? "1" : "0"); } catch {}
+  };
+  let shut = false;
+  try { shut = localStorage.getItem("railShut") === "1"; } catch {}
+  setRail(shut);
+  $("railtoggle").addEventListener("click", () => setRail(!document.body.classList.contains("rail-shut")));
+
+  loadImpact(); loadTelemetry(); loadFlags();
+  try {
+    const d = await api("/api/members?limit=40");
+    $("member").innerHTML = d.members.map(m =>
+      `<option value="${esc(m.member_id)}"${m.is_hero ? " selected" : ""}>${esc(m.label)} · ${m.open_gaps} gaps</option>`).join("");
+    await switchMember(d.members.find(m => m.is_hero)?.member_id || d.members[0].member_id);
+  } catch (e) {
+    $("panel").innerHTML = `<div class="empty">Backend unreachable.<br><small>${esc(e.message)}</small></div>`;
+  }
+}
+boot();
+</script>
+</body>
+</html>

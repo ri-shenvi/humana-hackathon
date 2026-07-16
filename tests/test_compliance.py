@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import pytest
 
-from caregap_compass import compliance, config
+from caregap_compass import compliance, config, measures
 
 
 class Ctx:
@@ -375,3 +375,50 @@ def test_gate_fails_closed_when_the_rule_lookup_breaks(monkeypatch):
 
 def test_empty_request_does_not_gate():
     assert compliance.compliance_gate_callback(CallbackCtx(), _request("")) is None
+
+
+# --- the gate answers the question that was asked ---------------------------
+
+
+def test_gate_quotes_the_service_the_member_named_not_the_selected_gap():
+    """Beat 5 of the demo. The hero's selected gap is CBP, but the question is
+    about a colonoscopy. Reading them the blood-pressure office-visit rule
+    answers a different question than the one they asked — worse than declining."""
+    ctx = CallbackCtx(authenticated_member_id=HERO, selected_measure_id="CBP")
+    response = compliance.compliance_gate_callback(
+        ctx, _request("Is my colonoscopy covered 100%?")
+    )
+    text = response.content.parts[0].text
+    assert "45378" in text and "Colonoscopy" in text
+    assert "99213" not in text  # not the selected gap's rule
+
+
+def test_gate_falls_back_to_the_selected_gap_when_nothing_is_named():
+    ctx = CallbackCtx(authenticated_member_id=HERO, selected_measure_id="CBP")
+    response = compliance.compliance_gate_callback(ctx, _request("Is this covered?"))
+    assert "99213" in response.content.parts[0].text
+
+
+@pytest.mark.parametrize(
+    "phrase,measure",
+    [
+        ("is my colonoscopy covered", "COL"),
+        ("will you pay for my a1c test", "CDC-H"),
+        ("is my blood pressure check covered", "CBP"),
+        ("is my bone density scan covered", "OMW"),
+        ("will you cover my annual wellness visit", "AWC"),
+        ("is my statin covered", "SPC"),
+        ("is my medication review covered", "COA"),
+        ("is my medication reconciliation covered", "MRP"),
+        ("what should I do about my health", None),
+    ],
+)
+def test_measure_detection(phrase, measure):
+    assert measures.detect_measure(phrase) == measure
+
+
+def test_longest_keyword_wins():
+    """'medication reconciliation' contains no substring of 'medication review',
+    but both start the same way — the specific phrase must win."""
+    assert measures.detect_measure("my medication reconciliation") == "MRP"
+    assert measures.detect_measure("my medication review") == "COA"
