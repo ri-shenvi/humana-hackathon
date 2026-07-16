@@ -1,0 +1,25 @@
+CALL TRANSCRIPT
+Date: 2026-06-10
+Member ID: MBR00036
+Scenario: Benefits and Coverage Question
+Duration: 3 minutes
+---
+
+AGENT: Thank you for calling. How can I help you today?
+
+MEMBER: I want to know if a procedure is covered. My doctor is recommending a Screening Mammography, Bilateral - CPT code 77067.
+
+AGENT: Let me look that up for your plan. Procedure 77067 - Screening Mammography, Bilateral - is covered under your current plan.
+
+MEMBER: Do I need prior authorization first?
+
+AGENT: No prior authorization is needed. You can schedule directly with your provider.
+
+MEMBER: What will my out-of-pocket cost be?
+
+AGENT: This is a preventive service covered at no cost to you under your plan.
+
+MEMBER: Great, thank you.
+
+[Call ended - Benefits question resolved. No escalation needed.]
+CSR NOTES: Member asked about coverage for CPT 77067. No PA needed. Cost share explained. Member satisfied.

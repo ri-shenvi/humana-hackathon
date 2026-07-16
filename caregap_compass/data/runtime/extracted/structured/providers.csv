@@ -1,0 +1,51 @@
+provider_id,name,specialty,npi,address,city,state,zip,lat,lon,phone,network_status,accepting_new_patients,hospital_affiliation
+PRV0001,"Dr. Fowler, Angel",Geriatrics,4332181960,33890 Jennifer Squares,Robinsonshire,KY,01352,27.560615,-83.439374,001-626-254-2351x16155,In-Network,Yes,Blair Medical Center
+PRV0002,"Dr. Herrera, Teresa",OB/GYN,6184959310,1316 Chavez Village,Franciscostad,IL,88342,27.357389,-83.485277,719-228-3276x483,In-Network,No,Perez Medical Center
+PRV0003,"Dr. Johnson, Leslie",Internal Medicine,4139537672,38849 Hurst Locks Suite 328,Daviston,VI,14872,25.685336,-110.630825,(626)291-6697,In-Network,Yes,Frazier Medical Center
+PRV0004,"Dr. Wilson, Nicole",Nephrology,4514627048,148 Eric Track,New Stephanie,NC,00575,29.573266,-88.206009,+1-357-901-5430x391,In-Network,Yes,Cabrera Medical Center
+PRV0005,"Dr. Spence, Amanda",Psychiatry,2278248963,465 Lam Mission,East Jeffreymouth,AK,77611,38.553111,-79.909616,+1-239-730-1031,In-Network,Yes,Jones Medical Center
+PRV0006,"Dr. Young, Elizabeth",OB/GYN,3829973763,65667 Emily Rue,North Richardmouth,AS,14823,34.720131,-107.55069,933.587.2624,In-Network,No,Baxter Medical Center
+PRV0007,"Dr. Jones, Lindsey",Family Medicine,8108013267,60260 Baker Tunnel Suite 468,Mooreport,IL,08166,27.133154,-116.970748,001-480-250-0978,Out-of-Network,No,Yu Medical Center
+PRV0008,"Dr. Miller, Jacob",Internal Medicine,9136193990,9985 Harris Stravenue,Johnfurt,DC,88540,41.783831,-94.116139,+1-647-451-0799x1183,Out-of-Network,No,Mahoney Medical Center
+PRV0009,"Dr. Ibarra, Natasha",Family Medicine,5427849808,124 Pamela Summit Apt. 449,Lake Matthew,TX,83631,37.696935,-78.870957,687-440-1640x052,In-Network,No,Figueroa Medical Center
+PRV0010,"Dr. Arnold, Ronald",Pulmonology,0112805982,04505 Evelyn Shores Apt. 586,East Michelle,AS,23707,29.422638,-118.383132,(902)756-3421x60733,In-Network,No,Torres Medical Center
+PRV0011,"Dr. Pope, Jeremy",Family Medicine,0365414586,14294 Daniel Mews Suite 569,South Rachelborough,KS,06318,44.672308,-76.942849,001-360-688-3561x595,In-Network,No,Hunter Medical Center
+PRV0012,"Dr. Estrada, Mark",Geriatrics,4823662994,044 Russell Prairie Suite 777,New Thomas,MH,96964,44.18454,-113.541987,(514)589-5134,In-Network,No,Hernandez Medical Center
+PRV0013,"Dr. Williams, Tracey",OB/GYN,9176936763,016 Gregory Square,Williamsbury,PW,16407,46.543056,-88.30216,927.488.9579x868,In-Network,Yes,Manning Medical Center
+PRV0014,"Dr. Wells, Jonathon",Nephrology,3487347143,5812 Jesse Square Apt. 316,Riveramouth,MT,08662,41.769916,-113.50307,766.690.9670,In-Network,Yes,Molina Medical Center
+PRV0015,"Dr. Castaneda, Stephanie",Geriatrics,6889373467,5627 Tina Place,South Brittanytown,CO,84747,32.458503,-82.047694,(827)620-4653x75564,In-Network,Yes,Conley Medical Center
+PRV0016,"Dr. Ruiz, Kaitlyn",Oncology,0531003309,27193 Lyons Trafficway,Garyville,WI,21966,34.22679,-118.558193,619-304-9663x1931,Out-of-Network,No,Hogan Medical Center
+PRV0017,"Dr. Knight, Blake",Endocrinology,8651850671,7262 Gilbert Plain Suite 769,Marcusbury,MP,11860,40.075089,-101.427141,973-579-9650x752,Out-of-Network,No,Kelly Medical Center
+PRV0018,"Dr. Green, Joshua",Cardiology,9480831367,777 Christopher Forges,Holtport,TN,76726,31.092244,-109.17537,(678)585-6855x744,In-Network,No,Martinez Medical Center
+PRV0019,"Dr. Lee, David",OB/GYN,8233749894,43524 Jean Crossroad,Brandonton,OH,38791,38.445478,-75.31321,001-227-610-9477x752,In-Network,Yes,Everett Medical Center
+PRV0020,"Dr. Woods, Lynn",Cardiology,6719022941,86999 Kimberly Light,Kerrport,VI,77640,36.719105,-117.272711,(349)490-9133x41232,In-Network,Yes,Smith Medical Center
+PRV0021,"Dr. Hayes, Brittney",Cardiology,4034471349,1832 Serrano Cliffs,East Laurashire,PW,38329,39.431259,-80.811873,217.846.4887x719,In-Network,Yes,Navarro Medical Center
+PRV0022,"Dr. Munoz, Anthony",Orthopedics,3990490278,2967 Theodore Lodge Suite 512,Robertfort,LA,87347,33.777244,-70.201688,(980)871-5451x6808,In-Network,Yes,Brown Medical Center
+PRV0023,"Dr. Stone, Cindy",Geriatrics,7703482477,93248 Andrea Course,Port Robin,NH,15897,41.576602,-86.551061,+1-827-548-4677x3782,In-Network,No,Weeks Medical Center
+PRV0024,"Dr. Romero, Natasha",Geriatrics,1465840449,78755 Gibson Islands Apt. 396,Port Kimberly,AZ,42205,32.824036,-106.737993,001-376-962-7028x9517,In-Network,Yes,Smith Medical Center
+PRV0025,"Dr. Thomas, Monica",OB/GYN,2174596158,7809 Jimmy Spur Suite 316,Port Cynthiaville,NV,22306,45.144618,-108.303769,001-840-405-0455x623,In-Network,Yes,Jackson Medical Center
+PRV0026,"Dr. Miller, Monica",Nephrology,9379237474,4821 Landry Radial,Daniellechester,UT,33281,45.99044,-76.733034,643.267.1369x594,In-Network,Yes,Spence Medical Center
+PRV0027,"Dr. Barrett, Joshua",Cardiology,9097439533,210 Kramer Bypass Suite 214,Julieburgh,ID,17823,33.600019,-113.59945,+1-758-384-2474,Out-of-Network,Yes,Mcdonald Medical Center
+PRV0028,"Dr. Jones, Karen",Pulmonology,3685160481,4965 Emily Mountains Apt. 985,Lake Bryan,GU,61353,32.455589,-120.987209,001-446-812-0047x113,Out-of-Network,No,Chavez Medical Center
+PRV0029,"Dr. Santiago, Julia",Endocrinology,8692617964,537 Sampson Walk,Corystad,ND,85019,26.332279,-76.343501,(706)543-1713x900,Out-of-Network,Yes,Zhang Medical Center
+PRV0030,"Dr. Buchanan, Jamie",OB/GYN,8393352904,84210 Alexis Turnpike,New Mario,HI,35283,36.177781,-118.400949,3269811775,In-Network,Yes,Gordon Medical Center
+PRV0031,"Dr. Dougherty, Bradley",Cardiology,8470076617,15921 Joshua Roads Suite 698,Shawnchester,CT,92484,40.174269,-72.763869,883-867-3657,In-Network,No,Blair Medical Center
+PRV0032,"Dr. Edwards, Larry",Endocrinology,4527111161,80988 Santiago Loop Suite 604,Michaelshire,NY,28385,46.36501,-82.72621,(573)815-8514,In-Network,No,Bruce Medical Center
+PRV0033,"Dr. Villegas, Loretta",Orthopedics,9809402445,22961 Joyce Burgs Apt. 836,Chavezburgh,MN,41347,47.888435,-88.206341,001-859-991-0229x0147,In-Network,No,Lawson Medical Center
+PRV0034,"Dr. Perry, Jason",Family Medicine,8156149784,69003 Dougherty Trafficway,Port Jonathan,MD,16227,30.701829,-118.670653,7763226838,In-Network,Yes,Sanders Medical Center
+PRV0035,"Dr. Harmon, Ryan",Pulmonology,7159696641,52975 Samuel Coves Apt. 696,South Monicamouth,IN,44156,30.065,-118.30836,001-621-581-8835x52312,In-Network,Yes,Thompson Medical Center
+PRV0036,"Dr. Hernandez, Katherine",Family Medicine,1277997995,71774 Vargas Knoll Apt. 477,North Miguelport,CA,84998,45.82466,-77.298959,999-586-7980,In-Network,Yes,Morris Medical Center
+PRV0037,"Dr. Alvarez, Edward",Gastroenterology,0715182037,892 Watson Haven Suite 659,Port Crystalmouth,CA,43714,40.386489,-110.859686,486-744-9251,In-Network,No,Collins Medical Center
+PRV0038,"Dr. Douglas, Eileen",Endocrinology,2914865281,505 White Forest Suite 733,East Chris,PR,13757,43.046247,-80.010156,988.205.9296x22292,In-Network,Yes,Jenkins Medical Center
+PRV0039,"Dr. Rhodes, John",Geriatrics,7947383473,977 Strickland Parkway Suite 239,Port John,SD,63492,34.914177,-99.973912,(881)381-4124x782,In-Network,Yes,Potts Medical Center
+PRV0040,"Dr. Walker, Shannon",Geriatrics,5060685361,05152 Benjamin Village Suite 277,North Andrewborough,MP,20098,40.029476,-88.398653,+1-298-561-4341,In-Network,No,Barnes Medical Center
+PRV0041,"Dr. Bauer, Stephen",Family Medicine,1798089324,95396 Elizabeth Corner Suite 188,South Morganton,SC,51210,30.719096,-112.109137,(740)751-5319x520,In-Network,No,Li Medical Center
+PRV0042,"Dr. Thompson, Kimberly",Cardiology,7722170430,54868 King Terrace,West Michael,WI,06766,31.406538,-109.010065,+1-754-615-6676x5277,Out-of-Network,No,Owen Medical Center
+PRV0043,"Dr. Acosta, Christian",Nephrology,9284511544,627 West Stream Suite 964,North Emilyfurt,MN,67752,27.251901,-88.088466,001-220-429-7021x3556,In-Network,Yes,Shelton Medical Center
+PRV0044,"Dr. Rush, Nathan",Family Medicine,1928565431,278 Mcintyre Crest,Kimberlymouth,IL,80700,46.306441,-77.867822,673-612-1727x1551,In-Network,No,York Medical Center
+PRV0045,"Dr. Joseph, Sara",Psychiatry,2583132370,957 Cheryl Corners Apt. 467,Hammondshire,CA,16927,29.916188,-101.145905,317-478-5289x22680,In-Network,No,Torres Medical Center
+PRV0046,"Dr. Martin, Sarah",Internal Medicine,3584143842,818 Brittany Prairie Apt. 299,Meganshire,AZ,04219,47.662103,-108.209441,909-643-9690,In-Network,No,May Medical Center
+PRV0047,"Dr. Turner, John",Gastroenterology,6471027677,9255 Hester Curve,Zacharyville,MD,32186,34.729172,-72.219483,514.473.2104x696,Out-of-Network,No,Li Medical Center
+PRV0048,"Dr. Peck, Jennifer",Cardiology,3278774701,733 Williams Haven Suite 974,Port Danielberg,FM,35165,29.367651,-110.679553,001-356-850-6098x3584,In-Network,Yes,Gordon Medical Center
+PRV0049,"Dr. Duran, Joshua",OB/GYN,9912165585,98680 Benjamin Station,Lindahaven,NH,20022,32.212911,-119.392598,+1-982-659-5269x495,In-Network,Yes,Wells Medical Center
+PRV0050,"Dr. Smith, Mark",Internal Medicine,1694097499,097 Alexandria Stravenue,Hernandezbury,AZ,75548,47.097915,-117.834204,001-913-207-5626x368,In-Network,Yes,Thornton Medical Center

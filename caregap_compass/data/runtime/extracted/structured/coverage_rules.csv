@@ -1,0 +1,81 @@
+rule_id,plan_type,cpt_code,cpt_description,covered,prior_auth_required,cost_share_pct,copay,notes
+RULE0001,HMO,99213,"Office Visit - Established, Level 3",True,False,20,20,
+RULE0002,HMO,99214,"Office Visit - Established, Level 4",True,False,20,30,
+RULE0003,HMO,99396,"Preventive Visit, Age 40-64",True,False,0,40,
+RULE0004,HMO,99397,"Preventive Visit, Age 65+",False,False,0,0,
+RULE0005,HMO,83036,Hemoglobin A1c (HbA1c) Test,True,False,0,20,
+RULE0006,HMO,82962,Blood Glucose Test,True,False,10,30,
+RULE0007,HMO,85025,Complete Blood Count (CBC),True,False,10,50,
+RULE0008,HMO,80053,Comprehensive Metabolic Panel,True,False,10,30,
+RULE0009,HMO,93000,Electrocardiogram (ECG/EKG),False,False,0,0,
+RULE0010,HMO,45378,Colonoscopy - Diagnostic,True,True,20,0,Requires in-network provider
+RULE0011,HMO,77067,"Screening Mammography, Bilateral",True,False,0,20,
+RULE0012,HMO,99490,Chronic Care Management (20 min),True,False,20,30,
+RULE0013,HMO,96127,Depression Screening,True,False,0,10,
+RULE0014,HMO,G0444,Annual Depression Screening (Medicare),True,False,0,50,
+RULE0015,HMO,27447,Total Knee Arthroplasty,True,True,30,20,Requires in-network provider
+RULE0016,HMO,70553,MRI Brain with Contrast,True,True,20,20,Requires in-network provider
+RULE0017,HMO,29881,Knee Arthroscopy with Meniscectomy,True,True,20,0,Requires in-network provider
+RULE0018,HMO,43239,Upper GI Endoscopy with Biopsy,True,True,20,30,Requires in-network provider
+RULE0019,HMO,90837,"Psychotherapy, 60 min",True,False,20,40,
+RULE0020,HMO,99091,Remote Patient Monitoring - Data Analysis,True,True,20,10,Requires in-network provider
+RULE0021,PPO,99213,"Office Visit - Established, Level 3",True,False,20,50,
+RULE0022,PPO,99214,"Office Visit - Established, Level 4",True,False,20,20,
+RULE0023,PPO,99396,"Preventive Visit, Age 40-64",True,False,0,20,
+RULE0024,PPO,99397,"Preventive Visit, Age 65+",True,False,0,30,
+RULE0025,PPO,83036,Hemoglobin A1c (HbA1c) Test,True,False,0,20,
+RULE0026,PPO,82962,Blood Glucose Test,True,False,10,0,
+RULE0027,PPO,85025,Complete Blood Count (CBC),True,False,10,50,
+RULE0028,PPO,80053,Comprehensive Metabolic Panel,True,False,10,20,
+RULE0029,PPO,93000,Electrocardiogram (ECG/EKG),True,False,15,50,
+RULE0030,PPO,45378,Colonoscopy - Diagnostic,True,True,20,50,Requires in-network provider
+RULE0031,PPO,77067,"Screening Mammography, Bilateral",True,False,0,30,
+RULE0032,PPO,99490,Chronic Care Management (20 min),True,False,20,40,
+RULE0033,PPO,96127,Depression Screening,False,False,0,0,
+RULE0034,PPO,G0444,Annual Depression Screening (Medicare),True,False,0,50,
+RULE0035,PPO,27447,Total Knee Arthroplasty,True,False,30,40,
+RULE0036,PPO,70553,MRI Brain with Contrast,True,True,20,20,Requires in-network provider
+RULE0037,PPO,29881,Knee Arthroscopy with Meniscectomy,True,True,20,0,Requires in-network provider
+RULE0038,PPO,43239,Upper GI Endoscopy with Biopsy,True,True,20,10,Requires in-network provider
+RULE0039,PPO,90837,"Psychotherapy, 60 min",True,False,20,10,
+RULE0040,PPO,99091,Remote Patient Monitoring - Data Analysis,True,True,20,50,Requires in-network provider
+RULE0041,DSNP,99213,"Office Visit - Established, Level 3",True,False,10,10,
+RULE0042,DSNP,99214,"Office Visit - Established, Level 4",True,False,10,0,
+RULE0043,DSNP,99396,"Preventive Visit, Age 40-64",True,False,0,0,
+RULE0044,DSNP,99397,"Preventive Visit, Age 65+",False,False,0,0,
+RULE0045,DSNP,83036,Hemoglobin A1c (HbA1c) Test,True,False,0,50,
+RULE0046,DSNP,82962,Blood Glucose Test,True,False,0,40,
+RULE0047,DSNP,85025,Complete Blood Count (CBC),True,False,0,40,
+RULE0048,DSNP,80053,Comprehensive Metabolic Panel,True,False,0,30,
+RULE0049,DSNP,93000,Electrocardiogram (ECG/EKG),True,False,5,40,
+RULE0050,DSNP,45378,Colonoscopy - Diagnostic,False,False,0,0,
+RULE0051,DSNP,77067,"Screening Mammography, Bilateral",True,False,0,30,
+RULE0052,DSNP,99490,Chronic Care Management (20 min),True,False,10,30,
+RULE0053,DSNP,96127,Depression Screening,True,False,0,40,
+RULE0054,DSNP,G0444,Annual Depression Screening (Medicare),False,False,0,0,
+RULE0055,DSNP,27447,Total Knee Arthroplasty,True,True,20,30,Requires in-network provider
+RULE0056,DSNP,70553,MRI Brain with Contrast,True,True,10,20,Requires in-network provider
+RULE0057,DSNP,29881,Knee Arthroscopy with Meniscectomy,True,False,10,40,
+RULE0058,DSNP,43239,Upper GI Endoscopy with Biopsy,True,True,10,30,Requires in-network provider
+RULE0059,DSNP,90837,"Psychotherapy, 60 min",True,False,10,50,
+RULE0060,DSNP,99091,Remote Patient Monitoring - Data Analysis,False,False,0,0,
+RULE0061,MAPD,99213,"Office Visit - Established, Level 3",True,False,20,50,
+RULE0062,MAPD,99214,"Office Visit - Established, Level 4",True,False,20,10,
+RULE0063,MAPD,99396,"Preventive Visit, Age 40-64",True,False,0,0,
+RULE0064,MAPD,99397,"Preventive Visit, Age 65+",True,False,0,30,
+RULE0065,MAPD,83036,Hemoglobin A1c (HbA1c) Test,True,False,0,10,
+RULE0066,MAPD,82962,Blood Glucose Test,True,False,10,40,
+RULE0067,MAPD,85025,Complete Blood Count (CBC),True,False,10,40,
+RULE0068,MAPD,80053,Comprehensive Metabolic Panel,True,False,10,10,
+RULE0069,MAPD,93000,Electrocardiogram (ECG/EKG),True,False,15,10,
+RULE0070,MAPD,45378,Colonoscopy - Diagnostic,True,True,20,0,Requires in-network provider
+RULE0071,MAPD,77067,"Screening Mammography, Bilateral",True,False,0,0,
+RULE0072,MAPD,99490,Chronic Care Management (20 min),True,False,20,30,
+RULE0073,MAPD,96127,Depression Screening,True,False,0,20,
+RULE0074,MAPD,G0444,Annual Depression Screening (Medicare),False,False,0,0,
+RULE0075,MAPD,27447,Total Knee Arthroplasty,True,True,30,20,Requires in-network provider
+RULE0076,MAPD,70553,MRI Brain with Contrast,True,True,20,0,Requires in-network provider
+RULE0077,MAPD,29881,Knee Arthroscopy with Meniscectomy,True,False,20,30,
+RULE0078,MAPD,43239,Upper GI Endoscopy with Biopsy,True,True,20,50,Requires in-network provider
+RULE0079,MAPD,90837,"Psychotherapy, 60 min",True,False,20,30,
+RULE0080,MAPD,99091,Remote Patient Monitoring - Data Analysis,True,True,20,40,Requires in-network provider

@@ -1,0 +1,553 @@
+gap_id,member_id,measure_id,measure_name,gap_status,due_date,last_service_date,outreach_attempts,care_gap_year
+GAP000001,MBR00001,COL,Colorectal Cancer Screening,Open,2026-08-20,,1,2026
+GAP000002,MBR00001,TRC,Transitions of Care,Open,2026-07-28,,2,2026
+GAP000003,MBR00002,CBP,Controlling Blood Pressure,Open,2026-12-05,,3,2026
+GAP000004,MBR00002,COL,Colorectal Cancer Screening,Open,2026-11-05,,2,2026
+GAP000005,MBR00002,TRC,Transitions of Care,Closed,2026-10-03,2023-12-16,1,2026
+GAP000006,MBR00003,CBP,Controlling Blood Pressure,Open,2026-11-02,,1,2026
+GAP000007,MBR00003,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-12-01,2024-08-14,4,2026
+GAP000008,MBR00004,CBP,Controlling Blood Pressure,Closed,2026-10-29,2024-07-04,2,2026
+GAP000009,MBR00004,AWC,Annual Wellness Visit,Open,2026-08-04,,3,2026
+GAP000010,MBR00004,OMW,Osteoporosis Management in Women,Closed,2026-10-20,2024-01-17,8,2026
+GAP000011,MBR00004,TRC,Transitions of Care,Closed,2026-09-13,2026-02-28,7,2026
+GAP000012,MBR00004,MRP,Medication Reconciliation Post-Discharge,Closed,2026-08-31,2023-08-03,6,2026
+GAP000013,MBR00005,CBP,Controlling Blood Pressure,Open,2026-09-03,,2,2026
+GAP000014,MBR00005,TRC,Transitions of Care,Open,2026-09-09,,2,2026
+GAP000015,MBR00005,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-06-15,,3,2026
+GAP000016,MBR00006,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-09-29,2025-03-28,8,2026
+GAP000017,MBR00006,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-09-04,,3,2026
+GAP000018,MBR00007,CBP,Controlling Blood Pressure,Open,2026-08-08,,4,2026
+GAP000019,MBR00007,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-08-17,,4,2026
+GAP000020,MBR00007,TRC,Transitions of Care,Open,2026-10-19,,1,2026
+GAP000021,MBR00009,TRC,Transitions of Care,Closed,2026-07-15,2023-09-24,6,2026
+GAP000022,MBR00010,COL,Colorectal Cancer Screening,Open,2026-07-16,,2,2026
+GAP000023,MBR00010,TRC,Transitions of Care,Open,2026-06-10,,5,2026
+GAP000024,MBR00010,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-08-26,2024-09-21,2,2026
+GAP000025,MBR00011,TRC,Transitions of Care,Closed,2026-09-29,2023-07-04,4,2026
+GAP000026,MBR00011,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-13,2023-01-11,8,2026
+GAP000027,MBR00012,TRC,Transitions of Care,Open,2026-10-28,,5,2026
+GAP000028,MBR00012,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-10-08,,5,2026
+GAP000029,MBR00013,COL,Colorectal Cancer Screening,Open,2026-08-11,,0,2026
+GAP000030,MBR00013,TRC,Transitions of Care,Open,2026-07-14,,3,2026
+GAP000031,MBR00014,TRC,Transitions of Care,Open,2026-06-28,,2,2026
+GAP000032,MBR00014,MRP,Medication Reconciliation Post-Discharge,Closed,2026-11-07,2023-02-25,4,2026
+GAP000033,MBR00015,COL,Colorectal Cancer Screening,Open,2026-09-10,,2,2026
+GAP000034,MBR00015,AWC,Annual Wellness Visit,Open,2026-11-10,,3,2026
+GAP000035,MBR00015,TRC,Transitions of Care,Open,2026-07-28,,0,2026
+GAP000036,MBR00015,MRP,Medication Reconciliation Post-Discharge,Open,2026-09-04,,3,2026
+GAP000037,MBR00015,COA,Care for Older Adults - Medication Review,Open,2026-08-21,,2,2026
+GAP000038,MBR00016,CBP,Controlling Blood Pressure,Closed,2026-06-18,2024-06-18,7,2026
+GAP000039,MBR00016,COL,Colorectal Cancer Screening,Open,2026-10-20,,0,2026
+GAP000040,MBR00016,TRC,Transitions of Care,Open,2026-12-02,,5,2026
+GAP000041,MBR00016,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-06-13,2023-11-26,6,2026
+GAP000042,MBR00017,COL,Colorectal Cancer Screening,Open,2026-12-02,,3,2026
+GAP000043,MBR00017,AWC,Annual Wellness Visit,Closed,2026-11-28,2025-04-02,7,2026
+GAP000044,MBR00017,TRC,Transitions of Care,Open,2026-11-19,,0,2026
+GAP000045,MBR00017,MRP,Medication Reconciliation Post-Discharge,Closed,2026-10-03,2025-10-25,6,2026
+GAP000046,MBR00018,COA,Care for Older Adults - Medication Review,Open,2026-09-26,,4,2026
+GAP000047,MBR00019,OMW,Osteoporosis Management in Women,Open,2026-11-08,,2,2026
+GAP000048,MBR00019,TRC,Transitions of Care,Closed,2026-10-04,2025-06-09,1,2026
+GAP000049,MBR00019,MRP,Medication Reconciliation Post-Discharge,Open,2026-10-13,,3,2026
+GAP000050,MBR00019,COA,Care for Older Adults - Medication Review,Closed,2026-12-02,2025-01-26,5,2026
+GAP000051,MBR00020,CBP,Controlling Blood Pressure,Closed,2026-06-16,2026-01-16,5,2026
+GAP000052,MBR00020,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-06-14,,3,2026
+GAP000053,MBR00020,COL,Colorectal Cancer Screening,Closed,2026-11-09,2023-08-17,6,2026
+GAP000054,MBR00020,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-24,,0,2026
+GAP000055,MBR00021,TRC,Transitions of Care,Open,2026-07-17,,5,2026
+GAP000056,MBR00021,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-06,2025-07-27,4,2026
+GAP000057,MBR00022,COA,Care for Older Adults - Medication Review,Open,2026-09-01,,2,2026
+GAP000058,MBR00023,AWC,Annual Wellness Visit,Closed,2026-11-20,2023-07-27,7,2026
+GAP000059,MBR00023,OMW,Osteoporosis Management in Women,Closed,2026-09-04,2024-09-10,7,2026
+GAP000060,MBR00023,TRC,Transitions of Care,Open,2026-08-14,,5,2026
+GAP000061,MBR00023,MRP,Medication Reconciliation Post-Discharge,Closed,2026-09-28,2023-08-27,4,2026
+GAP000062,MBR00023,COA,Care for Older Adults - Medication Review,Closed,2026-11-14,2025-11-18,4,2026
+GAP000063,MBR00024,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-11-03,,3,2026
+GAP000064,MBR00024,TRC,Transitions of Care,Closed,2026-08-19,2024-01-16,5,2026
+GAP000065,MBR00024,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-09-20,,1,2026
+GAP000066,MBR00025,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-09-22,,1,2026
+GAP000067,MBR00025,COL,Colorectal Cancer Screening,Open,2026-07-13,,2,2026
+GAP000068,MBR00025,AWC,Annual Wellness Visit,Closed,2026-11-19,2024-10-13,2,2026
+GAP000069,MBR00025,TRC,Transitions of Care,Open,2026-09-01,,1,2026
+GAP000070,MBR00025,MRP,Medication Reconciliation Post-Discharge,Open,2026-11-12,,3,2026
+GAP000071,MBR00025,COA,Care for Older Adults - Medication Review,Closed,2026-09-02,2026-01-13,7,2026
+GAP000072,MBR00026,CBP,Controlling Blood Pressure,Closed,2026-09-05,2024-11-28,6,2026
+GAP000073,MBR00026,TRC,Transitions of Care,Open,2026-10-06,,5,2026
+GAP000074,MBR00026,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-23,,5,2026
+GAP000075,MBR00027,COL,Colorectal Cancer Screening,Open,2026-11-26,,4,2026
+GAP000076,MBR00027,TRC,Transitions of Care,Closed,2026-09-06,2023-06-20,4,2026
+GAP000077,MBR00028,COL,Colorectal Cancer Screening,Open,2026-08-29,,3,2026
+GAP000078,MBR00028,TRC,Transitions of Care,Open,2026-11-16,,4,2026
+GAP000079,MBR00028,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-09-28,,3,2026
+GAP000080,MBR00029,OMW,Osteoporosis Management in Women,Closed,2026-10-30,2025-10-02,4,2026
+GAP000081,MBR00029,TRC,Transitions of Care,Open,2026-09-14,,4,2026
+GAP000082,MBR00029,COA,Care for Older Adults - Medication Review,Open,2026-08-03,,0,2026
+GAP000083,MBR00030,CBP,Controlling Blood Pressure,Open,2026-07-20,,5,2026
+GAP000084,MBR00030,OMW,Osteoporosis Management in Women,Open,2026-08-04,,3,2026
+GAP000085,MBR00030,MRP,Medication Reconciliation Post-Discharge,Closed,2026-11-18,2023-08-05,6,2026
+GAP000086,MBR00030,COA,Care for Older Adults - Medication Review,Open,2026-08-06,,3,2026
+GAP000087,MBR00031,COL,Colorectal Cancer Screening,Open,2026-10-03,,1,2026
+GAP000088,MBR00031,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-10-24,,2,2026
+GAP000089,MBR00032,TRC,Transitions of Care,Closed,2026-07-05,2025-02-24,7,2026
+GAP000090,MBR00032,COA,Care for Older Adults - Medication Review,Closed,2026-11-15,2024-04-04,3,2026
+GAP000091,MBR00033,COL,Colorectal Cancer Screening,Open,2026-06-30,,4,2026
+GAP000092,MBR00033,TRC,Transitions of Care,Open,2026-06-15,,2,2026
+GAP000093,MBR00033,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-17,,3,2026
+GAP000094,MBR00034,COL,Colorectal Cancer Screening,Closed,2026-06-15,2026-05-16,7,2026
+GAP000095,MBR00034,SPC,Statin Therapy for Patients with Cardiovascular Disease,Closed,2026-07-21,2025-07-26,6,2026
+GAP000096,MBR00034,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-31,,2,2026
+GAP000097,MBR00035,AWC,Annual Wellness Visit,Open,2026-06-17,,1,2026
+GAP000098,MBR00035,OMW,Osteoporosis Management in Women,Open,2026-12-02,,4,2026
+GAP000099,MBR00035,TRC,Transitions of Care,Open,2026-07-25,,3,2026
+GAP000100,MBR00035,MRP,Medication Reconciliation Post-Discharge,Open,2026-11-11,,2,2026
+GAP000101,MBR00036,COL,Colorectal Cancer Screening,Closed,2026-06-27,2023-01-15,1,2026
+GAP000102,MBR00036,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-10-21,,3,2026
+GAP000103,MBR00036,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-08-15,,5,2026
+GAP000104,MBR00037,CBP,Controlling Blood Pressure,Closed,2026-11-12,2025-12-29,1,2026
+GAP000105,MBR00037,TRC,Transitions of Care,Closed,2026-06-25,2024-08-22,7,2026
+GAP000106,MBR00038,TRC,Transitions of Care,Open,2026-10-18,,5,2026
+GAP000107,MBR00038,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-11,,0,2026
+GAP000108,MBR00039,CBP,Controlling Blood Pressure,Open,2026-11-05,,0,2026
+GAP000109,MBR00039,TRC,Transitions of Care,Closed,2026-07-16,2024-05-12,8,2026
+GAP000110,MBR00039,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-21,,5,2026
+GAP000111,MBR00040,TRC,Transitions of Care,Closed,2026-10-13,2024-05-16,5,2026
+GAP000112,MBR00040,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-02,2025-07-11,5,2026
+GAP000113,MBR00041,COL,Colorectal Cancer Screening,Closed,2026-07-15,2023-10-31,5,2026
+GAP000114,MBR00041,AWC,Annual Wellness Visit,Closed,2026-11-01,2025-01-12,5,2026
+GAP000115,MBR00041,TRC,Transitions of Care,Closed,2026-11-02,2024-09-16,8,2026
+GAP000116,MBR00041,COA,Care for Older Adults - Medication Review,Open,2026-12-04,,1,2026
+GAP000117,MBR00042,AWC,Annual Wellness Visit,Open,2026-09-16,,2,2026
+GAP000118,MBR00042,OMW,Osteoporosis Management in Women,Open,2026-08-03,,4,2026
+GAP000119,MBR00042,TRC,Transitions of Care,Closed,2026-08-15,2025-01-15,7,2026
+GAP000120,MBR00042,MRP,Medication Reconciliation Post-Discharge,Closed,2026-09-06,2023-11-16,6,2026
+GAP000121,MBR00042,COA,Care for Older Adults - Medication Review,Open,2026-10-12,,5,2026
+GAP000122,MBR00043,TRC,Transitions of Care,Open,2026-07-24,,3,2026
+GAP000123,MBR00044,AWC,Annual Wellness Visit,Closed,2026-09-05,2024-04-05,5,2026
+GAP000124,MBR00044,OMW,Osteoporosis Management in Women,Open,2026-11-12,,5,2026
+GAP000125,MBR00044,MRP,Medication Reconciliation Post-Discharge,Open,2026-10-05,,4,2026
+GAP000126,MBR00046,COL,Colorectal Cancer Screening,Open,2026-07-31,,2,2026
+GAP000127,MBR00046,AWC,Annual Wellness Visit,Open,2026-07-05,,2,2026
+GAP000128,MBR00046,TRC,Transitions of Care,Open,2026-10-24,,5,2026
+GAP000129,MBR00046,MRP,Medication Reconciliation Post-Discharge,Open,2026-06-24,,3,2026
+GAP000130,MBR00046,COA,Care for Older Adults - Medication Review,Open,2026-08-14,,5,2026
+GAP000131,MBR00047,CBP,Controlling Blood Pressure,Closed,2026-08-11,2024-04-12,8,2026
+GAP000132,MBR00047,AWC,Annual Wellness Visit,Closed,2026-08-17,2026-02-04,5,2026
+GAP000133,MBR00047,TRC,Transitions of Care,Open,2026-06-26,,1,2026
+GAP000134,MBR00047,MRP,Medication Reconciliation Post-Discharge,Open,2026-08-07,,1,2026
+GAP000135,MBR00047,COA,Care for Older Adults - Medication Review,Closed,2026-10-06,2023-07-21,1,2026
+GAP000136,MBR00048,TRC,Transitions of Care,Closed,2026-07-30,2025-09-06,2,2026
+GAP000137,MBR00048,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-05,,4,2026
+GAP000138,MBR00049,CBP,Controlling Blood Pressure,Closed,2026-08-25,2026-03-11,1,2026
+GAP000139,MBR00049,TRC,Transitions of Care,Closed,2026-07-08,2025-06-25,4,2026
+GAP000140,MBR00049,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-10-04,2023-01-02,5,2026
+GAP000141,MBR00050,AWC,Annual Wellness Visit,Open,2026-07-25,,2,2026
+GAP000142,MBR00050,OMW,Osteoporosis Management in Women,Open,2026-11-22,,2,2026
+GAP000143,MBR00050,TRC,Transitions of Care,Open,2026-09-05,,2,2026
+GAP000144,MBR00050,MRP,Medication Reconciliation Post-Discharge,Open,2026-11-17,,3,2026
+GAP000145,MBR00050,COA,Care for Older Adults - Medication Review,Closed,2026-07-26,2025-09-25,1,2026
+GAP000146,MBR00051,COL,Colorectal Cancer Screening,Closed,2026-10-08,2025-10-12,3,2026
+GAP000147,MBR00051,AWC,Annual Wellness Visit,Closed,2026-11-29,2024-09-15,2,2026
+GAP000148,MBR00051,TRC,Transitions of Care,Closed,2026-10-25,2024-01-10,4,2026
+GAP000149,MBR00052,CBP,Controlling Blood Pressure,Open,2026-08-30,,4,2026
+GAP000150,MBR00052,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-11-13,2024-03-06,3,2026
+GAP000151,MBR00052,TRC,Transitions of Care,Open,2026-09-19,,1,2026
+GAP000152,MBR00053,CBP,Controlling Blood Pressure,Open,2026-10-20,,3,2026
+GAP000153,MBR00053,COL,Colorectal Cancer Screening,Closed,2026-08-17,2024-04-13,5,2026
+GAP000154,MBR00053,TRC,Transitions of Care,Closed,2026-08-26,2025-01-29,3,2026
+GAP000155,MBR00053,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-08-29,2025-07-10,5,2026
+GAP000156,MBR00054,CBP,Controlling Blood Pressure,Open,2026-09-24,,0,2026
+GAP000157,MBR00054,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-08,2023-10-14,8,2026
+GAP000158,MBR00055,TRC,Transitions of Care,Closed,2026-08-02,2024-06-08,5,2026
+GAP000159,MBR00056,CBP,Controlling Blood Pressure,Open,2026-09-15,,2,2026
+GAP000160,MBR00056,TRC,Transitions of Care,Closed,2026-08-04,2025-10-27,8,2026
+GAP000161,MBR00057,TRC,Transitions of Care,Open,2026-09-01,,5,2026
+GAP000162,MBR00057,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-10-08,2023-04-05,7,2026
+GAP000163,MBR00058,CBP,Controlling Blood Pressure,Closed,2026-10-12,2024-05-26,5,2026
+GAP000164,MBR00058,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-06-24,,5,2026
+GAP000165,MBR00059,CBP,Controlling Blood Pressure,Open,2026-09-30,,2,2026
+GAP000166,MBR00059,TRC,Transitions of Care,Open,2026-06-28,,2,2026
+GAP000167,MBR00061,TRC,Transitions of Care,Closed,2026-10-31,2023-06-30,8,2026
+GAP000168,MBR00061,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-11-26,2024-06-17,5,2026
+GAP000169,MBR00062,AWC,Annual Wellness Visit,Open,2026-06-27,,5,2026
+GAP000170,MBR00062,MRP,Medication Reconciliation Post-Discharge,Closed,2026-10-02,2024-03-15,3,2026
+GAP000171,MBR00062,COA,Care for Older Adults - Medication Review,Open,2026-09-10,,2,2026
+GAP000172,MBR00063,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-08-15,2024-06-06,1,2026
+GAP000173,MBR00063,COL,Colorectal Cancer Screening,Closed,2026-09-27,2025-03-22,8,2026
+GAP000174,MBR00063,MRP,Medication Reconciliation Post-Discharge,Closed,2026-09-13,2023-02-03,7,2026
+GAP000175,MBR00064,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-08-21,,4,2026
+GAP000176,MBR00065,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-06-29,,4,2026
+GAP000177,MBR00065,SPC,Statin Therapy for Patients with Cardiovascular Disease,Closed,2026-07-08,2025-12-25,3,2026
+GAP000178,MBR00066,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-11-13,2024-01-26,2,2026
+GAP000179,MBR00066,TRC,Transitions of Care,Open,2026-10-03,,5,2026
+GAP000180,MBR00066,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-26,,5,2026
+GAP000181,MBR00067,COL,Colorectal Cancer Screening,Open,2026-12-04,,5,2026
+GAP000182,MBR00067,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-11-04,,2,2026
+GAP000183,MBR00067,TRC,Transitions of Care,Closed,2026-06-14,2023-01-18,4,2026
+GAP000184,MBR00067,MRP,Medication Reconciliation Post-Discharge,Open,2026-08-06,,4,2026
+GAP000185,MBR00067,COA,Care for Older Adults - Medication Review,Open,2026-10-05,,5,2026
+GAP000186,MBR00068,CBP,Controlling Blood Pressure,Closed,2026-11-04,2024-12-27,3,2026
+GAP000187,MBR00068,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-08-27,,1,2026
+GAP000188,MBR00068,TRC,Transitions of Care,Open,2026-06-20,,1,2026
+GAP000189,MBR00068,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-01,2024-10-07,4,2026
+GAP000190,MBR00069,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-07-21,,3,2026
+GAP000191,MBR00069,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-08,2023-02-25,3,2026
+GAP000192,MBR00070,AWC,Annual Wellness Visit,Closed,2026-06-16,2025-06-28,4,2026
+GAP000193,MBR00070,TRC,Transitions of Care,Open,2026-09-20,,1,2026
+GAP000194,MBR00070,MRP,Medication Reconciliation Post-Discharge,Open,2026-07-11,,0,2026
+GAP000195,MBR00071,AWC,Annual Wellness Visit,Closed,2026-10-20,2023-09-07,3,2026
+GAP000196,MBR00071,TRC,Transitions of Care,Open,2026-11-11,,2,2026
+GAP000197,MBR00071,COA,Care for Older Adults - Medication Review,Open,2026-07-03,,4,2026
+GAP000198,MBR00072,CBP,Controlling Blood Pressure,Open,2026-07-08,,3,2026
+GAP000199,MBR00072,TRC,Transitions of Care,Open,2026-09-25,,3,2026
+GAP000200,MBR00073,TRC,Transitions of Care,Open,2026-08-28,,0,2026
+GAP000201,MBR00073,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-08-25,2024-04-14,2,2026
+GAP000202,MBR00074,COL,Colorectal Cancer Screening,Closed,2026-10-08,2023-02-02,5,2026
+GAP000203,MBR00074,MRP,Medication Reconciliation Post-Discharge,Closed,2026-07-25,2026-03-02,1,2026
+GAP000204,MBR00075,COL,Colorectal Cancer Screening,Open,2026-12-04,,3,2026
+GAP000205,MBR00075,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-11-26,2024-08-23,6,2026
+GAP000206,MBR00076,CBP,Controlling Blood Pressure,Closed,2026-09-25,2023-12-20,3,2026
+GAP000207,MBR00077,TRC,Transitions of Care,Closed,2026-07-08,2023-11-29,1,2026
+GAP000208,MBR00077,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-17,,2,2026
+GAP000209,MBR00078,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-06-16,,2,2026
+GAP000210,MBR00079,TRC,Transitions of Care,Open,2026-07-16,,3,2026
+GAP000211,MBR00079,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-10,,5,2026
+GAP000212,MBR00080,CBP,Controlling Blood Pressure,Open,2026-06-13,,2,2026
+GAP000213,MBR00080,OMW,Osteoporosis Management in Women,Closed,2026-07-08,2025-09-01,8,2026
+GAP000214,MBR00080,COA,Care for Older Adults - Medication Review,Open,2026-11-11,,5,2026
+GAP000215,MBR00081,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-08-14,,1,2026
+GAP000216,MBR00081,TRC,Transitions of Care,Open,2026-11-14,,5,2026
+GAP000217,MBR00082,CBP,Controlling Blood Pressure,Closed,2026-11-03,2024-02-06,3,2026
+GAP000218,MBR00082,AWC,Annual Wellness Visit,Open,2026-07-16,,1,2026
+GAP000219,MBR00082,OMW,Osteoporosis Management in Women,Closed,2026-09-21,2024-08-01,2,2026
+GAP000220,MBR00082,TRC,Transitions of Care,Open,2026-11-25,,2,2026
+GAP000221,MBR00082,MRP,Medication Reconciliation Post-Discharge,Closed,2026-11-28,2026-04-24,5,2026
+GAP000222,MBR00083,COL,Colorectal Cancer Screening,Open,2026-11-26,,1,2026
+GAP000223,MBR00083,AWC,Annual Wellness Visit,Closed,2026-06-18,2025-02-27,1,2026
+GAP000224,MBR00083,COA,Care for Older Adults - Medication Review,Closed,2026-08-09,2023-11-28,7,2026
+GAP000225,MBR00084,CBP,Controlling Blood Pressure,Closed,2026-10-11,2024-12-05,4,2026
+GAP000226,MBR00084,COL,Colorectal Cancer Screening,Closed,2026-11-04,2025-04-10,8,2026
+GAP000227,MBR00084,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-09-30,,0,2026
+GAP000228,MBR00085,COL,Colorectal Cancer Screening,Open,2026-09-04,,2,2026
+GAP000229,MBR00085,TRC,Transitions of Care,Open,2026-10-12,,4,2026
+GAP000230,MBR00085,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-09-05,,4,2026
+GAP000231,MBR00086,CBP,Controlling Blood Pressure,Closed,2026-09-27,2023-02-22,3,2026
+GAP000232,MBR00086,AWC,Annual Wellness Visit,Closed,2026-07-08,2023-09-04,5,2026
+GAP000233,MBR00086,OMW,Osteoporosis Management in Women,Open,2026-10-03,,3,2026
+GAP000234,MBR00086,TRC,Transitions of Care,Closed,2026-10-17,2024-01-09,7,2026
+GAP000235,MBR00087,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-12-01,,1,2026
+GAP000236,MBR00087,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-10-22,2026-05-15,3,2026
+GAP000237,MBR00088,CBP,Controlling Blood Pressure,Open,2026-06-22,,4,2026
+GAP000238,MBR00088,AWC,Annual Wellness Visit,Open,2026-10-23,,1,2026
+GAP000239,MBR00088,TRC,Transitions of Care,Open,2026-07-22,,5,2026
+GAP000240,MBR00088,MRP,Medication Reconciliation Post-Discharge,Closed,2026-07-18,2026-01-12,7,2026
+GAP000241,MBR00089,TRC,Transitions of Care,Closed,2026-09-20,2024-08-30,7,2026
+GAP000242,MBR00090,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-08-25,,0,2026
+GAP000243,MBR00091,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-11-28,2024-09-30,4,2026
+GAP000244,MBR00091,TRC,Transitions of Care,Closed,2026-06-25,2025-04-20,3,2026
+GAP000245,MBR00091,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-08-11,2025-03-12,3,2026
+GAP000246,MBR00092,AWC,Annual Wellness Visit,Open,2026-07-29,,1,2026
+GAP000247,MBR00092,TRC,Transitions of Care,Closed,2026-08-19,2023-10-15,7,2026
+GAP000248,MBR00092,MRP,Medication Reconciliation Post-Discharge,Closed,2026-11-29,2023-11-07,4,2026
+GAP000249,MBR00092,COA,Care for Older Adults - Medication Review,Closed,2026-09-01,2023-01-23,2,2026
+GAP000250,MBR00093,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-11-17,,4,2026
+GAP000251,MBR00093,COL,Colorectal Cancer Screening,Closed,2026-08-25,2023-09-13,8,2026
+GAP000252,MBR00093,TRC,Transitions of Care,Closed,2026-09-05,2024-07-11,1,2026
+GAP000253,MBR00093,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-07-08,2025-08-13,7,2026
+GAP000254,MBR00094,CBP,Controlling Blood Pressure,Closed,2026-12-04,2025-09-24,5,2026
+GAP000255,MBR00094,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-11-11,,4,2026
+GAP000256,MBR00094,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-10-14,2025-06-04,7,2026
+GAP000257,MBR00095,CBP,Controlling Blood Pressure,Open,2026-08-20,,5,2026
+GAP000258,MBR00095,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-27,,2,2026
+GAP000259,MBR00096,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-10-12,,1,2026
+GAP000260,MBR00096,COL,Colorectal Cancer Screening,Open,2026-09-29,,5,2026
+GAP000261,MBR00096,SPC,Statin Therapy for Patients with Cardiovascular Disease,Closed,2026-10-12,2026-02-22,7,2026
+GAP000262,MBR00096,TRC,Transitions of Care,Closed,2026-11-27,2025-02-22,1,2026
+GAP000263,MBR00096,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-11-21,2023-07-21,2,2026
+GAP000264,MBR00097,TRC,Transitions of Care,Closed,2026-09-10,2026-04-03,7,2026
+GAP000265,MBR00098,AWC,Annual Wellness Visit,Closed,2026-09-30,2025-08-01,1,2026
+GAP000266,MBR00099,AWC,Annual Wellness Visit,Closed,2026-11-28,2023-02-22,4,2026
+GAP000267,MBR00099,TRC,Transitions of Care,Open,2026-09-02,,0,2026
+GAP000268,MBR00099,MRP,Medication Reconciliation Post-Discharge,Open,2026-06-17,,5,2026
+GAP000269,MBR00099,COA,Care for Older Adults - Medication Review,Closed,2026-09-09,2024-12-05,6,2026
+GAP000270,MBR00100,TRC,Transitions of Care,Open,2026-06-22,,2,2026
+GAP000271,MBR00100,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-08-16,2023-11-25,4,2026
+GAP000272,MBR00101,CBP,Controlling Blood Pressure,Closed,2026-11-22,2024-10-21,7,2026
+GAP000273,MBR00102,AWC,Annual Wellness Visit,Open,2026-07-02,,2,2026
+GAP000274,MBR00102,TRC,Transitions of Care,Open,2026-08-07,,2,2026
+GAP000275,MBR00102,COA,Care for Older Adults - Medication Review,Closed,2026-11-20,2025-04-11,6,2026
+GAP000276,MBR00103,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-09-15,2024-02-19,5,2026
+GAP000277,MBR00103,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-09-30,,2,2026
+GAP000278,MBR00104,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-05,,2,2026
+GAP000279,MBR00105,TRC,Transitions of Care,Closed,2026-10-25,2023-12-31,7,2026
+GAP000280,MBR00105,MRP,Medication Reconciliation Post-Discharge,Open,2026-07-03,,0,2026
+GAP000281,MBR00106,COL,Colorectal Cancer Screening,Closed,2026-07-17,2024-11-27,6,2026
+GAP000282,MBR00106,AWC,Annual Wellness Visit,Closed,2026-07-06,2024-08-24,2,2026
+GAP000283,MBR00106,OMW,Osteoporosis Management in Women,Open,2026-06-20,,1,2026
+GAP000284,MBR00106,TRC,Transitions of Care,Closed,2026-08-19,2023-02-23,8,2026
+GAP000285,MBR00106,MRP,Medication Reconciliation Post-Discharge,Closed,2026-08-05,2024-05-17,4,2026
+GAP000286,MBR00106,COA,Care for Older Adults - Medication Review,Closed,2026-07-17,2023-01-26,5,2026
+GAP000287,MBR00107,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-11-13,,3,2026
+GAP000288,MBR00107,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-11-02,2024-01-29,7,2026
+GAP000289,MBR00108,TRC,Transitions of Care,Open,2026-09-20,,5,2026
+GAP000290,MBR00108,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-17,2024-06-19,6,2026
+GAP000291,MBR00109,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-08-09,,2,2026
+GAP000292,MBR00109,COL,Colorectal Cancer Screening,Open,2026-12-04,,1,2026
+GAP000293,MBR00109,AWC,Annual Wellness Visit,Closed,2026-12-06,2024-05-20,3,2026
+GAP000294,MBR00109,TRC,Transitions of Care,Closed,2026-10-17,2025-09-01,6,2026
+GAP000295,MBR00109,MRP,Medication Reconciliation Post-Discharge,Closed,2026-08-07,2024-12-14,4,2026
+GAP000296,MBR00109,COA,Care for Older Adults - Medication Review,Closed,2026-06-23,2025-07-31,8,2026
+GAP000297,MBR00110,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-07-23,,0,2026
+GAP000298,MBR00110,TRC,Transitions of Care,Closed,2026-06-24,2024-12-12,8,2026
+GAP000299,MBR00111,CBP,Controlling Blood Pressure,Closed,2026-06-26,2024-07-19,5,2026
+GAP000300,MBR00111,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-07-14,2025-03-22,4,2026
+GAP000301,MBR00112,CBP,Controlling Blood Pressure,Open,2026-12-05,,5,2026
+GAP000302,MBR00112,COL,Colorectal Cancer Screening,Open,2026-10-18,,3,2026
+GAP000303,MBR00112,AWC,Annual Wellness Visit,Open,2026-12-01,,4,2026
+GAP000304,MBR00112,OMW,Osteoporosis Management in Women,Open,2026-11-13,,0,2026
+GAP000305,MBR00112,MRP,Medication Reconciliation Post-Discharge,Open,2026-06-28,,4,2026
+GAP000306,MBR00112,COA,Care for Older Adults - Medication Review,Open,2026-07-21,,5,2026
+GAP000307,MBR00113,COL,Colorectal Cancer Screening,Closed,2026-07-25,2024-01-07,1,2026
+GAP000308,MBR00113,TRC,Transitions of Care,Open,2026-07-10,,2,2026
+GAP000309,MBR00113,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-11-03,2025-03-04,7,2026
+GAP000310,MBR00114,CBP,Controlling Blood Pressure,Open,2026-09-05,,1,2026
+GAP000311,MBR00114,TRC,Transitions of Care,Open,2026-09-28,,2,2026
+GAP000312,MBR00114,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-09-20,,1,2026
+GAP000313,MBR00115,AWC,Annual Wellness Visit,Closed,2026-11-19,2023-06-17,6,2026
+GAP000314,MBR00115,OMW,Osteoporosis Management in Women,Open,2026-08-14,,0,2026
+GAP000315,MBR00115,MRP,Medication Reconciliation Post-Discharge,Closed,2026-12-01,2025-02-03,2,2026
+GAP000316,MBR00115,COA,Care for Older Adults - Medication Review,Closed,2026-10-23,2023-01-26,1,2026
+GAP000317,MBR00116,AWC,Annual Wellness Visit,Open,2026-11-02,,4,2026
+GAP000318,MBR00116,OMW,Osteoporosis Management in Women,Open,2026-07-24,,1,2026
+GAP000319,MBR00116,TRC,Transitions of Care,Open,2026-10-25,,1,2026
+GAP000320,MBR00116,COA,Care for Older Adults - Medication Review,Closed,2026-07-19,2026-05-13,6,2026
+GAP000321,MBR00117,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-12-07,2023-12-30,3,2026
+GAP000322,MBR00117,TRC,Transitions of Care,Closed,2026-10-25,2023-09-04,5,2026
+GAP000323,MBR00118,TRC,Transitions of Care,Closed,2026-11-08,2025-11-27,3,2026
+GAP000324,MBR00119,COL,Colorectal Cancer Screening,Closed,2026-11-13,2024-11-21,8,2026
+GAP000325,MBR00119,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-10-02,,0,2026
+GAP000326,MBR00120,CBP,Controlling Blood Pressure,Open,2026-08-12,,2,2026
+GAP000327,MBR00120,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-10-13,2024-01-21,7,2026
+GAP000328,MBR00120,COL,Colorectal Cancer Screening,Open,2026-10-10,,5,2026
+GAP000329,MBR00121,CBP,Controlling Blood Pressure,Open,2026-11-26,,5,2026
+GAP000330,MBR00121,COL,Colorectal Cancer Screening,Open,2026-11-04,,5,2026
+GAP000331,MBR00121,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-10-27,,5,2026
+GAP000332,MBR00121,TRC,Transitions of Care,Open,2026-10-02,,1,2026
+GAP000333,MBR00121,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-21,2025-06-10,7,2026
+GAP000334,MBR00122,CBP,Controlling Blood Pressure,Open,2026-07-06,,2,2026
+GAP000335,MBR00122,COL,Colorectal Cancer Screening,Closed,2026-08-27,2025-10-16,5,2026
+GAP000336,MBR00122,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-06-20,,1,2026
+GAP000337,MBR00123,TRC,Transitions of Care,Closed,2026-11-03,2026-01-16,3,2026
+GAP000338,MBR00123,MRP,Medication Reconciliation Post-Discharge,Closed,2026-10-24,2023-02-27,1,2026
+GAP000339,MBR00124,COL,Colorectal Cancer Screening,Open,2026-10-25,,0,2026
+GAP000340,MBR00124,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-10-18,,4,2026
+GAP000341,MBR00125,COL,Colorectal Cancer Screening,Closed,2026-06-21,2024-03-15,2,2026
+GAP000342,MBR00125,AWC,Annual Wellness Visit,Open,2026-08-05,,5,2026
+GAP000343,MBR00125,OMW,Osteoporosis Management in Women,Closed,2026-10-14,2024-02-28,1,2026
+GAP000344,MBR00125,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-12-03,,0,2026
+GAP000345,MBR00125,MRP,Medication Reconciliation Post-Discharge,Open,2026-09-02,,1,2026
+GAP000346,MBR00126,AWC,Annual Wellness Visit,Closed,2026-06-21,2023-11-16,3,2026
+GAP000347,MBR00126,TRC,Transitions of Care,Closed,2026-08-15,2025-05-15,5,2026
+GAP000348,MBR00126,MRP,Medication Reconciliation Post-Discharge,Closed,2026-08-18,2025-04-18,1,2026
+GAP000349,MBR00126,COA,Care for Older Adults - Medication Review,Open,2026-08-20,,1,2026
+GAP000350,MBR00127,OMW,Osteoporosis Management in Women,Closed,2026-11-17,2025-03-20,1,2026
+GAP000351,MBR00127,TRC,Transitions of Care,Open,2026-11-26,,5,2026
+GAP000352,MBR00127,MRP,Medication Reconciliation Post-Discharge,Closed,2026-07-09,2023-11-22,8,2026
+GAP000353,MBR00127,COA,Care for Older Adults - Medication Review,Open,2026-07-22,,5,2026
+GAP000354,MBR00128,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-12-04,2025-03-26,5,2026
+GAP000355,MBR00128,TRC,Transitions of Care,Open,2026-11-02,,2,2026
+GAP000356,MBR00128,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-31,,0,2026
+GAP000357,MBR00129,COL,Colorectal Cancer Screening,Open,2026-07-12,,4,2026
+GAP000358,MBR00129,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-08-07,,0,2026
+GAP000359,MBR00130,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-06-27,2024-05-10,7,2026
+GAP000360,MBR00131,COL,Colorectal Cancer Screening,Open,2026-07-16,,3,2026
+GAP000361,MBR00131,TRC,Transitions of Care,Open,2026-10-16,,1,2026
+GAP000362,MBR00132,OMW,Osteoporosis Management in Women,Open,2026-07-19,,2,2026
+GAP000363,MBR00132,MRP,Medication Reconciliation Post-Discharge,Open,2026-10-06,,1,2026
+GAP000364,MBR00133,TRC,Transitions of Care,Open,2026-08-23,,4,2026
+GAP000365,MBR00133,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-29,,2,2026
+GAP000366,MBR00134,CBP,Controlling Blood Pressure,Open,2026-09-30,,0,2026
+GAP000367,MBR00134,TRC,Transitions of Care,Open,2026-07-21,,1,2026
+GAP000368,MBR00134,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-08,,5,2026
+GAP000369,MBR00135,CBP,Controlling Blood Pressure,Open,2026-06-14,,4,2026
+GAP000370,MBR00136,COL,Colorectal Cancer Screening,Open,2026-07-06,,5,2026
+GAP000371,MBR00136,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-11-01,,0,2026
+GAP000372,MBR00137,COL,Colorectal Cancer Screening,Open,2026-11-17,,0,2026
+GAP000373,MBR00137,TRC,Transitions of Care,Open,2026-11-23,,3,2026
+GAP000374,MBR00138,AWC,Annual Wellness Visit,Open,2026-11-14,,3,2026
+GAP000375,MBR00138,OMW,Osteoporosis Management in Women,Closed,2026-12-01,2025-10-01,5,2026
+GAP000376,MBR00138,TRC,Transitions of Care,Closed,2026-10-04,2025-09-08,3,2026
+GAP000377,MBR00138,MRP,Medication Reconciliation Post-Discharge,Closed,2026-08-06,2023-10-23,5,2026
+GAP000378,MBR00138,COA,Care for Older Adults - Medication Review,Open,2026-09-17,,2,2026
+GAP000379,MBR00139,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-08-25,,1,2026
+GAP000380,MBR00139,TRC,Transitions of Care,Open,2026-10-26,,1,2026
+GAP000381,MBR00140,COL,Colorectal Cancer Screening,Closed,2026-08-02,2025-04-11,7,2026
+GAP000382,MBR00140,OMW,Osteoporosis Management in Women,Open,2026-09-17,,3,2026
+GAP000383,MBR00140,TRC,Transitions of Care,Open,2026-09-20,,1,2026
+GAP000384,MBR00140,COA,Care for Older Adults - Medication Review,Open,2026-07-28,,4,2026
+GAP000385,MBR00141,CBP,Controlling Blood Pressure,Closed,2026-11-25,2025-01-14,8,2026
+GAP000386,MBR00141,COL,Colorectal Cancer Screening,Closed,2026-09-22,2025-02-06,5,2026
+GAP000387,MBR00141,TRC,Transitions of Care,Open,2026-07-07,,4,2026
+GAP000388,MBR00141,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-16,,3,2026
+GAP000389,MBR00142,COL,Colorectal Cancer Screening,Open,2026-10-29,,1,2026
+GAP000390,MBR00142,AWC,Annual Wellness Visit,Closed,2026-09-28,2024-01-05,8,2026
+GAP000391,MBR00142,TRC,Transitions of Care,Open,2026-11-02,,5,2026
+GAP000392,MBR00142,MRP,Medication Reconciliation Post-Discharge,Closed,2026-12-01,2026-02-27,3,2026
+GAP000393,MBR00143,TRC,Transitions of Care,Closed,2026-07-30,2023-11-05,7,2026
+GAP000394,MBR00143,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-13,,3,2026
+GAP000395,MBR00144,CBP,Controlling Blood Pressure,Closed,2026-11-13,2025-12-22,1,2026
+GAP000396,MBR00144,TRC,Transitions of Care,Closed,2026-07-01,2023-02-13,1,2026
+GAP000397,MBR00145,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-09-09,,1,2026
+GAP000398,MBR00147,CBP,Controlling Blood Pressure,Open,2026-11-16,,2,2026
+GAP000399,MBR00147,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-10-09,2024-11-24,3,2026
+GAP000400,MBR00147,COL,Colorectal Cancer Screening,Open,2026-10-31,,1,2026
+GAP000401,MBR00147,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-10-24,,4,2026
+GAP000402,MBR00148,COL,Colorectal Cancer Screening,Closed,2026-11-17,2025-08-19,5,2026
+GAP000403,MBR00148,AWC,Annual Wellness Visit,Closed,2026-07-09,2023-10-28,8,2026
+GAP000404,MBR00148,OMW,Osteoporosis Management in Women,Open,2026-09-15,,3,2026
+GAP000405,MBR00148,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-06-15,,4,2026
+GAP000406,MBR00148,TRC,Transitions of Care,Closed,2026-09-30,2026-04-12,3,2026
+GAP000407,MBR00148,MRP,Medication Reconciliation Post-Discharge,Open,2026-10-13,,5,2026
+GAP000408,MBR00148,COA,Care for Older Adults - Medication Review,Closed,2026-07-01,2025-01-27,2,2026
+GAP000409,MBR00149,CBP,Controlling Blood Pressure,Closed,2026-11-30,2025-03-17,3,2026
+GAP000410,MBR00149,TRC,Transitions of Care,Closed,2026-11-28,2024-02-08,6,2026
+GAP000411,MBR00149,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-07-01,2024-12-27,8,2026
+GAP000412,MBR00150,CBP,Controlling Blood Pressure,Closed,2026-09-24,2023-12-13,6,2026
+GAP000413,MBR00150,TRC,Transitions of Care,Open,2026-10-21,,0,2026
+GAP000414,MBR00150,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-06-23,2024-05-04,5,2026
+GAP000415,MBR00151,COL,Colorectal Cancer Screening,Closed,2026-09-04,2023-03-24,5,2026
+GAP000416,MBR00151,TRC,Transitions of Care,Open,2026-10-29,,0,2026
+GAP000417,MBR00151,MRP,Medication Reconciliation Post-Discharge,Closed,2026-11-16,2023-01-22,1,2026
+GAP000418,MBR00151,COA,Care for Older Adults - Medication Review,Open,2026-10-08,,3,2026
+GAP000419,MBR00152,AWC,Annual Wellness Visit,Closed,2026-08-18,2025-02-07,6,2026
+GAP000420,MBR00152,OMW,Osteoporosis Management in Women,Open,2026-09-26,,3,2026
+GAP000421,MBR00152,MRP,Medication Reconciliation Post-Discharge,Open,2026-08-15,,4,2026
+GAP000422,MBR00152,COA,Care for Older Adults - Medication Review,Open,2026-07-01,,3,2026
+GAP000423,MBR00153,OMW,Osteoporosis Management in Women,Closed,2026-08-30,2025-11-08,2,2026
+GAP000424,MBR00153,TRC,Transitions of Care,Open,2026-07-07,,1,2026
+GAP000425,MBR00153,MRP,Medication Reconciliation Post-Discharge,Open,2026-07-19,,4,2026
+GAP000426,MBR00155,COL,Colorectal Cancer Screening,Open,2026-09-05,,4,2026
+GAP000427,MBR00155,TRC,Transitions of Care,Closed,2026-10-05,2024-11-08,2,2026
+GAP000428,MBR00155,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-15,,1,2026
+GAP000429,MBR00156,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-07-03,2023-01-08,7,2026
+GAP000430,MBR00157,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-06-30,,3,2026
+GAP000431,MBR00157,COL,Colorectal Cancer Screening,Open,2026-10-09,,1,2026
+GAP000432,MBR00157,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-10-08,2024-08-12,1,2026
+GAP000433,MBR00158,COL,Colorectal Cancer Screening,Open,2026-06-30,,1,2026
+GAP000434,MBR00158,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-11-04,2024-01-23,2,2026
+GAP000435,MBR00159,TRC,Transitions of Care,Open,2026-08-31,,1,2026
+GAP000436,MBR00159,MRP,Medication Reconciliation Post-Discharge,Closed,2026-11-08,2024-08-30,7,2026
+GAP000437,MBR00159,COA,Care for Older Adults - Medication Review,Open,2026-09-27,,2,2026
+GAP000438,MBR00160,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-12-01,2024-05-30,5,2026
+GAP000439,MBR00161,AWC,Annual Wellness Visit,Open,2026-09-06,,5,2026
+GAP000440,MBR00161,OMW,Osteoporosis Management in Women,Closed,2026-09-28,2023-06-13,8,2026
+GAP000441,MBR00161,TRC,Transitions of Care,Closed,2026-07-02,2024-10-14,6,2026
+GAP000442,MBR00161,MRP,Medication Reconciliation Post-Discharge,Closed,2026-06-26,2026-03-11,5,2026
+GAP000443,MBR00162,COL,Colorectal Cancer Screening,Open,2026-10-10,,2,2026
+GAP000444,MBR00162,AWC,Annual Wellness Visit,Closed,2026-08-29,2026-01-23,4,2026
+GAP000445,MBR00162,TRC,Transitions of Care,Open,2026-12-03,,2,2026
+GAP000446,MBR00162,MRP,Medication Reconciliation Post-Discharge,Closed,2026-09-01,2025-04-05,8,2026
+GAP000447,MBR00163,CBP,Controlling Blood Pressure,Open,2026-09-16,,3,2026
+GAP000448,MBR00163,MRP,Medication Reconciliation Post-Discharge,Closed,2026-07-18,2025-03-29,6,2026
+GAP000449,MBR00163,COA,Care for Older Adults - Medication Review,Closed,2026-11-26,2023-12-20,3,2026
+GAP000450,MBR00164,TRC,Transitions of Care,Open,2026-07-04,,0,2026
+GAP000451,MBR00164,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-09-04,,1,2026
+GAP000452,MBR00165,AWC,Annual Wellness Visit,Open,2026-08-26,,4,2026
+GAP000453,MBR00165,TRC,Transitions of Care,Open,2026-11-12,,5,2026
+GAP000454,MBR00165,MRP,Medication Reconciliation Post-Discharge,Open,2026-07-20,,3,2026
+GAP000455,MBR00166,COL,Colorectal Cancer Screening,Closed,2026-06-27,2024-10-24,8,2026
+GAP000456,MBR00166,AWC,Annual Wellness Visit,Open,2026-10-20,,3,2026
+GAP000457,MBR00166,TRC,Transitions of Care,Open,2026-08-27,,5,2026
+GAP000458,MBR00166,MRP,Medication Reconciliation Post-Discharge,Closed,2026-12-02,2025-05-28,2,2026
+GAP000459,MBR00166,COA,Care for Older Adults - Medication Review,Open,2026-09-05,,5,2026
+GAP000460,MBR00167,TRC,Transitions of Care,Closed,2026-07-12,2025-01-26,8,2026
+GAP000461,MBR00167,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-09-24,,1,2026
+GAP000462,MBR00168,COL,Colorectal Cancer Screening,Open,2026-08-08,,2,2026
+GAP000463,MBR00168,SPC,Statin Therapy for Patients with Cardiovascular Disease,Closed,2026-10-09,2024-07-28,6,2026
+GAP000464,MBR00168,TRC,Transitions of Care,Open,2026-07-29,,1,2026
+GAP000465,MBR00169,COL,Colorectal Cancer Screening,Closed,2026-11-08,2026-06-02,4,2026
+GAP000466,MBR00169,TRC,Transitions of Care,Closed,2026-06-14,2024-10-03,2,2026
+GAP000467,MBR00169,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-08-31,,0,2026
+GAP000468,MBR00170,COL,Colorectal Cancer Screening,Open,2026-08-17,,0,2026
+GAP000469,MBR00170,AWC,Annual Wellness Visit,Closed,2026-08-19,2023-10-21,6,2026
+GAP000470,MBR00170,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-11-19,,0,2026
+GAP000471,MBR00170,TRC,Transitions of Care,Closed,2026-10-11,2026-02-24,3,2026
+GAP000472,MBR00171,COL,Colorectal Cancer Screening,Open,2026-10-25,,1,2026
+GAP000473,MBR00171,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-11-09,2026-05-24,2,2026
+GAP000474,MBR00172,COL,Colorectal Cancer Screening,Open,2026-07-29,,4,2026
+GAP000475,MBR00172,TRC,Transitions of Care,Closed,2026-09-26,2023-01-23,5,2026
+GAP000476,MBR00172,MRP,Medication Reconciliation Post-Discharge,Open,2026-06-16,,0,2026
+GAP000477,MBR00172,COA,Care for Older Adults - Medication Review,Closed,2026-06-30,2025-01-24,8,2026
+GAP000478,MBR00173,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-20,,4,2026
+GAP000479,MBR00174,CBP,Controlling Blood Pressure,Open,2026-08-19,,3,2026
+GAP000480,MBR00174,COL,Colorectal Cancer Screening,Closed,2026-10-04,2024-08-06,3,2026
+GAP000481,MBR00174,TRC,Transitions of Care,Open,2026-06-14,,0,2026
+GAP000482,MBR00174,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-10-10,,2,2026
+GAP000483,MBR00175,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-09-14,2026-01-31,1,2026
+GAP000484,MBR00175,COL,Colorectal Cancer Screening,Closed,2026-09-19,2023-12-31,6,2026
+GAP000485,MBR00175,SPC,Statin Therapy for Patients with Cardiovascular Disease,Closed,2026-11-21,2024-08-02,6,2026
+GAP000486,MBR00175,TRC,Transitions of Care,Closed,2026-10-18,2023-04-25,3,2026
+GAP000487,MBR00175,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-07-15,2023-11-07,2,2026
+GAP000488,MBR00176,AWC,Annual Wellness Visit,Closed,2026-08-09,2023-07-08,6,2026
+GAP000489,MBR00176,MRP,Medication Reconciliation Post-Discharge,Open,2026-06-27,,3,2026
+GAP000490,MBR00176,COA,Care for Older Adults - Medication Review,Open,2026-09-24,,5,2026
+GAP000491,MBR00177,TRC,Transitions of Care,Open,2026-07-02,,1,2026
+GAP000492,MBR00177,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-08-15,,1,2026
+GAP000493,MBR00178,CBP,Controlling Blood Pressure,Closed,2026-10-30,2023-02-19,1,2026
+GAP000494,MBR00178,TRC,Transitions of Care,Closed,2026-10-10,2023-03-28,1,2026
+GAP000495,MBR00178,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-07-19,,1,2026
+GAP000496,MBR00179,COL,Colorectal Cancer Screening,Open,2026-11-19,,5,2026
+GAP000497,MBR00179,TRC,Transitions of Care,Open,2026-08-23,,3,2026
+GAP000498,MBR00179,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-24,2026-01-31,2,2026
+GAP000499,MBR00180,AWC,Annual Wellness Visit,Closed,2026-08-02,2024-04-15,8,2026
+GAP000500,MBR00180,OMW,Osteoporosis Management in Women,Closed,2026-11-05,2025-01-23,3,2026
+GAP000501,MBR00180,TRC,Transitions of Care,Open,2026-06-11,,5,2026
+GAP000502,MBR00180,COA,Care for Older Adults - Medication Review,Closed,2026-10-18,2025-03-06,3,2026
+GAP000503,MBR00181,OMW,Osteoporosis Management in Women,Open,2026-08-15,,3,2026
+GAP000504,MBR00181,TRC,Transitions of Care,Open,2026-06-17,,3,2026
+GAP000505,MBR00181,MRP,Medication Reconciliation Post-Discharge,Closed,2026-10-19,2025-04-10,4,2026
+GAP000506,MBR00181,COA,Care for Older Adults - Medication Review,Open,2026-07-07,,5,2026
+GAP000507,MBR00182,TRC,Transitions of Care,Closed,2026-08-25,2024-03-14,5,2026
+GAP000508,MBR00182,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-17,,1,2026
+GAP000509,MBR00183,CBP,Controlling Blood Pressure,Closed,2026-08-13,2024-03-20,1,2026
+GAP000510,MBR00183,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-07-26,,2,2026
+GAP000511,MBR00183,TRC,Transitions of Care,Closed,2026-09-17,2024-11-01,8,2026
+GAP000512,MBR00184,TRC,Transitions of Care,Open,2026-10-13,,3,2026
+GAP000513,MBR00184,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-27,,1,2026
+GAP000514,MBR00185,CBP,Controlling Blood Pressure,Open,2026-06-10,,0,2026
+GAP000515,MBR00185,COL,Colorectal Cancer Screening,Closed,2026-08-19,2023-01-01,5,2026
+GAP000516,MBR00185,AWC,Annual Wellness Visit,Closed,2026-07-20,2023-07-19,1,2026
+GAP000517,MBR00185,TRC,Transitions of Care,Closed,2026-09-26,2025-02-02,2,2026
+GAP000518,MBR00185,MRP,Medication Reconciliation Post-Discharge,Closed,2026-08-25,2023-03-13,2,2026
+GAP000519,MBR00185,COA,Care for Older Adults - Medication Review,Open,2026-08-01,,0,2026
+GAP000520,MBR00186,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-10-09,,1,2026
+GAP000521,MBR00187,TRC,Transitions of Care,Open,2026-08-09,,3,2026
+GAP000522,MBR00188,CBP,Controlling Blood Pressure,Closed,2026-08-18,2023-02-16,8,2026
+GAP000523,MBR00188,COL,Colorectal Cancer Screening,Closed,2026-08-04,2023-05-14,7,2026
+GAP000524,MBR00188,AWC,Annual Wellness Visit,Open,2026-10-15,,3,2026
+GAP000525,MBR00188,SPC,Statin Therapy for Patients with Cardiovascular Disease,Closed,2026-11-04,2023-04-01,2,2026
+GAP000526,MBR00189,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-28,,2,2026
+GAP000527,MBR00190,TRC,Transitions of Care,Closed,2026-06-10,2023-04-01,7,2026
+GAP000528,MBR00190,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-08-08,2023-04-07,5,2026
+GAP000529,MBR00191,COL,Colorectal Cancer Screening,Closed,2026-10-04,2025-08-25,3,2026
+GAP000530,MBR00191,TRC,Transitions of Care,Closed,2026-10-29,2026-01-12,3,2026
+GAP000531,MBR00191,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-22,2023-12-23,7,2026
+GAP000532,MBR00192,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-08-23,2023-10-30,8,2026
+GAP000533,MBR00192,TRC,Transitions of Care,Open,2026-09-28,,0,2026
+GAP000534,MBR00192,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-03,2025-01-04,8,2026
+GAP000535,MBR00193,CBP,Controlling Blood Pressure,Open,2026-12-01,,1,2026
+GAP000536,MBR00193,TRC,Transitions of Care,Closed,2026-11-17,2023-10-25,6,2026
+GAP000537,MBR00193,MRP,Medication Reconciliation Post-Discharge,Closed,2026-07-20,2026-03-20,3,2026
+GAP000538,MBR00194,TRC,Transitions of Care,Closed,2026-07-08,2025-10-23,1,2026
+GAP000539,MBR00194,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-08-14,2026-02-01,3,2026
+GAP000540,MBR00195,COL,Colorectal Cancer Screening,Closed,2026-10-13,2023-08-28,6,2026
+GAP000541,MBR00196,COL,Colorectal Cancer Screening,Open,2026-11-25,,3,2026
+GAP000542,MBR00196,SPC,Statin Therapy for Patients with Cardiovascular Disease,Open,2026-09-22,,5,2026
+GAP000543,MBR00196,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-10-04,2023-11-15,4,2026
+GAP000544,MBR00198,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Closed,2026-12-04,2024-09-19,4,2026
+GAP000545,MBR00198,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-11-20,,0,2026
+GAP000546,MBR00199,COL,Colorectal Cancer Screening,Open,2026-08-24,,0,2026
+GAP000547,MBR00199,TRC,Transitions of Care,Closed,2026-12-01,2023-05-27,2,2026
+GAP000548,MBR00199,FUH,Follow-Up After Hospitalization for Mental Illness,Closed,2026-09-26,2025-01-02,7,2026
+GAP000549,MBR00200,CBP,Controlling Blood Pressure,Closed,2026-09-05,2025-03-05,6,2026
+GAP000550,MBR00200,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Open,2026-11-07,,3,2026
+GAP000551,MBR00200,TRC,Transitions of Care,Closed,2026-11-30,2025-10-03,1,2026
+GAP000552,MBR00200,FUH,Follow-Up After Hospitalization for Mental Illness,Open,2026-08-14,,5,2026

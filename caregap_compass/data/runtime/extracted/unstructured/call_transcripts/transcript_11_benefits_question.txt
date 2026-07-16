@@ -1,0 +1,25 @@
+CALL TRANSCRIPT
+Date: 2026-06-10
+Member ID: MBR00136
+Scenario: Benefits and Coverage Question
+Duration: 5 minutes
+---
+
+AGENT: Thank you for calling. How can I help you today?
+
+MEMBER: I want to know if a procedure is covered. My doctor is recommending a Office Visit - Established, Level 4 - CPT code 99214.
+
+AGENT: Let me look that up for your plan. Procedure 99214 - Office Visit - Established, Level 4 - is covered under your current plan.
+
+MEMBER: Do I need prior authorization first?
+
+AGENT: No prior authorization is needed. You can schedule directly with your provider.
+
+MEMBER: What will my out-of-pocket cost be?
+
+AGENT: Based on your plan, your cost share is approximately 20% after your deductible.
+
+MEMBER: Great, thank you.
+
+[Call ended - Benefits question resolved. No escalation needed.]
+CSR NOTES: Member asked about coverage for CPT 99214. No PA needed. Cost share explained. Member satisfied.

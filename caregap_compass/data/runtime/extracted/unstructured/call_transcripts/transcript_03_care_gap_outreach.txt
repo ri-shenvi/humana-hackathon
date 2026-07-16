@@ -1,0 +1,28 @@
+CALL TRANSCRIPT
+Date: 2026-06-10
+Member ID: MBR00150
+Gap ID: GAP000413
+Scenario: Outbound Care Gap Outreach
+Duration: 7 minutes
+---
+
+AGENT: Hello, may I speak with the member?
+
+MEMBER: Speaking.
+
+AGENT: Hi, this is Alex calling from your health plan. Our records show you may be due for Transitions of Care. This is an important preventive service covered under your plan.
+
+MEMBER: I think I already had that done. My doctor did something like that at my last visit.
+
+AGENT: I'm glad to hear that. Our system doesn't show a completed record yet. Do you remember when that was and which provider?
+
+MEMBER: Maybe two months ago? With Dr. Johnson downtown.
+
+AGENT: That's very helpful. It's possible the results haven't reached us yet. I'll flag this for our care coordination team to follow up directly with the provider's office.
+
+MEMBER: Do I need to do anything?
+
+AGENT: Not right now. We'll reach out to the provider. If we can't confirm within 30 days, we may follow up with you again. Is this still the best number to reach you?
+
+[Call ended - Member claims completion, unverified. Care coordination flagged. Gap remains open pending provider confirmation.]
+CSR NOTES: Member MBR00150 claims Transitions of Care completed ~2 months ago with Dr. Johnson. Cannot verify. Care coordination notified. Gap status: Open - pending verification.

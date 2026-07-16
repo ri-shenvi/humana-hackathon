@@ -1,0 +1,75 @@
+Change Log: Infrastructure Updates
+Source Repository: https://github.com/siri2421/demand-promo-agent
+
+# Summary of Changes
+
+This update streamlines the deployment process by removing unnecessary Vertex AI modules, refining resource dependencies for local environment generation, and removing initial API security constraints for improved connectivity.
+
+1. Resource Deletion: Vertex AI Deployment & UI Wait States
+Removed the `vertex_deploy` module and its associated `time_sleep` resource from `main.tf`. These components handled agent source pathing and deployment signaling which are no longer required in the current architecture.
+
+Removed: module "vertex_deploy"
+
+Removed: resource "time_sleep" "wait_for_engine"
+
+module "vertex_deploy" {
+  source = "./modules/vertex_deploy"
+
+  project_id = var.project_id
+  region     = var.region
+  
+  # Point to your folder structure
+  agent_source_path = "promo_agent/multi_agent"
+
+  # ---------------------------------------------------------
+  # DEPENDENCY CHAINING
+  # We use the ID of the env-generation resource to force order
+  # ---------------------------------------------------------
+  dependency_signal = null_resource.generate_agent_env.id
+}
+
+### UI ####
+# 1. Wait for deployment to finish
+resource "time_sleep" "wait_for_engine" {
+  create_duration = "30s"
+  depends_on      = [module.vertex_deploy]
+}
+
+2. Dependency Refinement: ADK-Web Environment Generation
+Updated the `depends_on` block within the `null_resource` responsible for writing the .env file to the adk-web VM instance. The module.storage_setup dependency was removed to expedite the configuration of the local environment.
+
+Updated Logic in main.tf:
+
+Terraform
+
+# Before
+depends_on = [
+    module.weather_mcp_server,
+    module.maps_setup,
+    module.security,
+    module.storage_setup,
+  ]
+
+# Revised dependency list
+depends_on = [
+    module.weather_mcp_server,
+    module.maps_setup,
+    module.security
+]
+
+3. Security Configuration: Google Maps API Restrictions
+Modified the Google Maps module configuration to remove strict browser-based application restrictions. This change eliminates the allowed_referrers requirement to ensure broader initial accessibility during the integration phase.
+
+File affected: modules/maps/main.tf
+
+Change: Excised the browser_key_restrictions block to allow unrestricted referrer access (formerly set to ["*"]).
+
+Removed the following codes.
+
+browser_key_restrictions {
+      allowed_referrers = ["*"] # TODO: Lock this down to your specific domain
+    }
+
+
+
+

@@ -1,0 +1,28 @@
+CALL TRANSCRIPT
+Date: 2026-06-10
+Member ID: MBR00183
+Claim ID: CLM000806
+Scenario: Denied Claim Inquiry
+Duration: 12 minutes
+---
+
+AGENT: Thank you for calling, my name is Jessica. How can I help you today?
+
+MEMBER: Hi, I got a letter saying my claim was denied. The claim number is CLM000806.
+
+AGENT: I'm sorry to hear that. Let me pull that up. Can I verify your date of birth?
+
+MEMBER: Sure, it's [date verified].
+
+AGENT: Thank you. I see claim CLM000806 for service on 2026-01-06, procedure 99091 - Remote Patient Monitoring - Data Analysis. The denial reason is CO-109: Claim not covered by this payer — coordination of benefits.
+
+MEMBER: What does that mean? Can it be fixed?
+
+AGENT: Yes, this denial is correctable. The provider would need to resubmit with corrected information. Typically this takes 30 to 60 days to reprocess.
+
+MEMBER: That's really frustrating. Nobody told me this could happen.
+
+AGENT: I completely understand. Resubmission guidance provided. Escalated to claims review team.
+
+[Call ended]
+CSR NOTES: Member called re denied claim CLM000806. Code CO-109. Resubmission guidance provided. Escalated to claims review team.

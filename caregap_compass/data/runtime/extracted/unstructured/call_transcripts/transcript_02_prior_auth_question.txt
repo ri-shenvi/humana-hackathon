@@ -1,0 +1,29 @@
+CALL TRANSCRIPT
+Date: 2026-06-10
+Member ID: MBR00084
+Scenario: Provider Calling About Prior Authorization
+Duration: 7 minutes
+---
+
+AGENT: Provider services, this is Marcus. How can I help?
+
+PROVIDER REP: Hi, this is calling from Dr. Williams' office. We have a patient, member ID MBR00084, and we need to verify prior auth requirements for CPT 27447.
+
+AGENT: Of course. Let me pull up that member and procedure. Yes, CPT 27447 - Total Knee Arthroplasty - does require prior authorization for this member's plan.
+
+PROVIDER REP: Okay. What clinical information do you need for the PA submission?
+
+AGENT: For this procedure, we typically need the clinical notes documenting medical necessity, the referring provider's NPI, and the anticipated service date. You can submit via our provider portal at providerportal.humana.com or fax to our PA department.
+
+PROVIDER REP: And what's the typical turnaround?
+
+AGENT: Standard review is 3 to 5 business days. If the patient's condition is urgent, you can request an expedited review and we'll respond within 72 hours.
+
+PROVIDER REP: Got it. And if we proceed without the PA - what happens to the claim?
+
+AGENT: The claim would likely be denied under code CO-97 or CO-50 for no prior authorization on file. That denial would be the provider's financial responsibility unless there were extenuating circumstances.
+
+PROVIDER REP: Understood. We'll submit the PA today.
+
+[Call ended - PA requirements explained. Provider to submit via portal.]
+CSR NOTES: Provider called re PA for member MBR00084, CPT 27447. PA required. Clinical criteria and submission options explained. Provider acknowledged.

@@ -1,0 +1,28 @@
+intervention_id,measure_id,intervention_year,intervention_type,primary_channel,members_targeted,members_closed,closure_rate_pct,cost_per_closure_usd,total_cost_est_usd,notes
+INTV0001,CBP,2024,Outbound Call Campaign,Call Center,180,61,34.2,42.0,2562.0,Targeted members with last BP reading >140/90. Bilingual reps for Spanish speakers improved reach by 12%.
+INTV0002,CBP,2024,Pharmacy Partner Alert,Pharmacy,95,27,28.5,18.0,486.0,Partnered with retail pharmacy to flag members due for BP check at point of prescription pickup.
+INTV0003,CBP,2025,IVR Automated Reminder,IVR,220,42,19.1,8.5,357.0,Automated IVR reminder for members with BP gap. Low closure rate but low cost — best used as first touch.
+INTV0004,CBP,2025,PCP Panel Engagement,Provider,140,58,41.7,55.0,3190.0,Engaged PCPs with lists of non-compliant patients. Highest closure rate of any CBP intervention.
+INTV0005,CDC-H,2024,Diabetes Nurse Outreach,Call Center,88,33,38.6,67.0,2211.0,Specialized diabetes nurses called members. HbA1c order rate significantly higher than general CSR outreach.
+INTV0006,CDC-H,2024,Mail + FIT Kit,Mail,120,13,11.2,22.0,286.0,Mailed HbA1c lab order instructions. Low response but reached members unreachable by phone.
+INTV0007,CDC-H,2025,SMS Reminder with Lab Locator,SMS,165,40,24.4,12.0,480.0,Texted members a link to nearest in-network lab. 24% scheduled within 2 weeks.
+INTV0008,CDC-H,2025,PCP Panel Engagement,Provider,75,33,44.0,60.0,1980.0,Highest closure rate. Providers ordered HbA1c during existing visits when alerted.
+INTV0009,COL,2024,FIT Kit Mail Distribution,Mail,310,68,22.1,15.0,1020.0,Mailed FIT kits with prepaid return envelope. Return rate lower than expected — follow-up call improved by 8%.
+INTV0010,COL,2024,Colonoscopy Scheduling Assist,Call Center,95,48,51.3,88.0,4224.0,Agents scheduled colonoscopy appointments directly. Highest closure rate but resource-intensive.
+INTV0011,COL,2025,Digital Self-Service Portal,Web,185,34,18.7,6.0,204.0,Members could self-order FIT kit via portal. Low closure but very low cost — good for low-risk members.
+INTV0012,COL,2025,IVR + Mail Combination,IVR+Mail,200,59,29.5,19.0,1121.0,IVR outreach followed by FIT kit mailing for interested members. Combination improved over either channel alone.
+INTV0013,AWC,2024,Birthday Month Outreach,Call Center,240,90,37.8,38.0,3420.0,Targeted members in birth month with AWV reminder. Timing correlation improved scheduling intent.
+INTV0014,AWC,2024,SMS Campaign,SMS,300,63,21.3,9.0,567.0,"Simple SMS with AWV scheduling link. Good volume, moderate closure."
+INTV0015,AWC,2025,PCP Panel + Portal Scheduling,Provider+Web,175,84,48.2,44.0,3696.0,Combined PCP alert with member portal scheduling option. Best AWC result in 2 years.
+INTV0016,SPC,2024,Pharmacy Statin Gaps,Pharmacy,65,40,62.1,28.0,1120.0,Pharmacists identified members with ASCVD who had no statin fills. High closure rate — targeted population.
+INTV0017,SPC,2025,PCP Statin Prescribing Alert,Provider,58,33,58.6,35.0,1155.0,Alerted PCPs to members with ASCVD and no active statin prescription. Very high closure.
+INTV0018,TRC,2024,Discharge Follow-Up Call,Call Center,130,57,44.6,52.0,2964.0,Called members within 48 hours of discharge to schedule follow-up. Strong FCR but timing-sensitive.
+INTV0019,TRC,2025,Automated Discharge Alert,IVR,155,44,29.0,14.0,616.0,Automated call at 24h post-discharge. Lower closure than live agent but scalable.
+INTV0020,MRP,2024,Pharmacist Outreach,Pharmacy,80,44,55.0,42.0,1848.0,Clinical pharmacists contacted members post-discharge for medication reconciliation. High quality outcomes.
+INTV0021,MRP,2025,PCP Reconciliation Reminder,Provider,70,42,60.0,48.0,2016.0,Reminded PCPs to document medication reconciliation at post-discharge visit. Best MRP performance to date.
+INTV0022,FUH,2024,Behavioral Health Navigation,Call Center,45,18,40.0,95.0,1710.0,Specialized BH navigators called members post-psychiatric discharge. High cost but critical population.
+INTV0023,FUH,2025,Peer Support Outreach,Community,38,18,47.4,78.0,1404.0,Peer support specialists contacted members. Highest FUH closure — relationship-based model.
+INTV0024,OMW,2024,Fracture Follow-Up Provider Alert,Provider,42,16,38.1,55.0,880.0,Alerted orthopedic and PCP providers when patient had fracture ICD-10 code — prompted BMD order or bisphosphonate prescription.
+INTV0025,OMW,2025,Mail + Pharmacy Partnership,Mail+Pharmacy,35,15,45.7,48.0,720.0,Mailed member education on osteoporosis after fracture. Pharmacy flagged refill opportunities for bone resorption inhibitors.
+INTV0026,COA,2024,SNP Medication Review Campaign,Call Center,110,57,52.7,72.0,4104.0,SNP care managers called members due for annual medication review. Highest COA closure rate — specialized staff improved documentation rates.
+INTV0027,COA,2025,PCP Medication List Alert,Provider,95,58,61.1,65.0,3770.0,Alerted SNP PCPs to complete medication review with updated medication list at annual visit. Documentation compliance improved significantly.

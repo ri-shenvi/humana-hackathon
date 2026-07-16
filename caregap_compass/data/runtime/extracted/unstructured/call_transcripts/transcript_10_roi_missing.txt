@@ -1,0 +1,27 @@
+CALL TRANSCRIPT
+Date: 2026-06-10
+Member ID: MBR00087
+Scenario: Caller Without ROI Authorization on File
+Duration: 3 minutes
+---
+
+AGENT: Thank you for calling. How can I assist you?
+
+CALLER: Hi, I'm calling on behalf of my mother. Her member ID is MBR00087.
+
+AGENT: I'd be happy to help. Can I get your name and relationship to the member?
+
+CALLER: I'm her son, David. She asked me to call about her recent claim.
+
+AGENT: For the protection of our members, I need to verify you're authorized on her account. Let me check our records... I'm not showing a Release of Information authorization on file for you.
+
+CALLER: She's right here with me - can't she just say it's okay?
+
+AGENT: I'm sorry, verbal consent isn't sufficient under our compliance guidelines. We'd need a signed ROI form. I can mail the form to the address on file or direct you to our member portal to complete it digitally.
+
+CALLER: She's 78 and doesn't use the internet. This is ridiculous.
+
+AGENT: I understand the frustration. I can mail the form today, or if your mother calls us directly we can take action based on her verbal authorization as the member herself. I'm not able to share account details with you until the authorization is on file.
+
+[Call ended - ROI form mailed. No account information disclosed.]
+CSR NOTES: Caller identified as son of member MBR00087. No ROI on file. Mailed form. No PHI disclosed. Follow-up required once ROI received.

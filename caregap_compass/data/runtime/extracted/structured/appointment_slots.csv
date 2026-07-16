@@ -1,0 +1,179 @@
+slot_id,provider_id,provider_name,specialty,network_status,slot_date,slot_time,visit_type,duration_min,telehealth,address,city,state,zip,lat,lon,phone,available
+SLOT00001,PRV0001,"Dr. Fowler, Angel",Geriatrics,In-Network,2026-06-29,11:00 AM,Follow-Up,20,False,33890 Jennifer Squares,Robinsonshire,KY,01352,27.560615,-83.439374,001-626-254-2351x16155,True
+SLOT00002,PRV0001,"Dr. Fowler, Angel",Geriatrics,In-Network,2026-06-14,4:30 PM,Follow-Up,60,False,33890 Jennifer Squares,Robinsonshire,KY,01352,27.560615,-83.439374,001-626-254-2351x16155,True
+SLOT00003,PRV0001,"Dr. Fowler, Angel",Geriatrics,In-Network,2026-07-03,11:00 AM,Annual Wellness Visit,30,True,33890 Jennifer Squares,Robinsonshire,KY,01352,27.560615,-83.439374,001-626-254-2351x16155,True
+SLOT00004,PRV0001,"Dr. Fowler, Angel",Geriatrics,In-Network,2026-06-29,1:00 PM,Follow-Up,15,True,33890 Jennifer Squares,Robinsonshire,KY,01352,27.560615,-83.439374,001-626-254-2351x16155,True
+SLOT00005,PRV0001,"Dr. Fowler, Angel",Geriatrics,In-Network,2026-06-16,1:30 PM,Annual Wellness Visit,45,False,33890 Jennifer Squares,Robinsonshire,KY,01352,27.560615,-83.439374,001-626-254-2351x16155,True
+SLOT00006,PRV0003,"Dr. Johnson, Leslie",Internal Medicine,In-Network,2026-07-08,10:30 AM,New Patient,30,False,38849 Hurst Locks Suite 328,Daviston,VI,14872,25.685336,-110.630825,(626)291-6697,True
+SLOT00007,PRV0003,"Dr. Johnson, Leslie",Internal Medicine,In-Network,2026-06-28,4:00 PM,New Patient,30,False,38849 Hurst Locks Suite 328,Daviston,VI,14872,25.685336,-110.630825,(626)291-6697,True
+SLOT00008,PRV0003,"Dr. Johnson, Leslie",Internal Medicine,In-Network,2026-06-20,11:00 AM,New Patient,45,True,38849 Hurst Locks Suite 328,Daviston,VI,14872,25.685336,-110.630825,(626)291-6697,True
+SLOT00009,PRV0004,"Dr. Wilson, Nicole",Nephrology,In-Network,2026-07-08,4:30 PM,Follow-Up,20,True,148 Eric Track,New Stephanie,NC,00575,29.573266,-88.206009,+1-357-901-5430x391,True
+SLOT00010,PRV0004,"Dr. Wilson, Nicole",Nephrology,In-Network,2026-06-13,3:30 PM,Follow-Up,60,True,148 Eric Track,New Stephanie,NC,00575,29.573266,-88.206009,+1-357-901-5430x391,True
+SLOT00011,PRV0004,"Dr. Wilson, Nicole",Nephrology,In-Network,2026-06-30,2:00 PM,Nephrology Consult,60,True,148 Eric Track,New Stephanie,NC,00575,29.573266,-88.206009,+1-357-901-5430x391,True
+SLOT00012,PRV0004,"Dr. Wilson, Nicole",Nephrology,In-Network,2026-07-08,10:00 AM,Follow-Up,60,False,148 Eric Track,New Stephanie,NC,00575,29.573266,-88.206009,+1-357-901-5430x391,True
+SLOT00013,PRV0004,"Dr. Wilson, Nicole",Nephrology,In-Network,2026-07-09,10:00 AM,Follow-Up,30,True,148 Eric Track,New Stephanie,NC,00575,29.573266,-88.206009,+1-357-901-5430x391,True
+SLOT00014,PRV0005,"Dr. Spence, Amanda",Psychiatry,In-Network,2026-07-03,1:30 PM,Psychiatric Evaluation,20,True,465 Lam Mission,East Jeffreymouth,AK,77611,38.553111,-79.909616,+1-239-730-1031,True
+SLOT00015,PRV0005,"Dr. Spence, Amanda",Psychiatry,In-Network,2026-06-27,11:00 AM,Psychiatric Evaluation,60,False,465 Lam Mission,East Jeffreymouth,AK,77611,38.553111,-79.909616,+1-239-730-1031,True
+SLOT00016,PRV0005,"Dr. Spence, Amanda",Psychiatry,In-Network,2026-06-17,2:00 PM,Medication Management,60,False,465 Lam Mission,East Jeffreymouth,AK,77611,38.553111,-79.909616,+1-239-730-1031,True
+SLOT00017,PRV0005,"Dr. Spence, Amanda",Psychiatry,In-Network,2026-06-29,4:00 PM,Follow-Up,15,True,465 Lam Mission,East Jeffreymouth,AK,77611,38.553111,-79.909616,+1-239-730-1031,True
+SLOT00018,PRV0005,"Dr. Spence, Amanda",Psychiatry,In-Network,2026-06-11,4:30 PM,Medication Management,45,True,465 Lam Mission,East Jeffreymouth,AK,77611,38.553111,-79.909616,+1-239-730-1031,True
+SLOT00019,PRV0005,"Dr. Spence, Amanda",Psychiatry,In-Network,2026-06-14,4:00 PM,Follow-Up,15,False,465 Lam Mission,East Jeffreymouth,AK,77611,38.553111,-79.909616,+1-239-730-1031,True
+SLOT00020,PRV0005,"Dr. Spence, Amanda",Psychiatry,In-Network,2026-07-08,1:30 PM,Follow-Up,20,True,465 Lam Mission,East Jeffreymouth,AK,77611,38.553111,-79.909616,+1-239-730-1031,True
+SLOT00021,PRV0005,"Dr. Spence, Amanda",Psychiatry,In-Network,2026-06-24,10:30 AM,Follow-Up,45,False,465 Lam Mission,East Jeffreymouth,AK,77611,38.553111,-79.909616,+1-239-730-1031,True
+SLOT00022,PRV0006,"Dr. Young, Elizabeth",OB/GYN,In-Network,2026-06-18,8:00 AM,Preventive Visit,30,True,65667 Emily Rue,North Richardmouth,AS,14823,34.720131,-107.55069,933.587.2624,True
+SLOT00023,PRV0006,"Dr. Young, Elizabeth",OB/GYN,In-Network,2026-06-20,11:00 AM,Preventive Visit,20,False,65667 Emily Rue,North Richardmouth,AS,14823,34.720131,-107.55069,933.587.2624,True
+SLOT00024,PRV0006,"Dr. Young, Elizabeth",OB/GYN,In-Network,2026-06-12,4:00 PM,Preventive Visit,20,False,65667 Emily Rue,North Richardmouth,AS,14823,34.720131,-107.55069,933.587.2624,True
+SLOT00025,PRV0008,"Dr. Miller, Jacob",Internal Medicine,Out-of-Network,2026-07-04,4:00 PM,Chronic Disease Management,30,False,9985 Harris Stravenue,Johnfurt,DC,88540,41.783831,-94.116139,+1-647-451-0799x1183,True
+SLOT00026,PRV0008,"Dr. Miller, Jacob",Internal Medicine,Out-of-Network,2026-06-27,3:00 PM,New Patient,45,True,9985 Harris Stravenue,Johnfurt,DC,88540,41.783831,-94.116139,+1-647-451-0799x1183,True
+SLOT00027,PRV0008,"Dr. Miller, Jacob",Internal Medicine,Out-of-Network,2026-07-01,2:30 PM,Chronic Disease Management,15,False,9985 Harris Stravenue,Johnfurt,DC,88540,41.783831,-94.116139,+1-647-451-0799x1183,True
+SLOT00028,PRV0008,"Dr. Miller, Jacob",Internal Medicine,Out-of-Network,2026-07-06,8:30 AM,New Patient,60,True,9985 Harris Stravenue,Johnfurt,DC,88540,41.783831,-94.116139,+1-647-451-0799x1183,False
+SLOT00029,PRV0009,"Dr. Ibarra, Natasha",Family Medicine,In-Network,2026-06-20,9:30 AM,Preventive Visit,30,False,124 Pamela Summit Apt. 449,Lake Matthew,TX,83631,37.696935,-78.870957,687-440-1640x052,True
+SLOT00030,PRV0009,"Dr. Ibarra, Natasha",Family Medicine,In-Network,2026-06-13,9:30 AM,New Patient,60,False,124 Pamela Summit Apt. 449,Lake Matthew,TX,83631,37.696935,-78.870957,687-440-1640x052,True
+SLOT00031,PRV0009,"Dr. Ibarra, Natasha",Family Medicine,In-Network,2026-06-20,4:30 PM,Annual Wellness Visit,20,False,124 Pamela Summit Apt. 449,Lake Matthew,TX,83631,37.696935,-78.870957,687-440-1640x052,True
+SLOT00032,PRV0009,"Dr. Ibarra, Natasha",Family Medicine,In-Network,2026-07-02,3:00 PM,Annual Wellness Visit,15,False,124 Pamela Summit Apt. 449,Lake Matthew,TX,83631,37.696935,-78.870957,687-440-1640x052,True
+SLOT00033,PRV0009,"Dr. Ibarra, Natasha",Family Medicine,In-Network,2026-06-25,10:00 AM,Annual Wellness Visit,30,False,124 Pamela Summit Apt. 449,Lake Matthew,TX,83631,37.696935,-78.870957,687-440-1640x052,True
+SLOT00034,PRV0009,"Dr. Ibarra, Natasha",Family Medicine,In-Network,2026-06-11,10:00 AM,Annual Wellness Visit,45,False,124 Pamela Summit Apt. 449,Lake Matthew,TX,83631,37.696935,-78.870957,687-440-1640x052,True
+SLOT00035,PRV0009,"Dr. Ibarra, Natasha",Family Medicine,In-Network,2026-07-04,3:00 PM,New Patient,45,False,124 Pamela Summit Apt. 449,Lake Matthew,TX,83631,37.696935,-78.870957,687-440-1640x052,True
+SLOT00036,PRV0012,"Dr. Estrada, Mark",Geriatrics,In-Network,2026-06-21,3:00 PM,Follow-Up,20,False,044 Russell Prairie Suite 777,New Thomas,MH,96964,44.18454,-113.541987,(514)589-5134,True
+SLOT00037,PRV0012,"Dr. Estrada, Mark",Geriatrics,In-Network,2026-07-05,2:00 PM,Annual Wellness Visit,20,False,044 Russell Prairie Suite 777,New Thomas,MH,96964,44.18454,-113.541987,(514)589-5134,True
+SLOT00038,PRV0012,"Dr. Estrada, Mark",Geriatrics,In-Network,2026-07-01,2:30 PM,Geriatric Assessment,45,False,044 Russell Prairie Suite 777,New Thomas,MH,96964,44.18454,-113.541987,(514)589-5134,False
+SLOT00039,PRV0012,"Dr. Estrada, Mark",Geriatrics,In-Network,2026-06-19,9:30 AM,Annual Wellness Visit,30,True,044 Russell Prairie Suite 777,New Thomas,MH,96964,44.18454,-113.541987,(514)589-5134,True
+SLOT00040,PRV0012,"Dr. Estrada, Mark",Geriatrics,In-Network,2026-06-15,9:30 AM,Follow-Up,30,False,044 Russell Prairie Suite 777,New Thomas,MH,96964,44.18454,-113.541987,(514)589-5134,True
+SLOT00041,PRV0012,"Dr. Estrada, Mark",Geriatrics,In-Network,2026-07-07,1:30 PM,Follow-Up,30,False,044 Russell Prairie Suite 777,New Thomas,MH,96964,44.18454,-113.541987,(514)589-5134,True
+SLOT00042,PRV0012,"Dr. Estrada, Mark",Geriatrics,In-Network,2026-06-25,3:30 PM,Geriatric Assessment,20,True,044 Russell Prairie Suite 777,New Thomas,MH,96964,44.18454,-113.541987,(514)589-5134,True
+SLOT00043,PRV0012,"Dr. Estrada, Mark",Geriatrics,In-Network,2026-06-15,2:00 PM,Annual Wellness Visit,15,True,044 Russell Prairie Suite 777,New Thomas,MH,96964,44.18454,-113.541987,(514)589-5134,True
+SLOT00044,PRV0013,"Dr. Williams, Tracey",OB/GYN,In-Network,2026-06-29,8:30 AM,Preventive Visit,20,False,016 Gregory Square,Williamsbury,PW,16407,46.543056,-88.30216,927.488.9579x868,True
+SLOT00045,PRV0013,"Dr. Williams, Tracey",OB/GYN,In-Network,2026-06-18,9:30 AM,Annual Exam,45,False,016 Gregory Square,Williamsbury,PW,16407,46.543056,-88.30216,927.488.9579x868,False
+SLOT00046,PRV0013,"Dr. Williams, Tracey",OB/GYN,In-Network,2026-07-03,8:30 AM,Follow-Up,45,False,016 Gregory Square,Williamsbury,PW,16407,46.543056,-88.30216,927.488.9579x868,True
+SLOT00047,PRV0013,"Dr. Williams, Tracey",OB/GYN,In-Network,2026-07-07,8:00 AM,Annual Exam,45,True,016 Gregory Square,Williamsbury,PW,16407,46.543056,-88.30216,927.488.9579x868,True
+SLOT00048,PRV0013,"Dr. Williams, Tracey",OB/GYN,In-Network,2026-06-30,10:30 AM,Annual Exam,20,False,016 Gregory Square,Williamsbury,PW,16407,46.543056,-88.30216,927.488.9579x868,False
+SLOT00049,PRV0013,"Dr. Williams, Tracey",OB/GYN,In-Network,2026-06-19,2:30 PM,Annual Exam,20,True,016 Gregory Square,Williamsbury,PW,16407,46.543056,-88.30216,927.488.9579x868,True
+SLOT00050,PRV0014,"Dr. Wells, Jonathon",Nephrology,In-Network,2026-07-10,9:30 AM,Follow-Up,45,True,5812 Jesse Square Apt. 316,Riveramouth,MT,08662,41.769916,-113.50307,766.690.9670,False
+SLOT00051,PRV0014,"Dr. Wells, Jonathon",Nephrology,In-Network,2026-06-19,3:00 PM,Nephrology Consult,15,True,5812 Jesse Square Apt. 316,Riveramouth,MT,08662,41.769916,-113.50307,766.690.9670,True
+SLOT00052,PRV0014,"Dr. Wells, Jonathon",Nephrology,In-Network,2026-06-13,3:30 PM,Nephrology Consult,15,False,5812 Jesse Square Apt. 316,Riveramouth,MT,08662,41.769916,-113.50307,766.690.9670,True
+SLOT00053,PRV0014,"Dr. Wells, Jonathon",Nephrology,In-Network,2026-06-16,2:30 PM,Nephrology Consult,30,True,5812 Jesse Square Apt. 316,Riveramouth,MT,08662,41.769916,-113.50307,766.690.9670,True
+SLOT00054,PRV0015,"Dr. Castaneda, Stephanie",Geriatrics,In-Network,2026-07-07,4:30 PM,Follow-Up,45,False,5627 Tina Place,South Brittanytown,CO,84747,32.458503,-82.047694,(827)620-4653x75564,True
+SLOT00055,PRV0015,"Dr. Castaneda, Stephanie",Geriatrics,In-Network,2026-07-09,1:30 PM,Geriatric Assessment,15,False,5627 Tina Place,South Brittanytown,CO,84747,32.458503,-82.047694,(827)620-4653x75564,True
+SLOT00056,PRV0015,"Dr. Castaneda, Stephanie",Geriatrics,In-Network,2026-07-01,3:00 PM,Geriatric Assessment,30,False,5627 Tina Place,South Brittanytown,CO,84747,32.458503,-82.047694,(827)620-4653x75564,True
+SLOT00057,PRV0015,"Dr. Castaneda, Stephanie",Geriatrics,In-Network,2026-06-30,3:30 PM,Follow-Up,20,False,5627 Tina Place,South Brittanytown,CO,84747,32.458503,-82.047694,(827)620-4653x75564,False
+SLOT00058,PRV0015,"Dr. Castaneda, Stephanie",Geriatrics,In-Network,2026-06-22,2:30 PM,Follow-Up,20,False,5627 Tina Place,South Brittanytown,CO,84747,32.458503,-82.047694,(827)620-4653x75564,True
+SLOT00059,PRV0015,"Dr. Castaneda, Stephanie",Geriatrics,In-Network,2026-06-15,3:30 PM,Follow-Up,45,False,5627 Tina Place,South Brittanytown,CO,84747,32.458503,-82.047694,(827)620-4653x75564,True
+SLOT00060,PRV0016,"Dr. Ruiz, Kaitlyn",Oncology,Out-of-Network,2026-06-16,9:00 AM,Follow-Up,60,True,27193 Lyons Trafficway,Garyville,WI,21966,34.22679,-118.558193,619-304-9663x1931,True
+SLOT00061,PRV0016,"Dr. Ruiz, Kaitlyn",Oncology,Out-of-Network,2026-07-06,3:00 PM,Follow-Up,45,False,27193 Lyons Trafficway,Garyville,WI,21966,34.22679,-118.558193,619-304-9663x1931,True
+SLOT00062,PRV0016,"Dr. Ruiz, Kaitlyn",Oncology,Out-of-Network,2026-07-03,10:00 AM,Oncology Consult,20,False,27193 Lyons Trafficway,Garyville,WI,21966,34.22679,-118.558193,619-304-9663x1931,True
+SLOT00063,PRV0018,"Dr. Green, Joshua",Cardiology,In-Network,2026-07-06,9:00 AM,Cardiology Consult,20,True,777 Christopher Forges,Holtport,TN,76726,31.092244,-109.17537,(678)585-6855x744,True
+SLOT00064,PRV0018,"Dr. Green, Joshua",Cardiology,In-Network,2026-06-14,1:30 PM,Follow-Up,60,True,777 Christopher Forges,Holtport,TN,76726,31.092244,-109.17537,(678)585-6855x744,True
+SLOT00065,PRV0018,"Dr. Green, Joshua",Cardiology,In-Network,2026-07-03,1:30 PM,Follow-Up,60,True,777 Christopher Forges,Holtport,TN,76726,31.092244,-109.17537,(678)585-6855x744,True
+SLOT00066,PRV0019,"Dr. Lee, David",OB/GYN,In-Network,2026-06-25,4:00 PM,Preventive Visit,45,True,43524 Jean Crossroad,Brandonton,OH,38791,38.445478,-75.31321,001-227-610-9477x752,False
+SLOT00067,PRV0019,"Dr. Lee, David",OB/GYN,In-Network,2026-07-01,4:30 PM,Preventive Visit,60,True,43524 Jean Crossroad,Brandonton,OH,38791,38.445478,-75.31321,001-227-610-9477x752,True
+SLOT00068,PRV0019,"Dr. Lee, David",OB/GYN,In-Network,2026-06-30,2:00 PM,Annual Exam,30,True,43524 Jean Crossroad,Brandonton,OH,38791,38.445478,-75.31321,001-227-610-9477x752,True
+SLOT00069,PRV0020,"Dr. Woods, Lynn",Cardiology,In-Network,2026-06-26,8:30 AM,Cardiology Consult,20,True,86999 Kimberly Light,Kerrport,VI,77640,36.719105,-117.272711,(349)490-9133x41232,True
+SLOT00070,PRV0020,"Dr. Woods, Lynn",Cardiology,In-Network,2026-06-23,3:00 PM,Follow-Up,20,True,86999 Kimberly Light,Kerrport,VI,77640,36.719105,-117.272711,(349)490-9133x41232,True
+SLOT00071,PRV0020,"Dr. Woods, Lynn",Cardiology,In-Network,2026-06-16,8:00 AM,Follow-Up,30,True,86999 Kimberly Light,Kerrport,VI,77640,36.719105,-117.272711,(349)490-9133x41232,True
+SLOT00072,PRV0021,"Dr. Hayes, Brittney",Cardiology,In-Network,2026-06-23,2:30 PM,Follow-Up,30,False,1832 Serrano Cliffs,East Laurashire,PW,38329,39.431259,-80.811873,217.846.4887x719,True
+SLOT00073,PRV0021,"Dr. Hayes, Brittney",Cardiology,In-Network,2026-07-08,9:30 AM,Cardiology Consult,15,False,1832 Serrano Cliffs,East Laurashire,PW,38329,39.431259,-80.811873,217.846.4887x719,True
+SLOT00074,PRV0021,"Dr. Hayes, Brittney",Cardiology,In-Network,2026-06-17,10:00 AM,Follow-Up,30,False,1832 Serrano Cliffs,East Laurashire,PW,38329,39.431259,-80.811873,217.846.4887x719,True
+SLOT00075,PRV0021,"Dr. Hayes, Brittney",Cardiology,In-Network,2026-06-11,10:00 AM,EKG Review,60,False,1832 Serrano Cliffs,East Laurashire,PW,38329,39.431259,-80.811873,217.846.4887x719,True
+SLOT00076,PRV0022,"Dr. Munoz, Anthony",Orthopedics,In-Network,2026-06-11,10:00 AM,Pre-Op Visit,15,False,2967 Theodore Lodge Suite 512,Robertfort,LA,87347,33.777244,-70.201688,(980)871-5451x6808,False
+SLOT00077,PRV0022,"Dr. Munoz, Anthony",Orthopedics,In-Network,2026-06-22,2:00 PM,Follow-Up,45,False,2967 Theodore Lodge Suite 512,Robertfort,LA,87347,33.777244,-70.201688,(980)871-5451x6808,True
+SLOT00078,PRV0022,"Dr. Munoz, Anthony",Orthopedics,In-Network,2026-06-13,2:00 PM,Pre-Op Visit,20,False,2967 Theodore Lodge Suite 512,Robertfort,LA,87347,33.777244,-70.201688,(980)871-5451x6808,True
+SLOT00079,PRV0022,"Dr. Munoz, Anthony",Orthopedics,In-Network,2026-06-19,2:00 PM,Follow-Up,20,False,2967 Theodore Lodge Suite 512,Robertfort,LA,87347,33.777244,-70.201688,(980)871-5451x6808,True
+SLOT00080,PRV0022,"Dr. Munoz, Anthony",Orthopedics,In-Network,2026-06-17,9:00 AM,Follow-Up,30,False,2967 Theodore Lodge Suite 512,Robertfort,LA,87347,33.777244,-70.201688,(980)871-5451x6808,True
+SLOT00081,PRV0024,"Dr. Romero, Natasha",Geriatrics,In-Network,2026-06-26,10:30 AM,Annual Wellness Visit,20,False,78755 Gibson Islands Apt. 396,Port Kimberly,AZ,42205,32.824036,-106.737993,001-376-962-7028x9517,True
+SLOT00082,PRV0024,"Dr. Romero, Natasha",Geriatrics,In-Network,2026-06-11,11:00 AM,Annual Wellness Visit,45,True,78755 Gibson Islands Apt. 396,Port Kimberly,AZ,42205,32.824036,-106.737993,001-376-962-7028x9517,False
+SLOT00083,PRV0024,"Dr. Romero, Natasha",Geriatrics,In-Network,2026-07-06,2:00 PM,Annual Wellness Visit,15,False,78755 Gibson Islands Apt. 396,Port Kimberly,AZ,42205,32.824036,-106.737993,001-376-962-7028x9517,True
+SLOT00084,PRV0024,"Dr. Romero, Natasha",Geriatrics,In-Network,2026-07-10,9:00 AM,Annual Wellness Visit,60,True,78755 Gibson Islands Apt. 396,Port Kimberly,AZ,42205,32.824036,-106.737993,001-376-962-7028x9517,False
+SLOT00085,PRV0024,"Dr. Romero, Natasha",Geriatrics,In-Network,2026-07-10,4:00 PM,Geriatric Assessment,20,True,78755 Gibson Islands Apt. 396,Port Kimberly,AZ,42205,32.824036,-106.737993,001-376-962-7028x9517,True
+SLOT00086,PRV0024,"Dr. Romero, Natasha",Geriatrics,In-Network,2026-06-21,3:30 PM,Follow-Up,60,False,78755 Gibson Islands Apt. 396,Port Kimberly,AZ,42205,32.824036,-106.737993,001-376-962-7028x9517,True
+SLOT00087,PRV0025,"Dr. Thomas, Monica",OB/GYN,In-Network,2026-07-02,3:00 PM,Preventive Visit,45,True,7809 Jimmy Spur Suite 316,Port Cynthiaville,NV,22306,45.144618,-108.303769,001-840-405-0455x623,True
+SLOT00088,PRV0025,"Dr. Thomas, Monica",OB/GYN,In-Network,2026-06-20,2:30 PM,Preventive Visit,15,False,7809 Jimmy Spur Suite 316,Port Cynthiaville,NV,22306,45.144618,-108.303769,001-840-405-0455x623,False
+SLOT00089,PRV0025,"Dr. Thomas, Monica",OB/GYN,In-Network,2026-07-02,10:00 AM,Follow-Up,60,True,7809 Jimmy Spur Suite 316,Port Cynthiaville,NV,22306,45.144618,-108.303769,001-840-405-0455x623,True
+SLOT00090,PRV0025,"Dr. Thomas, Monica",OB/GYN,In-Network,2026-06-21,8:30 AM,Preventive Visit,20,False,7809 Jimmy Spur Suite 316,Port Cynthiaville,NV,22306,45.144618,-108.303769,001-840-405-0455x623,True
+SLOT00091,PRV0025,"Dr. Thomas, Monica",OB/GYN,In-Network,2026-06-28,3:30 PM,Preventive Visit,15,True,7809 Jimmy Spur Suite 316,Port Cynthiaville,NV,22306,45.144618,-108.303769,001-840-405-0455x623,True
+SLOT00092,PRV0025,"Dr. Thomas, Monica",OB/GYN,In-Network,2026-07-08,9:30 AM,Follow-Up,20,True,7809 Jimmy Spur Suite 316,Port Cynthiaville,NV,22306,45.144618,-108.303769,001-840-405-0455x623,True
+SLOT00093,PRV0026,"Dr. Miller, Monica",Nephrology,In-Network,2026-07-08,9:00 AM,Nephrology Consult,20,False,4821 Landry Radial,Daniellechester,UT,33281,45.99044,-76.733034,643.267.1369x594,True
+SLOT00094,PRV0026,"Dr. Miller, Monica",Nephrology,In-Network,2026-06-20,1:30 PM,Nephrology Consult,30,False,4821 Landry Radial,Daniellechester,UT,33281,45.99044,-76.733034,643.267.1369x594,True
+SLOT00095,PRV0026,"Dr. Miller, Monica",Nephrology,In-Network,2026-06-28,11:00 AM,Follow-Up,45,True,4821 Landry Radial,Daniellechester,UT,33281,45.99044,-76.733034,643.267.1369x594,False
+SLOT00096,PRV0026,"Dr. Miller, Monica",Nephrology,In-Network,2026-07-05,2:00 PM,Nephrology Consult,60,True,4821 Landry Radial,Daniellechester,UT,33281,45.99044,-76.733034,643.267.1369x594,True
+SLOT00097,PRV0027,"Dr. Barrett, Joshua",Cardiology,Out-of-Network,2026-06-23,10:00 AM,Follow-Up,20,False,210 Kramer Bypass Suite 214,Julieburgh,ID,17823,33.600019,-113.59945,+1-758-384-2474,True
+SLOT00098,PRV0027,"Dr. Barrett, Joshua",Cardiology,Out-of-Network,2026-06-12,3:30 PM,Follow-Up,20,False,210 Kramer Bypass Suite 214,Julieburgh,ID,17823,33.600019,-113.59945,+1-758-384-2474,True
+SLOT00099,PRV0027,"Dr. Barrett, Joshua",Cardiology,Out-of-Network,2026-07-10,1:00 PM,Follow-Up,60,False,210 Kramer Bypass Suite 214,Julieburgh,ID,17823,33.600019,-113.59945,+1-758-384-2474,True
+SLOT00100,PRV0029,"Dr. Santiago, Julia",Endocrinology,Out-of-Network,2026-06-23,2:30 PM,Thyroid Consult,30,False,537 Sampson Walk,Corystad,ND,85019,26.332279,-76.343501,(706)543-1713x900,True
+SLOT00101,PRV0029,"Dr. Santiago, Julia",Endocrinology,Out-of-Network,2026-06-20,3:30 PM,Follow-Up,15,False,537 Sampson Walk,Corystad,ND,85019,26.332279,-76.343501,(706)543-1713x900,True
+SLOT00102,PRV0029,"Dr. Santiago, Julia",Endocrinology,Out-of-Network,2026-06-17,10:00 AM,Follow-Up,20,True,537 Sampson Walk,Corystad,ND,85019,26.332279,-76.343501,(706)543-1713x900,True
+SLOT00103,PRV0029,"Dr. Santiago, Julia",Endocrinology,Out-of-Network,2026-07-10,11:00 AM,Diabetes Management,20,True,537 Sampson Walk,Corystad,ND,85019,26.332279,-76.343501,(706)543-1713x900,True
+SLOT00104,PRV0029,"Dr. Santiago, Julia",Endocrinology,Out-of-Network,2026-06-20,3:00 PM,Diabetes Management,15,True,537 Sampson Walk,Corystad,ND,85019,26.332279,-76.343501,(706)543-1713x900,True
+SLOT00105,PRV0029,"Dr. Santiago, Julia",Endocrinology,Out-of-Network,2026-06-28,9:30 AM,Diabetes Management,30,False,537 Sampson Walk,Corystad,ND,85019,26.332279,-76.343501,(706)543-1713x900,True
+SLOT00106,PRV0029,"Dr. Santiago, Julia",Endocrinology,Out-of-Network,2026-07-10,4:30 PM,Follow-Up,15,True,537 Sampson Walk,Corystad,ND,85019,26.332279,-76.343501,(706)543-1713x900,True
+SLOT00107,PRV0029,"Dr. Santiago, Julia",Endocrinology,Out-of-Network,2026-06-25,9:00 AM,Thyroid Consult,60,False,537 Sampson Walk,Corystad,ND,85019,26.332279,-76.343501,(706)543-1713x900,True
+SLOT00108,PRV0030,"Dr. Buchanan, Jamie",OB/GYN,In-Network,2026-06-29,3:00 PM,Follow-Up,15,False,84210 Alexis Turnpike,New Mario,HI,35283,36.177781,-118.400949,3269811775,True
+SLOT00109,PRV0030,"Dr. Buchanan, Jamie",OB/GYN,In-Network,2026-06-17,8:30 AM,Follow-Up,60,True,84210 Alexis Turnpike,New Mario,HI,35283,36.177781,-118.400949,3269811775,True
+SLOT00110,PRV0030,"Dr. Buchanan, Jamie",OB/GYN,In-Network,2026-06-24,11:00 AM,Annual Exam,15,False,84210 Alexis Turnpike,New Mario,HI,35283,36.177781,-118.400949,3269811775,True
+SLOT00111,PRV0030,"Dr. Buchanan, Jamie",OB/GYN,In-Network,2026-07-03,8:00 AM,Preventive Visit,15,True,84210 Alexis Turnpike,New Mario,HI,35283,36.177781,-118.400949,3269811775,True
+SLOT00112,PRV0030,"Dr. Buchanan, Jamie",OB/GYN,In-Network,2026-06-16,1:30 PM,Annual Exam,20,False,84210 Alexis Turnpike,New Mario,HI,35283,36.177781,-118.400949,3269811775,True
+SLOT00113,PRV0034,"Dr. Perry, Jason",Family Medicine,In-Network,2026-06-19,9:30 AM,New Patient,20,False,69003 Dougherty Trafficway,Port Jonathan,MD,16227,30.701829,-118.670653,7763226838,False
+SLOT00114,PRV0034,"Dr. Perry, Jason",Family Medicine,In-Network,2026-06-22,1:30 PM,New Patient,20,False,69003 Dougherty Trafficway,Port Jonathan,MD,16227,30.701829,-118.670653,7763226838,True
+SLOT00115,PRV0034,"Dr. Perry, Jason",Family Medicine,In-Network,2026-06-30,9:00 AM,New Patient,60,False,69003 Dougherty Trafficway,Port Jonathan,MD,16227,30.701829,-118.670653,7763226838,False
+SLOT00116,PRV0034,"Dr. Perry, Jason",Family Medicine,In-Network,2026-06-25,11:00 AM,New Patient,45,True,69003 Dougherty Trafficway,Port Jonathan,MD,16227,30.701829,-118.670653,7763226838,True
+SLOT00117,PRV0035,"Dr. Harmon, Ryan",Pulmonology,In-Network,2026-07-10,9:30 AM,Pulmonology Consult,20,False,52975 Samuel Coves Apt. 696,South Monicamouth,IN,44156,30.065,-118.30836,001-621-581-8835x52312,True
+SLOT00118,PRV0035,"Dr. Harmon, Ryan",Pulmonology,In-Network,2026-06-17,4:30 PM,Follow-Up,20,True,52975 Samuel Coves Apt. 696,South Monicamouth,IN,44156,30.065,-118.30836,001-621-581-8835x52312,True
+SLOT00119,PRV0035,"Dr. Harmon, Ryan",Pulmonology,In-Network,2026-07-09,3:00 PM,Pulmonology Consult,60,True,52975 Samuel Coves Apt. 696,South Monicamouth,IN,44156,30.065,-118.30836,001-621-581-8835x52312,True
+SLOT00120,PRV0035,"Dr. Harmon, Ryan",Pulmonology,In-Network,2026-07-01,1:30 PM,Follow-Up,20,False,52975 Samuel Coves Apt. 696,South Monicamouth,IN,44156,30.065,-118.30836,001-621-581-8835x52312,True
+SLOT00121,PRV0035,"Dr. Harmon, Ryan",Pulmonology,In-Network,2026-06-24,1:30 PM,Follow-Up,15,True,52975 Samuel Coves Apt. 696,South Monicamouth,IN,44156,30.065,-118.30836,001-621-581-8835x52312,False
+SLOT00122,PRV0035,"Dr. Harmon, Ryan",Pulmonology,In-Network,2026-06-15,2:30 PM,Pulmonology Consult,20,False,52975 Samuel Coves Apt. 696,South Monicamouth,IN,44156,30.065,-118.30836,001-621-581-8835x52312,True
+SLOT00123,PRV0036,"Dr. Hernandez, Katherine",Family Medicine,In-Network,2026-06-14,2:30 PM,New Patient,60,False,71774 Vargas Knoll Apt. 477,North Miguelport,CA,84998,45.82466,-77.298959,999-586-7980,True
+SLOT00124,PRV0036,"Dr. Hernandez, Katherine",Family Medicine,In-Network,2026-07-09,9:00 AM,Preventive Visit,60,False,71774 Vargas Knoll Apt. 477,North Miguelport,CA,84998,45.82466,-77.298959,999-586-7980,False
+SLOT00125,PRV0036,"Dr. Hernandez, Katherine",Family Medicine,In-Network,2026-06-26,10:30 AM,New Patient,15,False,71774 Vargas Knoll Apt. 477,North Miguelport,CA,84998,45.82466,-77.298959,999-586-7980,True
+SLOT00126,PRV0036,"Dr. Hernandez, Katherine",Family Medicine,In-Network,2026-06-26,11:00 AM,Annual Wellness Visit,15,False,71774 Vargas Knoll Apt. 477,North Miguelport,CA,84998,45.82466,-77.298959,999-586-7980,True
+SLOT00127,PRV0037,"Dr. Alvarez, Edward",Gastroenterology,In-Network,2026-07-07,2:00 PM,Colonoscopy,15,False,892 Watson Haven Suite 659,Port Crystalmouth,CA,43714,40.386489,-110.859686,486-744-9251,True
+SLOT00128,PRV0037,"Dr. Alvarez, Edward",Gastroenterology,In-Network,2026-06-27,8:30 AM,Follow-Up,30,True,892 Watson Haven Suite 659,Port Crystalmouth,CA,43714,40.386489,-110.859686,486-744-9251,False
+SLOT00129,PRV0037,"Dr. Alvarez, Edward",Gastroenterology,In-Network,2026-06-15,1:00 PM,Follow-Up,45,False,892 Watson Haven Suite 659,Port Crystalmouth,CA,43714,40.386489,-110.859686,486-744-9251,True
+SLOT00130,PRV0037,"Dr. Alvarez, Edward",Gastroenterology,In-Network,2026-07-10,1:30 PM,Follow-Up,15,False,892 Watson Haven Suite 659,Port Crystalmouth,CA,43714,40.386489,-110.859686,486-744-9251,True
+SLOT00131,PRV0037,"Dr. Alvarez, Edward",Gastroenterology,In-Network,2026-06-29,4:00 PM,Follow-Up,20,False,892 Watson Haven Suite 659,Port Crystalmouth,CA,43714,40.386489,-110.859686,486-744-9251,True
+SLOT00132,PRV0037,"Dr. Alvarez, Edward",Gastroenterology,In-Network,2026-07-02,1:00 PM,Colonoscopy,15,False,892 Watson Haven Suite 659,Port Crystalmouth,CA,43714,40.386489,-110.859686,486-744-9251,True
+SLOT00133,PRV0038,"Dr. Douglas, Eileen",Endocrinology,In-Network,2026-07-03,11:00 AM,Thyroid Consult,30,False,505 White Forest Suite 733,East Chris,PR,13757,43.046247,-80.010156,988.205.9296x22292,True
+SLOT00134,PRV0038,"Dr. Douglas, Eileen",Endocrinology,In-Network,2026-06-28,11:00 AM,Diabetes Management,60,False,505 White Forest Suite 733,East Chris,PR,13757,43.046247,-80.010156,988.205.9296x22292,True
+SLOT00135,PRV0038,"Dr. Douglas, Eileen",Endocrinology,In-Network,2026-06-14,9:00 AM,Thyroid Consult,45,True,505 White Forest Suite 733,East Chris,PR,13757,43.046247,-80.010156,988.205.9296x22292,True
+SLOT00136,PRV0038,"Dr. Douglas, Eileen",Endocrinology,In-Network,2026-06-29,2:00 PM,Diabetes Management,30,True,505 White Forest Suite 733,East Chris,PR,13757,43.046247,-80.010156,988.205.9296x22292,True
+SLOT00137,PRV0039,"Dr. Rhodes, John",Geriatrics,In-Network,2026-06-24,2:30 PM,Follow-Up,15,False,977 Strickland Parkway Suite 239,Port John,SD,63492,34.914177,-99.973912,(881)381-4124x782,True
+SLOT00138,PRV0039,"Dr. Rhodes, John",Geriatrics,In-Network,2026-07-09,9:00 AM,Follow-Up,60,True,977 Strickland Parkway Suite 239,Port John,SD,63492,34.914177,-99.973912,(881)381-4124x782,True
+SLOT00139,PRV0039,"Dr. Rhodes, John",Geriatrics,In-Network,2026-06-26,9:00 AM,Follow-Up,45,False,977 Strickland Parkway Suite 239,Port John,SD,63492,34.914177,-99.973912,(881)381-4124x782,True
+SLOT00140,PRV0039,"Dr. Rhodes, John",Geriatrics,In-Network,2026-06-20,8:30 AM,Geriatric Assessment,60,False,977 Strickland Parkway Suite 239,Port John,SD,63492,34.914177,-99.973912,(881)381-4124x782,True
+SLOT00141,PRV0039,"Dr. Rhodes, John",Geriatrics,In-Network,2026-06-28,8:00 AM,Follow-Up,60,False,977 Strickland Parkway Suite 239,Port John,SD,63492,34.914177,-99.973912,(881)381-4124x782,True
+SLOT00142,PRV0039,"Dr. Rhodes, John",Geriatrics,In-Network,2026-06-26,10:00 AM,Follow-Up,30,False,977 Strickland Parkway Suite 239,Port John,SD,63492,34.914177,-99.973912,(881)381-4124x782,True
+SLOT00143,PRV0039,"Dr. Rhodes, John",Geriatrics,In-Network,2026-06-20,11:00 AM,Geriatric Assessment,15,False,977 Strickland Parkway Suite 239,Port John,SD,63492,34.914177,-99.973912,(881)381-4124x782,True
+SLOT00144,PRV0039,"Dr. Rhodes, John",Geriatrics,In-Network,2026-06-30,3:30 PM,Follow-Up,30,True,977 Strickland Parkway Suite 239,Port John,SD,63492,34.914177,-99.973912,(881)381-4124x782,True
+SLOT00145,PRV0042,"Dr. Thompson, Kimberly",Cardiology,Out-of-Network,2026-06-17,11:00 AM,EKG Review,60,False,54868 King Terrace,West Michael,WI,06766,31.406538,-109.010065,+1-754-615-6676x5277,True
+SLOT00146,PRV0042,"Dr. Thompson, Kimberly",Cardiology,Out-of-Network,2026-06-23,10:00 AM,EKG Review,60,True,54868 King Terrace,West Michael,WI,06766,31.406538,-109.010065,+1-754-615-6676x5277,True
+SLOT00147,PRV0042,"Dr. Thompson, Kimberly",Cardiology,Out-of-Network,2026-06-11,3:30 PM,EKG Review,20,False,54868 King Terrace,West Michael,WI,06766,31.406538,-109.010065,+1-754-615-6676x5277,True
+SLOT00148,PRV0042,"Dr. Thompson, Kimberly",Cardiology,Out-of-Network,2026-06-23,4:30 PM,Cardiology Consult,30,False,54868 King Terrace,West Michael,WI,06766,31.406538,-109.010065,+1-754-615-6676x5277,True
+SLOT00149,PRV0042,"Dr. Thompson, Kimberly",Cardiology,Out-of-Network,2026-07-09,8:00 AM,Cardiology Consult,45,True,54868 King Terrace,West Michael,WI,06766,31.406538,-109.010065,+1-754-615-6676x5277,True
+SLOT00150,PRV0043,"Dr. Acosta, Christian",Nephrology,In-Network,2026-06-23,10:00 AM,Nephrology Consult,15,False,627 West Stream Suite 964,North Emilyfurt,MN,67752,27.251901,-88.088466,001-220-429-7021x3556,True
+SLOT00151,PRV0043,"Dr. Acosta, Christian",Nephrology,In-Network,2026-06-28,4:00 PM,Follow-Up,30,False,627 West Stream Suite 964,North Emilyfurt,MN,67752,27.251901,-88.088466,001-220-429-7021x3556,True
+SLOT00152,PRV0043,"Dr. Acosta, Christian",Nephrology,In-Network,2026-06-11,1:30 PM,Nephrology Consult,15,True,627 West Stream Suite 964,North Emilyfurt,MN,67752,27.251901,-88.088466,001-220-429-7021x3556,True
+SLOT00153,PRV0043,"Dr. Acosta, Christian",Nephrology,In-Network,2026-07-07,1:30 PM,Nephrology Consult,60,False,627 West Stream Suite 964,North Emilyfurt,MN,67752,27.251901,-88.088466,001-220-429-7021x3556,True
+SLOT00154,PRV0043,"Dr. Acosta, Christian",Nephrology,In-Network,2026-07-07,4:00 PM,Nephrology Consult,60,True,627 West Stream Suite 964,North Emilyfurt,MN,67752,27.251901,-88.088466,001-220-429-7021x3556,True
+SLOT00155,PRV0043,"Dr. Acosta, Christian",Nephrology,In-Network,2026-06-18,8:00 AM,Nephrology Consult,45,False,627 West Stream Suite 964,North Emilyfurt,MN,67752,27.251901,-88.088466,001-220-429-7021x3556,True
+SLOT00156,PRV0047,"Dr. Turner, John",Gastroenterology,Out-of-Network,2026-06-23,8:30 AM,Follow-Up,60,False,9255 Hester Curve,Zacharyville,MD,32186,34.729172,-72.219483,514.473.2104x696,True
+SLOT00157,PRV0047,"Dr. Turner, John",Gastroenterology,Out-of-Network,2026-07-10,10:30 AM,GI Consult,30,True,9255 Hester Curve,Zacharyville,MD,32186,34.729172,-72.219483,514.473.2104x696,True
+SLOT00158,PRV0047,"Dr. Turner, John",Gastroenterology,Out-of-Network,2026-06-29,9:30 AM,GI Consult,60,False,9255 Hester Curve,Zacharyville,MD,32186,34.729172,-72.219483,514.473.2104x696,True
+SLOT00159,PRV0047,"Dr. Turner, John",Gastroenterology,Out-of-Network,2026-06-20,11:00 AM,GI Consult,60,True,9255 Hester Curve,Zacharyville,MD,32186,34.729172,-72.219483,514.473.2104x696,True
+SLOT00160,PRV0047,"Dr. Turner, John",Gastroenterology,Out-of-Network,2026-07-10,3:00 PM,Colonoscopy,15,False,9255 Hester Curve,Zacharyville,MD,32186,34.729172,-72.219483,514.473.2104x696,True
+SLOT00161,PRV0047,"Dr. Turner, John",Gastroenterology,Out-of-Network,2026-07-09,2:30 PM,Colonoscopy,15,True,9255 Hester Curve,Zacharyville,MD,32186,34.729172,-72.219483,514.473.2104x696,True
+SLOT00162,PRV0047,"Dr. Turner, John",Gastroenterology,Out-of-Network,2026-06-24,10:30 AM,Follow-Up,15,True,9255 Hester Curve,Zacharyville,MD,32186,34.729172,-72.219483,514.473.2104x696,True
+SLOT00163,PRV0047,"Dr. Turner, John",Gastroenterology,Out-of-Network,2026-06-20,10:00 AM,GI Consult,20,False,9255 Hester Curve,Zacharyville,MD,32186,34.729172,-72.219483,514.473.2104x696,True
+SLOT00164,PRV0048,"Dr. Peck, Jennifer",Cardiology,In-Network,2026-06-26,10:00 AM,EKG Review,30,False,733 Williams Haven Suite 974,Port Danielberg,FM,35165,29.367651,-110.679553,001-356-850-6098x3584,True
+SLOT00165,PRV0048,"Dr. Peck, Jennifer",Cardiology,In-Network,2026-07-10,11:00 AM,Follow-Up,20,True,733 Williams Haven Suite 974,Port Danielberg,FM,35165,29.367651,-110.679553,001-356-850-6098x3584,False
+SLOT00166,PRV0048,"Dr. Peck, Jennifer",Cardiology,In-Network,2026-06-15,3:30 PM,Cardiology Consult,15,True,733 Williams Haven Suite 974,Port Danielberg,FM,35165,29.367651,-110.679553,001-356-850-6098x3584,True
+SLOT00167,PRV0048,"Dr. Peck, Jennifer",Cardiology,In-Network,2026-06-30,11:00 AM,Follow-Up,20,True,733 Williams Haven Suite 974,Port Danielberg,FM,35165,29.367651,-110.679553,001-356-850-6098x3584,True
+SLOT00168,PRV0048,"Dr. Peck, Jennifer",Cardiology,In-Network,2026-06-16,9:00 AM,Cardiology Consult,15,False,733 Williams Haven Suite 974,Port Danielberg,FM,35165,29.367651,-110.679553,001-356-850-6098x3584,True
+SLOT00169,PRV0048,"Dr. Peck, Jennifer",Cardiology,In-Network,2026-06-17,4:30 PM,EKG Review,30,False,733 Williams Haven Suite 974,Port Danielberg,FM,35165,29.367651,-110.679553,001-356-850-6098x3584,False
+SLOT00170,PRV0049,"Dr. Duran, Joshua",OB/GYN,In-Network,2026-06-20,1:00 PM,Annual Exam,30,False,98680 Benjamin Station,Lindahaven,NH,20022,32.212911,-119.392598,+1-982-659-5269x495,True
+SLOT00171,PRV0049,"Dr. Duran, Joshua",OB/GYN,In-Network,2026-06-21,10:30 AM,Follow-Up,20,False,98680 Benjamin Station,Lindahaven,NH,20022,32.212911,-119.392598,+1-982-659-5269x495,True
+SLOT00172,PRV0049,"Dr. Duran, Joshua",OB/GYN,In-Network,2026-06-14,4:00 PM,Preventive Visit,60,True,98680 Benjamin Station,Lindahaven,NH,20022,32.212911,-119.392598,+1-982-659-5269x495,False
+SLOT00173,PRV0049,"Dr. Duran, Joshua",OB/GYN,In-Network,2026-07-07,8:30 AM,Preventive Visit,30,True,98680 Benjamin Station,Lindahaven,NH,20022,32.212911,-119.392598,+1-982-659-5269x495,True
+SLOT00174,PRV0049,"Dr. Duran, Joshua",OB/GYN,In-Network,2026-06-14,9:00 AM,Follow-Up,60,True,98680 Benjamin Station,Lindahaven,NH,20022,32.212911,-119.392598,+1-982-659-5269x495,True
+SLOT00175,PRV0049,"Dr. Duran, Joshua",OB/GYN,In-Network,2026-06-23,9:00 AM,Follow-Up,20,False,98680 Benjamin Station,Lindahaven,NH,20022,32.212911,-119.392598,+1-982-659-5269x495,True
+SLOT00176,PRV0050,"Dr. Smith, Mark",Internal Medicine,In-Network,2026-07-10,3:00 PM,Chronic Disease Management,20,False,097 Alexandria Stravenue,Hernandezbury,AZ,75548,47.097915,-117.834204,001-913-207-5626x368,True
+SLOT00177,PRV0050,"Dr. Smith, Mark",Internal Medicine,In-Network,2026-07-01,1:00 PM,Chronic Disease Management,20,False,097 Alexandria Stravenue,Hernandezbury,AZ,75548,47.097915,-117.834204,001-913-207-5626x368,True
+SLOT00178,PRV0050,"Dr. Smith, Mark",Internal Medicine,In-Network,2026-07-01,1:30 PM,New Patient,20,False,097 Alexandria Stravenue,Hernandezbury,AZ,75548,47.097915,-117.834204,001-913-207-5626x368,True

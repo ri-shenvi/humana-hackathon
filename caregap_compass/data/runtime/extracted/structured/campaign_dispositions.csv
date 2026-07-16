@@ -1,0 +1,569 @@
+disposition_id,campaign_id,member_id,gap_id,measure_id,measure_name,channel,attempt_number,attempt_date,raw_disposition_code,csr_notes,action_taken,gap_credited_in_system,actual_completion_likely
+DISP000001,CAMP-TRC-2026-Q2,MBR00159,GAP000435,TRC,Transitions of Care,IVR,1,2025-12-07,Wrong number,,IVR_RESULT,False,False
+DISP000002,CAMP-TRC-2026-Q2,MBR00159,GAP000435,TRC,Transitions of Care,Mail,2,2025-11-03,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000003,CAMP-COL-2026-Q1,MBR00131,GAP000360,COL,Colorectal Cancer Screening,Web Form,1,2026-02-05,PARTIAL_SUBMIT,,WEB_SELF_SERVICE,False,False
+DISP000004,CAMP-COL-2026-Q1,MBR00131,GAP000360,COL,Colorectal Cancer Screening,Call Center,2,2025-11-20,REFUSED,,CSR_OUTREACH,False,False
+DISP000005,CAMP-COL-2026-Q2,MBR00131,GAP000360,COL,Colorectal Cancer Screening,Mail,3,2026-04-19,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000006,CAMP-COL-2026-Q1,MBR00131,GAP000360,COL,Colorectal Cancer Screening,Web Form,4,2026-02-18,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000007,CAMP-TRC-2026-Q2,MBR00179,GAP000497,TRC,Transitions of Care,Mail,1,2025-11-04,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000008,CAMP-TRC-2026-Q1,MBR00179,GAP000497,TRC,Transitions of Care,Mail,2,2025-10-14,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000009,CAMP-COA-2026-Q2,MBR00029,GAP000082,COA,Care for Older Adults - Medication Review,Mail,1,2025-09-06,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000010,CAMP-COA-2026-Q1,MBR00029,GAP000082,COA,Care for Older Adults - Medication Review,SMS,2,2026-01-23,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000011,CAMP-COA-2026-Q2,MBR00140,GAP000384,COA,Care for Older Adults - Medication Review,SMS,1,2025-09-14,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000012,CAMP-COA-2026-Q2,MBR00140,GAP000384,COA,Care for Older Adults - Medication Review,SMS,2,2026-04-28,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000013,CAMP-COA-2026-Q1,MBR00140,GAP000384,COA,Care for Older Adults - Medication Review,Call Center,3,2026-06-03,LANG_BARRIER,,CSR_OUTREACH,False,False
+DISP000014,CAMP-COL-2026-Q2,MBR00121,GAP000330,COL,Colorectal Cancer Screening,Web Form,1,2025-07-07,PARTIAL_SUBMIT,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000015,CAMP-COL-2026-Q2,MBR00121,GAP000330,COL,Colorectal Cancer Screening,IVR,2,2025-07-05,No answer / voicemail,,IVR_RESULT,False,False
+DISP000016,CAMP-COL-2026-Q1,MBR00121,GAP000330,COL,Colorectal Cancer Screening,Call Center,3,2026-01-19,LANG_BARRIER,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000017,CAMP-TRC-2026-Q2,MBR00165,GAP000453,TRC,Transitions of Care,Call Center,1,2026-04-01,REFUSED,,CSR_OUTREACH,False,False
+DISP000018,CAMP-TRC-2026-Q1,MBR00165,GAP000453,TRC,Transitions of Care,IVR,2,2025-08-11,Member requested callback,,IVR_RESULT,False,True
+DISP000019,CAMP-TRC-2026-Q2,MBR00165,GAP000453,TRC,Transitions of Care,IVR,3,2025-07-06,Wrong number,,IVR_RESULT,False,True
+DISP000020,CAMP-TRC-2026-Q1,MBR00165,GAP000453,TRC,Transitions of Care,SMS,4,2025-07-20,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000021,CAMP-COL-2026-Q1,MBR00010,GAP000022,COL,Colorectal Cancer Screening,IVR,1,2025-11-20,Wrong number,,IVR_RESULT,False,False
+DISP000022,CAMP-COL-2026-Q2,MBR00129,GAP000357,COL,Colorectal Cancer Screening,SMS,1,2026-04-13,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000023,CAMP-COL-2026-Q2,MBR00129,GAP000357,COL,Colorectal Cancer Screening,Web Form,2,2025-11-29,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,True,True
+DISP000024,CAMP-TRC-2026-Q1,MBR00014,GAP000031,TRC,Transitions of Care,SMS,1,2025-12-14,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000025,CAMP-TRC-2026-Q2,MBR00014,GAP000031,TRC,Transitions of Care,SMS,2,2025-07-17,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000026,CAMP-FUH-2026-Q1,MBR00164,GAP000451,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,1,2025-07-19,No answer / voicemail,,IVR_RESULT,False,False
+DISP000027,CAMP-FUH-2026-Q1,MBR00164,GAP000451,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,2,2026-01-22,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000028,CAMP-FUH-2026-Q2,MBR00164,GAP000451,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,3,2025-10-22,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000029,CAMP-FUH-2026-Q1,MBR00164,GAP000451,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,4,2026-03-24,WN,,CSR_OUTREACH,False,False
+DISP000030,CAMP-FUH-2026-Q2,MBR00026,GAP000074,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2026-05-31,SCHED_CONFIRMED,,CSR_OUTREACH,True,True
+DISP000031,CAMP-COA-2026-Q2,MBR00159,GAP000437,COA,Care for Older Adults - Medication Review,IVR,1,2026-03-05,Wrong number,,IVR_RESULT,False,False
+DISP000032,CAMP-COA-2026-Q2,MBR00159,GAP000437,COA,Care for Older Adults - Medication Review,Call Center,2,2026-02-24,NO_ANSWER,Member said already done - could not verify in system.,CSR_OUTREACH,False,True
+DISP000033,CAMP-COA-2026-Q1,MBR00159,GAP000437,COA,Care for Older Adults - Medication Review,Call Center,3,2026-04-07,COMP_STATED,Member said already done - could not verify in system.,CSR_OUTREACH,True,True
+DISP000034,CAMP-COA-2026-Q2,MBR00159,GAP000437,COA,Care for Older Adults - Medication Review,Web Form,4,2026-05-24,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000035,CAMP-COL-2026-Q1,MBR00083,GAP000222,COL,Colorectal Cancer Screening,SMS,1,2025-11-08,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000036,CAMP-COL-2026-Q2,MBR00083,GAP000222,COL,Colorectal Cancer Screening,Mail,2,2025-09-27,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000037,CAMP-TRC-2026-Q1,MBR00181,GAP000504,TRC,Transitions of Care,Web Form,1,2025-10-03,ABANDONED,,WEB_SELF_SERVICE,False,True
+DISP000038,CAMP-TRC-2026-Q2,MBR00028,GAP000078,TRC,Transitions of Care,Web Form,1,2025-11-24,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,True
+DISP000039,CAMP-TRC-2026-Q1,MBR00028,GAP000078,TRC,Transitions of Care,Call Center,2,2026-01-04,REFUSED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000040,CAMP-TRC-2026-Q1,MBR00028,GAP000078,TRC,Transitions of Care,Mail,3,2025-12-05,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000041,CAMP-TRC-2026-Q1,MBR00028,GAP000078,TRC,Transitions of Care,SMS,4,2026-03-27,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000042,CAMP-MRP-2026-Q1,MBR00025,GAP000070,MRP,Medication Reconciliation Post-Discharge,Call Center,1,2025-12-04,CB_SCHED,Member refused. Do not contact.,CSR_OUTREACH,False,True
+DISP000043,CAMP-SPC-2026-Q2,MBR00081,GAP000215,SPC,Statin Therapy for Patients with Cardiovascular Disease,Web Form,1,2026-05-23,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000044,CAMP-FUH-2026-Q2,MBR00028,GAP000079,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,1,2025-10-29,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000045,CAMP-FUH-2026-Q1,MBR00028,GAP000079,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,2,2025-09-26,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000046,CAMP-FUH-2026-Q1,MBR00028,GAP000079,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,3,2025-07-18,INVALID_NUM,,SMS_OUTREACH,False,True
+DISP000047,CAMP-FUH-2026-Q1,MBR00028,GAP000079,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,4,2026-03-08,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000048,CAMP-OMW-2026-Q1,MBR00152,GAP000420,OMW,Osteoporosis Management in Women,IVR,1,2025-09-09,Member declined — not interested,,IVR_RESULT,False,True
+DISP000049,CAMP-OMW-2026-Q2,MBR00152,GAP000420,OMW,Osteoporosis Management in Women,Mail,2,2025-08-31,NO_RESPONSE,,MAIL_OUTREACH,False,True
+DISP000050,CAMP-FUH-2026-Q1,MBR00189,GAP000526,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,1,2025-08-18,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000051,CAMP-FUH-2026-Q1,MBR00189,GAP000526,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,2,2025-11-14,Member requested callback,,IVR_RESULT,False,False
+DISP000052,CAMP-FUH-2026-Q1,MBR00189,GAP000526,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,3,2026-02-14,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000053,CAMP-AWC-2026-Q2,MBR00116,GAP000317,AWC,Annual Wellness Visit,SMS,1,2025-08-07,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000054,CAMP-AWC-2026-Q1,MBR00116,GAP000317,AWC,Annual Wellness Visit,Web Form,2,2025-10-21,PARTIAL_SUBMIT,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000055,CAMP-AWC-2026-Q1,MBR00116,GAP000317,AWC,Annual Wellness Visit,SMS,3,2025-08-22,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000056,CAMP-AWC-2026-Q2,MBR00116,GAP000317,AWC,Annual Wellness Visit,Call Center,4,2025-08-09,CB_SCHED,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,False
+DISP000057,CAMP-CBP-2026-Q2,MBR00080,GAP000212,CBP,Controlling Blood Pressure,Web Form,1,2026-03-05,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000058,CAMP-CBP-2026-Q2,MBR00080,GAP000212,CBP,Controlling Blood Pressure,Web Form,2,2025-11-29,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000059,CAMP-CBP-2026-Q2,MBR00080,GAP000212,CBP,Controlling Blood Pressure,Mail,3,2026-02-24,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000060,CAMP-CBP-2026-Q2,MBR00080,GAP000212,CBP,Controlling Blood Pressure,SMS,4,2025-06-19,REPLIED_NO,,SMS_OUTREACH,False,True
+DISP000061,CAMP-COL-2026-Q2,MBR00157,GAP000431,COL,Colorectal Cancer Screening,IVR,1,2026-04-06,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000062,CAMP-COL-2026-Q1,MBR00157,GAP000431,COL,Colorectal Cancer Screening,Mail,2,2025-06-13,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000063,CAMP-COL-2026-Q1,MBR00157,GAP000431,COL,Colorectal Cancer Screening,SMS,3,2026-01-09,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000064,CAMP-COL-2026-Q2,MBR00013,GAP000029,COL,Colorectal Cancer Screening,Call Center,1,2025-10-04,VM_LEFT,Member stated they completed Colorectal Cancer Screening last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000065,CAMP-COL-2026-Q2,MBR00013,GAP000029,COL,Colorectal Cancer Screening,Mail,2,2026-02-05,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000066,CAMP-COL-2026-Q1,MBR00013,GAP000029,COL,Colorectal Cancer Screening,Mail,3,2025-09-13,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,True
+DISP000067,CAMP-MRP-2026-Q1,MBR00112,GAP000305,MRP,Medication Reconciliation Post-Discharge,SMS,1,2026-04-24,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000068,CAMP-MRP-2026-Q2,MBR00112,GAP000305,MRP,Medication Reconciliation Post-Discharge,Mail,2,2026-01-25,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000069,CAMP-CDC-H-2026-Q1,MBR00109,GAP000291,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Web Form,1,2025-10-29,PARTIAL_SUBMIT,,WEB_SELF_SERVICE,False,False
+DISP000070,CAMP-COA-2026-Q1,MBR00151,GAP000418,COA,Care for Older Adults - Medication Review,IVR,1,2025-11-28,Member stated already completed,,IVR_RESULT,False,False
+DISP000071,CAMP-COA-2026-Q2,MBR00151,GAP000418,COA,Care for Older Adults - Medication Review,IVR,2,2025-07-22,Member requested callback,,IVR_RESULT,False,False
+DISP000072,CAMP-COA-2026-Q2,MBR00151,GAP000418,COA,Care for Older Adults - Medication Review,IVR,3,2025-06-13,No answer / voicemail,,IVR_RESULT,False,False
+DISP000073,CAMP-COA-2026-Q2,MBR00151,GAP000418,COA,Care for Older Adults - Medication Review,IVR,4,2026-01-16,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000074,CAMP-SPC-2026-Q1,MBR00069,GAP000190,SPC,Statin Therapy for Patients with Cardiovascular Disease,Web Form,1,2025-11-15,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,True
+DISP000075,CAMP-SPC-2026-Q1,MBR00069,GAP000190,SPC,Statin Therapy for Patients with Cardiovascular Disease,Call Center,2,2026-02-05,WN,Member stated they completed Statin Therapy for Patients with Cardiovascular Disease last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000076,CAMP-SPC-2026-Q2,MBR00069,GAP000190,SPC,Statin Therapy for Patients with Cardiovascular Disease,SMS,3,2025-12-11,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000077,CAMP-AWC-2026-Q2,MBR00138,GAP000374,AWC,Annual Wellness Visit,SMS,1,2025-08-12,REPLIED_NO,,SMS_OUTREACH,False,True
+DISP000078,CAMP-AWC-2026-Q2,MBR00138,GAP000374,AWC,Annual Wellness Visit,Mail,2,2025-12-19,DELIVERED,,MAIL_OUTREACH,False,True
+DISP000079,CAMP-AWC-2026-Q1,MBR00138,GAP000374,AWC,Annual Wellness Visit,IVR,3,2025-08-08,No answer / voicemail,,IVR_RESULT,False,False
+DISP000080,CAMP-COA-2026-Q1,MBR00181,GAP000506,COA,Care for Older Adults - Medication Review,SMS,1,2026-01-05,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000081,CAMP-COA-2026-Q2,MBR00181,GAP000506,COA,Care for Older Adults - Medication Review,IVR,2,2025-07-04,Member requested callback,,IVR_RESULT,False,False
+DISP000082,CAMP-COA-2026-Q2,MBR00181,GAP000506,COA,Care for Older Adults - Medication Review,Call Center,3,2025-07-04,COMP_STATED,,CSR_OUTREACH,False,False
+DISP000083,CAMP-COA-2026-Q2,MBR00181,GAP000506,COA,Care for Older Adults - Medication Review,IVR,4,2025-07-11,Disconnected,,IVR_RESULT,False,False
+DISP000084,CAMP-AWC-2026-Q2,MBR00004,GAP000009,AWC,Annual Wellness Visit,Call Center,1,2025-10-11,NO_ANSWER,Member said already done - could not verify in system.,CSR_OUTREACH,False,False
+DISP000085,CAMP-AWC-2026-Q2,MBR00004,GAP000009,AWC,Annual Wellness Visit,Web Form,2,2025-10-04,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,True,True
+DISP000086,CAMP-AWC-2026-Q2,MBR00004,GAP000009,AWC,Annual Wellness Visit,Mail,3,2026-02-16,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000087,CAMP-FUH-2026-Q1,MBR00036,GAP000103,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,1,2025-11-01,PARTIAL_SUBMIT,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000088,CAMP-TRC-2026-Q2,MBR00010,GAP000023,TRC,Transitions of Care,SMS,1,2026-01-24,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000089,CAMP-TRC-2026-Q1,MBR00010,GAP000023,TRC,Transitions of Care,Call Center,2,2025-12-22,WN,Member said already done - could not verify in system.,CSR_OUTREACH,False,False
+DISP000090,CAMP-FUH-2026-Q1,MBR00169,GAP000467,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,1,2026-02-02,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000091,CAMP-FUH-2026-Q1,MBR00169,GAP000467,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,2,2025-12-25,WN,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000092,CAMP-SPC-2026-Q2,MBR00148,GAP000405,SPC,Statin Therapy for Patients with Cardiovascular Disease,Mail,1,2025-07-31,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000093,CAMP-SPC-2026-Q1,MBR00148,GAP000405,SPC,Statin Therapy for Patients with Cardiovascular Disease,Call Center,2,2026-03-29,COMP_STATED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,True,True
+DISP000094,CAMP-SPC-2026-Q2,MBR00148,GAP000405,SPC,Statin Therapy for Patients with Cardiovascular Disease,Mail,3,2025-10-03,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000095,CAMP-COA-2026-Q1,MBR00022,GAP000057,COA,Care for Older Adults - Medication Review,Web Form,1,2025-11-15,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000096,CAMP-COA-2026-Q2,MBR00022,GAP000057,COA,Care for Older Adults - Medication Review,IVR,2,2025-07-13,Member confirmed appointment scheduled,,IVR_RESULT,True,True
+DISP000097,CAMP-COL-2026-Q1,MBR00168,GAP000462,COL,Colorectal Cancer Screening,IVR,1,2026-05-24,Member requested callback,,IVR_RESULT,False,False
+DISP000098,CAMP-COL-2026-Q2,MBR00168,GAP000462,COL,Colorectal Cancer Screening,Call Center,2,2025-08-30,CB_SCHED,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000099,CAMP-COL-2026-Q1,MBR00168,GAP000462,COL,Colorectal Cancer Screening,Mail,3,2026-05-08,NO_RESPONSE,,MAIL_OUTREACH,False,True
+DISP000100,CAMP-COL-2026-Q1,MBR00168,GAP000462,COL,Colorectal Cancer Screening,Mail,4,2025-11-17,DELIVERED,,MAIL_OUTREACH,False,True
+DISP000101,CAMP-CBP-2026-Q2,MBR00054,GAP000156,CBP,Controlling Blood Pressure,Web Form,1,2025-06-01,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000102,CAMP-COL-2026-Q1,MBR00155,GAP000426,COL,Colorectal Cancer Screening,Mail,1,2026-03-31,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000103,CAMP-AWC-2026-Q2,MBR00092,GAP000246,AWC,Annual Wellness Visit,SMS,1,2025-07-04,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000104,CAMP-AWC-2026-Q1,MBR00092,GAP000246,AWC,Annual Wellness Visit,SMS,2,2026-04-26,INVALID_NUM,,SMS_OUTREACH,False,True
+DISP000105,CAMP-AWC-2026-Q1,MBR00092,GAP000246,AWC,Annual Wellness Visit,Mail,3,2025-06-17,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000106,CAMP-OMW-2026-Q2,MBR00132,GAP000362,OMW,Osteoporosis Management in Women,Call Center,1,2025-12-01,LANG_BARRIER,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,False
+DISP000107,CAMP-OMW-2026-Q2,MBR00132,GAP000362,OMW,Osteoporosis Management in Women,Call Center,2,2025-09-29,LANG_BARRIER,Member said already done - could not verify in system.,CSR_OUTREACH,False,False
+DISP000108,CAMP-OMW-2026-Q1,MBR00132,GAP000362,OMW,Osteoporosis Management in Women,SMS,3,2026-05-27,REPLIED_NO,,SMS_OUTREACH,False,True
+DISP000109,CAMP-OMW-2026-Q1,MBR00132,GAP000362,OMW,Osteoporosis Management in Women,Web Form,4,2025-07-31,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,True
+DISP000110,CAMP-COA-2026-Q2,MBR00015,GAP000037,COA,Care for Older Adults - Medication Review,Mail,1,2026-05-19,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000111,CAMP-COA-2026-Q1,MBR00015,GAP000037,COA,Care for Older Adults - Medication Review,Call Center,2,2025-12-27,REFUSED,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,False
+DISP000112,CAMP-COA-2026-Q1,MBR00015,GAP000037,COA,Care for Older Adults - Medication Review,Call Center,3,2026-05-02,CB_SCHED,Member said already done - could not verify in system.,CSR_OUTREACH,False,False
+DISP000113,CAMP-SPC-2026-Q2,MBR00036,GAP000102,SPC,Statin Therapy for Patients with Cardiovascular Disease,IVR,1,2025-06-26,Member confirmed appointment scheduled,,IVR_RESULT,False,False
+DISP000114,CAMP-SPC-2026-Q2,MBR00036,GAP000102,SPC,Statin Therapy for Patients with Cardiovascular Disease,SMS,2,2026-02-10,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000115,CAMP-SPC-2026-Q2,MBR00036,GAP000102,SPC,Statin Therapy for Patients with Cardiovascular Disease,Mail,3,2026-01-17,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000116,CAMP-TRC-2026-Q2,MBR00100,GAP000270,TRC,Transitions of Care,Web Form,1,2026-05-25,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000117,CAMP-TRC-2026-Q1,MBR00100,GAP000270,TRC,Transitions of Care,Call Center,2,2025-07-18,SCHED_CONFIRMED,Member said already done - could not verify in system.,CSR_OUTREACH,True,True
+DISP000118,CAMP-TRC-2026-Q2,MBR00100,GAP000270,TRC,Transitions of Care,SMS,3,2026-02-18,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000119,CAMP-OMW-2026-Q2,MBR00019,GAP000047,OMW,Osteoporosis Management in Women,SMS,1,2025-12-31,REPLIED_YES,,SMS_OUTREACH,False,False
+DISP000120,CAMP-OMW-2026-Q1,MBR00019,GAP000047,OMW,Osteoporosis Management in Women,Web Form,2,2025-12-08,PARTIAL_SUBMIT,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,True
+DISP000121,CAMP-CBP-2026-Q2,MBR00121,GAP000329,CBP,Controlling Blood Pressure,SMS,1,2025-11-18,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000122,CAMP-CBP-2026-Q1,MBR00121,GAP000329,CBP,Controlling Blood Pressure,Web Form,2,2026-03-30,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000123,CAMP-TRC-2026-Q2,MBR00085,GAP000229,TRC,Transitions of Care,Web Form,1,2026-03-08,PARTIAL_SUBMIT,,WEB_SELF_SERVICE,False,False
+DISP000124,CAMP-TRC-2026-Q1,MBR00085,GAP000229,TRC,Transitions of Care,IVR,2,2025-10-24,Member stated already completed,,IVR_RESULT,False,True
+DISP000125,CAMP-TRC-2026-Q1,MBR00085,GAP000229,TRC,Transitions of Care,Call Center,3,2025-12-31,SCHED_CONFIRMED,Member refused. Do not contact.,CSR_OUTREACH,False,False
+DISP000126,CAMP-TRC-2026-Q2,MBR00085,GAP000229,TRC,Transitions of Care,Call Center,4,2025-10-14,LANG_BARRIER,Member stated they completed Transitions of Care last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000127,CAMP-FUH-2026-Q1,MBR00182,GAP000508,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,1,2025-06-03,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000128,CAMP-FUH-2026-Q1,MBR00182,GAP000508,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,2,2025-10-01,WN,Member stated they completed Follow-Up After Hospitalization for Mental Illness last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000129,CAMP-FUH-2026-Q1,MBR00182,GAP000508,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,3,2026-03-02,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000130,CAMP-FUH-2026-Q2,MBR00182,GAP000508,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,4,2026-04-24,PARTIAL_SUBMIT,,WEB_SELF_SERVICE,False,False
+DISP000131,CAMP-FUH-2026-Q1,MBR00186,GAP000520,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,1,2026-05-05,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000132,CAMP-FUH-2026-Q1,MBR00186,GAP000520,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,2,2026-03-15,NO_ANSWER,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000133,CAMP-TRC-2026-Q1,MBR00151,GAP000416,TRC,Transitions of Care,Call Center,1,2025-07-11,NO_ANSWER,Member refused. Do not contact.,CSR_OUTREACH,False,False
+DISP000134,CAMP-CBP-2026-Q2,MBR00072,GAP000198,CBP,Controlling Blood Pressure,SMS,1,2026-06-10,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000135,CAMP-OMW-2026-Q2,MBR00044,GAP000124,OMW,Osteoporosis Management in Women,Call Center,1,2025-08-22,WN,Member refused. Do not contact.,CSR_OUTREACH,False,False
+DISP000136,CAMP-OMW-2026-Q1,MBR00044,GAP000124,OMW,Osteoporosis Management in Women,IVR,2,2025-10-26,Wrong number,,IVR_RESULT,False,False
+DISP000137,CAMP-OMW-2026-Q1,MBR00044,GAP000124,OMW,Osteoporosis Management in Women,IVR,3,2025-08-19,Member declined — not interested,,IVR_RESULT,False,False
+DISP000138,CAMP-FUH-2026-Q2,MBR00141,GAP000388,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,1,2025-10-17,Member requested callback,,IVR_RESULT,False,True
+DISP000139,CAMP-FUH-2026-Q2,MBR00141,GAP000388,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,2,2025-08-02,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000140,CAMP-TRC-2026-Q1,MBR00025,GAP000069,TRC,Transitions of Care,Call Center,1,2026-05-09,LANG_BARRIER,Left voicemail. No callback.,CSR_OUTREACH,False,False
+DISP000141,CAMP-CBP-2026-Q2,MBR00007,GAP000018,CBP,Controlling Blood Pressure,SMS,1,2025-12-16,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000142,CAMP-CBP-2026-Q1,MBR00007,GAP000018,CBP,Controlling Blood Pressure,IVR,2,2026-04-14,Member declined — not interested,,IVR_RESULT,False,False
+DISP000143,CAMP-CBP-2026-Q1,MBR00007,GAP000018,CBP,Controlling Blood Pressure,SMS,3,2025-11-23,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000144,CAMP-TRC-2026-Q2,MBR00043,GAP000122,TRC,Transitions of Care,Mail,1,2025-06-16,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000145,CAMP-TRC-2026-Q1,MBR00043,GAP000122,TRC,Transitions of Care,IVR,2,2026-02-18,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000146,CAMP-TRC-2026-Q1,MBR00043,GAP000122,TRC,Transitions of Care,Web Form,3,2026-04-23,PARTIAL_SUBMIT,,WEB_SELF_SERVICE,False,False
+DISP000147,CAMP-TRC-2026-Q2,MBR00043,GAP000122,TRC,Transitions of Care,SMS,4,2026-05-03,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000148,CAMP-FUH-2026-Q1,MBR00104,GAP000278,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,1,2026-04-25,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000149,CAMP-FUH-2026-Q2,MBR00104,GAP000278,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,2,2026-01-18,No answer / voicemail,,IVR_RESULT,False,True
+DISP000150,CAMP-FUH-2026-Q2,MBR00104,GAP000278,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,3,2026-05-07,Member stated already completed,,IVR_RESULT,False,False
+DISP000151,CAMP-FUH-2026-Q1,MBR00104,GAP000278,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,4,2025-11-09,Disconnected,,IVR_RESULT,False,True
+DISP000152,CAMP-FUH-2026-Q2,MBR00048,GAP000137,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,1,2025-08-09,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000153,CAMP-TRC-2026-Q2,MBR00068,GAP000188,TRC,Transitions of Care,Web Form,1,2025-06-17,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000154,CAMP-TRC-2026-Q1,MBR00017,GAP000044,TRC,Transitions of Care,IVR,1,2025-07-25,Member confirmed appointment scheduled,,IVR_RESULT,False,False
+DISP000155,CAMP-TRC-2026-Q2,MBR00017,GAP000044,TRC,Transitions of Care,Mail,2,2025-12-12,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000156,CAMP-TRC-2026-Q2,MBR00017,GAP000044,TRC,Transitions of Care,IVR,3,2026-02-27,Member stated already completed,,IVR_RESULT,False,True
+DISP000157,CAMP-FUH-2026-Q1,MBR00119,GAP000325,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2025-06-12,CB_SCHED,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,False
+DISP000158,CAMP-FUH-2026-Q1,MBR00119,GAP000325,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,2,2026-02-24,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000159,CAMP-FUH-2026-Q2,MBR00119,GAP000325,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,3,2025-07-29,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000160,CAMP-CDC-H-2026-Q1,MBR00025,GAP000066,CDC-H,Comprehensive Diabetes Care - HbA1c Control,IVR,1,2025-09-02,No answer / voicemail,,IVR_RESULT,False,False
+DISP000161,CAMP-CDC-H-2026-Q1,MBR00025,GAP000066,CDC-H,Comprehensive Diabetes Care - HbA1c Control,SMS,2,2025-06-26,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000162,CAMP-CDC-H-2026-Q2,MBR00025,GAP000066,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Web Form,3,2026-03-23,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000163,CAMP-OMW-2026-Q2,MBR00140,GAP000382,OMW,Osteoporosis Management in Women,Call Center,1,2025-06-21,LANG_BARRIER,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,True
+DISP000164,CAMP-AWC-2026-Q1,MBR00188,GAP000524,AWC,Annual Wellness Visit,IVR,1,2025-08-10,Member declined — not interested,,IVR_RESULT,False,True
+DISP000165,CAMP-AWC-2026-Q2,MBR00188,GAP000524,AWC,Annual Wellness Visit,IVR,2,2026-01-31,Member confirmed appointment scheduled,,IVR_RESULT,True,True
+DISP000166,CAMP-AWC-2026-Q1,MBR00188,GAP000524,AWC,Annual Wellness Visit,Call Center,3,2026-03-05,REFUSED,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,False
+DISP000167,CAMP-FUH-2026-Q1,MBR00198,GAP000545,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,1,2025-08-26,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000168,CAMP-COL-2026-Q1,MBR00199,GAP000546,COL,Colorectal Cancer Screening,Call Center,1,2025-09-20,VM_LEFT,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000169,CAMP-COA-2026-Q1,MBR00080,GAP000214,COA,Care for Older Adults - Medication Review,IVR,1,2026-05-15,Wrong number,,IVR_RESULT,False,False
+DISP000170,CAMP-COA-2026-Q2,MBR00080,GAP000214,COA,Care for Older Adults - Medication Review,Call Center,2,2026-03-08,COMP_STATED,Member stated they completed Care for Older Adults - Medication Review last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,True,True
+DISP000171,CAMP-COA-2026-Q2,MBR00080,GAP000214,COA,Care for Older Adults - Medication Review,SMS,3,2026-02-26,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000172,CAMP-COA-2026-Q1,MBR00080,GAP000214,COA,Care for Older Adults - Medication Review,Web Form,4,2025-12-28,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000173,CAMP-MRP-2026-Q1,MBR00035,GAP000100,MRP,Medication Reconciliation Post-Discharge,Mail,1,2026-04-28,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000174,CAMP-MRP-2026-Q1,MBR00035,GAP000100,MRP,Medication Reconciliation Post-Discharge,Call Center,2,2026-03-30,COMP_STATED,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,False
+DISP000175,CAMP-MRP-2026-Q1,MBR00035,GAP000100,MRP,Medication Reconciliation Post-Discharge,SMS,3,2025-08-07,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000176,CAMP-MRP-2026-Q1,MBR00035,GAP000100,MRP,Medication Reconciliation Post-Discharge,IVR,4,2026-06-10,Member declined — not interested,,IVR_RESULT,False,False
+DISP000177,CAMP-TRC-2026-Q1,MBR00001,GAP000002,TRC,Transitions of Care,Mail,1,2025-07-28,NO_RESPONSE,,MAIL_OUTREACH,False,True
+DISP000178,CAMP-TRC-2026-Q2,MBR00001,GAP000002,TRC,Transitions of Care,IVR,2,2026-05-23,Member confirmed appointment scheduled,,IVR_RESULT,True,True
+DISP000179,CAMP-COA-2026-Q2,MBR00062,GAP000171,COA,Care for Older Adults - Medication Review,Call Center,1,2025-08-13,VM_LEFT,Left voicemail. No callback.,CSR_OUTREACH,False,False
+DISP000180,CAMP-COA-2026-Q1,MBR00062,GAP000171,COA,Care for Older Adults - Medication Review,Call Center,2,2025-12-11,LANG_BARRIER,,CSR_OUTREACH,False,False
+DISP000181,CAMP-FUH-2026-Q2,MBR00167,GAP000461,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2025-11-28,COMP_STATED,Member refused. Do not contact.,CSR_OUTREACH,True,True
+DISP000182,CAMP-FUH-2026-Q1,MBR00167,GAP000461,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,2,2025-06-26,LANG_BARRIER,Member stated they completed Follow-Up After Hospitalization for Mental Illness last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000183,CAMP-TRC-2026-Q1,MBR00127,GAP000351,TRC,Transitions of Care,IVR,1,2026-01-21,Wrong number,,IVR_RESULT,False,False
+DISP000184,CAMP-COL-2026-Q1,MBR00136,GAP000370,COL,Colorectal Cancer Screening,SMS,1,2025-10-24,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000185,CAMP-COL-2026-Q1,MBR00136,GAP000370,COL,Colorectal Cancer Screening,Call Center,2,2026-02-27,REFUSED,,CSR_OUTREACH,False,False
+DISP000186,CAMP-COL-2026-Q2,MBR00136,GAP000370,COL,Colorectal Cancer Screening,Call Center,3,2025-09-11,LANG_BARRIER,,CSR_OUTREACH,False,False
+DISP000187,CAMP-TRC-2026-Q1,MBR00113,GAP000308,TRC,Transitions of Care,Call Center,1,2025-09-21,SCHED_CONFIRMED,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,True,True
+DISP000188,CAMP-TRC-2026-Q2,MBR00113,GAP000308,TRC,Transitions of Care,Call Center,2,2025-12-14,COMP_STATED,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,True,True
+DISP000189,CAMP-COL-2026-Q1,MBR00027,GAP000075,COL,Colorectal Cancer Screening,IVR,1,2025-10-18,Wrong number,,IVR_RESULT,False,False
+DISP000190,CAMP-COL-2026-Q2,MBR00027,GAP000075,COL,Colorectal Cancer Screening,IVR,2,2026-03-18,Member declined — not interested,,IVR_RESULT,False,False
+DISP000191,CAMP-COL-2026-Q1,MBR00027,GAP000075,COL,Colorectal Cancer Screening,Mail,3,2025-10-04,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000192,CAMP-TRC-2026-Q2,MBR00131,GAP000361,TRC,Transitions of Care,Web Form,1,2025-06-02,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,True,True
+DISP000193,CAMP-TRC-2026-Q1,MBR00131,GAP000361,TRC,Transitions of Care,Web Form,2,2025-11-22,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000194,CAMP-TRC-2026-Q2,MBR00131,GAP000361,TRC,Transitions of Care,Mail,3,2026-06-05,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000195,CAMP-TRC-2026-Q2,MBR00131,GAP000361,TRC,Transitions of Care,Web Form,4,2025-09-11,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000196,CAMP-CBP-2026-Q2,MBR00059,GAP000165,CBP,Controlling Blood Pressure,Call Center,1,2026-01-28,COMP_STATED,Member refused. Do not contact.,CSR_OUTREACH,True,True
+DISP000197,CAMP-CDC-H-2026-Q1,MBR00007,GAP000019,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Call Center,1,2025-10-02,NO_ANSWER,,CSR_OUTREACH,False,False
+DISP000198,CAMP-CDC-H-2026-Q1,MBR00007,GAP000019,CDC-H,Comprehensive Diabetes Care - HbA1c Control,IVR,2,2025-07-23,Member requested callback,,IVR_RESULT,False,False
+DISP000199,CAMP-CDC-H-2026-Q1,MBR00007,GAP000019,CDC-H,Comprehensive Diabetes Care - HbA1c Control,SMS,3,2026-01-26,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000200,CAMP-COL-2026-Q1,MBR00046,GAP000126,COL,Colorectal Cancer Screening,Web Form,1,2026-01-12,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000201,CAMP-COL-2026-Q2,MBR00028,GAP000077,COL,Colorectal Cancer Screening,Mail,1,2025-07-20,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000202,CAMP-COL-2026-Q1,MBR00028,GAP000077,COL,Colorectal Cancer Screening,IVR,2,2025-10-22,Disconnected,,IVR_RESULT,False,False
+DISP000203,CAMP-TRC-2026-Q2,MBR00033,GAP000092,TRC,Transitions of Care,SMS,1,2026-04-10,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000204,CAMP-TRC-2026-Q1,MBR00033,GAP000092,TRC,Transitions of Care,Web Form,2,2026-03-02,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000205,CAMP-TRC-2026-Q1,MBR00033,GAP000092,TRC,Transitions of Care,IVR,3,2026-01-30,Wrong number,,IVR_RESULT,False,False
+DISP000206,CAMP-TRC-2026-Q1,MBR00050,GAP000143,TRC,Transitions of Care,SMS,1,2025-12-28,NO_RESPONSE,,SMS_OUTREACH,False,True
+DISP000207,CAMP-TRC-2026-Q2,MBR00050,GAP000143,TRC,Transitions of Care,Web Form,2,2025-10-21,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000208,CAMP-TRC-2026-Q1,MBR00050,GAP000143,TRC,Transitions of Care,Call Center,3,2026-03-12,VM_LEFT,Member stated they completed Transitions of Care last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000209,CAMP-TRC-2026-Q1,MBR00050,GAP000143,TRC,Transitions of Care,Mail,4,2025-09-07,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000210,CAMP-TRC-2026-Q2,MBR00116,GAP000319,TRC,Transitions of Care,SMS,1,2025-09-09,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000211,CAMP-AWC-2026-Q1,MBR00166,GAP000456,AWC,Annual Wellness Visit,IVR,1,2026-05-05,Disconnected,,IVR_RESULT,False,False
+DISP000212,CAMP-AWC-2026-Q2,MBR00166,GAP000456,AWC,Annual Wellness Visit,IVR,2,2025-07-31,No answer / voicemail,,IVR_RESULT,False,False
+DISP000213,CAMP-AWC-2026-Q1,MBR00166,GAP000456,AWC,Annual Wellness Visit,Call Center,3,2025-08-18,REFUSED,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000214,CAMP-AWC-2026-Q2,MBR00166,GAP000456,AWC,Annual Wellness Visit,SMS,4,2025-12-09,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000215,CAMP-TRC-2026-Q2,MBR00081,GAP000216,TRC,Transitions of Care,IVR,1,2025-08-20,No answer / voicemail,,IVR_RESULT,False,True
+DISP000216,CAMP-FUH-2026-Q2,MBR00033,GAP000093,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2025-09-26,VM_LEFT,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,False
+DISP000217,CAMP-CBP-2026-Q1,MBR00122,GAP000334,CBP,Controlling Blood Pressure,SMS,1,2026-04-01,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000218,CAMP-CBP-2026-Q2,MBR00122,GAP000334,CBP,Controlling Blood Pressure,Call Center,2,2026-01-04,VM_LEFT,,CSR_OUTREACH,False,False
+DISP000219,CAMP-CBP-2026-Q2,MBR00122,GAP000334,CBP,Controlling Blood Pressure,Web Form,3,2025-09-18,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000220,CAMP-CBP-2026-Q1,MBR00122,GAP000334,CBP,Controlling Blood Pressure,Call Center,4,2026-03-02,SCHED_CONFIRMED,Left voicemail. No callback.,CSR_OUTREACH,False,True
+DISP000221,CAMP-TRC-2026-Q1,MBR00071,GAP000196,TRC,Transitions of Care,SMS,1,2026-05-25,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000222,CAMP-COL-2026-Q1,MBR00147,GAP000400,COL,Colorectal Cancer Screening,Call Center,1,2026-04-29,VM_LEFT,Member stated they completed Colorectal Cancer Screening last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000223,CAMP-COL-2026-Q1,MBR00147,GAP000400,COL,Colorectal Cancer Screening,SMS,2,2025-10-02,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000224,CAMP-COL-2026-Q1,MBR00147,GAP000400,COL,Colorectal Cancer Screening,SMS,3,2026-03-03,INVALID_NUM,,SMS_OUTREACH,False,True
+DISP000225,CAMP-COL-2026-Q1,MBR00147,GAP000400,COL,Colorectal Cancer Screening,Mail,4,2025-10-12,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000226,CAMP-COL-2026-Q1,MBR00196,GAP000541,COL,Colorectal Cancer Screening,Call Center,1,2026-02-07,COMP_STATED,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000227,CAMP-COA-2026-Q1,MBR00018,GAP000046,COA,Care for Older Adults - Medication Review,Web Form,1,2026-01-13,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000228,CAMP-COA-2026-Q2,MBR00018,GAP000046,COA,Care for Older Adults - Medication Review,Mail,2,2026-01-22,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000229,CAMP-COL-2026-Q1,MBR00016,GAP000039,COL,Colorectal Cancer Screening,IVR,1,2025-06-06,Member confirmed appointment scheduled,,IVR_RESULT,False,False
+DISP000230,CAMP-CDC-H-2026-Q1,MBR00183,GAP000510,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Mail,1,2025-08-24,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000231,CAMP-SPC-2026-Q2,MBR00170,GAP000470,SPC,Statin Therapy for Patients with Cardiovascular Disease,SMS,1,2026-02-02,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000232,CAMP-FUH-2026-Q2,MBR00020,GAP000054,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,1,2025-06-14,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000233,CAMP-COA-2026-Q2,MBR00126,GAP000349,COA,Care for Older Adults - Medication Review,IVR,1,2026-02-14,Wrong number,,IVR_RESULT,False,False
+DISP000234,CAMP-COA-2026-Q2,MBR00126,GAP000349,COA,Care for Older Adults - Medication Review,SMS,2,2025-07-14,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000235,CAMP-COA-2026-Q1,MBR00126,GAP000349,COA,Care for Older Adults - Medication Review,Mail,3,2026-02-07,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000236,CAMP-COA-2026-Q1,MBR00126,GAP000349,COA,Care for Older Adults - Medication Review,SMS,4,2025-08-29,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000237,CAMP-MRP-2026-Q1,MBR00105,GAP000280,MRP,Medication Reconciliation Post-Discharge,Call Center,1,2026-01-27,CB_SCHED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000238,CAMP-MRP-2026-Q1,MBR00105,GAP000280,MRP,Medication Reconciliation Post-Discharge,Web Form,2,2025-06-26,FORM_SUBMITTED,,WEB_SELF_SERVICE,True,True
+DISP000239,CAMP-MRP-2026-Q2,MBR00105,GAP000280,MRP,Medication Reconciliation Post-Discharge,Call Center,3,2025-11-24,NO_ANSWER,Left voicemail. No callback.,CSR_OUTREACH,False,False
+DISP000240,CAMP-FUH-2026-Q2,MBR00095,GAP000258,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2025-12-11,REFUSED,Member refused. Do not contact.,CSR_OUTREACH,False,False
+DISP000241,CAMP-FUH-2026-Q2,MBR00095,GAP000258,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,2,2025-09-25,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000242,CAMP-CBP-2026-Q1,MBR00005,GAP000013,CBP,Controlling Blood Pressure,SMS,1,2026-03-23,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000243,CAMP-CBP-2026-Q2,MBR00005,GAP000013,CBP,Controlling Blood Pressure,Call Center,2,2025-06-28,WN,Member refused. Do not contact.,CSR_OUTREACH,False,False
+DISP000244,CAMP-CBP-2026-Q1,MBR00005,GAP000013,CBP,Controlling Blood Pressure,Web Form,3,2025-11-29,FORM_SUBMITTED,,WEB_SELF_SERVICE,False,False
+DISP000245,CAMP-MRP-2026-Q1,MBR00070,GAP000194,MRP,Medication Reconciliation Post-Discharge,IVR,1,2025-07-02,Wrong number,,IVR_RESULT,False,False
+DISP000246,CAMP-MRP-2026-Q2,MBR00070,GAP000194,MRP,Medication Reconciliation Post-Discharge,Call Center,2,2025-10-08,REFUSED,Member stated they completed Medication Reconciliation Post-Discharge last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000247,CAMP-AWC-2026-Q2,MBR00082,GAP000218,AWC,Annual Wellness Visit,Web Form,1,2026-01-29,PARTIAL_SUBMIT,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000248,CAMP-AWC-2026-Q1,MBR00082,GAP000218,AWC,Annual Wellness Visit,SMS,2,2026-02-26,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000249,CAMP-CBP-2026-Q2,MBR00056,GAP000159,CBP,Controlling Blood Pressure,IVR,1,2025-08-12,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000250,CAMP-CBP-2026-Q2,MBR00056,GAP000159,CBP,Controlling Blood Pressure,SMS,2,2026-02-23,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000251,CAMP-CBP-2026-Q2,MBR00193,GAP000535,CBP,Controlling Blood Pressure,Mail,1,2025-08-21,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000252,CAMP-CBP-2026-Q1,MBR00193,GAP000535,CBP,Controlling Blood Pressure,SMS,2,2025-12-06,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000253,CAMP-CBP-2026-Q1,MBR00193,GAP000535,CBP,Controlling Blood Pressure,Mail,3,2025-10-07,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000254,CAMP-CBP-2026-Q2,MBR00193,GAP000535,CBP,Controlling Blood Pressure,Call Center,4,2025-10-28,WN,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000255,CAMP-MRP-2026-Q2,MBR00176,GAP000489,MRP,Medication Reconciliation Post-Discharge,IVR,1,2025-09-04,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000256,CAMP-MRP-2026-Q1,MBR00176,GAP000489,MRP,Medication Reconciliation Post-Discharge,Mail,2,2026-03-06,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000257,CAMP-MRP-2026-Q2,MBR00176,GAP000489,MRP,Medication Reconciliation Post-Discharge,IVR,3,2026-05-09,Member declined — not interested,,IVR_RESULT,False,False
+DISP000258,CAMP-CBP-2026-Q1,MBR00174,GAP000479,CBP,Controlling Blood Pressure,Mail,1,2025-10-27,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000259,CAMP-CBP-2026-Q1,MBR00174,GAP000479,CBP,Controlling Blood Pressure,SMS,2,2026-06-10,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000260,CAMP-CBP-2026-Q2,MBR00174,GAP000479,CBP,Controlling Blood Pressure,Mail,3,2025-11-17,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000261,CAMP-CBP-2026-Q1,MBR00174,GAP000479,CBP,Controlling Blood Pressure,Web Form,4,2026-05-23,FORM_SUBMITTED,,WEB_SELF_SERVICE,True,True
+DISP000262,CAMP-TRC-2026-Q1,MBR00121,GAP000332,TRC,Transitions of Care,IVR,1,2025-10-28,No answer / voicemail,,IVR_RESULT,False,False
+DISP000263,CAMP-TRC-2026-Q2,MBR00121,GAP000332,TRC,Transitions of Care,SMS,2,2025-11-29,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000264,CAMP-TRC-2026-Q1,MBR00121,GAP000332,TRC,Transitions of Care,Web Form,3,2025-11-09,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000265,CAMP-OMW-2026-Q2,MBR00086,GAP000233,OMW,Osteoporosis Management in Women,IVR,1,2025-07-17,Member declined — not interested,,IVR_RESULT,False,False
+DISP000266,CAMP-OMW-2026-Q1,MBR00086,GAP000233,OMW,Osteoporosis Management in Women,Web Form,2,2026-01-25,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000267,CAMP-COL-2026-Q1,MBR00120,GAP000328,COL,Colorectal Cancer Screening,Web Form,1,2025-07-17,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000268,CAMP-COL-2026-Q1,MBR00120,GAP000328,COL,Colorectal Cancer Screening,SMS,2,2025-12-25,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000269,CAMP-TRC-2026-Q2,MBR00057,GAP000161,TRC,Transitions of Care,IVR,1,2026-06-06,Member declined — not interested,,IVR_RESULT,False,False
+DISP000270,CAMP-TRC-2026-Q2,MBR00057,GAP000161,TRC,Transitions of Care,Mail,2,2025-12-17,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000271,CAMP-TRC-2026-Q1,MBR00057,GAP000161,TRC,Transitions of Care,Web Form,3,2026-06-04,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,True
+DISP000272,CAMP-TRC-2026-Q2,MBR00057,GAP000161,TRC,Transitions of Care,SMS,4,2025-06-14,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000273,CAMP-COL-2026-Q1,MBR00112,GAP000302,COL,Colorectal Cancer Screening,IVR,1,2026-03-09,Member requested callback,,IVR_RESULT,False,False
+DISP000274,CAMP-COL-2026-Q2,MBR00112,GAP000302,COL,Colorectal Cancer Screening,SMS,2,2026-05-19,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000275,CAMP-COL-2026-Q1,MBR00112,GAP000302,COL,Colorectal Cancer Screening,Mail,3,2026-06-09,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000276,CAMP-COL-2026-Q2,MBR00112,GAP000302,COL,Colorectal Cancer Screening,Call Center,4,2025-06-02,COMP_STATED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,True,True
+DISP000277,CAMP-FUH-2026-Q1,MBR00090,GAP000242,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,1,2025-07-10,Wrong number,,IVR_RESULT,False,False
+DISP000278,CAMP-FUH-2026-Q2,MBR00090,GAP000242,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,2,2026-04-24,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,True
+DISP000279,CAMP-COL-2026-Q1,MBR00017,GAP000042,COL,Colorectal Cancer Screening,SMS,1,2025-12-21,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000280,CAMP-COL-2026-Q1,MBR00017,GAP000042,COL,Colorectal Cancer Screening,Web Form,2,2025-08-11,PARTIAL_SUBMIT,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000281,CAMP-COA-2026-Q2,MBR00067,GAP000185,COA,Care for Older Adults - Medication Review,Web Form,1,2026-04-05,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,True
+DISP000282,CAMP-COA-2026-Q1,MBR00067,GAP000185,COA,Care for Older Adults - Medication Review,Mail,2,2025-11-19,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000283,CAMP-TRC-2026-Q2,MBR00079,GAP000210,TRC,Transitions of Care,IVR,1,2026-05-23,Wrong number,,IVR_RESULT,False,True
+DISP000284,CAMP-TRC-2026-Q2,MBR00079,GAP000210,TRC,Transitions of Care,IVR,2,2025-12-05,Member confirmed appointment scheduled,,IVR_RESULT,False,False
+DISP000285,CAMP-TRC-2026-Q1,MBR00079,GAP000210,TRC,Transitions of Care,Call Center,3,2026-01-06,WN,Member stated they completed Transitions of Care last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000286,CAMP-FUH-2026-Q1,MBR00005,GAP000015,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,1,2026-01-05,REPLIED_YES,,SMS_OUTREACH,False,False
+DISP000287,CAMP-AWC-2026-Q1,MBR00042,GAP000117,AWC,Annual Wellness Visit,Mail,1,2025-12-17,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000288,CAMP-AWC-2026-Q1,MBR00042,GAP000117,AWC,Annual Wellness Visit,IVR,2,2025-12-15,Member requested callback,,IVR_RESULT,False,False
+DISP000289,CAMP-TRC-2026-Q2,MBR00070,GAP000193,TRC,Transitions of Care,SMS,1,2025-07-22,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000290,CAMP-TRC-2026-Q1,MBR00070,GAP000193,TRC,Transitions of Care,Mail,2,2025-11-30,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000291,CAMP-TRC-2026-Q2,MBR00070,GAP000193,TRC,Transitions of Care,Call Center,3,2026-03-20,REFUSED,,CSR_OUTREACH,False,False
+DISP000292,CAMP-CDC-H-2026-Q2,MBR00094,GAP000255,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Web Form,1,2026-04-26,FORM_SUBMITTED,,WEB_SELF_SERVICE,True,True
+DISP000293,CAMP-CDC-H-2026-Q1,MBR00094,GAP000255,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Mail,2,2025-06-21,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000294,CAMP-CDC-H-2026-Q2,MBR00094,GAP000255,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Web Form,3,2026-01-16,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000295,CAMP-CDC-H-2026-Q1,MBR00094,GAP000255,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Web Form,4,2026-02-26,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000296,CAMP-SPC-2026-Q2,MBR00068,GAP000187,SPC,Statin Therapy for Patients with Cardiovascular Disease,Web Form,1,2026-06-06,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,True,True
+DISP000297,CAMP-SPC-2026-Q1,MBR00068,GAP000187,SPC,Statin Therapy for Patients with Cardiovascular Disease,Call Center,2,2026-05-20,CB_SCHED,Member stated they completed Statin Therapy for Patients with Cardiovascular Disease last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000298,CAMP-SPC-2026-Q1,MBR00068,GAP000187,SPC,Statin Therapy for Patients with Cardiovascular Disease,Mail,3,2025-10-25,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000299,CAMP-FUH-2026-Q2,MBR00178,GAP000495,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,1,2026-03-26,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000300,CAMP-FUH-2026-Q2,MBR00178,GAP000495,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,2,2026-03-21,PARTIAL_SUBMIT,,WEB_SELF_SERVICE,False,False
+DISP000301,CAMP-FUH-2026-Q2,MBR00178,GAP000495,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,3,2026-02-23,Wrong number,,IVR_RESULT,False,True
+DISP000302,CAMP-FUH-2026-Q2,MBR00178,GAP000495,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,4,2025-12-14,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000303,CAMP-FUH-2026-Q1,MBR00012,GAP000028,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,1,2025-06-11,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000304,CAMP-TRC-2026-Q1,MBR00015,GAP000035,TRC,Transitions of Care,SMS,1,2025-07-26,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000305,CAMP-TRC-2026-Q1,MBR00015,GAP000035,TRC,Transitions of Care,Mail,2,2025-08-12,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000306,CAMP-FUH-2026-Q2,MBR00038,GAP000107,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,1,2026-05-25,FORM_SUBMITTED,,WEB_SELF_SERVICE,True,True
+DISP000307,CAMP-FUH-2026-Q1,MBR00038,GAP000107,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,2,2026-01-21,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000308,CAMP-FUH-2026-Q1,MBR00038,GAP000107,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,3,2025-08-29,COMP_STATED,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,False
+DISP000309,CAMP-FUH-2026-Q2,MBR00038,GAP000107,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,4,2026-04-07,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000310,CAMP-FUH-2026-Q2,MBR00114,GAP000312,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,1,2025-08-10,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000311,CAMP-FUH-2026-Q1,MBR00114,GAP000312,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,2,2025-11-24,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000312,CAMP-CBP-2026-Q1,MBR00053,GAP000152,CBP,Controlling Blood Pressure,Web Form,1,2026-04-09,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,True
+DISP000313,CAMP-CBP-2026-Q2,MBR00053,GAP000152,CBP,Controlling Blood Pressure,Call Center,2,2026-03-30,NO_ANSWER,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000314,CAMP-FUH-2026-Q1,MBR00122,GAP000336,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,1,2025-12-13,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000315,CAMP-TRC-2026-Q1,MBR00066,GAP000179,TRC,Transitions of Care,IVR,1,2026-03-15,Disconnected,,IVR_RESULT,False,False
+DISP000316,CAMP-TRC-2026-Q2,MBR00066,GAP000179,TRC,Transitions of Care,SMS,2,2025-09-06,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000317,CAMP-CBP-2026-Q1,MBR00185,GAP000514,CBP,Controlling Blood Pressure,Mail,1,2025-09-07,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000318,CAMP-TRC-2026-Q1,MBR00035,GAP000099,TRC,Transitions of Care,Web Form,1,2025-11-07,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000319,CAMP-TRC-2026-Q1,MBR00035,GAP000099,TRC,Transitions of Care,IVR,2,2025-08-24,Disconnected,,IVR_RESULT,False,False
+DISP000320,CAMP-TRC-2026-Q2,MBR00134,GAP000367,TRC,Transitions of Care,Web Form,1,2026-01-09,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000321,CAMP-MRP-2026-Q1,MBR00165,GAP000454,MRP,Medication Reconciliation Post-Discharge,IVR,1,2025-07-30,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000322,CAMP-OMW-2026-Q1,MBR00148,GAP000404,OMW,Osteoporosis Management in Women,SMS,1,2026-04-10,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000323,CAMP-COA-2026-Q2,MBR00185,GAP000519,COA,Care for Older Adults - Medication Review,IVR,1,2025-12-10,Member confirmed appointment scheduled,,IVR_RESULT,False,False
+DISP000324,CAMP-MRP-2026-Q1,MBR00153,GAP000425,MRP,Medication Reconciliation Post-Discharge,Mail,1,2025-06-28,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000325,CAMP-COL-2026-Q1,MBR00096,GAP000260,COL,Colorectal Cancer Screening,Web Form,1,2026-01-13,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000326,CAMP-COL-2026-Q1,MBR00096,GAP000260,COL,Colorectal Cancer Screening,Mail,2,2025-09-21,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000327,CAMP-TRC-2026-Q2,MBR00184,GAP000512,TRC,Transitions of Care,Call Center,1,2026-01-13,LANG_BARRIER,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000328,CAMP-TRC-2026-Q2,MBR00184,GAP000512,TRC,Transitions of Care,SMS,2,2026-06-07,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000329,CAMP-TRC-2026-Q1,MBR00184,GAP000512,TRC,Transitions of Care,SMS,3,2026-04-02,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000330,CAMP-TRC-2026-Q1,MBR00184,GAP000512,TRC,Transitions of Care,Call Center,4,2026-06-07,SCHED_CONFIRMED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000331,CAMP-FUH-2026-Q1,MBR00184,GAP000513,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,1,2025-12-21,Wrong number,,IVR_RESULT,False,True
+DISP000332,CAMP-FUH-2026-Q1,MBR00184,GAP000513,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,2,2025-09-12,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000333,CAMP-FUH-2026-Q1,MBR00184,GAP000513,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,3,2025-12-01,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000334,CAMP-COA-2026-Q1,MBR00071,GAP000197,COA,Care for Older Adults - Medication Review,Call Center,1,2025-07-26,SCHED_CONFIRMED,Left voicemail. No callback.,CSR_OUTREACH,True,True
+DISP000335,CAMP-COA-2026-Q1,MBR00071,GAP000197,COA,Care for Older Adults - Medication Review,SMS,2,2026-05-14,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000336,CAMP-COA-2026-Q2,MBR00071,GAP000197,COA,Care for Older Adults - Medication Review,IVR,3,2025-12-12,Member declined — not interested,,IVR_RESULT,False,False
+DISP000337,CAMP-AWC-2026-Q2,MBR00125,GAP000342,AWC,Annual Wellness Visit,Web Form,1,2026-05-09,PARTIAL_SUBMIT,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000338,CAMP-AWC-2026-Q2,MBR00125,GAP000342,AWC,Annual Wellness Visit,Call Center,2,2025-08-02,COMP_STATED,Member refused. Do not contact.,CSR_OUTREACH,True,True
+DISP000339,CAMP-FUH-2026-Q1,MBR00058,GAP000164,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,1,2026-03-31,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000340,CAMP-FUH-2026-Q1,MBR00058,GAP000164,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,2,2025-11-13,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000341,CAMP-FUH-2026-Q1,MBR00058,GAP000164,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,3,2026-01-07,Wrong number,,IVR_RESULT,False,False
+DISP000342,CAMP-SPC-2026-Q1,MBR00136,GAP000371,SPC,Statin Therapy for Patients with Cardiovascular Disease,Call Center,1,2025-09-13,LANG_BARRIER,Left voicemail. No callback.,CSR_OUTREACH,False,False
+DISP000343,CAMP-SPC-2026-Q1,MBR00136,GAP000371,SPC,Statin Therapy for Patients with Cardiovascular Disease,SMS,2,2026-01-24,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000344,CAMP-COA-2026-Q2,MBR00152,GAP000422,COA,Care for Older Adults - Medication Review,IVR,1,2025-06-08,Member requested callback,,IVR_RESULT,False,False
+DISP000345,CAMP-COA-2026-Q2,MBR00152,GAP000422,COA,Care for Older Adults - Medication Review,Web Form,2,2026-03-02,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,True,True
+DISP000346,CAMP-FUH-2026-Q2,MBR00079,GAP000211,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,1,2026-03-21,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000347,CAMP-FUH-2026-Q1,MBR00079,GAP000211,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,2,2026-01-11,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000348,CAMP-FUH-2026-Q2,MBR00079,GAP000211,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,3,2026-02-19,Member requested callback,,IVR_RESULT,False,False
+DISP000349,CAMP-FUH-2026-Q2,MBR00079,GAP000211,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,4,2025-06-15,NO_ANSWER,Member refused. Do not contact.,CSR_OUTREACH,False,False
+DISP000350,CAMP-FUH-2026-Q1,MBR00133,GAP000365,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2026-05-26,WN,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000351,CAMP-CBP-2026-Q2,MBR00112,GAP000301,CBP,Controlling Blood Pressure,Call Center,1,2026-05-25,CB_SCHED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000352,CAMP-CBP-2026-Q1,MBR00112,GAP000301,CBP,Controlling Blood Pressure,SMS,2,2025-12-25,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000353,CAMP-CBP-2026-Q1,MBR00112,GAP000301,CBP,Controlling Blood Pressure,IVR,3,2025-12-04,Member confirmed appointment scheduled,,IVR_RESULT,True,True
+DISP000354,CAMP-CBP-2026-Q2,MBR00112,GAP000301,CBP,Controlling Blood Pressure,IVR,4,2026-05-04,Member requested callback,,IVR_RESULT,False,False
+DISP000355,CAMP-TRC-2026-Q2,MBR00139,GAP000380,TRC,Transitions of Care,SMS,1,2025-07-15,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000356,CAMP-TRC-2026-Q2,MBR00139,GAP000380,TRC,Transitions of Care,IVR,2,2025-11-19,Disconnected,,IVR_RESULT,False,False
+DISP000357,CAMP-TRC-2026-Q1,MBR00139,GAP000380,TRC,Transitions of Care,Call Center,3,2026-03-19,VM_LEFT,Left voicemail. No callback.,CSR_OUTREACH,False,False
+DISP000358,CAMP-SPC-2026-Q2,MBR00067,GAP000182,SPC,Statin Therapy for Patients with Cardiovascular Disease,Web Form,1,2025-08-11,PARTIAL_SUBMIT,,WEB_SELF_SERVICE,False,False
+DISP000359,CAMP-COL-2026-Q2,MBR00137,GAP000372,COL,Colorectal Cancer Screening,Web Form,1,2026-03-30,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000360,CAMP-CBP-2026-Q2,MBR00095,GAP000257,CBP,Controlling Blood Pressure,Web Form,1,2025-06-09,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,True
+DISP000361,CAMP-CBP-2026-Q2,MBR00095,GAP000257,CBP,Controlling Blood Pressure,IVR,2,2026-04-06,No answer / voicemail,,IVR_RESULT,False,False
+DISP000362,CAMP-CBP-2026-Q2,MBR00095,GAP000257,CBP,Controlling Blood Pressure,Web Form,3,2026-06-02,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000363,CAMP-FUH-2026-Q1,MBR00200,GAP000552,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,1,2026-04-07,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000364,CAMP-FUH-2026-Q2,MBR00200,GAP000552,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,2,2025-10-24,Member stated already completed,,IVR_RESULT,False,False
+DISP000365,CAMP-FUH-2026-Q2,MBR00034,GAP000096,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2025-07-17,NO_ANSWER,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000366,CAMP-CBP-2026-Q2,MBR00030,GAP000083,CBP,Controlling Blood Pressure,Call Center,1,2026-01-31,COMP_STATED,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,True,True
+DISP000367,CAMP-CBP-2026-Q1,MBR00030,GAP000083,CBP,Controlling Blood Pressure,Mail,2,2025-12-12,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000368,CAMP-CBP-2026-Q2,MBR00030,GAP000083,CBP,Controlling Blood Pressure,Call Center,3,2026-02-09,SCHED_CONFIRMED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000369,CAMP-CBP-2026-Q1,MBR00030,GAP000083,CBP,Controlling Blood Pressure,Web Form,4,2026-02-10,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000370,CAMP-CDC-H-2026-Q2,MBR00024,GAP000063,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Web Form,1,2026-03-23,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,False,True
+DISP000371,CAMP-CDC-H-2026-Q1,MBR00024,GAP000063,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Web Form,2,2025-06-01,PARTIAL_SUBMIT,,WEB_SELF_SERVICE,False,False
+DISP000372,CAMP-CDC-H-2026-Q1,MBR00024,GAP000063,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Mail,3,2025-06-27,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000373,CAMP-MRP-2026-Q1,MBR00044,GAP000125,MRP,Medication Reconciliation Post-Discharge,Call Center,1,2025-12-13,NO_ANSWER,,CSR_OUTREACH,False,False
+DISP000374,CAMP-MRP-2026-Q1,MBR00044,GAP000125,MRP,Medication Reconciliation Post-Discharge,IVR,2,2025-08-25,Wrong number,,IVR_RESULT,False,False
+DISP000375,CAMP-MRP-2026-Q2,MBR00044,GAP000125,MRP,Medication Reconciliation Post-Discharge,Mail,3,2025-12-09,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000376,CAMP-TRC-2026-Q2,MBR00021,GAP000055,TRC,Transitions of Care,Web Form,1,2025-12-19,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,True,True
+DISP000377,CAMP-TRC-2026-Q1,MBR00021,GAP000055,TRC,Transitions of Care,SMS,2,2026-04-23,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000378,CAMP-TRC-2026-Q1,MBR00021,GAP000055,TRC,Transitions of Care,Web Form,3,2026-03-22,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000379,CAMP-TRC-2026-Q2,MBR00021,GAP000055,TRC,Transitions of Care,SMS,4,2026-03-07,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000380,CAMP-FUH-2026-Q2,MBR00064,GAP000175,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,1,2025-10-12,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000381,CAMP-FUH-2026-Q2,MBR00064,GAP000175,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,2,2026-02-28,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000382,CAMP-FUH-2026-Q1,MBR00064,GAP000175,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,3,2025-11-23,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000383,CAMP-FUH-2026-Q2,MBR00064,GAP000175,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,4,2026-03-29,COMP_STATED,Member refused. Do not contact.,CSR_OUTREACH,True,True
+DISP000384,CAMP-CBP-2026-Q2,MBR00002,GAP000003,CBP,Controlling Blood Pressure,SMS,1,2026-02-14,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000385,CAMP-TRC-2026-Q2,MBR00108,GAP000289,TRC,Transitions of Care,Mail,1,2025-06-14,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000386,CAMP-TRC-2026-Q2,MBR00108,GAP000289,TRC,Transitions of Care,Call Center,2,2026-03-14,NO_ANSWER,Member stated they completed Transitions of Care last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000387,CAMP-TRC-2026-Q2,MBR00108,GAP000289,TRC,Transitions of Care,Mail,3,2025-10-12,DELIVERED,,MAIL_OUTREACH,False,True
+DISP000388,CAMP-TRC-2026-Q1,MBR00012,GAP000027,TRC,Transitions of Care,Web Form,1,2026-03-23,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000389,CAMP-FUH-2026-Q2,MBR00084,GAP000227,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,1,2026-02-23,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000390,CAMP-COL-2026-Q1,MBR00002,GAP000004,COL,Colorectal Cancer Screening,IVR,1,2025-12-04,No answer / voicemail,,IVR_RESULT,False,False
+DISP000391,CAMP-TRC-2026-Q2,MBR00168,GAP000464,TRC,Transitions of Care,Mail,1,2026-01-19,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000392,CAMP-TRC-2026-Q2,MBR00168,GAP000464,TRC,Transitions of Care,SMS,2,2025-07-25,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000393,CAMP-TRC-2026-Q1,MBR00168,GAP000464,TRC,Transitions of Care,Web Form,3,2025-09-18,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000394,CAMP-FUH-2026-Q2,MBR00147,GAP000401,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2026-01-16,NO_ANSWER,Member stated they completed Follow-Up After Hospitalization for Mental Illness last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,True
+DISP000395,CAMP-FUH-2026-Q1,MBR00147,GAP000401,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,2,2026-05-23,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000396,CAMP-CBP-2026-Q1,MBR00039,GAP000108,CBP,Controlling Blood Pressure,Mail,1,2025-08-30,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000397,CAMP-COL-2026-Q2,MBR00170,GAP000468,COL,Colorectal Cancer Screening,Web Form,1,2025-07-01,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000398,CAMP-COL-2026-Q2,MBR00170,GAP000468,COL,Colorectal Cancer Screening,IVR,2,2025-10-18,Member stated already completed,,IVR_RESULT,False,True
+DISP000399,CAMP-COL-2026-Q2,MBR00170,GAP000468,COL,Colorectal Cancer Screening,Call Center,3,2025-08-23,VM_LEFT,Member said already done - could not verify in system.,CSR_OUTREACH,False,False
+DISP000400,CAMP-COL-2026-Q2,MBR00170,GAP000468,COL,Colorectal Cancer Screening,Call Center,4,2025-06-30,NO_ANSWER,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000401,CAMP-AWC-2026-Q2,MBR00161,GAP000439,AWC,Annual Wellness Visit,Mail,1,2025-10-31,DELIVERED,,MAIL_OUTREACH,False,True
+DISP000402,CAMP-AWC-2026-Q2,MBR00161,GAP000439,AWC,Annual Wellness Visit,Web Form,2,2025-11-20,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000403,CAMP-AWC-2026-Q2,MBR00161,GAP000439,AWC,Annual Wellness Visit,Web Form,3,2026-01-03,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000404,CAMP-AWC-2026-Q1,MBR00161,GAP000439,AWC,Annual Wellness Visit,SMS,4,2026-02-13,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000405,CAMP-CBP-2026-Q1,MBR00147,GAP000398,CBP,Controlling Blood Pressure,Call Center,1,2025-11-18,CB_SCHED,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000406,CAMP-COA-2026-Q1,MBR00046,GAP000130,COA,Care for Older Adults - Medication Review,IVR,1,2025-08-19,Wrong number,,IVR_RESULT,False,False
+DISP000407,CAMP-CBP-2026-Q1,MBR00114,GAP000310,CBP,Controlling Blood Pressure,IVR,1,2025-09-30,Member requested callback,,IVR_RESULT,False,False
+DISP000408,CAMP-CBP-2026-Q2,MBR00114,GAP000310,CBP,Controlling Blood Pressure,Mail,2,2025-11-10,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000409,CAMP-TRC-2026-Q1,MBR00133,GAP000364,TRC,Transitions of Care,Call Center,1,2025-06-18,COMP_STATED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000410,CAMP-TRC-2026-Q2,MBR00133,GAP000364,TRC,Transitions of Care,Mail,2,2025-11-03,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000411,CAMP-TRC-2026-Q1,MBR00133,GAP000364,TRC,Transitions of Care,Call Center,3,2026-03-28,SCHED_CONFIRMED,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,True,True
+DISP000412,CAMP-OMW-2026-Q1,MBR00116,GAP000318,OMW,Osteoporosis Management in Women,Call Center,1,2026-04-23,SCHED_CONFIRMED,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,True
+DISP000413,CAMP-OMW-2026-Q1,MBR00116,GAP000318,OMW,Osteoporosis Management in Women,SMS,2,2025-12-05,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000414,CAMP-OMW-2026-Q1,MBR00116,GAP000318,OMW,Osteoporosis Management in Women,Mail,3,2025-10-26,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000415,CAMP-OMW-2026-Q1,MBR00116,GAP000318,OMW,Osteoporosis Management in Women,Web Form,4,2025-09-20,FORM_SUBMITTED,,WEB_SELF_SERVICE,True,True
+DISP000416,CAMP-FUH-2026-Q1,MBR00124,GAP000340,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,1,2025-07-03,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000417,CAMP-FUH-2026-Q1,MBR00124,GAP000340,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,2,2026-04-17,Wrong number,,IVR_RESULT,False,False
+DISP000418,CAMP-COA-2026-Q2,MBR00166,GAP000459,COA,Care for Older Adults - Medication Review,IVR,1,2025-07-17,No answer / voicemail,,IVR_RESULT,False,False
+DISP000419,CAMP-COA-2026-Q1,MBR00166,GAP000459,COA,Care for Older Adults - Medication Review,SMS,2,2025-09-13,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000420,CAMP-COA-2026-Q1,MBR00166,GAP000459,COA,Care for Older Adults - Medication Review,Web Form,3,2025-08-24,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000421,CAMP-COA-2026-Q2,MBR00166,GAP000459,COA,Care for Older Adults - Medication Review,Call Center,4,2025-08-30,VM_LEFT,Member said already done - could not verify in system.,CSR_OUTREACH,False,False
+DISP000422,CAMP-CDC-H-2026-Q1,MBR00157,GAP000430,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Mail,1,2026-03-15,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000423,CAMP-CDC-H-2026-Q1,MBR00157,GAP000430,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Call Center,2,2025-08-19,CB_SCHED,Member said already done - could not verify in system.,CSR_OUTREACH,False,True
+DISP000424,CAMP-CDC-H-2026-Q1,MBR00157,GAP000430,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Web Form,3,2026-05-09,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000425,CAMP-AWC-2026-Q2,MBR00035,GAP000097,AWC,Annual Wellness Visit,Call Center,1,2025-06-28,VM_LEFT,,CSR_OUTREACH,False,False
+DISP000426,CAMP-OMW-2026-Q1,MBR00035,GAP000098,OMW,Osteoporosis Management in Women,IVR,1,2026-01-21,No answer / voicemail,,IVR_RESULT,False,False
+DISP000427,CAMP-OMW-2026-Q1,MBR00035,GAP000098,OMW,Osteoporosis Management in Women,Web Form,2,2026-05-02,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000428,CAMP-OMW-2026-Q1,MBR00115,GAP000314,OMW,Osteoporosis Management in Women,SMS,1,2025-08-28,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000429,CAMP-OMW-2026-Q1,MBR00115,GAP000314,OMW,Osteoporosis Management in Women,Call Center,2,2025-08-27,REFUSED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000430,CAMP-OMW-2026-Q1,MBR00115,GAP000314,OMW,Osteoporosis Management in Women,Mail,3,2025-09-29,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000431,CAMP-TRC-2026-Q1,MBR00187,GAP000521,TRC,Transitions of Care,Mail,1,2026-05-01,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000432,CAMP-TRC-2026-Q2,MBR00187,GAP000521,TRC,Transitions of Care,Web Form,2,2026-03-04,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000433,CAMP-TRC-2026-Q1,MBR00007,GAP000020,TRC,Transitions of Care,Call Center,1,2025-08-02,SCHED_CONFIRMED,,CSR_OUTREACH,False,False
+DISP000434,CAMP-TRC-2026-Q1,MBR00007,GAP000020,TRC,Transitions of Care,SMS,2,2025-12-19,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000435,CAMP-TRC-2026-Q2,MBR00007,GAP000020,TRC,Transitions of Care,Web Form,3,2025-11-18,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000436,CAMP-AWC-2026-Q2,MBR00112,GAP000303,AWC,Annual Wellness Visit,SMS,1,2026-01-15,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000437,CAMP-TRC-2026-Q1,MBR00029,GAP000081,TRC,Transitions of Care,SMS,1,2026-03-20,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000438,CAMP-COA-2026-Q2,MBR00041,GAP000116,COA,Care for Older Adults - Medication Review,Mail,1,2025-10-05,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000439,CAMP-TRC-2026-Q2,MBR00114,GAP000311,TRC,Transitions of Care,IVR,1,2025-09-18,Disconnected,,IVR_RESULT,False,False
+DISP000440,CAMP-TRC-2026-Q1,MBR00114,GAP000311,TRC,Transitions of Care,SMS,2,2026-03-24,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000441,CAMP-TRC-2026-Q1,MBR00114,GAP000311,TRC,Transitions of Care,SMS,3,2025-08-16,REPLIED_YES,,SMS_OUTREACH,False,False
+DISP000442,CAMP-TRC-2026-Q1,MBR00114,GAP000311,TRC,Transitions of Care,SMS,4,2025-12-04,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000443,CAMP-MRP-2026-Q2,MBR00046,GAP000129,MRP,Medication Reconciliation Post-Discharge,SMS,1,2025-06-20,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000444,CAMP-MRP-2026-Q2,MBR00046,GAP000129,MRP,Medication Reconciliation Post-Discharge,Web Form,2,2026-05-18,PARTIAL_SUBMIT,,WEB_SELF_SERVICE,False,False
+DISP000445,CAMP-FUH-2026-Q2,MBR00039,GAP000110,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,1,2026-05-21,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000446,CAMP-FUH-2026-Q1,MBR00039,GAP000110,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,2,2025-09-30,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000447,CAMP-FUH-2026-Q2,MBR00039,GAP000110,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,3,2025-09-12,Member confirmed appointment scheduled,,IVR_RESULT,True,True
+DISP000448,CAMP-FUH-2026-Q1,MBR00155,GAP000428,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2026-04-27,REFUSED,Member said already done - could not verify in system.,CSR_OUTREACH,False,True
+DISP000449,CAMP-FUH-2026-Q1,MBR00155,GAP000428,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,2,2025-08-23,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000450,CAMP-CDC-H-2026-Q2,MBR00139,GAP000379,CDC-H,Comprehensive Diabetes Care - HbA1c Control,SMS,1,2026-04-26,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000451,CAMP-FUH-2026-Q1,MBR00006,GAP000017,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,1,2025-11-03,No answer / voicemail,,IVR_RESULT,False,False
+DISP000452,CAMP-TRC-2026-Q2,MBR00013,GAP000030,TRC,Transitions of Care,Web Form,1,2025-09-09,FORM_SUBMITTED,,WEB_SELF_SERVICE,True,True
+DISP000453,CAMP-AWC-2026-Q1,MBR00050,GAP000141,AWC,Annual Wellness Visit,SMS,1,2026-05-18,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000454,CAMP-CBP-2026-Q1,MBR00120,GAP000326,CBP,Controlling Blood Pressure,Call Center,1,2025-06-25,VM_LEFT,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,True
+DISP000455,CAMP-CBP-2026-Q1,MBR00120,GAP000326,CBP,Controlling Blood Pressure,IVR,2,2026-05-18,Disconnected,,IVR_RESULT,False,False
+DISP000456,CAMP-FUH-2026-Q2,MBR00173,GAP000478,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,1,2026-04-07,Member declined — not interested,,IVR_RESULT,False,True
+DISP000457,CAMP-OMW-2026-Q1,MBR00181,GAP000503,OMW,Osteoporosis Management in Women,IVR,1,2025-08-06,Member requested callback,,IVR_RESULT,False,True
+DISP000458,CAMP-OMW-2026-Q1,MBR00181,GAP000503,OMW,Osteoporosis Management in Women,Call Center,2,2025-08-09,NO_ANSWER,,CSR_OUTREACH,False,False
+DISP000459,CAMP-OMW-2026-Q1,MBR00181,GAP000503,OMW,Osteoporosis Management in Women,Web Form,3,2026-06-09,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,True,True
+DISP000460,CAMP-OMW-2026-Q1,MBR00181,GAP000503,OMW,Osteoporosis Management in Women,Call Center,4,2025-12-12,NO_ANSWER,Member refused. Do not contact.,CSR_OUTREACH,False,False
+DISP000461,CAMP-TRC-2026-Q2,MBR00059,GAP000166,TRC,Transitions of Care,Mail,1,2026-02-22,DELIVERED,,MAIL_OUTREACH,False,True
+DISP000462,CAMP-TRC-2026-Q2,MBR00059,GAP000166,TRC,Transitions of Care,SMS,2,2025-07-22,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000463,CAMP-TRC-2026-Q2,MBR00059,GAP000166,TRC,Transitions of Care,Web Form,3,2025-08-11,PARTIAL_SUBMIT,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000464,CAMP-TRC-2026-Q1,MBR00059,GAP000166,TRC,Transitions of Care,SMS,4,2025-08-16,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000465,CAMP-FUH-2026-Q2,MBR00174,GAP000482,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,1,2025-09-08,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000466,CAMP-FUH-2026-Q2,MBR00078,GAP000209,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,1,2026-05-02,Member confirmed appointment scheduled,,IVR_RESULT,False,False
+DISP000467,CAMP-FUH-2026-Q1,MBR00078,GAP000209,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,2,2026-05-22,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000468,CAMP-FUH-2026-Q2,MBR00078,GAP000209,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,3,2025-09-26,Disconnected,,IVR_RESULT,False,True
+DISP000469,CAMP-FUH-2026-Q2,MBR00078,GAP000209,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,4,2026-01-04,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000470,CAMP-AWC-2026-Q2,MBR00102,GAP000273,AWC,Annual Wellness Visit,Mail,1,2025-08-06,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000471,CAMP-AWC-2026-Q2,MBR00102,GAP000273,AWC,Annual Wellness Visit,IVR,2,2025-08-19,Member confirmed appointment scheduled,,IVR_RESULT,True,True
+DISP000472,CAMP-AWC-2026-Q1,MBR00102,GAP000273,AWC,Annual Wellness Visit,IVR,3,2026-01-03,Member declined — not interested,,IVR_RESULT,False,False
+DISP000473,CAMP-AWC-2026-Q1,MBR00102,GAP000273,AWC,Annual Wellness Visit,Call Center,4,2025-09-27,SCHED_CONFIRMED,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,True,True
+DISP000474,CAMP-SPC-2026-Q1,MBR00121,GAP000331,SPC,Statin Therapy for Patients with Cardiovascular Disease,IVR,1,2026-01-07,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000475,CAMP-SPC-2026-Q1,MBR00121,GAP000331,SPC,Statin Therapy for Patients with Cardiovascular Disease,Call Center,2,2025-09-25,VM_LEFT,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000476,CAMP-SPC-2026-Q1,MBR00121,GAP000331,SPC,Statin Therapy for Patients with Cardiovascular Disease,Mail,3,2025-11-11,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000477,CAMP-SPC-2026-Q1,MBR00121,GAP000331,SPC,Statin Therapy for Patients with Cardiovascular Disease,IVR,4,2025-09-22,Wrong number,,IVR_RESULT,False,True
+DISP000478,CAMP-OMW-2026-Q2,MBR00042,GAP000118,OMW,Osteoporosis Management in Women,IVR,1,2026-04-12,Member stated already completed,,IVR_RESULT,False,False
+DISP000479,CAMP-AWC-2026-Q2,MBR00015,GAP000034,AWC,Annual Wellness Visit,Web Form,1,2026-04-24,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000480,CAMP-AWC-2026-Q2,MBR00015,GAP000034,AWC,Annual Wellness Visit,Web Form,2,2025-07-04,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000481,CAMP-AWC-2026-Q1,MBR00015,GAP000034,AWC,Annual Wellness Visit,Mail,3,2025-10-24,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000482,CAMP-AWC-2026-Q2,MBR00015,GAP000034,AWC,Annual Wellness Visit,Mail,4,2026-02-01,DELIVERED,,MAIL_OUTREACH,False,True
+DISP000483,CAMP-MRP-2026-Q1,MBR00019,GAP000049,MRP,Medication Reconciliation Post-Discharge,Call Center,1,2025-06-02,REFUSED,Member stated they completed Medication Reconciliation Post-Discharge last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000484,CAMP-MRP-2026-Q2,MBR00019,GAP000049,MRP,Medication Reconciliation Post-Discharge,Web Form,2,2025-08-02,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,True,True
+DISP000485,CAMP-MRP-2026-Q1,MBR00019,GAP000049,MRP,Medication Reconciliation Post-Discharge,Web Form,3,2025-09-26,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000486,CAMP-MRP-2026-Q1,MBR00019,GAP000049,MRP,Medication Reconciliation Post-Discharge,Call Center,4,2025-08-22,WN,Member stated they completed Medication Reconciliation Post-Discharge last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000487,CAMP-TRC-2026-Q1,MBR00137,GAP000373,TRC,Transitions of Care,Call Center,1,2025-07-25,VM_LEFT,Member stated they completed Transitions of Care last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000488,CAMP-TRC-2026-Q1,MBR00137,GAP000373,TRC,Transitions of Care,Mail,2,2026-05-27,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000489,CAMP-TRC-2026-Q1,MBR00137,GAP000373,TRC,Transitions of Care,Web Form,3,2025-06-22,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,True
+DISP000490,CAMP-OMW-2026-Q2,MBR00030,GAP000084,OMW,Osteoporosis Management in Women,SMS,1,2025-11-18,REPLIED_YES,,SMS_OUTREACH,False,False
+DISP000491,CAMP-OMW-2026-Q1,MBR00030,GAP000084,OMW,Osteoporosis Management in Women,Mail,2,2026-02-27,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000492,CAMP-OMW-2026-Q2,MBR00030,GAP000084,OMW,Osteoporosis Management in Women,Call Center,3,2025-08-29,REFUSED,Member refused. Do not contact.,CSR_OUTREACH,False,True
+DISP000493,CAMP-OMW-2026-Q2,MBR00030,GAP000084,OMW,Osteoporosis Management in Women,SMS,4,2025-11-26,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000494,CAMP-TRC-2026-Q1,MBR00177,GAP000491,TRC,Transitions of Care,Call Center,1,2026-05-27,WN,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,False
+DISP000495,CAMP-TRC-2026-Q1,MBR00177,GAP000491,TRC,Transitions of Care,IVR,2,2026-03-15,Member confirmed appointment scheduled,,IVR_RESULT,True,True
+DISP000496,CAMP-TRC-2026-Q2,MBR00177,GAP000491,TRC,Transitions of Care,Web Form,3,2025-12-24,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000497,CAMP-TRC-2026-Q1,MBR00177,GAP000491,TRC,Transitions of Care,Call Center,4,2025-08-16,REFUSED,Member said already done - could not verify in system.,CSR_OUTREACH,False,False
+DISP000498,CAMP-TRC-2026-Q2,MBR00141,GAP000387,TRC,Transitions of Care,Call Center,1,2025-06-10,CB_SCHED,Member stated they completed Transitions of Care last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000499,CAMP-TRC-2026-Q1,MBR00141,GAP000387,TRC,Transitions of Care,Call Center,2,2026-01-04,REFUSED,Language barrier - Spanish. Transferred to bilingual rep.,CSR_OUTREACH,False,False
+DISP000500,CAMP-SPC-2026-Q2,MBR00087,GAP000235,SPC,Statin Therapy for Patients with Cardiovascular Disease,IVR,1,2025-06-26,Disconnected,,IVR_RESULT,False,False
+DISP000501,CAMP-CBP-2026-Q2,MBR00134,GAP000366,CBP,Controlling Blood Pressure,Mail,1,2025-06-20,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000502,CAMP-MRP-2026-Q2,MBR00125,GAP000345,MRP,Medication Reconciliation Post-Discharge,Web Form,1,2026-03-10,FORM_SUBMITTED,,WEB_SELF_SERVICE,True,True
+DISP000503,CAMP-MRP-2026-Q1,MBR00125,GAP000345,MRP,Medication Reconciliation Post-Discharge,Web Form,2,2025-06-02,PARTIAL_SUBMIT,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000504,CAMP-TRC-2026-Q1,MBR00005,GAP000014,TRC,Transitions of Care,SMS,1,2025-06-22,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000505,CAMP-TRC-2026-Q2,MBR00005,GAP000014,TRC,Transitions of Care,Web Form,2,2025-10-31,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000506,CAMP-TRC-2026-Q1,MBR00005,GAP000014,TRC,Transitions of Care,Web Form,3,2026-02-26,PARTIAL_SUBMIT,,WEB_SELF_SERVICE,False,False
+DISP000507,CAMP-FUH-2026-Q2,MBR00031,GAP000088,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2026-03-30,SCHED_CONFIRMED,Left voicemail. No callback.,CSR_OUTREACH,False,False
+DISP000508,CAMP-FUH-2026-Q1,MBR00031,GAP000088,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,2,2025-12-28,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000509,CAMP-TRC-2026-Q2,MBR00128,GAP000355,TRC,Transitions of Care,Call Center,1,2025-10-25,CB_SCHED,,CSR_OUTREACH,False,False
+DISP000510,CAMP-TRC-2026-Q2,MBR00128,GAP000355,TRC,Transitions of Care,SMS,2,2025-09-28,REPLIED_NO,,SMS_OUTREACH,False,False
+DISP000511,CAMP-OMW-2026-Q2,MBR00112,GAP000304,OMW,Osteoporosis Management in Women,SMS,1,2026-05-19,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000512,CAMP-OMW-2026-Q1,MBR00112,GAP000304,OMW,Osteoporosis Management in Women,Web Form,2,2026-03-19,FORM_SUBMITTED,,WEB_SELF_SERVICE,True,True
+DISP000513,CAMP-CDC-H-2026-Q1,MBR00110,GAP000297,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Mail,1,2025-08-24,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000514,CAMP-CBP-2026-Q1,MBR00088,GAP000237,CBP,Controlling Blood Pressure,SMS,1,2026-01-26,REPLIED_YES,,SMS_OUTREACH,True,True
+DISP000515,CAMP-CBP-2026-Q1,MBR00163,GAP000447,CBP,Controlling Blood Pressure,IVR,1,2025-12-28,Member confirmed appointment scheduled,,IVR_RESULT,False,False
+DISP000516,CAMP-FUH-2026-Q2,MBR00103,GAP000277,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,1,2026-03-07,Member declined — not interested,,IVR_RESULT,False,False
+DISP000517,CAMP-FUH-2026-Q2,MBR00103,GAP000277,FUH,Follow-Up After Hospitalization for Mental Illness,SMS,2,2025-07-28,REPLIED_YES,,SMS_OUTREACH,False,False
+DISP000518,CAMP-FUH-2026-Q2,MBR00103,GAP000277,FUH,Follow-Up After Hospitalization for Mental Illness,Web Form,3,2025-06-16,FORM_SUBMITTED,,WEB_SELF_SERVICE,False,False
+DISP000519,CAMP-COA-2026-Q2,MBR00176,GAP000490,COA,Care for Older Adults - Medication Review,SMS,1,2025-08-01,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000520,CAMP-COA-2026-Q2,MBR00176,GAP000490,COA,Care for Older Adults - Medication Review,Web Form,2,2026-02-18,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000521,CAMP-SPC-2026-Q2,MBR00196,GAP000542,SPC,Statin Therapy for Patients with Cardiovascular Disease,Call Center,1,2025-06-06,VM_LEFT,Member stated they completed Statin Therapy for Patients with Cardiovascular Disease last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000522,CAMP-SPC-2026-Q1,MBR00196,GAP000542,SPC,Statin Therapy for Patients with Cardiovascular Disease,Web Form,2,2025-06-24,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000523,CAMP-SPC-2026-Q2,MBR00196,GAP000542,SPC,Statin Therapy for Patients with Cardiovascular Disease,SMS,3,2025-09-05,OPT_OUT,,SMS_OUTREACH,False,False
+DISP000524,CAMP-COL-2026-Q2,MBR00085,GAP000228,COL,Colorectal Cancer Screening,IVR,1,2026-04-28,Member declined — not interested,,IVR_RESULT,False,False
+DISP000525,CAMP-COL-2026-Q1,MBR00085,GAP000228,COL,Colorectal Cancer Screening,Web Form,2,2025-10-17,FORM_SUBMITTED,,WEB_SELF_SERVICE,True,True
+DISP000526,CAMP-COL-2026-Q1,MBR00085,GAP000228,COL,Colorectal Cancer Screening,Call Center,3,2026-06-07,WN,,CSR_OUTREACH,False,False
+DISP000527,CAMP-COL-2026-Q1,MBR00085,GAP000228,COL,Colorectal Cancer Screening,Mail,4,2025-06-23,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000528,CAMP-TRC-2026-Q2,MBR00180,GAP000501,TRC,Transitions of Care,IVR,1,2026-03-25,Language barrier — transferred,,IVR_RESULT,False,True
+DISP000529,CAMP-TRC-2026-Q2,MBR00180,GAP000501,TRC,Transitions of Care,IVR,2,2026-02-09,No answer / voicemail,,IVR_RESULT,False,False
+DISP000530,CAMP-TRC-2026-Q2,MBR00180,GAP000501,TRC,Transitions of Care,Web Form,3,2026-03-13,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000531,CAMP-MRP-2026-Q1,MBR00067,GAP000184,MRP,Medication Reconciliation Post-Discharge,Call Center,1,2026-03-25,WN,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000532,CAMP-CDC-H-2026-Q1,MBR00065,GAP000176,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Mail,1,2026-04-09,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000533,CAMP-CDC-H-2026-Q2,MBR00065,GAP000176,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Mail,2,2026-04-10,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,True
+DISP000534,CAMP-CDC-H-2026-Q1,MBR00065,GAP000176,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Web Form,3,2025-11-07,FORM_SUBMITTED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,True,True
+DISP000535,CAMP-CDC-H-2026-Q2,MBR00065,GAP000176,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Web Form,4,2025-11-21,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000536,CAMP-CDC-H-2026-Q1,MBR00093,GAP000250,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Call Center,1,2025-10-19,VM_LEFT,Member stated they completed Comprehensive Diabetes Care - HbA1c Control last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000537,CAMP-CDC-H-2026-Q1,MBR00093,GAP000250,CDC-H,Comprehensive Diabetes Care - HbA1c Control,Mail,2,2026-03-01,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000538,CAMP-CBP-2026-Q2,MBR00052,GAP000149,CBP,Controlling Blood Pressure,Call Center,1,2025-08-10,LANG_BARRIER,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000539,CAMP-COL-2026-Q1,MBR00015,GAP000033,COL,Colorectal Cancer Screening,Call Center,1,2025-06-12,REFUSED,Left voicemail. No callback.,CSR_OUTREACH,False,False
+DISP000540,CAMP-COA-2026-Q1,MBR00112,GAP000306,COA,Care for Older Adults - Medication Review,Web Form,1,2026-06-07,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000541,CAMP-TRC-2026-Q2,MBR00038,GAP000106,TRC,Transitions of Care,Call Center,1,2025-07-26,COMP_STATED,Member refused. Do not contact.,CSR_OUTREACH,True,True
+DISP000542,CAMP-TRC-2026-Q1,MBR00038,GAP000106,TRC,Transitions of Care,IVR,2,2025-11-22,Member requested callback,,IVR_RESULT,False,False
+DISP000543,CAMP-TRC-2026-Q2,MBR00023,GAP000060,TRC,Transitions of Care,Mail,1,2026-03-12,NO_RESPONSE,,MAIL_OUTREACH,False,True
+DISP000544,CAMP-TRC-2026-Q2,MBR00023,GAP000060,TRC,Transitions of Care,IVR,2,2025-08-24,Member stated already completed,,IVR_RESULT,False,False
+DISP000545,CAMP-TRC-2026-Q1,MBR00023,GAP000060,TRC,Transitions of Care,Mail,3,2026-02-09,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000546,CAMP-TRC-2026-Q2,MBR00150,GAP000413,TRC,Transitions of Care,Mail,1,2026-04-29,DELIVERED,,MAIL_OUTREACH,False,False
+DISP000547,CAMP-TRC-2026-Q1,MBR00150,GAP000413,TRC,Transitions of Care,Mail,2,2025-06-15,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000548,CAMP-TRC-2026-Q1,MBR00150,GAP000413,TRC,Transitions of Care,Call Center,3,2026-02-03,REFUSED,Member agreed to schedule. Transferred to scheduling.,CSR_OUTREACH,False,False
+DISP000549,CAMP-TRC-2026-Q2,MBR00150,GAP000413,TRC,Transitions of Care,Web Form,4,2026-03-05,ABANDONED,Member self-reported completion via web portal.,WEB_SELF_SERVICE,False,False
+DISP000550,CAMP-COL-2026-Q2,MBR00171,GAP000472,COL,Colorectal Cancer Screening,IVR,1,2025-10-18,Member declined — not interested,,IVR_RESULT,False,False
+DISP000551,CAMP-COL-2026-Q2,MBR00171,GAP000472,COL,Colorectal Cancer Screening,Web Form,2,2025-07-24,FORM_SUBMITTED,Partial form - no action taken.,WEB_SELF_SERVICE,True,True
+DISP000552,CAMP-TRC-2026-Q1,MBR00140,GAP000383,TRC,Transitions of Care,Mail,1,2026-03-07,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000553,CAMP-TRC-2026-Q2,MBR00140,GAP000383,TRC,Transitions of Care,Web Form,2,2025-12-20,ABANDONED,,WEB_SELF_SERVICE,False,False
+DISP000554,CAMP-TRC-2026-Q1,MBR00140,GAP000383,TRC,Transitions of Care,Web Form,3,2025-12-13,ABANDONED,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000555,CAMP-TRC-2026-Q2,MBR00140,GAP000383,TRC,Transitions of Care,Mail,4,2025-11-22,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000556,CAMP-MRP-2026-Q1,MBR00047,GAP000134,MRP,Medication Reconciliation Post-Discharge,IVR,1,2025-08-03,Member requested callback,,IVR_RESULT,False,False
+DISP000557,CAMP-COA-2026-Q1,MBR00030,GAP000086,COA,Care for Older Adults - Medication Review,Call Center,1,2025-12-02,COMP_STATED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,True
+DISP000558,CAMP-FUH-2026-Q2,MBR00128,GAP000356,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,1,2025-07-11,WN,Member stated they completed Follow-Up After Hospitalization for Mental Illness last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000559,CAMP-AWC-2026-Q1,MBR00088,GAP000238,AWC,Annual Wellness Visit,Call Center,1,2025-11-08,COMP_STATED,Appointment confirmed for next Tuesday.,CSR_OUTREACH,False,False
+DISP000560,CAMP-AWC-2026-Q1,MBR00088,GAP000238,AWC,Annual Wellness Visit,Web Form,2,2026-03-24,PARTIAL_SUBMIT,Partial form - no action taken.,WEB_SELF_SERVICE,False,False
+DISP000561,CAMP-OMW-2026-Q2,MBR00050,GAP000142,OMW,Osteoporosis Management in Women,Call Center,1,2025-06-04,CB_SCHED,Member stated they completed Osteoporosis Management in Women last week with Dr. Smith. Did not update gap.,CSR_OUTREACH,False,False
+DISP000562,CAMP-OMW-2026-Q2,MBR00050,GAP000142,OMW,Osteoporosis Management in Women,SMS,2,2025-10-31,INVALID_NUM,,SMS_OUTREACH,False,False
+DISP000563,CAMP-OMW-2026-Q2,MBR00050,GAP000142,OMW,Osteoporosis Management in Women,SMS,3,2025-06-25,NO_RESPONSE,,SMS_OUTREACH,False,False
+DISP000564,CAMP-OMW-2026-Q2,MBR00050,GAP000142,OMW,Osteoporosis Management in Women,Mail,4,2026-03-13,NO_RESPONSE,,MAIL_OUTREACH,False,False
+DISP000565,CAMP-FUH-2026-Q1,MBR00145,GAP000397,FUH,Follow-Up After Hospitalization for Mental Illness,IVR,1,2025-11-15,Language barrier — transferred,,IVR_RESULT,False,False
+DISP000566,CAMP-FUH-2026-Q2,MBR00145,GAP000397,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,2,2025-11-09,RETURNED_UNDELIVERABLE,,MAIL_OUTREACH,False,False
+DISP000567,CAMP-FUH-2026-Q2,MBR00145,GAP000397,FUH,Follow-Up After Hospitalization for Mental Illness,Call Center,3,2025-11-22,CB_SCHED,,CSR_OUTREACH,False,False
+DISP000568,CAMP-FUH-2026-Q1,MBR00145,GAP000397,FUH,Follow-Up After Hospitalization for Mental Illness,Mail,4,2025-09-22,DELIVERED,,MAIL_OUTREACH,False,False

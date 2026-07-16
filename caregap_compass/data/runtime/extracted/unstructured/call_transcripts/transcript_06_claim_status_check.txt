@@ -1,0 +1,33 @@
+CALL TRANSCRIPT
+Date: 2026-06-10
+Member ID: MBR00104
+Scenario: Claim Status Check
+Duration: 3 minutes
+---
+
+AGENT: Thank you for calling. How can I help you today?
+
+MEMBER: Hi, I just want to check on a recent claim. I haven't gotten anything in the mail yet.
+
+AGENT: Of course. Can I get your member ID?
+
+MEMBER: It's MBR00104.
+
+AGENT: And your date of birth for verification?
+
+MEMBER: [date verified]
+
+AGENT: Great, you're verified. What service date are you asking about?
+
+MEMBER: It was about three weeks ago with my primary care doctor.
+
+AGENT: I see that claim - it's currently in processing status. You should receive your Explanation of Benefits within 7 to 10 business days.
+
+MEMBER: Is there anything I need to do?
+
+AGENT: Not at this time. If you don't receive the EOB within 2 weeks, or if there are any issues, please call back and reference your visit date so we can look it up quickly.
+
+MEMBER: Okay, thank you.
+
+[Call ended - Routine claim status inquiry. Claim in processing. No action required.]
+CSR NOTES: Member MBR00104 called to check claim status. Claim processing normally. EOB expected within 7-10 days. No escalation needed.
