@@ -29,3 +29,10 @@ Thumbs.db
 logs/
 build/
 dist/
+
+# CareGap Compass
+.venv/
+caregap_compass/.env
+caregap_compass/runtime/
+__pycache__/
+*.py[cod]
