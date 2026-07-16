@@ -36,3 +36,7 @@ caregap_compass/.env
 caregap_compass/runtime/
 __pycache__/
 *.py[cod]
+
+# Cloud Storage hackathon data and generated runtime state
+caregap_compass/data/runtime/
+caregap_compass/runtime/
