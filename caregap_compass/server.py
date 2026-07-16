@@ -21,6 +21,7 @@ hardcoded), so we pass web=False -- which also frees up "/" for us.
 from __future__ import annotations
 
 import logging
+import os
 from typing import Any
 
 from fastapi import APIRouter, HTTPException, Query
@@ -237,6 +238,28 @@ def list_members(limit: int = Query(50, ge=1, le=200)) -> dict[str, Any]:
     return {"app_name": "caregap_compass", "members": members[:limit]}
 
 
+def _allow_origins() -> list[str] | None:
+    """Origins permitted to POST to the agent API.
+
+    ADK adds an unconditional CSRF origin check: any non-GET whose Origin is
+    neither same-origin nor allow-listed gets a hard 403. Locally the UI is
+    same-origin so nothing is needed. Behind a proxy it is not: Cloud Shell's Web
+    Preview serves the page from https://8080-cs-….cloudshell.dev while the app
+    sees localhost, so every POST 403s and the UI looks broken while GETs work.
+
+    ALLOW_ORIGINS is a comma-separated list; entries may use ADK's `regex:` form.
+    Cloud Shell's hostname is per-session, so a regex is the only practical
+    option there.
+
+      ALLOW_ORIGINS='regex:https://.*\\.cloudshell\\.dev'
+      ALLOW_ORIGINS='https://myapp.run.app,http://localhost:5173'
+    """
+    raw = os.getenv("ALLOW_ORIGINS", "").strip()
+    if not raw:
+        return None
+    return [o.strip() for o in raw.split(",") if o.strip()]
+
+
 def create_app():
     from google.adk.cli.fast_api import get_fast_api_app
 
@@ -244,6 +267,7 @@ def create_app():
         agents_dir=str(config.REPO_ROOT),
         web=False,
         session_service_uri=f"sqlite:///{config.DATA_ROOT / 'sessions.db'}",
+        allow_origins=_allow_origins(),
     )
     # Registered after ADK's routes and before the catch-all mount. Starlette
     # matches in registration order, so /run_sse and /apps/... still win over "/".
@@ -271,8 +295,6 @@ def main() -> None:
       Cloud Shell  HOST=0.0.0.0 PORT=8080 python -m caregap_compass.server   (then Web Preview)
       Cloud Run    PORT is injected; set HOST=0.0.0.0
     """
-    import os
-
     import uvicorn
 
     # PORT is the Cloud Run / Cloud Shell convention and wins if present.
@@ -280,6 +302,7 @@ def main() -> None:
     # Default to loopback: binding 0.0.0.0 by accident on a shared box exposes
     # member data to the network. Opt in explicitly.
     host = os.getenv("HOST", "127.0.0.1")
+    origins = _allow_origins()
 
     config.DATA_ROOT.mkdir(parents=True, exist_ok=True)
     shown = "localhost" if host in ("127.0.0.1", "0.0.0.0") else host
@@ -290,6 +313,16 @@ def main() -> None:
     print(f"    backend   {bq.backend()}")
     print(f"    model     {config.MODEL}")
     print(f"    today     {config.today()}  (pinned; the dataset's slots expire otherwise)")
+    print(f"    origins   {', '.join(origins) if origins else 'same-origin only'}")
+    if not origins and host == "0.0.0.0":
+        # Exposed but not allow-listed: GETs will work and every POST will 403,
+        # so the page loads and the chat silently dies. Say so now, not later.
+        print()
+        print("    NOTE: bound to 0.0.0.0 with no ALLOW_ORIGINS. If you reach this")
+        print("          through a proxy (Cloud Shell Web Preview, IAP, a load")
+        print("          balancer), ADK's CSRF check will 403 every POST -- the page")
+        print("          will load and the chat will not. Set, for Cloud Shell:")
+        print("            ALLOW_ORIGINS='regex:https://.*\\.cloudshell\\.dev'")
     print()
     uvicorn.run(app, host=host, port=port, log_level="warning")
 
