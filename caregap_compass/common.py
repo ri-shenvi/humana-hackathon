@@ -52,7 +52,7 @@ def authorize_member(
     but once a session is bound, it cannot pivot to a different member.
     """
     if not member_id:
-        return error_response("MISSING_MEMBER", "A member_id is required.")
+        return error_response("MISSING_MEMBER", "No member is selected for this session.")
 
     if bq.get_member(member_id) is None:
         return error_response(

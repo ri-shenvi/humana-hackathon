@@ -139,6 +139,11 @@ aside select {
   font-size: 14px; font-weight: 850; line-height: 1.15; color: var(--ink);
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
+.member-id {
+  margin-top: 2px; font-family: var(--mono); font-size: 10.5px; line-height: 1.2;
+  color: var(--ink); opacity: .72; overflow: hidden; text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .member-meta {
   margin-top: 2px; font-size: 11px; line-height: 1.25; color: var(--ink);
   opacity: .68; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
@@ -206,10 +211,20 @@ main.solo { grid-template-columns: 1fr; }
 .gate .step::before { content: attr(data-n); position: absolute; left: 0; top: 1px; color: var(--gate-blue); font-family: var(--mono); font-size: 10px; font-weight: 800; }
 .gate .flag { font-family: var(--mono); font-size: 10px; color: var(--ink-3); margin-top: 9px; padding-top: 8px; border-top: 1px solid #d8e0fa; }
 
-.prompts { padding: 0 14px 9px; display: flex; gap: 6px; flex-wrap: wrap; }
-.prompts button { font-size: 11.5px; font-weight: 500; padding: 6px 12px; background: var(--surface); color: var(--ink-2); border: 1.5px solid var(--border); border-radius: 999px; cursor: pointer; }
+.prompts { padding: 0 14px 9px; display: grid; gap: 7px; }
+.prompt-group { display: flex; gap: 6px; flex-wrap: wrap; }
+.prompt-actions {
+  padding-top: 7px; border-top: 1px solid var(--surface-3);
+}
+.prompts button {
+  font-size: 11.5px; font-weight: 500; padding: 6px 12px; background: var(--surface);
+  color: var(--ink-2); border: 1.5px solid var(--border); border-radius: 999px; cursor: pointer;
+}
 .prompts button:hover:not(:disabled) { border-color: var(--data-green); color: var(--data-green); }
-.prompts button.primary { background: #f6faf2; border-color: var(--data-green); color: var(--data-green); font-weight: 700; }
+.prompts button.action {
+  background: var(--data-green); border-color: var(--data-green); color: #fff; font-weight: 800;
+}
+.prompts button.action:hover:not(:disabled) { background: var(--humana-deep); border-color: var(--humana-deep); color: #fff; }
 .composer { border-top: 1px solid var(--border); padding: 11px 14px; display: flex; gap: 9px; }
 .composer input { flex: 1; font: inherit; padding: 10px 16px; border: 1.5px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--ink); }
 .composer input:focus { outline: none; border-color: var(--data-green); }
@@ -376,6 +391,7 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
       <div class="member-avatar" id="member-avatar">M</div>
       <div class="member-copy">
         <div class="member-name" id="member-name">Member</div>
+        <div class="member-id" id="member-id">MBR----</div>
         <div class="member-meta" id="member-meta">Select a member</div>
       </div>
     </div>
@@ -464,10 +480,10 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 const SUGGESTIONS = [
-  {label: "Explain why these matter", action: "explain"},
-  {label: "Schedule appointment", action: "schedule", primary: true},
-  {label: "What should I do first?", text: "What should I do first?"},
-  {label: "Request a callback", action: "callback"},
+  {label: "Explain why these matter", action: "explain", kind: "prompt"},
+  {label: "What should I do first?", text: "What should I do first?", kind: "prompt"},
+  {label: "Schedule appointment", action: "schedule", kind: "action"},
+  {label: "Request a callback", action: "callback", kind: "action"},
 ];
 
 const CALLBACK_WINDOWS = [
@@ -568,6 +584,7 @@ function renderMemberCard(id) {
   const name = m.display_name || `Member ${m.member_id}`;
   const open = Number(m.open_gaps || 0);
   $("member-name").textContent = name;
+  $("member-id").textContent = m.member_id || "";
   $("member-avatar").textContent = name.trim().charAt(0).toUpperCase() || "M";
   $("member-meta").textContent = `${m.plan_type || "Plan"}${m.age ? " · age " + m.age : ""} · ${open} open ${open === 1 ? "step" : "steps"}`;
   $("member").value = id;
@@ -994,10 +1011,13 @@ async function switchMember(id) {
 }
 
 async function boot() {
-  $("prompts").innerHTML = SUGGESTIONS.map(s => {
+  const renderPromptButton = (s) => {
     const attrs = s.action ? `data-action="${esc(s.action)}"` : `data-p="${esc(s.text)}"`;
-    return `<button type="button" ${attrs} class="${s.primary ? "primary" : ""}">${esc(s.label)}</button>`;
-  }).join("");
+    return `<button type="button" ${attrs} class="${s.kind === "action" ? "action" : ""}">${esc(s.label)}</button>`;
+  };
+  $("prompts").innerHTML = `
+    <div class="prompt-group">${SUGGESTIONS.filter(s => s.kind !== "action").map(renderPromptButton).join("")}</div>
+    <div class="prompt-group prompt-actions">${SUGGESTIONS.filter(s => s.kind === "action").map(renderPromptButton).join("")}</div>`;
   $("prompts").addEventListener("click", e => {
     const b = e.target.closest("button");
     if (!b) return;

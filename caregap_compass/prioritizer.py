@@ -20,11 +20,14 @@ from google.adk.tools import ToolContext
 from . import bq, common, config, scoring, weights
 
 
-def get_open_gaps(member_id: str, tool_context: ToolContext) -> dict[str, Any]:
+def get_open_gaps(
+    member_id: str | None = None, tool_context: ToolContext | None = None
+) -> dict[str, Any]:
     """Return the member's open care gaps with days-to-close for each.
 
     Args:
-        member_id: The member identifier, for example MBR00030.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
 
     Returns:
         Open gaps with measure, due date, days to close, and prior outreach count.
@@ -91,12 +94,15 @@ def get_measure_weight(measure_id: str) -> dict[str, Any]:
     return info
 
 
-def get_response_history(member_id: str, tool_context: ToolContext) -> dict[str, Any]:
+def get_response_history(
+    member_id: str | None = None, tool_context: ToolContext | None = None
+) -> dict[str, Any]:
     """Return which outreach channels this member actually responds to, and how
     often each measure closes on each channel.
 
     Args:
-        member_id: The member identifier, for example MBR00030.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
 
     Returns:
         Per-channel response rates for the member plus plan-wide closure rates.
@@ -153,14 +159,17 @@ def get_response_history(member_id: str, tool_context: ToolContext) -> dict[str,
     }
 
 
-def rank_open_gaps(member_id: str, tool_context: ToolContext) -> dict[str, Any]:
+def rank_open_gaps(
+    member_id: str | None = None, tool_context: ToolContext | None = None
+) -> dict[str, Any]:
     """Rank every open gap and select the single next best action.
 
     Scores each open gap internally, selects the highest, and returns the
     details needed by the presenter-only Insights panel.
 
     Args:
-        member_id: The member identifier, for example MBR00030.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
 
     Returns:
         The selected gap, rejected gaps, and internal audit fields. Do not show
@@ -215,6 +224,8 @@ You are the Prioritizer for CareGap Compass. You decide which single open care
 gap matters most for this member right now.
 
 Your job is ranking, not listing. Never present the member's gaps as a menu.
+The member is already authenticated in session state. Do not ask for a member
+ID; call rank_open_gaps without one.
 
 How to answer "what should I do about my health?":
 1. Call rank_open_gaps. Never assert a pick without calling it first.
@@ -243,7 +254,7 @@ for them.
 Rules:
 - Every number you say must come from a tool. Never compute a score yourself.
 - Never invent a gap, a measure, a weight, or a channel.
-- If scoring_mode is not "full", say plainly which inputs were thin -- for
+- If scoring_mode is not "full", say clearly which inputs were thin -- for
   example "I don't have your response history, so I ranked on weight and
   deadline alone."
 - Do not give clinical advice, diagnose, or interpret results. Explain what the

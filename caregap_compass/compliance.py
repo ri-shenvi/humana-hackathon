@@ -296,13 +296,16 @@ CLINICIAN_ROUTE = {
 
 
 def check_request(
-    member_message: str, member_id: str, tool_context: ToolContext
+    member_message: str,
+    member_id: str | None = None,
+    tool_context: ToolContext | None = None,
 ) -> dict[str, Any]:
     """Screen a member message before acting on it. Call this first, every turn.
 
     Args:
         member_message: The member's message, verbatim.
-        member_id: The member identifier, for example MBR00030.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
 
     Returns:
         allowed=True to proceed, or allowed=False with the general rule to state,
@@ -368,7 +371,7 @@ def _build_gate_response(
             "route": CLINICIAN_ROUTE,
             "compliance_flag_id": flag["flag_id"],
             "instructions_to_agent": (
-                "Refuse the clinical question plainly, route to a clinician, then "
+                "Refuse the clinical question clearly, route to a clinician, then "
                 "offer to help with what you can do: explaining the care gap and "
                 "getting the appointment booked."
             ),
@@ -588,7 +591,9 @@ def _norm_name(name: Any) -> str:
 
 
 def check_caller_authorization(
-    caller_name: str, member_id: str, tool_context: ToolContext
+    caller_name: str,
+    member_id: str | None = None,
+    tool_context: ToolContext | None = None,
 ) -> dict[str, Any]:
     """Check whether a caller who is not the member may receive their information.
 
@@ -598,7 +603,8 @@ def check_caller_authorization(
 
     Args:
         caller_name: The name the caller gave, as they said it.
-        member_id: The member identifier, for example MBR00030.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
 
     Returns:
         authorized=true with the relationship on file, or authorized=false with

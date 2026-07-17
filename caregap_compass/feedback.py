@@ -144,13 +144,17 @@ def summary() -> dict[str, Any]:
 
 
 def record_feedback(
-    helpful: bool, member_id: str, comment: str, tool_context: ToolContext
+    helpful: bool,
+    member_id: str | None = None,
+    comment: str = "",
+    tool_context: ToolContext | None = None,
 ) -> dict[str, Any]:
     """Record whether the member found the recommendation useful.
 
     Args:
         helpful: True if the member found the recommendation useful, False if not.
-        member_id: The member identifier, for example MBR00030.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
         comment: What the member said, in their own words. Pass an empty string
             if they did not elaborate.
 

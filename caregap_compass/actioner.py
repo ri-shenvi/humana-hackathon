@@ -109,13 +109,18 @@ def _claims_for_gap(member_id: str, measure_id: str) -> dict[str, Any]:
 # --------------------------------------------------------------------------
 
 
-def explain_gap(gap_id: str, member_id: str, tool_context: ToolContext) -> dict[str, Any]:
+def explain_gap(
+    gap_id: str | None = None,
+    member_id: str | None = None,
+    tool_context: ToolContext | None = None,
+) -> dict[str, Any]:
     """Explain what a care gap is, why it matters, and what the plan's cost rule says.
 
     Args:
         gap_id: The care gap identifier, for example GAP000083. Defaults to the
             gap the prioritizer selected.
-        member_id: The member identifier, for example MBR00030.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
 
     Returns:
         A clear explanation, the general coverage rule for the member's
@@ -271,13 +276,16 @@ def explain_gap(gap_id: str, member_id: str, tool_context: ToolContext) -> dict[
 
 
 def find_provider(
-    gap_id: str, member_id: str, tool_context: ToolContext
+    gap_id: str | None = None,
+    member_id: str | None = None,
+    tool_context: ToolContext | None = None,
 ) -> dict[str, Any]:
     """Find the nearest in-network providers with an open appointment for this gap.
 
     Args:
         gap_id: The care gap identifier. Defaults to the gap the prioritizer selected.
-        member_id: The member identifier, for example MBR00030.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
 
     Returns:
         Up to three ranked options with distance, next open slot, and the reasons
@@ -507,11 +515,11 @@ def find_provider(
 
 def book_or_callback(
     action: str,
-    gap_id: str,
-    member_id: str,
-    provider_id: str,
-    slot_id: str,
-    tool_context: ToolContext,
+    gap_id: str | None = None,
+    member_id: str | None = None,
+    provider_id: str = "",
+    slot_id: str = "",
+    tool_context: ToolContext | None = None,
 ) -> dict[str, Any]:
     """Book a simulated appointment, or request a callback from a care coordinator.
 
@@ -520,7 +528,8 @@ def book_or_callback(
     Args:
         action: Either "book" or "callback".
         gap_id: The care gap this action closes.
-        member_id: The member identifier, for example MBR00030.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
         provider_id: Required for "book". The provider to book with.
         slot_id: Required for "book". The appointment slot to take.
 
@@ -693,11 +702,11 @@ def _request_callback(
 
 
 def submit_gap_dispute(
-    gap_id: str,
-    member_id: str,
-    facility_name: str,
-    approximate_date: str,
-    tool_context: ToolContext,
+    gap_id: str | None = None,
+    member_id: str | None = None,
+    facility_name: str = "",
+    approximate_date: str = "",
+    tool_context: ToolContext | None = None,
 ) -> dict[str, Any]:
     """File a reconciliation request when the member says they already had this care.
 
@@ -709,7 +718,8 @@ def submit_gap_dispute(
 
     Args:
         gap_id: The gap the member believes is already complete.
-        member_id: The member identifier, for example MBR00030.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
         facility_name: Where the member says the care happened.
         approximate_date: Roughly when, in the member's own words.
 
@@ -828,7 +838,7 @@ orchestrator take it from there. Never tell the member you have booked anything.
 
 If the member says they already completed the care: believe them, and say that
 records often lag. Ask where it happened, then roughly when -- one question at a
-time -- then submit the dispute. Tell them plainly that the gap stays open until
+time -- then submit the dispute. Tell them clearly that the gap stays open until
 it is reviewed. Never imply you closed it.
 
 explain_gap returns claim_history. Read it before you tell anyone to book:
@@ -864,7 +874,7 @@ Hard rules:
   pay. An uncovered service is not a free service.
 - Never diagnose, never interpret a result, never advise on medication.
 - Ask one question at a time.
-- Say plainly that scheduling here is simulated for the demo.
+- Say clearly that scheduling here is simulated for the demo.
 """.strip()
 
 

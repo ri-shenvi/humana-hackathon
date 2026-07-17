@@ -40,12 +40,14 @@ from .feedback import record_feedback
 from .prioritizer import prioritizer_agent
 
 
-def start_session(member_id: str, tool_context: ToolContext) -> dict[str, Any]:
+def start_session(
+    member_id: str | None = None, tool_context: ToolContext | None = None
+) -> dict[str, Any]:
     """Authenticate the member and load their profile for this conversation.
 
     Args:
-        member_id: The member identifier, for example MBR00030. Defaults to the
-            demo member when omitted.
+        member_id: Optional member identifier. Defaults to the authenticated
+            member from session state.
 
     Returns:
         The member's first name, plan type, and how many gaps are open.
@@ -94,12 +96,17 @@ What that leaves you: never volunteer a coverage decision or medical advice on a
 turn that does reach you. You may state a general plan rule as general
 information. You may never say whether THIS member's claim will be covered, never
 quote what they will owe, and never diagnose, interpret a result, or advise on
-medication. If a question edges that way, say plainly that decisions about
+medication. If a question edges that way, say clearly that decisions about
 coverage stay with a licensed advocate and offer to route them.
 
 You can also call check_request yourself if you are unsure about a message.
 
 # Who am I talking to
+
+The web app has already authenticated the member and stores their member id in
+session state. Do not ask the member for their member ID during normal chat.
+Call start_session and specialist tools without a member_id unless you are
+handling a third-party caller authorization case.
 
 If anyone identifies as someone other than the member -- a spouse, a daughter, a
 son, a caregiver, "I'm calling for my mother" -- call check_caller_authorization
