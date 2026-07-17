@@ -228,6 +228,11 @@ main.solo { grid-template-columns: 1fr; }
 }
 .msg-audio svg { width: 14px; height: 14px; }
 .msg-audio:hover:not(:disabled) { border-color: var(--data-green); color: var(--data-green); background: #f6faf2; }
+.msg-audio.active {
+  border-color: var(--data-green);
+  color: #fff;
+  background: var(--data-green);
+}
 .msg-audio:disabled { opacity: .4; cursor: not-allowed; }
 .tool { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); padding: 2px 0 2px 15px; }
 
@@ -554,6 +559,7 @@ let sessionId = null, memberId = null, pending = null, busy = false, view = "cha
 let membersById = new Map();
 let voiceEnabled = false, listening = false, lastAgentText = "";
 let recognition = null;
+let activeMessageAudioButton = null;
 
 const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition || null;
 const canListen = Boolean(SpeechRecognitionCtor);
@@ -864,6 +870,20 @@ function setVoiceStatus(text = "") {
   $("voice-status").textContent = text;
 }
 
+function setActiveMessageAudio(button = null) {
+  if (activeMessageAudioButton && activeMessageAudioButton !== button) {
+    activeMessageAudioButton.classList.remove("active");
+    activeMessageAudioButton.setAttribute("aria-pressed", "false");
+    activeMessageAudioButton.title = "Read this message aloud";
+  }
+  activeMessageAudioButton = button;
+  if (activeMessageAudioButton) {
+    activeMessageAudioButton.classList.add("active");
+    activeMessageAudioButton.setAttribute("aria-pressed", "true");
+    activeMessageAudioButton.title = "Stop reading this message";
+  }
+}
+
 function updateVoiceButtons() {
   $("mic").disabled = !canListen;
   $("speak-toggle").disabled = !canSpeak;
@@ -888,14 +908,20 @@ function prepareSpeech() {
 function playSpeech(text, options = {}) {
   const respectToggle = options.respectToggle !== false;
   const errorMessage = options.errorMessage || "Could not read that response aloud.";
+  const sourceButton = options.sourceButton || null;
   if (!prepareSpeech() || (respectToggle && !voiceEnabled)) return;
   const spoken = textForSpeech(text);
   if (!spoken) return;
+  setActiveMessageAudio(sourceButton);
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(spoken);
   utterance.rate = 0.95;
-  utterance.onend = () => updateVoiceButtons();
+  utterance.onend = () => {
+    setActiveMessageAudio(null);
+    updateVoiceButtons();
+  };
   utterance.onerror = () => {
+    setActiveMessageAudio(null);
     setVoiceStatus(errorMessage);
     updateVoiceButtons();
   };
@@ -907,12 +933,19 @@ function speakText(text) {
   playSpeech(text, { respectToggle: true, errorMessage: "Could not read that response aloud." });
 }
 
-function speakOnDemand(text) {
+function speakOnDemand(text, button = null) {
   if (!prepareSpeech()) {
     setVoiceStatus("Read-aloud is not available in this browser.");
     return;
   }
-  playSpeech(text, { respectToggle: false, errorMessage: "Could not read that message aloud." });
+  if (button && activeMessageAudioButton === button && window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    setActiveMessageAudio(null);
+    setVoiceStatus("");
+    updateVoiceButtons();
+    return;
+  }
+  playSpeech(text, { respectToggle: false, errorMessage: "Could not read that message aloud.", sourceButton: button });
 }
 
 function replayLastAgentMessage() {
@@ -924,6 +957,7 @@ function toggleSpeech() {
   if (voiceEnabled && window.speechSynthesis.speaking) {
     voiceEnabled = false;
     window.speechSynthesis.cancel();
+    setActiveMessageAudio(null);
     setVoiceStatus("");
   } else {
     voiceEnabled = !voiceEnabled;
@@ -989,7 +1023,7 @@ function addMsg(who, text, options = {}) {
   if (who === "agent") {
     el.innerHTML = `
       <div class="bubble">${body}</div>
-      <button type="button" class="msg-audio" title="Read this message aloud"${canSpeak ? "" : " disabled"}>
+      <button type="button" class="msg-audio" title="Read this message aloud" aria-pressed="false"${canSpeak ? "" : " disabled"}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
       </button>`;
     const audioButton = el.querySelector(".msg-audio");
@@ -997,7 +1031,7 @@ function addMsg(who, text, options = {}) {
     audioButton.addEventListener("click", event => {
       event.preventDefault();
       event.stopPropagation();
-      speakOnDemand(text);
+      speakOnDemand(text, audioButton);
     });
   } else {
     el.innerHTML = `<div class="bubble">${body}</div>`;
@@ -1262,7 +1296,10 @@ async function openSession(id) {
   try {
     const s = await api(`/apps/${APP}/users/${USER}/sessions/${id}`);
     sessionId = s.id;
-    if (canSpeak) window.speechSynthesis.cancel();
+    if (canSpeak) {
+      window.speechSynthesis.cancel();
+      setActiveMessageAudio(null);
+    }
     $("chat").innerHTML = "";
     const events = s.events || [];
     if (!events.length) addMsg("agent", "This conversation is empty.");
@@ -1345,7 +1382,10 @@ async function switchMember(id) {
   memberId = id;
   currentRoadmap = null;
   lastAgentText = "";
-  if (canSpeak) window.speechSynthesis.cancel();
+  if (canSpeak) {
+    window.speechSynthesis.cancel();
+    setActiveMessageAudio(null);
+  }
   renderMemberCard(id);
   $("chat").innerHTML = "";
   await newSession();
