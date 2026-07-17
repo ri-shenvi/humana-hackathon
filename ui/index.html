@@ -349,6 +349,15 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
 .step .act { font-size: 13px; color: var(--ink-2); margin-top: 3px; }
 .step.done .act { color: var(--ink-3); }
 .step .l2 { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); margin-top: 5px; }
+.step-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.step-actions button {
+  font: inherit; font-size: 11px; font-weight: 700; padding: 6px 10px;
+  border: 1.5px solid var(--border); border-radius: 999px; background: var(--surface);
+  color: var(--ink-2); cursor: pointer;
+}
+.step-actions button:hover { border-color: var(--data-green); color: var(--data-green); }
+.step-actions button.primary { background: var(--data-green); border-color: var(--data-green); color: #fff; }
+.step-actions button.primary:hover { background: var(--humana-deep); border-color: var(--humana-deep); color: #fff; }
 .pill { font-size: 9px; font-weight: 800; letter-spacing: .07em; padding: 2px 6px; border-radius: 4px; }
 .pill.next { background: var(--data-green); color: #fff; }
 .pill.done { background: var(--surface-3); color: var(--ink-2); }
@@ -608,6 +617,10 @@ function openSteps(roadmap = currentRoadmap) {
 
 function nextOpenStep() {
   return openSteps()[0] || null;
+}
+
+function findOpenStepByMeasure(measureId) {
+  return openSteps().find(s => s.measure_id === measureId) || null;
 }
 
 function openingText(roadmap) {
@@ -908,12 +921,12 @@ function addAgentHtml(html) {
   $("chat").scrollTop = 1e9;
 }
 
-async function explainCareSteps(userText = "Explain why these matter") {
+async function explainCareSteps(userText = "Explain why these matter", selectedStep = null) {
   if (busy) return;
   if (view !== "chat") show("chat");
   addMsg("user", userText);
   try { await ensureRoadmap(); } catch {}
-  const steps = openSteps().slice(0, 3);
+  const steps = selectedStep ? [selectedStep] : openSteps().slice(0, 3);
   if (!steps.length) {
     addMsg("agent", "I do not see any required care steps due right now.");
     return;
@@ -928,12 +941,12 @@ async function explainCareSteps(userText = "Explain why these matter") {
   `);
 }
 
-async function startScheduling(userText = "Schedule appointment") {
+async function startScheduling(userText = "Schedule appointment", selectedStep = null) {
   if (busy) return;
   if (view !== "chat") show("chat");
   addMsg("user", userText);
   try { await ensureRoadmap(); } catch {}
-  const step = nextOpenStep();
+  const step = selectedStep || nextOpenStep();
   if (!step) {
     addMsg("agent", "I do not see an open care step to schedule right now. I can request a callback instead.");
     return;
@@ -1088,12 +1101,18 @@ async function loadRoadmap() {
       const line2 = s.status === "done"
         ? `completed ${esc(s.completed_on || "—")}`
         : `due ${esc(s.due_date)} · ${s.days_to_close}d`;
+      const actions = s.status === "done" ? "" : `
+        <div class="step-actions">
+          <button type="button" data-roadmap-explain="${esc(s.measure_id)}">Explain this in chat</button>
+          <button type="button" class="primary" data-roadmap-schedule="${esc(s.measure_id)}">Schedule</button>
+        </div>`;
       return `<div class="step ${cls}">
         <div class="dot">${dot}</div>
         <div class="body">
           <div class="l1"><span class="id">${esc(s.measure_id)}</span><span class="nm">${esc(s.measure_name || "")}</span>${pill}</div>
           <div class="act">${esc(s.status === "done" ? "Done — nothing needed." : s.action)}</div>
           <div class="l2">${line2}</div>
+          ${actions}
         </div>
       </div>`;
     }).join("");
@@ -1263,6 +1282,19 @@ async function boot() {
   $("member").addEventListener("change", e => switchMember(e.target.value));
   document.querySelector("nav").addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(b.dataset.v); });
   $("hlist").addEventListener("click", e => { const r = e.target.closest(".hrow"); if (r) openSession(r.dataset.s); });
+  $("rmsteps").addEventListener("click", e => {
+    const explainButton = e.target.closest("button[data-roadmap-explain]");
+    if (explainButton) {
+      const step = findOpenStepByMeasure(explainButton.dataset.roadmapExplain);
+      if (step) explainCareSteps(`Explain ${step.measure_name || step.measure_id}`, step);
+      return;
+    }
+    const scheduleButton = e.target.closest("button[data-roadmap-schedule]");
+    if (scheduleButton) {
+      const step = findOpenStepByMeasure(scheduleButton.dataset.roadmapSchedule);
+      if (step) startScheduling(`Schedule ${step.measure_name || step.measure_id}`, step);
+    }
+  });
   $("insight-toggle").addEventListener("click", () => toggleInsights());
   $("insight-hide").addEventListener("click", () => toggleInsights(false));
 
