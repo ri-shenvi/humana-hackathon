@@ -235,13 +235,28 @@ main.solo { grid-template-columns: 1fr; }
   background: var(--data-green); border-color: var(--data-green); color: #fff; font-weight: 800;
 }
 .prompts button.action:hover:not(:disabled) { background: var(--humana-deep); border-color: var(--humana-deep); color: #fff; }
-.composer { border-top: 1px solid var(--border); padding: 11px 14px; display: flex; gap: 9px; }
+.chat-tools { display: inline-flex; align-items: center; gap: 6px; }
+.composer-wrap { border-top: 1px solid var(--border); padding: 11px 14px; display: grid; gap: 8px; }
+.voice-status { min-height: 16px; font-size: 11px; color: var(--ink-3); }
+.composer { display: flex; gap: 9px; align-items: center; }
 .composer input { flex: 1; font: inherit; padding: 10px 16px; border: 1.5px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--ink); }
 .composer input:focus { outline: none; border-color: var(--data-green); }
 button.go { font: inherit; font-weight: 700; font-size: 14px; padding: 10px 20px; border: 0; border-radius: 999px; background: var(--data-green); color: #fff; cursor: pointer; }
 button.go:hover:not(:disabled) { background: var(--humana-deep); }
 button.go:disabled { opacity: .45; cursor: not-allowed; }
 button.ghost { background: var(--surface-3); color: var(--ink); }
+.voice-btn {
+  all: unset; box-sizing: border-box; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; width: 40px; height: 40px;
+  border: 1.5px solid var(--border); border-radius: 999px; color: var(--ink-2);
+  background: var(--surface);
+}
+.voice-btn svg { width: 17px; height: 17px; }
+.voice-btn:hover:not(:disabled),
+.voice-btn.active { border-color: var(--data-green); color: var(--data-green); background: #f6faf2; }
+.voice-btn.active.speaking,
+.voice-btn.active.listening { background: var(--data-green); color: #fff; border-color: var(--data-green); }
+.voice-btn:disabled { opacity: .4; cursor: not-allowed; }
 .insight-toggle {
   all: unset; box-sizing: border-box; cursor: pointer; display: inline-flex;
   align-items: center; gap: 6px; padding: 5px 9px; border: 1.5px solid var(--border);
@@ -420,16 +435,30 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
     <section class="pane" id="v-chat">
       <div class="pane-head">
         <h2>CareGap Compass · My Next Best Health Action</h2>
-        <button type="button" class="insight-toggle" id="insight-toggle" aria-controls="v-decision" aria-expanded="false" title="Show recommendation insights">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M13 16V8"/><path d="M18 16v-3"/></svg>
-          <span>Insights</span>
-        </button>
+        <div class="chat-tools">
+          <button type="button" class="voice-btn" id="speak-toggle" title="Read responses aloud" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
+          <button type="button" class="voice-btn" id="speak-replay" title="Replay last response">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg>
+          </button>
+          <button type="button" class="insight-toggle" id="insight-toggle" aria-controls="v-decision" aria-expanded="false" title="Show recommendation insights">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M13 16V8"/><path d="M18 16v-3"/></svg>
+            <span>Insights</span>
+          </button>
+        </div>
       </div>
       <div class="scroll" id="chat"></div>
       <div class="prompts" id="prompts"></div>
-      <div class="composer">
-        <input id="input" placeholder="What should I do about my health?" autocomplete="off">
-        <button type="button" class="go" id="send">Send</button>
+      <div class="composer-wrap">
+        <div class="voice-status" id="voice-status"></div>
+        <div class="composer">
+          <button type="button" class="voice-btn" id="mic" title="Speak your question">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2.8" width="6" height="11.5" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/><path d="M8.5 21h7"/></svg>
+          </button>
+          <input id="input" placeholder="What should I do about my health?" autocomplete="off">
+          <button type="button" class="go" id="send">Send</button>
+        </div>
       </div>
     </section>
 
@@ -485,6 +514,12 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
 const APP = "caregap_compass", USER = "demo-user";
 let sessionId = null, memberId = null, pending = null, busy = false, view = "chat", insightsOpen = false, currentRoadmap = null;
 let membersById = new Map();
+let voiceEnabled = false, listening = false, lastAgentText = "";
+let recognition = null;
+
+const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+const canListen = Boolean(SpeechRecognitionCtor);
+const canSpeak = "speechSynthesis" in window && typeof window.SpeechSynthesisUtterance === "function";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -744,7 +779,108 @@ function renderMarkdown(text) {
   return out.join("");
 }
 
-function addMsg(who, text) {
+function textForSpeech(text) {
+  const probe = document.createElement("div");
+  probe.innerHTML = renderMarkdown(text);
+  return (probe.textContent || probe.innerText || "").replace(/\s+/g, " ").trim();
+}
+
+function setVoiceStatus(text = "") {
+  $("voice-status").textContent = text;
+}
+
+function updateVoiceButtons() {
+  $("mic").disabled = !canListen;
+  $("speak-toggle").disabled = !canSpeak;
+  $("speak-replay").disabled = !canSpeak || !lastAgentText;
+  $("mic").classList.toggle("active", listening);
+  $("mic").classList.toggle("listening", listening);
+  $("speak-toggle").classList.toggle("active", voiceEnabled);
+  $("speak-toggle").classList.toggle("speaking", voiceEnabled && window.speechSynthesis?.speaking);
+  $("speak-toggle").setAttribute("aria-pressed", voiceEnabled ? "true" : "false");
+}
+
+function speakText(text) {
+  if (!canSpeak || !voiceEnabled) return;
+  const spoken = textForSpeech(text);
+  if (!spoken) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(spoken);
+  utterance.rate = 0.95;
+  utterance.onend = () => updateVoiceButtons();
+  utterance.onerror = () => {
+    setVoiceStatus("Could not read that response aloud.");
+    updateVoiceButtons();
+  };
+  window.speechSynthesis.speak(utterance);
+  updateVoiceButtons();
+}
+
+function replayLastAgentMessage() {
+  if (lastAgentText) speakText(lastAgentText);
+}
+
+function toggleSpeech() {
+  if (!canSpeak) return;
+  if (voiceEnabled && window.speechSynthesis.speaking) {
+    voiceEnabled = false;
+    window.speechSynthesis.cancel();
+    setVoiceStatus("");
+  } else {
+    voiceEnabled = !voiceEnabled;
+    setVoiceStatus(voiceEnabled ? "Responses will be read aloud." : "");
+    if (voiceEnabled && lastAgentText) speakText(lastAgentText);
+  }
+  updateVoiceButtons();
+}
+
+function stopListening() {
+  if (!recognition || !listening) return;
+  recognition.stop();
+}
+
+function initRecognition() {
+  if (!canListen || recognition) return;
+  recognition = new SpeechRecognitionCtor();
+  recognition.lang = "en-US";
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 1;
+  recognition.onstart = () => {
+    listening = true;
+    setVoiceStatus("Listening…");
+    updateVoiceButtons();
+  };
+  recognition.onresult = (event) => {
+    let transcript = "";
+    for (let i = event.resultIndex; i < event.results.length; i += 1) transcript += event.results[i][0].transcript;
+    $("input").value = transcript.trimStart();
+  };
+  recognition.onend = () => {
+    listening = false;
+    if ($("input").value.trim()) setVoiceStatus("Voice input captured. Press Send when ready.");
+    else setVoiceStatus("");
+    updateVoiceButtons();
+  };
+  recognition.onerror = (event) => {
+    listening = false;
+    setVoiceStatus(event.error === "not-allowed" ? "Microphone permission was denied." : "Voice input is unavailable right now.");
+    updateVoiceButtons();
+  };
+}
+
+function toggleListening() {
+  if (!canListen) return;
+  initRecognition();
+  if (!recognition) return;
+  if (listening) stopListening();
+  else {
+    $("input").value = "";
+    recognition.start();
+  }
+}
+
+function addMsg(who, text, options = {}) {
+  const shouldSpeak = options.speak ?? who === "agent";
   const lbl = document.createElement("div");
   lbl.className = who === "user" ? "who r" : "who";
   lbl.textContent = who === "user" ? "You" : "CareGap Compass";
@@ -754,6 +890,11 @@ function addMsg(who, text) {
   el.innerHTML = `<div class="bubble">${body}</div>`;
   $("chat").append(lbl, el);
   $("chat").scrollTop = 1e9;
+  if (who === "agent") {
+    lastAgentText = text;
+    updateVoiceButtons();
+    if (shouldSpeak) speakText(text);
+  }
 }
 
 function addAgentHtml(html) {
@@ -993,12 +1134,13 @@ async function openSession(id) {
   try {
     const s = await api(`/apps/${APP}/users/${USER}/sessions/${id}`);
     sessionId = s.id;
+    if (canSpeak) window.speechSynthesis.cancel();
     $("chat").innerHTML = "";
     const events = s.events || [];
     if (!events.length) addMsg("agent", "This conversation is empty.");
     for (const ev of events) {
       for (const p of (ev.content?.parts || [])) {
-        if (p.text?.trim()) addMsg(ev.author === "user" ? "user" : "agent", p.text);
+        if (p.text?.trim()) addMsg(ev.author === "user" ? "user" : "agent", p.text, {speak: false});
       }
     }
     show("chat");
@@ -1043,6 +1185,7 @@ function setBusy(b) { busy = b; $("send").disabled = b; $("send").innerHTML = b 
 
 async function send(text) {
   if (busy || !text.trim() || !sessionId) return;
+  if (listening) stopListening();
   const normalized = text.trim().toLowerCase();
   if (["schedule appointment", "schedule an appointment", "find providers nearby", "find me a provider"].includes(normalized)) {
     $("input").value = "";
@@ -1073,6 +1216,8 @@ async function send(text) {
 async function switchMember(id) {
   memberId = id;
   currentRoadmap = null;
+  lastAgentText = "";
+  if (canSpeak) window.speechSynthesis.cancel();
   renderMemberCard(id);
   $("chat").innerHTML = "";
   await newSession();
@@ -1110,6 +1255,9 @@ async function boot() {
   });
   $("send").addEventListener("click", () => send($("input").value));
   $("input").addEventListener("keydown", e => { if (e.key === "Enter") send($("input").value); });
+  $("mic").addEventListener("click", () => toggleListening());
+  $("speak-toggle").addEventListener("click", () => toggleSpeech());
+  $("speak-replay").addEventListener("click", () => replayLastAgentMessage());
   $("myes").addEventListener("click", () => answer(true));
   $("mno").addEventListener("click", () => answer(false));
   $("member").addEventListener("change", e => switchMember(e.target.value));
@@ -1131,6 +1279,8 @@ async function boot() {
   setRail(shut);
   $("railtoggle").addEventListener("click", () => setRail(!document.body.classList.contains("rail-shut")));
 
+  setVoiceStatus(!canListen && !canSpeak ? "Voice features are not available in this browser." : "");
+  updateVoiceButtons();
   loadFlags();
   try {
     const d = await api("/api/members?limit=40");
