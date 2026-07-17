@@ -155,10 +155,12 @@ aside select {
 .impact .at { color: var(--ink-3); font-size: 11.5px; }
 .impact .at b { color: var(--ink-2); }
 
-main { flex: 1; display: grid; grid-template-columns: 1fr 400px; gap: 13px; padding: 13px 16px; min-height: 0; }
+main { flex: 1; display: grid; grid-template-columns: 1fr; gap: 13px; padding: 13px 16px; min-height: 0; }
+main.insights-open { grid-template-columns: minmax(0, 1fr) 400px; }
 main.solo { grid-template-columns: 1fr; }
 @media (max-width: 1080px) {
   main { grid-template-columns: 1fr; }
+  main.insights-open { grid-template-columns: 1fr; }
   aside { width: 70px; flex-basis: 70px; padding: 14px 8px; }
   .brand, .side-lbl, aside select, #telemetry, .wordmark { display: none; }
   .plate { padding: 6px; justify-content: center; }
@@ -166,10 +168,13 @@ main.solo { grid-template-columns: 1fr; }
 }
 
 .pane { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
-.pane > h2 {
+.pane > h2,
+.pane-head {
   margin: 0; padding: 11px 15px; font-size: 10.5px; font-weight: 700; text-transform: uppercase;
   letter-spacing: .09em; color: var(--ink-3); border-bottom: 1px solid var(--border);
 }
+.pane-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.pane-head h2 { margin: 0; font-size: inherit; letter-spacing: inherit; color: inherit; }
 .scroll { overflow-y: auto; padding: 16px; flex: 1; min-height: 0; }
 [hidden] { display: none !important; }
 
@@ -207,8 +212,20 @@ button.go { font: inherit; font-weight: 700; font-size: 14px; padding: 10px 20px
 button.go:hover:not(:disabled) { background: var(--humana-deep); }
 button.go:disabled { opacity: .45; cursor: not-allowed; }
 button.ghost { background: var(--surface-3); color: var(--ink); }
+.insight-toggle {
+  all: unset; box-sizing: border-box; cursor: pointer; display: inline-flex;
+  align-items: center; gap: 6px; padding: 5px 9px; border: 1.5px solid var(--border);
+  border-radius: 999px; color: var(--ink-2); background: var(--surface);
+  font-size: 11px; font-weight: 800; letter-spacing: 0; text-transform: none;
+}
+.insight-toggle svg { width: 14px; height: 14px; flex: 0 0 14px; }
+.insight-toggle:hover,
+.insight-toggle[aria-expanded="true"] { border-color: var(--data-green); color: var(--data-green); background: #f6faf2; }
+.insight-toggle:focus-visible { outline: 2px solid var(--data-green); outline-offset: 2px; }
+.pane-head .insight-toggle { padding: 4px 8px; }
 
 /* --- decision panel ------------------------------------------------------- */
+.insight-note { padding: 10px 14px; font-size: 12px; color: var(--ink-2); border-bottom: 1px solid var(--border); background: #fbfdf9; }
 .formula { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); padding: 8px 14px; background: var(--surface-2); border-bottom: 1px solid var(--border); }
 .gap { border: 1px solid var(--border); border-radius: 10px; padding: 11px; margin-bottom: 9px; }
 .gap.selected { border-color: var(--data-green); border-width: 2px; padding: 10px; background: #fbfdf9; }
@@ -348,7 +365,13 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
   <main id="main">
     <!-- chat -->
     <section class="pane" id="v-chat">
-      <h2>CareGap Compass · My Next Best Health Action</h2>
+      <div class="pane-head">
+        <h2>CareGap Compass · My Next Best Health Action</h2>
+        <button type="button" class="insight-toggle" id="insight-toggle" aria-controls="v-decision" aria-expanded="false" title="Show recommendation insights">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M13 16V8"/><path d="M18 16v-3"/></svg>
+          <span>Insights</span>
+        </button>
+      </div>
       <div class="scroll" id="chat"></div>
       <div class="prompts" id="prompts"></div>
       <div class="composer">
@@ -370,9 +393,16 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
       <div class="scroll" id="rmsteps" style="padding:0"></div>
     </section>
 
-    <!-- decision panel: only alongside chat -->
-    <section class="pane" id="v-decision">
-      <h2>The decision</h2>
+    <!-- recommendation insights: optional, for explanation and demos -->
+    <section class="pane" id="v-decision" hidden>
+      <div class="pane-head">
+        <h2>Recommendation insights</h2>
+        <button type="button" class="insight-toggle" id="insight-hide" aria-controls="v-decision" title="Hide recommendation insights">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          <span>Hide</span>
+        </button>
+      </div>
+      <div class="insight-note">Behind-the-scenes ranking details for presenters and reviewers.</div>
       <div class="formula" id="formula"></div>
       <div class="scroll" id="panel"><div class="empty">Loading…</div></div>
       <div class="flags">
@@ -400,7 +430,7 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
 
 <script>
 const APP = "caregap_compass", USER = "demo-user";
-let sessionId = null, memberId = null, pending = null, busy = false, view = "chat";
+let sessionId = null, memberId = null, pending = null, busy = false, view = "chat", insightsOpen = false;
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -426,11 +456,24 @@ function show(v) {
   $("v-chat").hidden = v !== "chat";
   $("v-history").hidden = v !== "history";
   $("v-roadmap").hidden = v !== "roadmap";
-  // The decision panel only makes sense beside the conversation it explains.
-  $("v-decision").hidden = v !== "chat";
+  updateInsights();
   $("main").classList.toggle("solo", v !== "chat");
   if (v === "history") loadHistory();
   if (v === "roadmap") loadRoadmap();
+}
+
+function updateInsights() {
+  const open = view === "chat" && insightsOpen;
+  $("v-decision").hidden = !open;
+  $("main").classList.toggle("insights-open", open);
+  $("insight-toggle").setAttribute("aria-expanded", open ? "true" : "false");
+  $("insight-toggle").title = open ? "Hide recommendation insights" : "Show recommendation insights";
+  if (open) loadPanel();
+}
+
+function toggleInsights(force) {
+  insightsOpen = typeof force === "boolean" ? force : !insightsOpen;
+  updateInsights();
 }
 
 /* --- session -------------------------------------------------------------- */
@@ -637,7 +680,7 @@ async function openSession(id) {
       }
     }
     show("chat");
-    await loadPanel();
+    if (insightsOpen) await loadPanel();
   } catch (e) {
     addMsg("agent", `Could not open that conversation: ${e.message}`);
   }
@@ -701,7 +744,7 @@ async function answer(confirmed) {
   setBusy(true);
   await run({role: "user", parts: [{functionResponse: {id: p.id, name: "adk_request_confirmation", response: {confirmed, payload: null}}}]});
   setBusy(false);
-  await Promise.all([loadPanel(), loadTelemetry(), loadFlags()]);
+  await Promise.all([insightsOpen ? loadPanel() : Promise.resolve(), loadTelemetry(), loadFlags()]);
 }
 
 function setBusy(b) { busy = b; $("send").disabled = b; $("send").innerHTML = b ? '<span class="spin"></span>' : "Send"; }
@@ -716,7 +759,7 @@ async function send(text) {
   catch (e) { addMsg("agent", `Something broke: ${e.message}`); }
   setBusy(false);
   // REST-driven, so it stays correct even if the model misbehaved.
-  await Promise.all([loadPanel(), loadTelemetry(), loadFlags()]);
+  await Promise.all([insightsOpen ? loadPanel() : Promise.resolve(), loadTelemetry(), loadFlags()]);
 }
 
 async function switchMember(id) {
@@ -724,7 +767,7 @@ async function switchMember(id) {
   $("chat").innerHTML = "";
   await newSession();
   addMsg("agent", "Ask me what you should do about your health.");
-  await loadPanel();
+  if (insightsOpen) await loadPanel();
   if (view === "roadmap") loadRoadmap();
   if (view === "history") loadHistory();
 }
@@ -739,6 +782,8 @@ async function boot() {
   $("member").addEventListener("change", e => switchMember(e.target.value));
   document.querySelector("nav").addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(b.dataset.v); });
   $("hlist").addEventListener("click", e => { const r = e.target.closest(".hrow"); if (r) openSession(r.dataset.s); });
+  $("insight-toggle").addEventListener("click", () => toggleInsights());
+  $("insight-hide").addEventListener("click", () => toggleInsights(false));
 
   // Rail toggle. Remembered across reloads so a mid-demo refresh doesn't reopen it.
   const setRail = (shut) => {
