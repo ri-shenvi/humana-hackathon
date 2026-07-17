@@ -59,16 +59,15 @@ aside > * { min-width: 0; max-width: 100%; }
 body.rail-shut aside { width: 66px; flex-basis: 66px; padding: 20px 8px; }
 body.rail-shut .brand,
 body.rail-shut .wordmark,
+body.rail-shut .member-card,
 body.rail-shut .side-lbl,
 body.rail-shut aside select,
-body.rail-shut #telemetry,
 body.rail-shut nav button span { display: none; }
 body.rail-shut .hblock { width: 46px; height: 46px; flex-basis: 46px; }
 body.rail-shut .plate { align-items: center; }
 body.rail-shut nav button { justify-content: center; padding: 10px 0; }
 
-/* Sits at the foot of the rail, under the data chip — out of the way of the mark
-   and reachable without crossing the nav. */
+/* Sits at the foot of the rail, out of the way of the member card and nav. */
 .railtoggle {
   all: unset; cursor: pointer; align-self: flex-end; color: var(--ink); opacity: .6;
   padding: 5px 7px; border-radius: 7px; line-height: 0; margin-top: 2px;
@@ -123,17 +122,38 @@ aside select {
   width: 100%; font: inherit; font-size: 12px; padding: 7px 8px; border: 0;
   border-radius: 7px; background: rgba(255,255,255,.94); color: var(--ink); cursor: pointer;
 }
-/* One chip, not three. The backend is load-bearing: under DATA_BACKEND=auto a
-   credential failure degrades to local CSVs silently, and without this you would
-   demo files believing you were on BigQuery. Cache hit-rate and the demo clock
-   are engineering readouts — they live in the tooltip, not on a member's screen. */
-.chip {
-  display: block; font-family: var(--mono); font-size: 10.5px; padding: 5px 9px;
-  border-radius: 999px; background: rgba(255,255,255,.94); color: var(--ink-2);
-  text-align: center; cursor: help;
+.member-card {
+  display: grid; gap: 9px; padding: 10px; border-radius: 12px;
+  background: rgba(255,255,255,.32); border: 1px solid rgba(20,24,15,.13);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
 }
-.chip.live { background: var(--humana-deep); color: #fff; }
-.chip.warn { background: #fff3d6; color: #7c4a03; }
+.member-card .side-lbl { margin: 0; }
+.member-top { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.member-avatar {
+  width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%;
+  display: grid; place-items: center; background: rgba(255,255,255,.95);
+  color: var(--humana-deep); font-weight: 900; font-size: 14px;
+}
+.member-copy { min-width: 0; flex: 1; }
+.member-name {
+  font-size: 14px; font-weight: 850; line-height: 1.15; color: var(--ink);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.member-meta {
+  margin-top: 2px; font-size: 11px; line-height: 1.25; color: var(--ink);
+  opacity: .68; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.member-select-wrap { position: relative; }
+.member-select-wrap::after {
+  content: ""; position: absolute; right: 9px; top: 50%; width: 7px; height: 7px;
+  border-right: 1.8px solid var(--ink-2); border-bottom: 1.8px solid var(--ink-2);
+  transform: translateY(-65%) rotate(45deg); pointer-events: none;
+}
+.member-card select {
+  appearance: none; font-size: 11.5px; font-weight: 650; padding: 7px 26px 7px 9px;
+  border: 1px solid rgba(20,24,15,.12); background: rgba(255,255,255,.9);
+}
+.member-card select:focus { outline: 2px solid var(--humana-deep); outline-offset: 2px; }
 
 /* --- main ----------------------------------------------------------------- */
 .wrap { flex: 1; display: flex; flex-direction: column; min-width: 0; }
@@ -145,7 +165,7 @@ main.solo { grid-template-columns: 1fr; }
   main { grid-template-columns: 1fr; }
   main.insights-open { grid-template-columns: 1fr; }
   aside { width: 70px; flex-basis: 70px; padding: 14px 8px; }
-  .brand, .side-lbl, aside select, #telemetry, .wordmark { display: none; }
+  .brand, .member-card, .side-lbl, aside select, .wordmark { display: none; }
   .plate { padding: 6px; justify-content: center; }
   nav button { text-align: center; padding: 9px 4px; font-size: 11px; }
 }
@@ -350,13 +370,18 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
     </button>
   </nav>
   <div class="spacer"></div>
-  <div>
+  <div class="member-card">
     <div class="side-lbl">Member</div>
-    <select id="member" aria-label="Member"></select>
-  </div>
-  <div>
-    <div class="side-lbl">Data</div>
-    <div id="telemetry"></div>
+    <div class="member-top">
+      <div class="member-avatar" id="member-avatar">M</div>
+      <div class="member-copy">
+        <div class="member-name" id="member-name">Member</div>
+        <div class="member-meta" id="member-meta">Select a member</div>
+      </div>
+    </div>
+    <div class="member-select-wrap">
+      <select id="member" aria-label="Switch member"></select>
+    </div>
   </div>
   <button type="button" class="railtoggle" id="railtoggle" aria-label="Collapse sidebar" aria-expanded="true">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
@@ -433,6 +458,7 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
 <script>
 const APP = "caregap_compass", USER = "demo-user";
 let sessionId = null, memberId = null, pending = null, busy = false, view = "chat", insightsOpen = false, currentRoadmap = null;
+let membersById = new Map();
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -528,6 +554,17 @@ function openingText(roadmap) {
 
 function providerOptionsFor(step) {
   return PROVIDER_OPTIONS[step?.measure_id] || PROVIDER_OPTIONS.default;
+}
+
+function renderMemberCard(id) {
+  const m = membersById.get(id);
+  if (!m) return;
+  const name = m.display_name || `Member ${m.member_id}`;
+  const open = Number(m.open_gaps || 0);
+  $("member-name").textContent = name;
+  $("member-avatar").textContent = name.trim().charAt(0).toUpperCase() || "M";
+  $("member-meta").textContent = `${m.plan_type || "Plan"}${m.age ? " · age " + m.age : ""} · ${open} open ${open === 1 ? "step" : "steps"}`;
+  $("member").value = id;
 }
 
 /* --- views ---------------------------------------------------------------- */
@@ -843,20 +880,6 @@ async function openSession(id) {
   }
 }
 
-/* Says where the data IS, not how we got there. "csv fallback" described the fall;
-   what an operator needs mid-demo is simply whether BigQuery is live. */
-async function loadTelemetry() {
-  try {
-    const d = await api("/api/telemetry"), c = d.cache, live = d.backend === "bigquery";
-    const label = live ? "BigQuery · live" : "Local CSV";
-    const why = live
-      ? `Querying ${d.dataset}${d.project ? " in " + d.project : ""}.`
-      : "BigQuery is not reachable, so reads are coming from the local CSVs. Same data, same numbers — but this is not a live query.";
-    $("telemetry").innerHTML = `<span class="chip ${live ? "live" : "warn"}" title="${esc(why)}
-Cache ${c.hits}/${c.hits + c.misses} · clock pinned to ${d.demo_today}">${label}</span>`;
-  } catch {}
-}
-
 async function loadFlags() {
   try {
     const d = await api("/api/compliance-flags?limit=8");
@@ -886,7 +909,7 @@ async function answer(confirmed) {
   setBusy(true);
   await run({role: "user", parts: [{functionResponse: {id: p.id, name: "adk_request_confirmation", response: {confirmed, payload: null}}}]});
   setBusy(false);
-  await Promise.all([insightsOpen ? loadPanel() : Promise.resolve(), loadTelemetry(), loadFlags()]);
+  await Promise.all([insightsOpen ? loadPanel() : Promise.resolve(), loadFlags()]);
 }
 
 function setBusy(b) { busy = b; $("send").disabled = b; $("send").innerHTML = b ? '<span class="spin"></span>' : "Send"; }
@@ -912,12 +935,13 @@ async function send(text) {
   catch (e) { addMsg("agent", `Something broke: ${e.message}`); }
   setBusy(false);
   // REST-driven, so it stays correct even if the model misbehaved.
-  await Promise.all([insightsOpen ? loadPanel() : Promise.resolve(), loadTelemetry(), loadFlags()]);
+  await Promise.all([insightsOpen ? loadPanel() : Promise.resolve(), loadFlags()]);
 }
 
 async function switchMember(id) {
   memberId = id;
   currentRoadmap = null;
+  renderMemberCard(id);
   $("chat").innerHTML = "";
   await newSession();
   try {
@@ -969,11 +993,12 @@ async function boot() {
   setRail(shut);
   $("railtoggle").addEventListener("click", () => setRail(!document.body.classList.contains("rail-shut")));
 
-  loadTelemetry(); loadFlags();
+  loadFlags();
   try {
     const d = await api("/api/members?limit=40");
+    membersById = new Map(d.members.map(m => [m.member_id, m]));
     $("member").innerHTML = d.members.map(m =>
-      `<option value="${esc(m.member_id)}"${m.is_hero ? " selected" : ""}>${esc(m.label)} · ${m.open_gaps} gaps</option>`).join("");
+      `<option value="${esc(m.member_id)}"${m.is_hero ? " selected" : ""}>${esc(m.display_label || m.label || m.member_id)} · ${m.open_gaps} open</option>`).join("");
     await switchMember(d.members.find(m => m.is_hero)?.member_id || d.members[0].member_id);
   } catch (e) {
     $("panel").innerHTML = `<div class="empty">Backend unreachable.<br><small>${esc(e.message)}</small></div>`;

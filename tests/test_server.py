@@ -11,7 +11,7 @@ from __future__ import annotations
 import pytest
 from fastapi.testclient import TestClient
 
-from caregap_compass import config, server
+from caregap_compass import bq, config, server
 
 HERO = config.HERO_MEMBER_ID
 
@@ -138,10 +138,18 @@ def test_telemetry_exposes_the_cache(client):
 # --- /api/members ---------------------------------------------------------
 
 
-def test_member_picker_masks_names(client):
-    """The picker needs to distinguish members, not identify them."""
-    for m in client.get("/api/members?limit=10").json()["members"]:
-        assert "***" in m["label"]
+def test_member_picker_allows_first_name_only(client):
+    """The member-facing picker may use first name, but not fuller PII."""
+    hero = next(
+        m
+        for m in client.get("/api/members?limit=10").json()["members"]
+        if m["member_id"] == HERO
+    )
+    raw = bq.get_member(HERO)
+    assert hero["display_name"] == raw["first_name"]
+    assert raw["last_name"] not in hero["label"]
+    for field in ("last_name", "phone", "email", "address", "dob"):
+        assert field not in hero
 
 
 def test_hero_is_first_then_richest_members(client):

@@ -209,8 +209,11 @@ def get_telemetry() -> dict[str, Any]:
 
 @api.get("/members")
 def list_members(limit: int = Query(50, ge=1, le=200)) -> dict[str, Any]:
-    """Member picker. Names are masked -- the picker does not need to identify
-    anyone, it needs to distinguish them."""
+    """Member picker.
+
+    This is a member-facing demo surface, so first name is intentionally allowed
+    here. Last name, contact info, address, DOB, and other PII stay off the edge.
+    """
     try:
         rows = bq.fetch_table("members")
     except bq.DataUnavailable as exc:
@@ -221,17 +224,27 @@ def list_members(limit: int = Query(50, ge=1, le=200)) -> dict[str, Any]:
         if str(gap.get("gap_status", "")).lower() == "open":
             open_counts[gap["member_id"]] = open_counts.get(gap["member_id"], 0) + 1
 
-    members = [
-        {
-            "member_id": r["member_id"],
-            "label": f"{r['member_id']} · {privacy.mask_value('first_name', r['first_name'])} "
-            f"{r.get('plan_type')} · {r.get('age')}",
-            "plan_type": r.get("plan_type"),
-            "open_gaps": open_counts.get(r["member_id"], 0),
-            "is_hero": r["member_id"] == config.HERO_MEMBER_ID,
-        }
-        for r in rows
-    ]
+    members = []
+    for r in rows:
+        display_name = privacy.member_display_name(r)
+        if display_name == "there":
+            display_name = f"Member {privacy.mask_member_id(r.get('member_id'))}"
+        plan_type = r.get("plan_type")
+        age = r.get("age")
+        open_gaps = open_counts.get(r["member_id"], 0)
+        members.append(
+            {
+                "member_id": r["member_id"],
+                "display_name": display_name,
+                "display_label": f"{display_name} · {plan_type or 'Plan'}"
+                + (f" · {age}" if age else ""),
+                "label": f"{display_name} · {r['member_id']} · {plan_type or 'Plan'}",
+                "plan_type": plan_type,
+                "age": age,
+                "open_gaps": open_gaps,
+                "is_hero": r["member_id"] == config.HERO_MEMBER_ID,
+            }
+        )
     # Hero first, then members with the most open gaps -- a member with one gap
     # has nothing to rank and makes a poor demo.
     members.sort(key=lambda m: (not m["is_hero"], -m["open_gaps"], m["member_id"]))
