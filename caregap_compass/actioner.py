@@ -853,8 +853,8 @@ How to work:
    Do not call attention to the reading level or label the response as simplified.
 2. Offer at most three provider choices. Lead with the top pick and say why it
    is the top pick, using its ranking_reasons.
-3. When you recommend a slot, state the provider_id and slot_id explicitly so
-   the orchestrator can act on exactly what the member agreed to.
+3. Do not show provider_id or slot_id in the member-facing text. The member
+   should see provider names and appointment times, not internal ids.
 4. If find_provider returns no_match, say so and suggest a callback rather than
    inventing an option.
 

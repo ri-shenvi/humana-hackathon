@@ -193,16 +193,26 @@ main.solo { grid-template-columns: 1fr; }
 .msg.user { justify-content: flex-end; }
 .bubble {
   max-width: 78%; border: 1.5px solid var(--border); border-radius: 18px;
-  padding: 9px 15px; background: var(--surface); white-space: pre-wrap;
+  padding: 9px 15px; background: var(--surface);
   word-wrap: break-word; font-size: 14px;
 }
 .msg.user .bubble { border-color: var(--data-green); background: #f6faf2; }
 .bubble.interactive { white-space: normal; max-width: 86%; }
+.bubble p { margin: 0 0 9px; }
+.bubble p:last-child,
+.bubble ul:last-child { margin-bottom: 0; }
+.bubble ul { margin: 7px 0 9px; padding-left: 20px; }
+.bubble li { margin: 3px 0; }
+.bubble code {
+  font-family: var(--mono); font-size: 12px; background: var(--surface-2);
+  border: 1px solid var(--border); border-radius: 5px; padding: 1px 4px;
+}
 .bubble pre {
   font-family: var(--mono); font-size: 11px; line-height: 1.6; background: var(--surface-2);
   border: 1px solid var(--border); border-radius: 8px; padding: 9px; overflow-x: auto;
   white-space: pre; margin: 7px -4px;
 }
+.bubble pre code { background: none; border: 0; border-radius: 0; padding: 0; font-size: inherit; }
 .tool { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); padding: 2px 0 2px 15px; }
 
 .gate { border: 1.5px solid var(--gate-blue); border-radius: 14px; background: #f3f6fe; padding: 12px 15px; margin: 10px 0; }
@@ -668,14 +678,80 @@ function handleEvent(ev) {
   }
 }
 
+function renderInlineMarkdown(text) {
+  return esc(text)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+}
+
+function renderMarkdown(text) {
+  const lines = String(text ?? "").replace(/\r\n/g, "\n").split("\n");
+  const out = [];
+  let paragraph = [];
+  let list = [];
+  let code = [];
+  let inCode = false;
+
+  const flushParagraph = () => {
+    if (!paragraph.length) return;
+    out.push(`<p>${paragraph.map(renderInlineMarkdown).join("<br>")}</p>`);
+    paragraph = [];
+  };
+  const flushList = () => {
+    if (!list.length) return;
+    out.push(`<ul>${list.map(item => `<li>${renderInlineMarkdown(item)}</li>`).join("")}</ul>`);
+    list = [];
+  };
+  const flushCode = () => {
+    if (!code.length) return;
+    out.push(`<pre><code>${esc(code.join("\n").replace(/\n$/, ""))}</code></pre>`);
+    code = [];
+  };
+
+  for (const line of lines) {
+    if (line.trim().startsWith("```")) {
+      if (inCode) {
+        flushCode();
+        inCode = false;
+      } else {
+        flushParagraph();
+        flushList();
+        inCode = true;
+      }
+      continue;
+    }
+    if (inCode) {
+      code.push(line);
+      continue;
+    }
+    const bullet = line.match(/^\s*[-*]\s+(.*)$/);
+    if (bullet) {
+      flushParagraph();
+      list.push(bullet[1]);
+      continue;
+    }
+    if (!line.trim()) {
+      flushParagraph();
+      flushList();
+      continue;
+    }
+    flushList();
+    paragraph.push(line);
+  }
+  flushParagraph();
+  flushList();
+  flushCode();
+  return out.join("");
+}
+
 function addMsg(who, text) {
   const lbl = document.createElement("div");
   lbl.className = who === "user" ? "who r" : "who";
   lbl.textContent = who === "user" ? "You" : "CareGap Compass";
   const el = document.createElement("div");
   el.className = `msg ${who}`;
-  // Preserve rare fenced blocks from the model without leaking markup.
-  el.innerHTML = `<div class="bubble">${esc(text).replace(/```(?:\w*)\n([\s\S]*?)```/g, (_, c) => `<pre>${c.replace(/\n$/, "")}</pre>`)}</div>`;
+  const body = who === "agent" ? renderMarkdown(text) : esc(text);
+  el.innerHTML = `<div class="bubble">${body}</div>`;
   $("chat").append(lbl, el);
   $("chat").scrollTop = 1e9;
 }
