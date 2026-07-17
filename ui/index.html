@@ -191,6 +191,7 @@ main.solo { grid-template-columns: 1fr; }
 .who.r { text-align: right; margin: 0 15px 3px 0; }
 .msg { display: flex; margin-bottom: 11px; }
 .msg.user { justify-content: flex-end; }
+.msg.agent { align-items: flex-start; gap: 8px; }
 .bubble {
   max-width: 78%; border: 1.5px solid var(--border); border-radius: 18px;
   padding: 9px 15px; background: var(--surface);
@@ -213,6 +214,15 @@ main.solo { grid-template-columns: 1fr; }
   white-space: pre; margin: 7px -4px;
 }
 .bubble pre code { background: none; border: 0; border-radius: 0; padding: 0; font-size: inherit; }
+.msg-audio {
+  all: unset; box-sizing: border-box; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; width: 32px; height: 32px;
+  border: 1.5px solid var(--border); border-radius: 999px; color: var(--ink-2);
+  background: var(--surface); flex: 0 0 32px; margin-top: 5px;
+}
+.msg-audio svg { width: 14px; height: 14px; }
+.msg-audio:hover:not(:disabled) { border-color: var(--data-green); color: var(--data-green); background: #f6faf2; }
+.msg-audio:disabled { opacity: .4; cursor: not-allowed; }
 .tool { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); padding: 2px 0 2px 15px; }
 
 .gate { border: 1.5px solid var(--gate-blue); border-radius: 14px; background: #f3f6fe; padding: 12px 15px; margin: 10px 0; }
@@ -524,6 +534,7 @@ const APP = "caregap_compass", USER = "demo-user";
 let sessionId = null, memberId = null, pending = null, busy = false, view = "chat", insightsOpen = false, currentRoadmap = null;
 let membersById = new Map();
 let voiceEnabled = false, listening = false, lastAgentText = "";
+let agentMessages = [];
 let recognition = null;
 
 const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition || null;
@@ -833,6 +844,11 @@ function replayLastAgentMessage() {
   if (lastAgentText) speakText(lastAgentText);
 }
 
+function replayAgentMessage(index) {
+  const text = agentMessages[index];
+  if (text) speakText(text);
+}
+
 function toggleSpeech() {
   if (!canSpeak) return;
   if (voiceEnabled && window.speechSynthesis.speaking) {
@@ -900,7 +916,16 @@ function addMsg(who, text, options = {}) {
   const el = document.createElement("div");
   el.className = `msg ${who}`;
   const body = who === "agent" ? renderMarkdown(text) : esc(text);
-  el.innerHTML = `<div class="bubble">${body}</div>`;
+  if (who === "agent") {
+    const messageIndex = agentMessages.push(text) - 1;
+    el.innerHTML = `
+      <div class="bubble">${body}</div>
+      <button type="button" class="msg-audio" data-speak-message="${messageIndex}" title="Read this message aloud"${canSpeak ? "" : " disabled"}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>`;
+  } else {
+    el.innerHTML = `<div class="bubble">${body}</div>`;
+  }
   $("chat").append(lbl, el);
   $("chat").scrollTop = 1e9;
   if (who === "agent") {
@@ -1154,6 +1179,7 @@ async function openSession(id) {
     const s = await api(`/apps/${APP}/users/${USER}/sessions/${id}`);
     sessionId = s.id;
     if (canSpeak) window.speechSynthesis.cancel();
+    agentMessages = [];
     $("chat").innerHTML = "";
     const events = s.events || [];
     if (!events.length) addMsg("agent", "This conversation is empty.");
@@ -1236,6 +1262,7 @@ async function switchMember(id) {
   memberId = id;
   currentRoadmap = null;
   lastAgentText = "";
+  agentMessages = [];
   if (canSpeak) window.speechSynthesis.cancel();
   renderMemberCard(id);
   $("chat").innerHTML = "";
@@ -1271,6 +1298,8 @@ async function boot() {
     if (scheduleButton) confirmFakeSchedule(scheduleButton);
     const callbackButton = e.target.closest("button[data-callback]");
     if (callbackButton) confirmFakeCallback(callbackButton);
+    const speakButton = e.target.closest("button[data-speak-message]");
+    if (speakButton) replayAgentMessage(Number(speakButton.dataset.speakMessage));
   });
   $("send").addEventListener("click", () => send($("input").value));
   $("input").addEventListener("keydown", e => { if (e.key === "Enter") send($("input").value); });
