@@ -703,6 +703,10 @@ function explainerSourcesFor(step) {
   return EXPLAINER_SOURCES[step?.measure_id] || [];
 }
 
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function renderMemberCard(id) {
   const m = membersById.get(id);
   if (!m) return;
@@ -1060,12 +1064,16 @@ async function explainCareSteps(userText = "Explain why these matter", selectedS
   if (busy) return;
   if (view !== "chat") show("chat");
   addMsg("user", userText);
+  setBusy(true);
   try { await ensureRoadmap(); } catch {}
   const steps = selectedStep ? [selectedStep] : openSteps().slice(0, 3);
   if (!steps.length) {
+    setBusy(false);
     addMsg("agent", "I do not see any required care steps due right now.");
     return;
   }
+  await wait(1600);
+  setBusy(false);
   addAgentHtml(`
     <div class="care-list">
       ${steps.map(s => `<div class="care-item">
