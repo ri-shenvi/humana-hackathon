@@ -55,10 +55,13 @@ def test_explain_is_grounded_in_transcripts(ctx, gap_id):
         assert voice["source"].endswith(".txt")  # every claim is attributable
 
 
-def test_explain_carries_the_star_weight(ctx, gap_id):
+def test_explain_stays_member_facing(ctx, gap_id):
     result = actioner.explain_gap(gap_id, HERO, ctx)
-    assert result["why_it_matters"]["weight"] == 3.0
-    assert "triple-weighted" in result["why_it_matters"]["for_the_plan"]
+    why = result["why_it_matters"]
+    assert "due" in why["for_you"]
+    assert why["next_step"] == measures.action_for(result["measure_id"])
+    assert "weight" not in why
+    assert "for_the_plan" not in why
 
 
 def test_explain_refuses_another_members_gap(ctx):

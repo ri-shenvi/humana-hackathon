@@ -22,7 +22,7 @@ from google.adk.agents import Agent
 from google.adk.tools import ToolContext
 from google.adk.tools.function_tool import FunctionTool
 
-from . import bq, common, config, measures, retrieval, scoring, weights
+from . import bq, common, config, measures, retrieval, scoring
 
 _ACTION_LOCK = threading.Lock()
 
@@ -118,7 +118,7 @@ def explain_gap(gap_id: str, member_id: str, tool_context: ToolContext) -> dict[
         member_id: The member identifier, for example MBR00030.
 
     Returns:
-        A plain-language explanation, the general coverage rule for the member's
+        A clear explanation, the general coverage rule for the member's
         plan, and supporting passages from real call transcripts.
     """
     member_id = common.resolve_member_id(member_id, tool_context)
@@ -141,8 +141,6 @@ def explain_gap(gap_id: str, member_id: str, tool_context: ToolContext) -> dict[
         return common.error_response("DATA_UNAVAILABLE", str(exc))
 
     measure_id = gap["measure_id"]
-    star_row = bq.get_star_measure(measure_id)
-    weight_info = weights.describe(measure_id, star_row)
     dtc = scoring.days_to_close(gap.get("due_date"))
 
     # Cost rule, stated as a general rule and never as a determination. When a
@@ -256,17 +254,7 @@ def explain_gap(gap_id: str, member_id: str, tool_context: ToolContext) -> dict[
                 f"This is the care step your plan has open for you, due "
                 f"{gap.get('due_date')}."
             ),
-            "for_the_plan": (
-                f"{measure_id} is {weight_info['plain_weight']} "
-                f"({weight_info['weight_reason']})."
-                + (
-                    f" The plan is at {weight_info.get('current_star_rating')} star "
-                    f"on it and trending {str(weight_info.get('trending')).lower()}."
-                    if weight_info.get("current_star_rating") is not None
-                    else ""
-                )
-            ),
-            "weight": weight_info["weight"],
+            "next_step": measures.action_for(measure_id),
         },
         "cost": cost,
         "member_voices": [
@@ -847,11 +835,12 @@ explain_gap returns claim_history. Read it before you tell anyone to book:
 - already_paid: a claim for this exact service is already paid. Say so first.
   Do not push them to book an appointment they have already had -- offer to file
   the reconciliation instead. This is the noise this product exists to stop.
-- denied: their claim was denied. Say when and why in plain language, and say if
+- denied: their claim was denied. Say when and why clearly, and say if
   it is fixable. Never imply they simply did not go.
 
 How to work:
-1. Explain plainly, at a sixth-grade reading level. Short sentences.
+1. Use clear, direct wording at a sixth-grade reading level. Short sentences.
+   Do not call attention to the reading level or label the response as simplified.
 2. Offer at most three provider choices. Lead with the top pick and say why it
    is the top pick, using its ranking_reasons.
 3. When you recommend a slot, state the provider_id and slot_id explicitly so
@@ -895,7 +884,7 @@ actioner_agent = Agent(
     name="actioner",
     model=config.MODEL,
     description=(
-        "Explains a selected care gap in plain language and finds the nearest "
+        "Explains a selected care gap clearly and finds the nearest "
         "in-network provider with a real open appointment. Recommends a slot for "
         "the orchestrator to book; does not act."
     ),

@@ -2,8 +2,8 @@
 
 The obvious build for this problem is a chatbot that lists your open care gaps.
 That is the thing that already doesn't work: a mailer is a list. This agent
-decides which single gap matters most right now, and says why it rejected the
-others.
+decides which single gap matters most right now and explains the next step
+without exposing the scoring machinery to the member.
 
 It is not care-gap-specific machinery. Swap the scoring inputs and the same
 service ranks interventions for advocates or actions for providers -- a
@@ -156,16 +156,16 @@ def get_response_history(member_id: str, tool_context: ToolContext) -> dict[str,
 def rank_open_gaps(member_id: str, tool_context: ToolContext) -> dict[str, Any]:
     """Rank every open gap and select the single next best action.
 
-    Scores each open gap as weight x urgency x propensity, selects the highest,
-    and returns an explicit rejected_because for every gap that lost, plus a
-    rendered decomposition showing the arithmetic.
+    Scores each open gap internally, selects the highest, and returns the
+    details needed by the presenter-only Insights panel.
 
     Args:
         member_id: The member identifier, for example MBR00030.
 
     Returns:
-        The selected gap with its score components, the rejected gaps with
-        reasons, and decomposition_text to display verbatim.
+        The selected gap, rejected gaps, and internal audit fields. Do not show
+        scoring details to the member unless they explicitly ask for ranking
+        details.
     """
     member_id = common.resolve_member_id(member_id, tool_context)
     denial = common.authorize_member(member_id, tool_context)
@@ -212,31 +212,33 @@ def rank_open_gaps(member_id: str, tool_context: ToolContext) -> dict[str, Any]:
 
 INSTRUCTION = """
 You are the Prioritizer for CareGap Compass. You decide which single open care
-gap matters most for this member right now, and you say why the others lost.
+gap matters most for this member right now.
 
 Your job is ranking, not listing. Never present the member's gaps as a menu.
 
 How to answer "what should I do about my health?":
 1. Call rank_open_gaps. Never assert a pick without calling it first.
-2. Display decomposition_text EXACTLY as returned, verbatim, inside a markdown
-   code block. Do not reformat it, round it, or retype the numbers. It is the
-   audit trail for the decision.
-3. State the selected gap in plain language, using the fields in
-   selected.components: the plain_weight, the days_to_close, and the
-   propensity_reason.
-4. State the rejections OUT LOUD. For each entry in rejected, say the measure
-   and its rejected_because. This is the most important thing you do -- a member
-   who hears why their flu shot was skipped trusts the one you chose.
+2. Keep the answer member-facing. Do not display formulas, weights, numeric
+   rankings, internal scoring fields, or comparisons against rejected gaps.
+3. State the selected gap in everyday terms. Use the measure name and the
+   selected.components fields only to shape the explanation, not to expose the
+   internal math.
+4. Explain why this care step is a good next step in one or two short sentences:
+   what it checks, why it matters, and whether it is coming up soon.
+5. End with a next step: offer to explain the care step or help schedule an
+   appointment.
 
 Supporting tools:
 - get_open_gaps: the raw open gaps with days-to-close.
-- get_measure_weight: why a measure is weighted 1x or 3x, plus the plan's
-  current star rating and trend for it.
+- get_measure_weight: technical ranking context. Use only when the member asks
+  for ranking details.
 - get_response_history: which channels this member answers, and how often each
   measure closes on each channel.
 
 Use them when the member asks a follow-up like "why is that one worth more?" or
-"why not the other one?" -- answer from tool output, never from memory.
+"why not the other one?" -- answer from tool output, never from memory, and keep
+technical ranking details out of the response unless the member explicitly asks
+for them.
 
 Rules:
 - Every number you say must come from a tool. Never compute a score yourself.
@@ -247,6 +249,8 @@ Rules:
 - Do not give clinical advice, diagnose, or interpret results. Explain what the
   measure is and why it is scheduled.
 - Do not promise coverage or cost. That is not your decision to make.
+- If the member asks for technical details, tell them those are available in
+  Insights rather than putting the evidence into the chat.
 """.strip()
 
 
@@ -254,9 +258,8 @@ prioritizer_agent = Agent(
     name="prioritizer",
     model=config.MODEL,
     description=(
-        "Ranks a member's open care gaps and selects the single next best action, "
-        "with a visible score decomposition and an explicit reason for every gap "
-        "it rejected."
+        "Ranks a member's open care gaps and selects the single next best action "
+        "with member-facing wording."
     ),
     instruction=INSTRUCTION,
     tools=[rank_open_gaps, get_open_gaps, get_measure_weight, get_response_history],

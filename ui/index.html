@@ -635,11 +635,10 @@ function handleEvent(ev) {
       pending = {id: p.functionCall.id, args: p.functionCall.args || {}};
       openModal(pending); continue;
     }
-    if (p.functionCall) { addTool(`calling ${p.functionCall.name}`); continue; }
+    if (p.functionCall) continue;
     if (p.functionResponse) {
       const {name, response} = p.functionResponse;
       if (name === "check_request" && response?.allowed === false) renderGate(response);
-      else addTool(`${name} returned`);
       continue;
     }
     if (p.text?.trim()) addMsg("agent", p.text);
@@ -652,7 +651,7 @@ function addMsg(who, text) {
   lbl.textContent = who === "user" ? "You" : "CareGap Compass";
   const el = document.createElement("div");
   el.className = `msg ${who}`;
-  // Fenced blocks stay verbatim — the decomposition is an audit trail, not prose.
+  // Preserve rare fenced blocks from the model without leaking markup.
   el.innerHTML = `<div class="bubble">${esc(text).replace(/```(?:\w*)\n([\s\S]*?)```/g, (_, c) => `<pre>${c.replace(/\n$/, "")}</pre>`)}</div>`;
   $("chat").append(lbl, el);
   $("chat").scrollTop = 1e9;
@@ -669,12 +668,6 @@ function addAgentHtml(html) {
   $("chat").scrollTop = 1e9;
 }
 
-function addTool(t) {
-  const el = document.createElement("div");
-  el.className = "tool"; el.textContent = "· " + t;
-  $("chat").appendChild(el); $("chat").scrollTop = 1e9;
-}
-
 async function explainCareSteps(userText = "Explain why these matter") {
   if (busy) return;
   if (view !== "chat") show("chat");
@@ -686,7 +679,6 @@ async function explainCareSteps(userText = "Explain why these matter") {
     return;
   }
   addAgentHtml(`
-    <div>Here is the plain-language version.</div>
     <div class="care-list">
       ${steps.map(s => `<div class="care-item">
         <div class="name">${esc(s.measure_name || s.measure_id)}</div>
@@ -818,7 +810,7 @@ async function loadRoadmap() {
         : s.overdue ? `<span class="pill od">OVERDUE</span>` : "";
       const line2 = s.status === "done"
         ? `completed ${esc(s.completed_on || "—")}`
-        : `due ${esc(s.due_date)} · ${s.days_to_close}d · ${esc(s.plain_weight)}${s.score != null ? " · score " + s.score.toFixed(3) : ""} · ${s.outreach_attempts} outreach attempts`;
+        : `due ${esc(s.due_date)} · ${s.days_to_close}d`;
       return `<div class="step ${cls}">
         <div class="dot">${dot}</div>
         <div class="body">
@@ -905,7 +897,6 @@ async function answer(confirmed) {
   $("backdrop").hidden = true;
   const p = pending; pending = null;
   if (!p) return;
-  addTool(confirmed ? "confirmed by member" : "declined by member");
   setBusy(true);
   await run({role: "user", parts: [{functionResponse: {id: p.id, name: "adk_request_confirmation", response: {confirmed, payload: null}}}]});
   setBusy(false);
@@ -947,7 +938,7 @@ async function switchMember(id) {
   try {
     addMsg("agent", openingText(await ensureRoadmap(true)));
   } catch (e) {
-    addMsg("agent", "Hi. I can help you review required care steps, explain why they matter in plain language, and help find a next step when you are ready.");
+    addMsg("agent", "Hi. I can help you review required care steps, explain why they matter, and help find a next step when you are ready.");
   }
   if (insightsOpen) await loadPanel();
   if (view === "roadmap") loadRoadmap();
