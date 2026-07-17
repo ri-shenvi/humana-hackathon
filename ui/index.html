@@ -38,6 +38,38 @@
   --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
+body.theme-dark {
+  --humana:      #3c6f08;
+  --humana-deep: #7fd03a;
+  --data-green:  #8bc34a;
+  --gate-blue:   #7ab6ff;
+  --surface:   #151916;
+  --surface-2: #0f130f;
+  --surface-3: #232922;
+  --border:    #31392f;
+  --ink:       #f4f7ef;
+  --ink-2:     #d4dacd;
+  --ink-3:     #9ea695;
+}
+body.theme-contrast {
+  --humana:      #5b8f00;
+  --humana-deep: #234500;
+  --data-green:  #1f5600;
+  --gate-blue:   #003fdd;
+  --surface:   #ffffff;
+  --surface-2: #f3f5ef;
+  --surface-3: #d7ddd0;
+  --border:    #6b7562;
+  --ink:       #000000;
+  --ink-2:     #20261c;
+  --ink-3:     #384135;
+}
+body.theme-colorblind {
+  --humana:      #0b7a75;
+  --humana-deep: #065e5a;
+  --data-green:  #0b7a75;
+  --gate-blue:   #1c4fd7;
+}
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
@@ -289,6 +321,67 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
 .insight-toggle[aria-expanded="true"] { border-color: var(--data-green); color: var(--data-green); background: #f6faf2; }
 .insight-toggle:focus-visible { outline: 2px solid var(--data-green); outline-offset: 2px; }
 .pane-head .insight-toggle { padding: 4px 8px; }
+.settings-wrap { position: relative; }
+.settings-btn {
+  all: unset; box-sizing: border-box; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center; width: 40px; height: 40px;
+  border: 1.5px solid var(--border); border-radius: 999px; color: var(--ink-2);
+  background: var(--surface);
+}
+.settings-btn svg { width: 17px; height: 17px; }
+.settings-btn:hover,
+.settings-btn[aria-expanded="true"] { border-color: var(--data-green); color: var(--data-green); background: #f6faf2; }
+.settings-btn:focus-visible { outline: 2px solid var(--data-green); outline-offset: 2px; }
+.settings-pop {
+  position: absolute; right: 0; top: calc(100% + 8px); width: 270px; z-index: 20;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.12); padding: 12px;
+}
+.settings-head {
+  font-size: 10px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 10px;
+}
+.settings-block + .settings-block { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--surface-3); }
+.settings-label {
+  font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 8px;
+}
+.settings-seg {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px;
+}
+.settings-seg button,
+.settings-toggle {
+  font: inherit; font-size: 11.5px; font-weight: 700; border-radius: 999px;
+  border: 1.5px solid var(--border); background: var(--surface); color: var(--ink-2);
+}
+.settings-seg button {
+  min-height: 34px; padding: 7px 8px; cursor: pointer;
+}
+.settings-seg button.active {
+  border-color: var(--data-green); background: #f6faf2; color: var(--data-green);
+}
+.settings-toggle {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 8px 11px; cursor: pointer;
+}
+.settings-toggle.active {
+  border-color: var(--data-green); background: #f6faf2;
+}
+.settings-toggle .copy {
+  display: grid; gap: 2px; min-width: 0; text-align: left;
+}
+.settings-toggle .copy b { font-size: 11.5px; color: var(--ink); }
+.settings-toggle .copy span { font-size: 11px; color: var(--ink-3); }
+.settings-toggle .switch {
+  width: 34px; height: 20px; border-radius: 999px; background: var(--surface-3);
+  position: relative; flex: 0 0 34px;
+}
+.settings-toggle .switch::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
+  border-radius: 50%; background: var(--surface); box-shadow: 0 1px 2px rgba(0,0,0,.16);
+  transition: transform .18s ease;
+}
+.settings-toggle.active .switch { background: var(--data-green); }
+.settings-toggle.active .switch::after { transform: translateX(14px); }
 
 .care-list { display: grid; gap: 8px; margin-top: 9px; }
 .care-item { border: 1px solid var(--border); border-radius: 9px; padding: 9px 11px; background: #fbfdf9; }
@@ -479,6 +572,32 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
       <div class="pane-head">
         <h2>CareGap Compass · My Next Best Health Action</h2>
         <div class="chat-tools">
+          <div class="settings-wrap">
+            <button type="button" class="settings-btn" id="settings-btn" title="Display settings" aria-expanded="false" aria-controls="settings-pop">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.54V22a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1-1.54 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.54-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.54-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.54V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.54 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.36.63.92 1 1.54 1H21a2 2 0 1 1 0 4h-.09c-.62 0-1.18.37-1.54 1z"/></svg>
+            </button>
+            <div class="settings-pop" id="settings-pop" hidden>
+              <div class="settings-head">Display settings</div>
+              <div class="settings-block">
+                <div class="settings-label">Theme</div>
+                <div class="settings-seg" id="theme-seg">
+                  <button type="button" data-theme="default" class="active">Default</button>
+                  <button type="button" data-theme="dark">Dark mode</button>
+                  <button type="button" data-theme="contrast">High contrast</button>
+                </div>
+              </div>
+              <div class="settings-block">
+                <div class="settings-label">Accessibility</div>
+                <button type="button" class="settings-toggle" id="colorblind-toggle" aria-pressed="false">
+                  <span class="copy">
+                    <b>Color blind</b>
+                    <span>Use safer accent colors for charts and actions.</span>
+                  </span>
+                  <span class="switch" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </div>
           <button type="button" class="voice-btn" id="speak-toggle" title="Read responses aloud" aria-pressed="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
           </button>
@@ -560,6 +679,8 @@ let membersById = new Map();
 let voiceEnabled = false, listening = false, lastAgentText = "";
 let recognition = null;
 let activeMessageAudioButton = null;
+let themeMode = "default";
+let colorblindMode = false;
 
 const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition || null;
 const canListen = Boolean(SpeechRecognitionCtor);
@@ -705,6 +826,42 @@ function explainerSourcesFor(step) {
 
 function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function updateThemeControls() {
+  for (const button of document.querySelectorAll("#theme-seg button")) {
+    const active = button.dataset.theme === themeMode;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", active ? "true" : "false");
+  }
+  $("colorblind-toggle").classList.toggle("active", colorblindMode);
+  $("colorblind-toggle").setAttribute("aria-pressed", colorblindMode ? "true" : "false");
+}
+
+function applyThemeSettings() {
+  document.body.classList.toggle("theme-dark", themeMode === "dark");
+  document.body.classList.toggle("theme-contrast", themeMode === "contrast");
+  document.body.classList.toggle("theme-colorblind", colorblindMode);
+  updateThemeControls();
+  try {
+    localStorage.setItem("themeMode", themeMode);
+    localStorage.setItem("colorblindMode", colorblindMode ? "1" : "0");
+  } catch {}
+}
+
+function setThemeMode(mode) {
+  themeMode = ["default", "dark", "contrast"].includes(mode) ? mode : "default";
+  applyThemeSettings();
+}
+
+function toggleColorblindMode() {
+  colorblindMode = !colorblindMode;
+  applyThemeSettings();
+}
+
+function setSettingsOpen(open) {
+  $("settings-pop").hidden = !open;
+  $("settings-btn").setAttribute("aria-expanded", open ? "true" : "false");
 }
 
 function renderMemberCard(id) {
@@ -1434,6 +1591,16 @@ async function boot() {
   $("mic").addEventListener("click", () => toggleListening());
   $("speak-toggle").addEventListener("click", () => toggleSpeech());
   $("speak-replay").addEventListener("click", () => replayLastAgentMessage());
+  $("settings-btn").addEventListener("click", e => {
+    e.stopPropagation();
+    setSettingsOpen($("settings-pop").hidden);
+  });
+  $("theme-seg").addEventListener("click", e => {
+    const button = e.target.closest("button[data-theme]");
+    if (!button) return;
+    setThemeMode(button.dataset.theme);
+  });
+  $("colorblind-toggle").addEventListener("click", () => toggleColorblindMode());
   $("myes").addEventListener("click", () => answer(true));
   $("mno").addEventListener("click", () => answer(false));
   $("member").addEventListener("change", e => switchMember(e.target.value));
@@ -1454,6 +1621,9 @@ async function boot() {
   });
   $("insight-toggle").addEventListener("click", () => toggleInsights());
   $("insight-hide").addEventListener("click", () => toggleInsights(false));
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".settings-wrap")) setSettingsOpen(false);
+  });
 
   // Rail toggle. Remembered across reloads so a mid-demo refresh doesn't reopen it.
   const setRail = (shut) => {
@@ -1467,6 +1637,12 @@ async function boot() {
   try { shut = localStorage.getItem("railShut") === "1"; } catch {}
   setRail(shut);
   $("railtoggle").addEventListener("click", () => setRail(!document.body.classList.contains("rail-shut")));
+  try {
+    themeMode = localStorage.getItem("themeMode") || "default";
+    colorblindMode = localStorage.getItem("colorblindMode") === "1";
+  } catch {}
+  applyThemeSettings();
+  setSettingsOpen(false);
 
   setVoiceStatus(!canListen && !canSpeak ? "Voice features are not available in this browser." : "");
   updateVoiceButtons();
