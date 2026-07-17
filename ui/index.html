@@ -467,7 +467,13 @@ const SUGGESTIONS = [
   {label: "Explain why these matter", action: "explain"},
   {label: "Schedule appointment", action: "schedule", primary: true},
   {label: "What should I do first?", text: "What should I do first?"},
-  {label: "Request a callback", text: "I would like a callback"},
+  {label: "Request a callback", action: "callback"},
+];
+
+const CALLBACK_WINDOWS = [
+  {id: "morning", label: "Morning", detail: "8 AM-12 PM"},
+  {id: "afternoon", label: "Afternoon", detail: "12 PM-4 PM"},
+  {id: "evening", label: "Evening", detail: "4 PM-7 PM"},
 ];
 
 const EXPLAINERS = {
@@ -732,6 +738,43 @@ function confirmFakeSchedule(button) {
   `);
 }
 
+async function startCallbackRequest(userText = "Request a callback") {
+  if (busy) return;
+  if (view !== "chat") show("chat");
+  addMsg("user", userText);
+  try { await ensureRoadmap(); } catch {}
+  const step = nextOpenStep();
+  const topic = step ? step.measure_name || step.measure_id : "your care steps";
+  addAgentHtml(`
+    <div>A Humana care advocate can call you about <b>${esc(topic)}</b> and help with next steps.</div>
+    <div class="provider-list">
+      <div class="provider-card">
+        <div class="name">Choose a callback window</div>
+        <div class="meta">This is simulated for the demo. No real callback is created.</div>
+        <div class="slots">
+          ${CALLBACK_WINDOWS.map(w => `<button type="button" data-callback="${esc(w.id)}">${esc(w.label)} · ${esc(w.detail)}</button>`).join("")}
+        </div>
+      </div>
+    </div>
+  `);
+}
+
+function confirmFakeCallback(button) {
+  const window = CALLBACK_WINDOWS.find(w => w.id === button.dataset.callback);
+  if (!window) return;
+  const step = nextOpenStep();
+  const topic = step ? step.measure_name || step.measure_id : "care steps";
+  addMsg("user", `${window.label}, ${window.detail}`);
+  addAgentHtml(`
+    <div class="confirm-box">
+      <div class="title">Callback request ready</div>
+      <div>Preferred window: ${esc(window.label)} · ${esc(window.detail)}</div>
+      <div>Topic: ${esc(topic)}</div>
+    </div>
+    <div class="demo-note">For the demo, this behaves like the callback request was prepared. A production version would create a task for a care advocate.</div>
+  `);
+}
+
 function renderGate(r) {
   const rule = r.general_rule?.statement;
   const el = document.createElement("div");
@@ -913,6 +956,11 @@ async function send(text) {
     await startScheduling(text.trim());
     return;
   }
+  if (["request callback", "request a callback", "i would like a callback", "call me", "have someone call me"].includes(normalized)) {
+    $("input").value = "";
+    await startCallbackRequest(text.trim());
+    return;
+  }
   if (normalized.includes("explain") && normalized.includes("matter")) {
     $("input").value = "";
     await explainCareSteps(text.trim());
@@ -955,11 +1003,14 @@ async function boot() {
     if (!b) return;
     if (b.dataset.action === "explain") explainCareSteps();
     else if (b.dataset.action === "schedule") startScheduling();
+    else if (b.dataset.action === "callback") startCallbackRequest();
     else send(b.dataset.p);
   });
   $("chat").addEventListener("click", e => {
-    const b = e.target.closest("button[data-provider]");
-    if (b) confirmFakeSchedule(b);
+    const scheduleButton = e.target.closest("button[data-provider]");
+    if (scheduleButton) confirmFakeSchedule(scheduleButton);
+    const callbackButton = e.target.closest("button[data-callback]");
+    if (callbackButton) confirmFakeCallback(callbackButton);
   });
   $("send").addEventListener("click", () => send($("input").value));
   $("input").addEventListener("keydown", e => { if (e.key === "Enter") send($("input").value); });
