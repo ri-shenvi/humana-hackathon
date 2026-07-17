@@ -534,7 +534,6 @@ const APP = "caregap_compass", USER = "demo-user";
 let sessionId = null, memberId = null, pending = null, busy = false, view = "chat", insightsOpen = false, currentRoadmap = null;
 let membersById = new Map();
 let voiceEnabled = false, listening = false, lastAgentText = "";
-let agentMessages = [];
 let recognition = null;
 
 const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition || null;
@@ -841,13 +840,27 @@ function speakText(text, options = {}) {
   updateVoiceButtons();
 }
 
-function replayLastAgentMessage() {
-  if (lastAgentText) speakText(lastAgentText, {force: true});
+function speakOnDemand(text) {
+  if (!canSpeak) {
+    setVoiceStatus("Read-aloud is not available in this browser.");
+    return;
+  }
+  const spoken = textForSpeech(text);
+  if (!spoken) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(spoken);
+  utterance.rate = 0.95;
+  utterance.onend = () => updateVoiceButtons();
+  utterance.onerror = () => {
+    setVoiceStatus("Could not read that message aloud.");
+    updateVoiceButtons();
+  };
+  window.speechSynthesis.speak(utterance);
+  updateVoiceButtons();
 }
 
-function replayAgentMessage(index) {
-  const text = agentMessages[index];
-  if (text) speakText(text, {force: true});
+function replayLastAgentMessage() {
+  if (lastAgentText) speakOnDemand(lastAgentText);
 }
 
 function toggleSpeech() {
@@ -918,12 +931,12 @@ function addMsg(who, text, options = {}) {
   el.className = `msg ${who}`;
   const body = who === "agent" ? renderMarkdown(text) : esc(text);
   if (who === "agent") {
-    const messageIndex = agentMessages.push(text) - 1;
     el.innerHTML = `
       <div class="bubble">${body}</div>
-      <button type="button" class="msg-audio" data-speak-message="${messageIndex}" title="Read this message aloud"${canSpeak ? "" : " disabled"}>
+      <button type="button" class="msg-audio" title="Read this message aloud"${canSpeak ? "" : " disabled"}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
       </button>`;
+    el.querySelector(".msg-audio").dataset.speakText = text;
   } else {
     el.innerHTML = `<div class="bubble">${body}</div>`;
   }
@@ -1180,7 +1193,6 @@ async function openSession(id) {
     const s = await api(`/apps/${APP}/users/${USER}/sessions/${id}`);
     sessionId = s.id;
     if (canSpeak) window.speechSynthesis.cancel();
-    agentMessages = [];
     $("chat").innerHTML = "";
     const events = s.events || [];
     if (!events.length) addMsg("agent", "This conversation is empty.");
@@ -1263,7 +1275,6 @@ async function switchMember(id) {
   memberId = id;
   currentRoadmap = null;
   lastAgentText = "";
-  agentMessages = [];
   if (canSpeak) window.speechSynthesis.cancel();
   renderMemberCard(id);
   $("chat").innerHTML = "";
@@ -1299,8 +1310,8 @@ async function boot() {
     if (scheduleButton) confirmFakeSchedule(scheduleButton);
     const callbackButton = e.target.closest("button[data-callback]");
     if (callbackButton) confirmFakeCallback(callbackButton);
-    const speakButton = e.target.closest("button[data-speak-message]");
-    if (speakButton) replayAgentMessage(Number(speakButton.dataset.speakMessage));
+    const speakButton = e.target.closest(".msg-audio");
+    if (speakButton) speakOnDemand(speakButton.dataset.speakText || "");
   });
   $("send").addEventListener("click", () => send($("input").value));
   $("input").addEventListener("keydown", e => { if (e.key === "Enter") send($("input").value); });
