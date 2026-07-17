@@ -824,8 +824,9 @@ function updateVoiceButtons() {
   $("speak-toggle").setAttribute("aria-pressed", voiceEnabled ? "true" : "false");
 }
 
-function speakText(text) {
-  if (!canSpeak || !voiceEnabled) return;
+function speakText(text, options = {}) {
+  const force = options.force === true;
+  if (!canSpeak || (!voiceEnabled && !force)) return;
   const spoken = textForSpeech(text);
   if (!spoken) return;
   window.speechSynthesis.cancel();
@@ -841,12 +842,12 @@ function speakText(text) {
 }
 
 function replayLastAgentMessage() {
-  if (lastAgentText) speakText(lastAgentText);
+  if (lastAgentText) speakText(lastAgentText, {force: true});
 }
 
 function replayAgentMessage(index) {
   const text = agentMessages[index];
-  if (text) speakText(text);
+  if (text) speakText(text, {force: true});
 }
 
 function toggleSpeech() {
