@@ -94,6 +94,61 @@ MEASURE_ACTION: dict[str, str] = {
     "TRC": "complete your transition-of-care follow-up after your hospital stay",
 }
 
+MEASURE_TRUSTED_SOURCES: dict[str, list[dict[str, str]]] = {
+    "BCS": [
+        {
+            "title": "CDC: Screening for Breast Cancer",
+            "url": "https://www.cdc.gov/breast-cancer/screening/index.html",
+        }
+    ],
+    "CBP": [
+        {
+            "title": "CDC: About High Blood Pressure",
+            "url": "https://www.cdc.gov/high-blood-pressure/about/index.html",
+        }
+    ],
+    "CDC-H": [
+        {
+            "title": "NIDDK: The A1C Test and Diabetes",
+            "url": "https://www.niddk.nih.gov/health-information/diagnostic-tests/a1c-test",
+        }
+    ],
+    "COA": [
+        {
+            "title": "National Institute on Aging: Taking Medicines Safely as You Age",
+            "url": "https://www.nia.nih.gov/health/medicines-and-medication-management/taking-medicines-safely-you-age",
+        }
+    ],
+    "COL": [
+        {
+            "title": "National Cancer Institute: Colorectal Cancer Screening",
+            "url": "https://www.cancer.gov/types/colorectal/screening-fact-sheet",
+        }
+    ],
+    "EED": [
+        {
+            "title": "National Eye Institute: Get a Dilated Eye Exam",
+            "url": "https://www.nei.nih.gov/eye-health-information/healthy-vision/finding-eye-doctor/get-dilated-eye-exam",
+        }
+    ],
+    "KED": [
+        {
+            "title": "NIDDK: Diabetic Kidney Disease",
+            "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/preventing-problems/diabetic-kidney-disease",
+        },
+        {
+            "title": "NIDDK: Chronic Kidney Disease Tests and Diagnosis",
+            "url": "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/tests-diagnosis",
+        },
+    ],
+    "OMW": [
+        {
+            "title": "National Institute on Aging: Osteoporosis",
+            "url": "https://www.nia.nih.gov/health/osteoporosis/osteoporosis",
+        }
+    ],
+}
+
 
 # What a member calls the thing, in their own words. Used by the compliance gate
 # to work out which service a coverage question is actually about.
@@ -149,6 +204,10 @@ def caveat_for(measure_id: str) -> str | None:
 
 def action_for(measure_id: str) -> str:
     return MEASURE_ACTION.get(measure_id, "complete this care step")
+
+
+def trusted_sources_for(measure_id: str) -> list[dict[str, str]]:
+    return [dict(source) for source in MEASURE_TRUSTED_SOURCES.get(measure_id, [])]
 
 
 def coverage_rules_for(

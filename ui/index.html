@@ -204,6 +204,12 @@ main.solo { grid-template-columns: 1fr; }
 .bubble ul:last-child { margin-bottom: 0; }
 .bubble ul { margin: 7px 0 9px; padding-left: 20px; }
 .bubble li { margin: 3px 0; }
+.bubble a,
+.care-item a {
+  color: var(--humana-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 .bubble code {
   font-family: var(--mono); font-size: 12px; background: var(--surface-2);
   border: 1px solid var(--border); border-radius: 5px; padding: 1px 4px;
@@ -283,6 +289,19 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
 .care-item { border: 1px solid var(--border); border-radius: 9px; padding: 9px 11px; background: #fbfdf9; }
 .care-item .name { font-weight: 700; font-size: 13px; color: var(--ink); }
 .care-item .detail { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+.sources-block {
+  margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--surface-3);
+}
+.sources-title {
+  font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 6px;
+}
+.sources-list {
+  margin: 0; padding-left: 18px; display: grid; gap: 4px;
+}
+.sources-list li {
+  font-size: 12px; line-height: 1.45; color: var(--ink-2);
+}
 .provider-list { display: grid; gap: 9px; margin-top: 11px; }
 .provider-card { border: 1px solid var(--border); border-radius: 10px; padding: 11px; background: var(--surface-2); }
 .provider-card .name { font-weight: 700; font-size: 13px; }
@@ -567,6 +586,34 @@ const EXPLAINERS = {
   OMW: "A bone health visit helps lower the chance of another fracture and supports safer movement."
 };
 
+const EXPLAINER_SOURCES = {
+  BCS: [
+    {title: "CDC: Screening for Breast Cancer", url: "https://www.cdc.gov/breast-cancer/screening/index.html"},
+  ],
+  CBP: [
+    {title: "CDC: About High Blood Pressure", url: "https://www.cdc.gov/high-blood-pressure/about/index.html"},
+  ],
+  "CDC-H": [
+    {title: "NIDDK: The A1C Test and Diabetes", url: "https://www.niddk.nih.gov/health-information/diagnostic-tests/a1c-test"},
+  ],
+  COA: [
+    {title: "National Institute on Aging: Taking Medicines Safely as You Age", url: "https://www.nia.nih.gov/health/medicines-and-medication-management/taking-medicines-safely-you-age"},
+  ],
+  COL: [
+    {title: "National Cancer Institute: Colorectal Cancer Screening", url: "https://www.cancer.gov/types/colorectal/screening-fact-sheet"},
+  ],
+  EED: [
+    {title: "National Eye Institute: Get a Dilated Eye Exam", url: "https://www.nei.nih.gov/eye-health-information/healthy-vision/finding-eye-doctor/get-dilated-eye-exam"},
+  ],
+  KED: [
+    {title: "NIDDK: Diabetic Kidney Disease", url: "https://www.niddk.nih.gov/health-information/diabetes/overview/preventing-problems/diabetic-kidney-disease"},
+    {title: "NIDDK: Chronic Kidney Disease Tests and Diagnosis", url: "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/tests-diagnosis"},
+  ],
+  OMW: [
+    {title: "National Institute on Aging: Osteoporosis", url: "https://www.nia.nih.gov/health/osteoporosis/osteoporosis"},
+  ],
+};
+
 const PROVIDER_OPTIONS = {
   default: [
     {id: "demo-1", name: "CenterWell Senior Primary Care - Northside", kind: "Primary care", fit: "in-network option with open preventive-care visits", slots: ["Tue Jul 21, 9:30 AM", "Wed Jul 22, 2:15 PM"]},
@@ -644,6 +691,10 @@ function openingText(roadmap) {
 
 function providerOptionsFor(step) {
   return PROVIDER_OPTIONS[step?.measure_id] || PROVIDER_OPTIONS.default;
+}
+
+function explainerSourcesFor(step) {
+  return EXPLAINER_SOURCES[step?.measure_id] || [];
 }
 
 function renderMemberCard(id) {
@@ -738,6 +789,7 @@ function handleEvent(ev) {
 
 function renderInlineMarkdown(text) {
   return esc(text)
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer noopener">$1</a>')
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 }
@@ -823,9 +875,20 @@ function updateVoiceButtons() {
   $("speak-toggle").setAttribute("aria-pressed", voiceEnabled ? "true" : "false");
 }
 
-function speakText(text, options = {}) {
-  const force = options.force === true;
-  if (!canSpeak || (!voiceEnabled && !force)) return;
+function prepareSpeech() {
+  if (!canSpeak) return false;
+  try {
+    window.speechSynthesis.getVoices();
+  } catch (_) {
+    return false;
+  }
+  return true;
+}
+
+function playSpeech(text, options = {}) {
+  const respectToggle = options.respectToggle !== false;
+  const errorMessage = options.errorMessage || "Could not read that response aloud.";
+  if (!prepareSpeech() || (respectToggle && !voiceEnabled)) return;
   const spoken = textForSpeech(text);
   if (!spoken) return;
   window.speechSynthesis.cancel();
@@ -833,30 +896,23 @@ function speakText(text, options = {}) {
   utterance.rate = 0.95;
   utterance.onend = () => updateVoiceButtons();
   utterance.onerror = () => {
-    setVoiceStatus("Could not read that response aloud.");
+    setVoiceStatus(errorMessage);
     updateVoiceButtons();
   };
   window.speechSynthesis.speak(utterance);
   updateVoiceButtons();
 }
 
+function speakText(text) {
+  playSpeech(text, { respectToggle: true, errorMessage: "Could not read that response aloud." });
+}
+
 function speakOnDemand(text) {
-  if (!canSpeak) {
+  if (!prepareSpeech()) {
     setVoiceStatus("Read-aloud is not available in this browser.");
     return;
   }
-  const spoken = textForSpeech(text);
-  if (!spoken) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(spoken);
-  utterance.rate = 0.95;
-  utterance.onend = () => updateVoiceButtons();
-  utterance.onerror = () => {
-    setVoiceStatus("Could not read that message aloud.");
-    updateVoiceButtons();
-  };
-  window.speechSynthesis.speak(utterance);
-  updateVoiceButtons();
+  playSpeech(text, { respectToggle: false, errorMessage: "Could not read that message aloud." });
 }
 
 function replayLastAgentMessage() {
@@ -936,7 +992,13 @@ function addMsg(who, text, options = {}) {
       <button type="button" class="msg-audio" title="Read this message aloud"${canSpeak ? "" : " disabled"}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
       </button>`;
-    el.querySelector(".msg-audio").dataset.speakText = text;
+    const audioButton = el.querySelector(".msg-audio");
+    audioButton.dataset.speakText = text;
+    audioButton.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
+      speakOnDemand(text);
+    });
   } else {
     el.innerHTML = `<div class="bubble">${body}</div>`;
   }
@@ -975,6 +1037,14 @@ async function explainCareSteps(userText = "Explain why these matter", selectedS
       ${steps.map(s => `<div class="care-item">
         <div class="name">${esc(s.measure_name || s.measure_id)}</div>
         <div class="detail">${esc(EXPLAINERS[s.measure_id] || "This is a routine preventive care step that helps your care team catch issues early and keep your plan record up to date.")}</div>
+        ${explainerSourcesFor(s).length ? `
+          <div class="sources-block">
+            <div class="sources-title">Trusted sources</div>
+            <ul class="sources-list">
+              ${explainerSourcesFor(s).map(source => `<li><a href="${esc(source.url)}" target="_blank" rel="noreferrer noopener">${esc(source.title)}</a></li>`).join("")}
+            </ul>
+          </div>
+        ` : ""}
       </div>`).join("")}
     </div>
   `);
@@ -1310,8 +1380,6 @@ async function boot() {
     if (scheduleButton) confirmFakeSchedule(scheduleButton);
     const callbackButton = e.target.closest("button[data-callback]");
     if (callbackButton) confirmFakeCallback(callbackButton);
-    const speakButton = e.target.closest(".msg-audio");
-    if (speakButton) speakOnDemand(speakButton.dataset.speakText || "");
   });
   $("send").addEventListener("click", () => send($("input").value));
   $("input").addEventListener("keydown", e => { if (e.key === "Enter") send($("input").value); });

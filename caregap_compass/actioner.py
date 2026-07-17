@@ -266,6 +266,7 @@ def explain_gap(
             {"text": p["text"], "source": p["source"], "scenario": p["scenario"]}
             for p in passages
         ],
+        "trusted_sources": measures.trusted_sources_for(measure_id),
         "source": f"care_gaps + coverage_rules + stars_performance ({bq.backend()}) + call transcripts",
     }
 
@@ -857,6 +858,9 @@ How to work:
    should see provider names and appointment times, not internal ids.
 4. If find_provider returns no_match, say so and suggest a callback rather than
    inventing an option.
+5. Only when you are explaining a medical care step, end with a short
+   "Trusted sources" list if explain_gap returned trusted_sources. Use the title
+   and URL only. Do not add sources to scheduling, callback, or routine chat.
 
 Hard rules:
 - Every provider, address, time, and cost you mention must come from a tool.

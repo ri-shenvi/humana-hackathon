@@ -64,6 +64,14 @@ def test_explain_stays_member_facing(ctx, gap_id):
     assert "for_the_plan" not in why
 
 
+def test_explain_returns_trusted_sources(ctx, gap_id):
+    result = actioner.explain_gap(gap_id, HERO, ctx)
+    assert result["trusted_sources"]
+    for source in result["trusted_sources"]:
+        assert source["title"]
+        assert source["url"].startswith("https://")
+
+
 def test_explain_refuses_another_members_gap(ctx):
     other = next(g for g in bq.get_all_gaps() if g["member_id"] != HERO)
     result = actioner.explain_gap(other["gap_id"], HERO, ctx)
