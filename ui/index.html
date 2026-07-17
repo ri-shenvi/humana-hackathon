@@ -138,23 +138,6 @@ aside select {
 /* --- main ----------------------------------------------------------------- */
 .wrap { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 
-/* Plan economics above a member-facing chat. A member would never see this, so
-   it is labelled and tinted rather than left to read as part of the product. */
-.impact {
-  background: var(--surface-3); border-bottom: 1px solid var(--border);
-  padding: 8px 18px; font-size: 12.5px; color: var(--ink-2);
-  display: flex; gap: 9px; align-items: baseline; flex-wrap: wrap;
-}
-.impact b { color: var(--ink); font-variant-numeric: tabular-nums; }
-.impact .sep { color: var(--ink-3); }
-.impact .lbl {
-  font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--ink-3); border: 1px solid var(--border); border-radius: 4px;
-  padding: 2px 6px; background: var(--surface);
-}
-.impact .at { color: var(--ink-3); font-size: 11.5px; }
-.impact .at b { color: var(--ink-2); }
-
 main { flex: 1; display: grid; grid-template-columns: 1fr; gap: 13px; padding: 13px 16px; min-height: 0; }
 main.insights-open { grid-template-columns: minmax(0, 1fr) 400px; }
 main.solo { grid-template-columns: 1fr; }
@@ -360,8 +343,6 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
 </aside>
 
 <div class="wrap">
-  <div class="impact" id="impact"><span style="color:var(--ink-3)">Loading…</span></div>
-
   <main id="main">
     <!-- chat -->
     <section class="pane" id="v-chat">
@@ -686,21 +667,6 @@ async function openSession(id) {
   }
 }
 
-/* --- strips --------------------------------------------------------------- */
-async function loadImpact() {
-  try {
-    const d = await api("/api/impact?measure=CBP"), t = d.target, p = d.projection;
-    $("impact").innerHTML = `
-      <span class="lbl">Plan impact</span>
-      <span><b>${d.open_gap_count}</b> members with open ${esc(d.measure_id)} gaps</span>
-      <span class="sep">·</span>
-      <span>today <b>${d.current_star_rating}&#9733;</b> at ${d.current_rate_pct}%</span>
-      <span class="sep">&rarr;</span>
-      <span><b>${p.expected_closes} closes</b> lifts it to <b>${t.resulting_stars}&#9733;</b></span>
-      <span class="at">at the <b>${p.closure_rate_pct}%</b> rate this plan has already hit</span>`;
-  } catch { $("impact").innerHTML = `<span style="color:var(--ink-3)">Impact unavailable</span>`; }
-}
-
 /* Says where the data IS, not how we got there. "csv fallback" described the fall;
    what an operator needs mid-demo is simply whether BigQuery is live. */
 async function loadTelemetry() {
@@ -798,7 +764,7 @@ async function boot() {
   setRail(shut);
   $("railtoggle").addEventListener("click", () => setRail(!document.body.classList.contains("rail-shut")));
 
-  loadImpact(); loadTelemetry(); loadFlags();
+  loadTelemetry(); loadFlags();
   try {
     const d = await api("/api/members?limit=40");
     $("member").innerHTML = d.members.map(m =>
