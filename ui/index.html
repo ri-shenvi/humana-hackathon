@@ -172,6 +172,7 @@ main.solo { grid-template-columns: 1fr; }
   word-wrap: break-word; font-size: 14px;
 }
 .msg.user .bubble { border-color: var(--data-green); background: #f6faf2; }
+.bubble.interactive { white-space: normal; max-width: 86%; }
 .bubble pre {
   font-family: var(--mono); font-size: 11px; line-height: 1.6; background: var(--surface-2);
   border: 1px solid var(--border); border-radius: 8px; padding: 9px; overflow-x: auto;
@@ -188,6 +189,7 @@ main.solo { grid-template-columns: 1fr; }
 .prompts { padding: 0 14px 9px; display: flex; gap: 6px; flex-wrap: wrap; }
 .prompts button { font-size: 11.5px; font-weight: 500; padding: 6px 12px; background: var(--surface); color: var(--ink-2); border: 1.5px solid var(--border); border-radius: 999px; cursor: pointer; }
 .prompts button:hover:not(:disabled) { border-color: var(--data-green); color: var(--data-green); }
+.prompts button.primary { background: #f6faf2; border-color: var(--data-green); color: var(--data-green); font-weight: 700; }
 .composer { border-top: 1px solid var(--border); padding: 11px 14px; display: flex; gap: 9px; }
 .composer input { flex: 1; font: inherit; padding: 10px 16px; border: 1.5px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--ink); }
 .composer input:focus { outline: none; border-color: var(--data-green); }
@@ -206,6 +208,25 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
 .insight-toggle[aria-expanded="true"] { border-color: var(--data-green); color: var(--data-green); background: #f6faf2; }
 .insight-toggle:focus-visible { outline: 2px solid var(--data-green); outline-offset: 2px; }
 .pane-head .insight-toggle { padding: 4px 8px; }
+
+.care-list { display: grid; gap: 8px; margin-top: 9px; }
+.care-item { border: 1px solid var(--border); border-radius: 9px; padding: 9px 11px; background: #fbfdf9; }
+.care-item .name { font-weight: 700; font-size: 13px; color: var(--ink); }
+.care-item .detail { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+.provider-list { display: grid; gap: 9px; margin-top: 11px; }
+.provider-card { border: 1px solid var(--border); border-radius: 10px; padding: 11px; background: var(--surface-2); }
+.provider-card .name { font-weight: 700; font-size: 13px; }
+.provider-card .meta { font-size: 12px; color: var(--ink-2); margin: 2px 0 8px; }
+.slots { display: flex; flex-wrap: wrap; gap: 6px; }
+.slots button {
+  font: inherit; font-size: 11.5px; font-weight: 700; padding: 6px 9px;
+  border: 1.5px solid var(--data-green); border-radius: 999px; color: var(--data-green);
+  background: var(--surface); cursor: pointer;
+}
+.slots button:hover { background: #f6faf2; }
+.demo-note { font-size: 11.5px; color: var(--ink-3); margin-top: 10px; }
+.confirm-box { border: 1.5px solid var(--data-green); border-radius: 10px; background: #f6faf2; padding: 11px; }
+.confirm-box .title { font-weight: 800; margin-bottom: 4px; }
 
 /* --- decision panel ------------------------------------------------------- */
 .insight-note { padding: 10px 14px; font-size: 12px; color: var(--ink-2); border-bottom: 1px solid var(--border); background: #fbfdf9; }
@@ -411,23 +432,102 @@ button.ghost { background: var(--surface-3); color: var(--ink); }
 
 <script>
 const APP = "caregap_compass", USER = "demo-user";
-let sessionId = null, memberId = null, pending = null, busy = false, view = "chat", insightsOpen = false;
+let sessionId = null, memberId = null, pending = null, busy = false, view = "chat", insightsOpen = false, currentRoadmap = null;
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 const SUGGESTIONS = [
-  "What should I do about my health?",
-  "Why not the osteoporosis one?",
-  "Isn't the medication review easier?",
-  "Is my colonoscopy covered 100%?",
-  "Find me a provider",
+  {label: "Explain why these matter", action: "explain"},
+  {label: "Schedule appointment", action: "schedule", primary: true},
+  {label: "What should I do first?", text: "What should I do first?"},
+  {label: "Request a callback", text: "I would like a callback"},
 ];
+
+const EXPLAINERS = {
+  BCS: "A mammogram looks for breast changes before you would usually feel symptoms.",
+  CBP: "A blood pressure check helps your doctor see whether your heart and blood vessels are under extra strain.",
+  "CDC-H": "A diabetes blood sugar check shows whether your current routine is keeping your blood sugar in a safer range.",
+  COA: "A medication review helps make sure each medicine still fits your needs and is not causing avoidable side effects.",
+  COL: "Colon cancer screening can find early changes when they are often easier to treat.",
+  EED: "A diabetic eye exam can catch eye changes early, before vision problems become obvious.",
+  KED: "A kidney test helps watch for diabetes-related kidney changes while they are still easier to manage.",
+  OMW: "A bone health visit helps lower the chance of another fracture and supports safer movement."
+};
+
+const PROVIDER_OPTIONS = {
+  default: [
+    {id: "demo-1", name: "CenterWell Senior Primary Care - Northside", kind: "Primary care", fit: "in-network option with open preventive-care visits", slots: ["Tue Jul 21, 9:30 AM", "Wed Jul 22, 2:15 PM"]},
+    {id: "demo-2", name: "Evergreen Family Clinic", kind: "Primary care", fit: "in-network option accepting new Humana members", slots: ["Thu Jul 23, 10:00 AM", "Fri Jul 24, 1:45 PM"]},
+    {id: "demo-3", name: "Lakeside Medical Group", kind: "Primary care", fit: "in-network option with morning availability", slots: ["Mon Jul 27, 8:45 AM", "Tue Jul 28, 11:30 AM"]},
+  ],
+  BCS: [
+    {id: "breast-1", name: "Pinecrest Women's Imaging", kind: "Mammogram", fit: "in-network imaging center near your ZIP", slots: ["Tue Jul 21, 11:00 AM", "Thu Jul 23, 9:15 AM"]},
+    {id: "breast-2", name: "Riverbend Diagnostic Imaging", kind: "Mammogram", fit: "in-network imaging center with open screening slots", slots: ["Fri Jul 24, 2:30 PM", "Mon Jul 27, 10:20 AM"]},
+  ],
+  CBP: [
+    {id: "bp-1", name: "CenterWell Senior Primary Care - Northside", kind: "Primary care", fit: "can complete a blood pressure check and review next steps", slots: ["Tue Jul 21, 9:30 AM", "Wed Jul 22, 2:15 PM"]},
+    {id: "bp-2", name: "Evergreen Family Clinic", kind: "Primary care", fit: "in-network option accepting new Humana members", slots: ["Thu Jul 23, 10:00 AM", "Fri Jul 24, 1:45 PM"]},
+    {id: "bp-3", name: "Lakeside Medical Group", kind: "Primary care", fit: "in-network option with morning availability", slots: ["Mon Jul 27, 8:45 AM", "Tue Jul 28, 11:30 AM"]},
+  ],
+  COL: [
+    {id: "col-1", name: "Summit Digestive Health", kind: "Colorectal screening", fit: "in-network GI group with consult slots", slots: ["Wed Jul 22, 9:00 AM", "Fri Jul 24, 3:10 PM"]},
+    {id: "col-2", name: "Riverbend Endoscopy Center", kind: "Colorectal screening", fit: "in-network screening center", slots: ["Mon Jul 27, 12:30 PM", "Tue Jul 28, 10:45 AM"]},
+  ],
+  EED: [
+    {id: "eye-1", name: "ClearView Eye Center", kind: "Diabetic eye exam", fit: "in-network eye care with diabetic retinal exams", slots: ["Tue Jul 21, 1:00 PM", "Wed Jul 22, 10:30 AM"]},
+    {id: "eye-2", name: "Northside Optometry", kind: "Diabetic eye exam", fit: "in-network option with open exam slots", slots: ["Thu Jul 23, 9:40 AM", "Mon Jul 27, 2:20 PM"]},
+  ],
+  KED: [
+    {id: "lab-1", name: "CenterWell Senior Primary Care - Northside", kind: "Kidney health test", fit: "can order or complete the annual kidney test", slots: ["Tue Jul 21, 9:30 AM", "Wed Jul 22, 2:15 PM"]},
+    {id: "lab-2", name: "Evergreen Family Clinic", kind: "Kidney health test", fit: "in-network option with lab access", slots: ["Thu Jul 23, 10:00 AM", "Fri Jul 24, 1:45 PM"]},
+  ],
+  OMW: [
+    {id: "bone-1", name: "Willow Bone Health Clinic", kind: "Bone health visit", fit: "in-network option for osteoporosis follow-up", slots: ["Wed Jul 22, 9:20 AM", "Thu Jul 23, 1:10 PM"]},
+    {id: "bone-2", name: "CenterWell Senior Primary Care - Northside", kind: "Primary care", fit: "can review bone health and order next steps", slots: ["Fri Jul 24, 11:15 AM", "Mon Jul 27, 3:00 PM"]},
+  ],
+};
 
 async function api(p) {
   const r = await fetch(p);
   if (!r.ok) throw new Error(`${p} -> ${r.status}`);
   return r.json();
+}
+
+function formatList(items) {
+  const clean = items.filter(Boolean);
+  if (clean.length <= 1) return clean[0] || "";
+  if (clean.length === 2) return `${clean[0]} and ${clean[1]}`;
+  return `${clean.slice(0, -1).join(", ")}, and ${clean[clean.length - 1]}`;
+}
+
+async function ensureRoadmap(force = false) {
+  if (!force && currentRoadmap?.member_id === memberId) return currentRoadmap;
+  currentRoadmap = await api(`/api/roadmap/${memberId}`);
+  return currentRoadmap;
+}
+
+function openSteps(roadmap = currentRoadmap) {
+  return (roadmap?.steps || [])
+    .filter(s => s.status === "open")
+    .sort((a, b) => (a.priority_rank || 99) - (b.priority_rank || 99));
+}
+
+function nextOpenStep() {
+  return openSteps()[0] || null;
+}
+
+function openingText(roadmap) {
+  const open = openSteps(roadmap);
+  if (!open.length) {
+    return "Hi. I do not see any required care steps due right now. I can still help review your care roadmap or request a callback if you have questions.";
+  }
+  const names = formatList(open.slice(0, 3).map(s => s.measure_name || s.measure_id));
+  return `Hi. I noticed you have ${names} coming up. These are routine care steps your Humana plan shows as still needed, not emergencies. Would you like me to explain why they matter or help schedule an appointment?`;
+}
+
+function providerOptionsFor(step) {
+  return PROVIDER_OPTIONS[step?.measure_id] || PROVIDER_OPTIONS.default;
 }
 
 /* --- views ---------------------------------------------------------------- */
@@ -521,10 +621,86 @@ function addMsg(who, text) {
   $("chat").scrollTop = 1e9;
 }
 
+function addAgentHtml(html) {
+  const lbl = document.createElement("div");
+  lbl.className = "who";
+  lbl.textContent = "CareGap Compass";
+  const el = document.createElement("div");
+  el.className = "msg agent";
+  el.innerHTML = `<div class="bubble interactive">${html}</div>`;
+  $("chat").append(lbl, el);
+  $("chat").scrollTop = 1e9;
+}
+
 function addTool(t) {
   const el = document.createElement("div");
   el.className = "tool"; el.textContent = "· " + t;
   $("chat").appendChild(el); $("chat").scrollTop = 1e9;
+}
+
+async function explainCareSteps(userText = "Explain why these matter") {
+  if (busy) return;
+  if (view !== "chat") show("chat");
+  addMsg("user", userText);
+  try { await ensureRoadmap(); } catch {}
+  const steps = openSteps().slice(0, 3);
+  if (!steps.length) {
+    addMsg("agent", "I do not see any required care steps due right now.");
+    return;
+  }
+  addAgentHtml(`
+    <div>Here is the plain-language version.</div>
+    <div class="care-list">
+      ${steps.map(s => `<div class="care-item">
+        <div class="name">${esc(s.measure_name || s.measure_id)}</div>
+        <div class="detail">${esc(EXPLAINERS[s.measure_id] || "This is a routine preventive care step that helps your care team catch issues early and keep your plan record up to date.")}</div>
+      </div>`).join("")}
+    </div>
+  `);
+}
+
+async function startScheduling(userText = "Schedule appointment") {
+  if (busy) return;
+  if (view !== "chat") show("chat");
+  addMsg("user", userText);
+  try { await ensureRoadmap(); } catch {}
+  const step = nextOpenStep();
+  if (!step) {
+    addMsg("agent", "I do not see an open care step to schedule right now. I can request a callback instead.");
+    return;
+  }
+  const providers = providerOptionsFor(step);
+  addAgentHtml(`
+    <div>I can help set up the first recommended step: <b>${esc(step.measure_name || step.measure_id)}</b>.</div>
+    <div>Here are in-network options near your ZIP with open demo slots.</div>
+    <div class="provider-list">
+      ${providers.map(p => `<div class="provider-card">
+        <div class="name">${esc(p.name)}</div>
+        <div class="meta">${esc(p.kind)} · In network · ${esc(p.fit)}</div>
+        <div class="slots">
+          ${p.slots.map((slot, i) => `<button type="button" data-provider="${esc(p.id)}" data-slot="${i}" data-measure="${esc(step.measure_id)}">${esc(slot)}</button>`).join("")}
+        </div>
+      </div>`).join("")}
+    </div>
+    <div class="demo-note">Scheduling is simulated for this demo. No real appointment is created.</div>
+  `);
+}
+
+function confirmFakeSchedule(button) {
+  const measure = button.dataset.measure;
+  const provider = (PROVIDER_OPTIONS[measure] || PROVIDER_OPTIONS.default).find(p => p.id === button.dataset.provider);
+  if (!provider) return;
+  const slot = provider.slots[Number(button.dataset.slot)] || provider.slots[0];
+  const step = openSteps().find(s => s.measure_id === measure) || {measure_name: measure};
+  addMsg("user", `${slot} with ${provider.name}`);
+  addAgentHtml(`
+    <div class="confirm-box">
+      <div class="title">Appointment request ready</div>
+      <div>${esc(provider.name)} · ${esc(slot)}</div>
+      <div>${esc(step.measure_name || measure)}</div>
+    </div>
+    <div class="demo-note">For the demo, this behaves like the request was prepared. A production version would submit this to the scheduling system or create a callback task.</div>
+  `);
 }
 
 function renderGate(r) {
@@ -587,7 +763,7 @@ async function loadPanel() {
 /* --- roadmap -------------------------------------------------------------- */
 async function loadRoadmap() {
   try {
-    const d = await api(`/api/roadmap/${memberId}`);
+    const d = await ensureRoadmap(true);
     $("rmhead").innerHTML = `
       <div class="rm-head">
         <div class="h">${esc(d.first_name || "Member")}'s care year</div>
@@ -717,6 +893,17 @@ function setBusy(b) { busy = b; $("send").disabled = b; $("send").innerHTML = b 
 
 async function send(text) {
   if (busy || !text.trim() || !sessionId) return;
+  const normalized = text.trim().toLowerCase();
+  if (["schedule appointment", "schedule an appointment", "find providers nearby", "find me a provider"].includes(normalized)) {
+    $("input").value = "";
+    await startScheduling(text.trim());
+    return;
+  }
+  if (normalized.includes("explain") && normalized.includes("matter")) {
+    $("input").value = "";
+    await explainCareSteps(text.trim());
+    return;
+  }
   if (view !== "chat") show("chat");
   $("input").value = "";
   addMsg("user", text);
@@ -730,17 +917,35 @@ async function send(text) {
 
 async function switchMember(id) {
   memberId = id;
+  currentRoadmap = null;
   $("chat").innerHTML = "";
   await newSession();
-  addMsg("agent", "Ask me what you should do about your health.");
+  try {
+    addMsg("agent", openingText(await ensureRoadmap(true)));
+  } catch (e) {
+    addMsg("agent", "Hi. I can help you review required care steps, explain why they matter in plain language, and help find a next step when you are ready.");
+  }
   if (insightsOpen) await loadPanel();
   if (view === "roadmap") loadRoadmap();
   if (view === "history") loadHistory();
 }
 
 async function boot() {
-  $("prompts").innerHTML = SUGGESTIONS.map(s => `<button type="button" data-p="${esc(s)}">${esc(s)}</button>`).join("");
-  $("prompts").addEventListener("click", e => { const b = e.target.closest("button"); if (b) send(b.dataset.p); });
+  $("prompts").innerHTML = SUGGESTIONS.map(s => {
+    const attrs = s.action ? `data-action="${esc(s.action)}"` : `data-p="${esc(s.text)}"`;
+    return `<button type="button" ${attrs} class="${s.primary ? "primary" : ""}">${esc(s.label)}</button>`;
+  }).join("");
+  $("prompts").addEventListener("click", e => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    if (b.dataset.action === "explain") explainCareSteps();
+    else if (b.dataset.action === "schedule") startScheduling();
+    else send(b.dataset.p);
+  });
+  $("chat").addEventListener("click", e => {
+    const b = e.target.closest("button[data-provider]");
+    if (b) confirmFakeSchedule(b);
+  });
   $("send").addEventListener("click", () => send($("input").value));
   $("input").addEventListener("keydown", e => { if (e.key === "Enter") send($("input").value); });
   $("myes").addEventListener("click", () => answer(true));
